@@ -11,6 +11,21 @@ type CadenceRulerProps = {
   compact?: boolean;
 };
 
+/** Aktif çubuktan uzaklığa göre piramit uzunluk */
+function pyramidLength(
+  index: number,
+  activeIndex: number,
+  compact: boolean,
+  isChapter: boolean,
+) {
+  const distance = Math.abs(index - activeIndex);
+  const peak = compact ? (isChapter ? 72 : 58) : isChapter ? 96 : 76;
+  const step = compact ? 14 : 18;
+  const min = compact ? 14 : 20;
+
+  return Math.max(min, peak - distance * step);
+}
+
 function CadenceRuler({
   mode,
   count,
@@ -21,28 +36,20 @@ function CadenceRuler({
 }: CadenceRulerProps) {
   const isChapter = mode === "chapter";
   const bar = compact ? 4 : 5;
-  const inactive = compact ? 36 : 64;
-  const activeLen = compact
-    ? isChapter
-      ? 80
-      : 64
-    : isChapter
-      ? 148
-      : 120;
 
   return (
     <div
       className={
         isChapter
-          ? "pointer-events-auto flex flex-col items-end gap-2 md:gap-3.5"
-          : "pointer-events-auto flex items-end justify-center gap-2.5 md:gap-4"
+          ? "pointer-events-auto flex flex-col items-end gap-2 md:gap-3"
+          : "pointer-events-auto flex items-end justify-center gap-2.5 md:gap-3.5"
       }
       role="tablist"
       aria-orientation={isChapter ? "vertical" : "horizontal"}
     >
       {Array.from({ length: count }).map((_, index) => {
         const active = index === activeIndex;
-        const length = active ? activeLen : inactive;
+        const length = pyramidLength(index, activeIndex, compact, isChapter);
 
         return (
           <button
@@ -106,9 +113,7 @@ export function CadenceIndicators() {
       </div>
 
       {showPanelRuler ? (
-        <div
-          className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 pb-[env(safe-area-inset-bottom)] md:bottom-8 md:pb-0"
-        >
+        <div className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 pb-[env(safe-area-inset-bottom)] md:bottom-8 md:pb-0">
           <CadenceRuler
             mode="panel"
             count={panelCount}
