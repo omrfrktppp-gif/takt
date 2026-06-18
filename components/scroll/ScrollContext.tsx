@@ -13,7 +13,7 @@ import {
 import { visibleChapters, type Chapter } from "@/lib/content";
 
 function panelCountFor(chapter: Chapter) {
-  if (chapter.kind === "contact") return 4;
+  if (chapter.kind === "contact") return 1;
   if (chapter.kind === "booking") return 1;
   return chapter.panels.length;
 }
@@ -29,6 +29,8 @@ type ScrollContextValue = {
   scrollToChapter: (chapterId: string, panelIndex?: number) => void;
   setPanelIndex: (chapterId: string, panelIndex: number) => void;
   registerTrack: (chapterId: string, el: HTMLDivElement | null) => void;
+  scrollVerticalBy: (delta: number) => void;
+  scrollHorizontalBy: (delta: number) => void;
 };
 
 const ScrollContext = createContext<ScrollContextValue | null>(null);
@@ -64,6 +66,20 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
     if (!trackEl) return;
     const width = trackEl.clientWidth || 1;
     trackEl.scrollTo({ left: width * index, behavior: "smooth" });
+  }, []);
+
+  const scrollVerticalBy = useCallback((delta: number) => {
+    const root = verticalRef.current;
+    if (!root) return;
+    root.scrollBy({ top: delta, behavior: "auto" });
+  }, []);
+
+  const scrollHorizontalBy = useCallback((delta: number) => {
+    const id = visibleChapters[chapterIndexRef.current]?.id;
+    if (!id) return;
+    const trackEl = trackRefs.current.get(id);
+    if (!trackEl) return;
+    trackEl.scrollBy({ left: delta, behavior: "auto" });
   }, []);
 
   const registerTrack = useCallback((chapterId: string, el: HTMLDivElement | null) => {
@@ -150,6 +166,8 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       scrollToChapter,
       setPanelIndex,
       registerTrack,
+      scrollVerticalBy,
+      scrollHorizontalBy,
     }),
     [
       chapterIndex,
@@ -159,6 +177,8 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       scrollToChapter,
       setPanelIndex,
       registerTrack,
+      scrollVerticalBy,
+      scrollHorizontalBy,
     ],
   );
 

@@ -14,6 +14,7 @@ const config: Config = {
         paper: "#F4F6F4",
         white: "#FFFFFF",
         signal: "#1F4FE0",
+        accent: "#E85D04",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],

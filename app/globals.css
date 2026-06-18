@@ -9,6 +9,7 @@
   --white: #ffffff;
   --signal: #1f4fe0;
   --signal-tint: rgba(31, 79, 224, 0.08);
+  --accent: #e85d04;
   --ink-80: #12161ccc;
 
   --radius: 4px;
@@ -24,6 +25,7 @@
   --color-paper: var(--paper);
   --color-white: var(--white);
   --color-signal: var(--signal);
+  --color-accent: var(--accent);
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
