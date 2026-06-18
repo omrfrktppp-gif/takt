@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Cadence } from "@/components/Cadence";
 import { Button } from "@/components/Button";
@@ -14,22 +14,43 @@ const navChapters = visibleChapters.filter(
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const { chapterId, panelIndex, scrollToChapter } = useScroll();
 
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const syncNavHeight = () => {
+      document.documentElement.style.setProperty(
+        "--nav-h",
+        `${el.offsetHeight}px`,
+      );
+    };
+
+    syncNavHeight();
+    const observer = new ResizeObserver(syncNavHeight);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [open]);
+
   return (
-    <header className="z-50 shrink-0 border-b border-line bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-content items-center justify-between gap-4 px-4 md:gap-6 md:px-6">
+    <header
+      ref={headerRef}
+      className="z-50 shrink-0 border-b border-line bg-white/95 backdrop-blur-sm"
+    >
+      <div className="mx-auto flex h-14 max-w-content items-center justify-between gap-3 px-4 md:h-16 md:gap-6 md:px-6">
         <button
           type="button"
           onClick={() => scrollToChapter("hakkimizda")}
-          className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-ink md:gap-3"
+          className="flex items-center gap-2 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
           aria-label="Takt ana sayfa"
         >
           <Cadence
             variant="mark"
             activeIndex={Math.min(panelIndex, 3)}
             pulseKey={`${chapterId}-${panelIndex}`}
-            className="origin-left scale-75"
+            className="origin-left scale-[0.65] md:scale-75"
           />
           <span>takt</span>
         </button>
@@ -52,38 +73,42 @@ export function Nav() {
               {chapter.label}
             </button>
           ))}
-          <Button
-            onClick={() => scrollToChapter("gorusme-planla")}
-          >
+          <Button onClick={() => scrollToChapter("gorusme-planla")}>
             {appointmentCta.label}
           </Button>
         </nav>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-sm border border-line p-2 text-ink lg:hidden"
+          className="inline-flex items-center justify-center rounded-sm border border-line p-2.5 text-ink lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+          {open ? (
+            <X size={20} strokeWidth={1.5} />
+          ) : (
+            <Menu size={20} strokeWidth={1.5} />
+          )}
         </button>
       </div>
 
       {open ? (
         <nav
           id="mobile-nav"
-          className="border-t border-line bg-white px-6 py-4 lg:hidden"
+          className="max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-white px-4 py-3 scrollbar-none lg:hidden"
           aria-label="Mobil navigasyon"
         >
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-1">
             {navChapters.map((chapter) => (
               <li key={chapter.id}>
                 <button
                   type="button"
-                  className={`block w-full text-left text-base ${
-                    chapterId === chapter.id ? "font-medium text-signal" : "text-ink"
+                  className={`block w-full rounded-sm px-2 py-3 text-left text-base ${
+                    chapterId === chapter.id
+                      ? "bg-accent/10 font-medium text-accent"
+                      : "text-ink"
                   }`}
                   onClick={() => {
                     scrollToChapter(chapter.id);
@@ -94,7 +119,7 @@ export function Nav() {
                 </button>
               </li>
             ))}
-            <li>
+            <li className="mt-2 border-t border-line pt-3">
               <Button
                 className="w-full"
                 onClick={() => {

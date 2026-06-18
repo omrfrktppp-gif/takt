@@ -36,7 +36,10 @@ export function WheelScrollController() {
         }
       }
 
-      const navH = 64;
+      const navH =
+        parseFloat(
+          getComputedStyle(document.documentElement).getPropertyValue("--nav-h"),
+        ) || 64;
       const viewportH = window.innerHeight;
       const contentH = viewportH - navH;
       const relativeY = event.clientY - navH;

@@ -16,7 +16,13 @@
   --radius-sm: 2px;
   --border: 1px solid var(--line);
   --maxw: 1200px;
-  --nav-h: 4rem;
+  --nav-h: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-h: 4rem;
+  }
 }
 
 @theme inline {

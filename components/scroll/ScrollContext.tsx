@@ -11,9 +11,10 @@ import {
   type ReactNode,
 } from "react";
 import { visibleChapters, type Chapter } from "@/lib/content";
+import { useMediaQuery } from "@/lib/useMediaQuery";
 
-function panelCountFor(chapter: Chapter) {
-  if (chapter.kind === "contact") return 1;
+function panelCountFor(chapter: Chapter, isDesktop: boolean) {
+  if (chapter.kind === "contact") return isDesktop ? 1 : 3;
   if (chapter.kind === "booking") return 1;
   return chapter.panels.length;
 }
@@ -31,6 +32,7 @@ type ScrollContextValue = {
   registerTrack: (chapterId: string, el: HTMLDivElement | null) => void;
   scrollVerticalBy: (delta: number) => void;
   scrollHorizontalBy: (delta: number) => void;
+  isDesktop: boolean;
 };
 
 const ScrollContext = createContext<ScrollContextValue | null>(null);
@@ -44,10 +46,11 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
 
   const [chapterIndex, setChapterIndex] = useState(0);
   const [panelIndex, setPanelIndexState] = useState(0);
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const chapter = visibleChapters[chapterIndex] ?? visibleChapters[0];
   const chapterId = chapter.id;
-  const panelCount = panelCountFor(chapter);
+  const panelCount = panelCountFor(chapter, isDesktop);
 
   chapterIndexRef.current = chapterIndex;
 
@@ -99,7 +102,7 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       const width = el.clientWidth || 1;
       const next = Math.round(el.scrollLeft / width);
       setPanelIndexState(
-        Math.min(next, panelCountFor(visibleChapters[idx]!) - 1),
+        Math.min(next, panelCountFor(visibleChapters[idx]!, isDesktop) - 1),
       );
     };
 
@@ -108,7 +111,7 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       el.removeEventListener("scroll", onScroll),
     );
     onScroll();
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
     const root = verticalRef.current;
@@ -168,12 +171,14 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       registerTrack,
       scrollVerticalBy,
       scrollHorizontalBy,
+      isDesktop,
     }),
     [
       chapterIndex,
       panelIndex,
       chapterId,
       panelCount,
+      isDesktop,
       scrollToChapter,
       setPanelIndex,
       registerTrack,
