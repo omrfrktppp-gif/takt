@@ -8,6 +8,7 @@ export function organizationSchema() {
     description: siteConfig.description,
     url: siteConfig.url,
     email: siteConfig.email,
+    telephone: siteConfig.phone,
     areaServed: "Ankara, Türkiye",
     knowsAbout: [
       "Mühendislik danışmanlığı",

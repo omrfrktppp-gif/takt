@@ -35,7 +35,7 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <Button href="/iletisim">Görüşme planla</Button>
+          <Button href="/iletisim#randevu">Görüşme planla</Button>
         </nav>
 
         <button
@@ -69,7 +69,7 @@ export function Nav() {
               </li>
             ))}
             <li>
-              <Button href="/iletisim" className="w-full">
+              <Button href="/iletisim#randevu" className="w-full">
                 Görüşme planla
               </Button>
             </li>

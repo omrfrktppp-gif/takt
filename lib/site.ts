@@ -1,13 +1,23 @@
 export const siteConfig = {
   name: "Takt",
   url: "https://takt.tr",
-  email: "iletisim@takt.tr",
+  email: "info@takt.tr",
+  phone: "+90 551 981 4728",
+  phoneHref: "tel:+905519814728",
   tagline: "Teknik ekibinizin eksik halkası.",
   description:
     "Makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan mühendislik danışmanlığı.",
   linkedin: "https://www.linkedin.com/company/takt",
   instagram: "https://instagram.com/takt.eng",
+  /** Tam adres eklendiğinde güncellenecek */
+  addressLabel: "Ankara, Türkiye",
+  /** Google Haritalar — adres netleşince `q=` parametresi güncellenir */
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ankara%2C+Turkey",
 } as const;
+
+/** Google Takvim randevu sayfası — Takvim → Randevu planları → paylaşım linki */
+export const googleCalendarBookingUrl =
+  process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_BOOKING_URL ?? "";
 
 export const navLinks = [
   { href: "/hizmetler", label: "Hizmetler" },

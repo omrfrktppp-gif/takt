@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { AppointmentBooking } from "@/components/AppointmentBooking";
 import { Cadence } from "@/components/Cadence";
+import { ContactDetails } from "@/components/ContactDetails";
 import { ContactForm } from "@/components/ContactForm";
 import { Eyebrow } from "@/components/Eyebrow";
 import { JsonLd } from "@/components/JsonLd";
@@ -40,34 +42,45 @@ export default function IletisimPage() {
         <Cadence variant="divider" className="mt-12" />
       </Section>
 
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-          <ContactForm />
+      <Section id="randevu">
+        <AppointmentBooking />
+      </Section>
 
-          <aside className="rounded border border-line bg-white p-6">
-            <h2 className="font-display text-h3 text-ink">Doğrudan iletişim</h2>
-            <ul className="mt-6 space-y-4 text-body">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-                >
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={siteConfig.linkedin}
-                  className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  LinkedIn şirket sayfası
-                </a>
-              </li>
-            </ul>
-          </aside>
+      <Section variant="white">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <h2 className="mb-6 font-display text-h2 text-ink">Mesaj gönderin</h2>
+            <ContactForm />
+          </div>
+          <ContactDetails />
         </div>
+      </Section>
+
+      <Section>
+        <Eyebrow>KONUM</Eyebrow>
+        <h2 className="font-display text-h2 text-ink">Bizi haritada bulun</h2>
+        <p className="mt-4 max-w-2xl text-body text-steel">
+          Açık adres yakında eklenecek. Şimdilik Ankara merkezli hizmet
+          veriyoruz; haritadan bölgeyi görüntüleyebilirsiniz.
+        </p>
+        <div className="mt-8 overflow-hidden rounded border border-line bg-white">
+          <iframe
+            title="Takt konum — Google Haritalar"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.0!2d32.8597!3d39.9334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d520732db1%3A0xbdc57b23c07f742!2sAnkara!5e0!3m2!1str!2str!4v1"
+            className="h-72 w-full border-0 md:h-96"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+        </div>
+        <a
+          href={siteConfig.mapsUrl}
+          className="mt-4 inline-block text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Google Haritalar&apos;da aç →
+        </a>
       </Section>
     </>
   );

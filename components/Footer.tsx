@@ -52,6 +52,14 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  href={siteConfig.phoneHref}
+                  className="text-ink hover:text-signal"
+                >
+                  {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
                   href={siteConfig.linkedin}
                   className="text-ink hover:text-signal"
                   rel="noopener noreferrer"
