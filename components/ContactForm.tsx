@@ -1,41 +1,59 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { siteConfig } from "@/lib/site";
 
-function buildMailto(form: HTMLFormElement) {
-  const data = new FormData(form);
-  const name = String(data.get("name") ?? "");
-  const company = String(data.get("company") ?? "");
-  const email = String(data.get("email") ?? "");
-  const phone = String(data.get("phone") ?? "");
-  const message = String(data.get("message") ?? "");
-
-  const subject = `İletişim talebi — ${company}`;
-  const body = [
-    `Ad Soyad: ${name}`,
-    `Firma: ${company}`,
-    `E-posta: ${email}`,
-    phone ? `Telefon: ${phone}` : null,
-    "",
-    "İhtiyaç / konu:",
-    message,
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<Status>("idle");
+  const [feedback, setFeedback] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setStatus("loading");
+    setFeedback("");
+
     const form = event.currentTarget;
-    const link = document.createElement("a");
-    link.href = buildMailto(form);
-    link.rel = "noopener noreferrer";
-    link.click();
-    form.reset();
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          company: data.get("company"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          message: data.get("message"),
+        }),
+      });
+
+      const result = (await response.json()) as {
+        ok?: boolean;
+        message?: string;
+        error?: string;
+      };
+
+      if (!response.ok) {
+        setStatus("error");
+        setFeedback(
+          result.error ??
+            "Gönderilemedi, lütfen tekrar deneyin ya da doğrudan e-posta yazın.",
+        );
+        return;
+      }
+
+      form.reset();
+      setStatus("success");
+      setFeedback(result.message ?? "Aldık. En kısa sürede dönüş yapacağız.");
+    } catch {
+      setStatus("error");
+      setFeedback(
+        `Gönderilemedi. Doğrudan ${siteConfig.email} adresine yazabilirsiniz.`,
+      );
+    }
   }
 
   return (
@@ -99,9 +117,9 @@ export function ContactForm() {
         </label>
 
         <p className="text-small text-steel">
-          Gönder&apos;e bastığınızda e-posta uygulamanız açılır; mesaj{" "}
-          <span className="text-ink">{siteConfig.email}</span> adresine
-          iletilir. Kişisel verileriniz tarayıcı adres çubuğuna yazılmaz.
+          Formu gönderdiğinizde mesaj doğrudan{" "}
+          <span className="text-ink">{siteConfig.email}</span> adresine iletilir;
+          e-posta uygulamanız açılmaz.
         </p>
 
         <p className="text-small text-steel">
@@ -112,11 +130,30 @@ export function ContactForm() {
 
         <button
           type="submit"
-          className="inline-flex items-center justify-center rounded bg-ink px-[22px] py-[14px] text-sm font-medium text-white transition-colors hover:bg-signal"
+          disabled={status === "loading"}
+          className="inline-flex items-center justify-center rounded bg-ink px-[22px] py-[14px] text-sm font-medium text-white transition-colors hover:bg-signal disabled:opacity-60"
         >
-          E-posta ile gönder
+          {status === "loading" ? "Gönderiliyor…" : "Gönder"}
         </button>
       </form>
+
+      {status === "success" ? (
+        <p className="mt-4 text-body text-ink" role="status">
+          {feedback}
+        </p>
+      ) : null}
+
+      {status === "error" ? (
+        <p className="mt-4 text-body text-ink" role="alert">
+          {feedback}{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-signal underline"
+          >
+            {siteConfig.email}
+          </a>
+        </p>
+      ) : null}
     </div>
   );
 }
