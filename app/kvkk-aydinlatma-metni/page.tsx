@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow } from "@/components/Eyebrow";
 import { JsonLd } from "@/components/JsonLd";
+import { SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function KvkkPage() {
   return (
-    <div className="scrollbar-none h-full overflow-y-auto">
+    <SeoPageLayout>
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hakkımızda", path: "/hakkimizda" },
@@ -203,6 +204,6 @@ export default function KvkkPage() {
           </p>
         </article>
       </Section>
-    </div>
+    </SeoPageLayout>
   );
 }

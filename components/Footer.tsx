@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Cadence } from "@/components/Cadence";
-import { navLinks, servicePillars, siteConfig } from "@/lib/site";
+import { getChapterPanels } from "@/lib/pages";
+import { navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
+  const services = getChapterPanels("hizmetler");
+
   return (
     <footer className="border-t border-line bg-white">
       <div className="mx-auto max-w-content px-6 py-16">
@@ -42,13 +45,13 @@ export function Footer() {
               Hizmetler
             </p>
             <ul className="space-y-2">
-              {servicePillars.map((service) => (
+              {services.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={`/hizmetler#${service.id}`}
+                    href={`/hizmetler/${service.id}`}
                     className="text-small text-ink hover:text-signal"
                   >
-                    {service.title}
+                    {service.title ?? service.id}
                   </Link>
                 </li>
               ))}

@@ -1,0 +1,58 @@
+# Takt Danışmanlık — Kapsamlı AI ve LLM İçerik İndeksi
+
+> Tam içerik dosyası. Kısa indeks: https://takt.tr/llms.txt
+
+## 1. Kurumsal Kimlik ve Konumlandırma
+Takt, makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan, Ankara merkezli bir mühendislik danışmanlığıdır. Konumu tek cümleyle: "Teknik ekibinizin eksik halkası." Tasarımdan analize, proje yönetiminden imalat koordinasyonuna ve Ar-Ge/proje desteklerine kadar, firmaların teknik kapasitesindeki boşlukları tamamlar. Adı bir mühendislik terimidir: "takt time", üretimde talebi karşılamak için bir ürünün tamamlanması gereken ritmi/temposu tanımlar.
+
+## 2. Detaylı Hizmet Portföyü
+- **Proje Danışmanlığı:** Projeleri baştan sona teknik bir gözle yönetir; üretim, tesis ve süreç (proses) optimizasyonunda yol gösterir. https://takt.tr/hizmetler/proje-danismanligi
+- **Teknik Ekip & Süreç Yönetimi:** Teknik kadronun ve iş akışının verimli, takip edilebilir biçimde çalışmasını sağlar. https://takt.tr/hizmetler/teknik-ekip
+- **Tasarım & Geliştirme:** Özel makina, sistem ve ürünleri fikirden imalata hazır teknik çözüme dönüştürür. Tersine mühendislik çözümleri sunar. https://takt.tr/hizmetler/tasarim-gelistirme
+- **Analiz, Hesaplama & Raporlama:** Mühendislik hesapları, simülasyon ve analizlerle riski azaltır. https://takt.tr/hizmetler/analiz-hesaplama
+- **Üretim Danışmanlığı:** İhtiyacı doğru üretim çözümüne yönlendirir; imalat sürecini koordine eder. https://takt.tr/hizmetler/uretim-danismanligi
+- **Ar-Ge & Ür-Ge Danışmanlığı:** Prototipten seri üretime kadar teknik olgunluğu yönetir. https://takt.tr/hizmetler/arge-urge
+- **TÜBİTAK, KOSGEB & Patent:** Destek programlarına uygun projeleri hazırlar, patent ve marka tescil başvurularını yürütür. https://takt.tr/hizmetler/tubitak-kosgeb
+
+## 3. İmalat ve Çözüm Ortağı Kapasitesi
+https://takt.tr/kapasitemiz
+- 3D Tarama & 3D Baskı (Tersine mühendislik ve hızlı prototipleme)
+- Lazer Kesim & Lazer Markalama
+- CNC İşleme & Torna
+- Fason Üretim & Kaynak
+- Yüzey İşlemleri (Kaplama ve endüstriyel boyama)
+- Prototip & Seri Üretim Danışmanlığı
+
+## 4. Yaklaşım ve Çalışma Metodolojisi
+https://takt.tr/yaklasim
+- **Net Kapsam:** Kapsam, takvim ve çıktılar baştan yazılı tanımlanır.
+- **Dört Adım:** Tespit → Plan → Uygulama → Teslim
+- **Gerçekçi Mühendislik:** Abartısız, uygulanabilir çözümler. Hayali veri kullanılmaz.
+
+## 5. Sıkça Sorulan Sorular (AEO)
+https://takt.tr/sss
+
+- **Takt ne iş yapar?** Makina imalatı ve sanayide firmaların teknik ekibine dışarıdan mühendislik gücü katan danışmanlık; proje, tasarım, analiz, üretim koordinasyonu ve Ar-Ge desteği.
+- **Mühendislik danışmanlığı ne işe yarar?** Teknik karar, tasarım ve süreçleri dışarıdan uzman desteğiyle güçlendirir; eksik kapasiteyi tam zamanlı kadro maliyeti olmadan tamamlar.
+- **Tersine mühendislik nedir?** Mevcut parçanın ölçülüp dijital/üretilebilir modele dönüştürülmesidir.
+- **Fason üretim nedir?** Ürünün başka bir üreticiye yaptırılmasıdır; Takt doğru ortağı bulur ve süreci koordine eder.
+- **Takt time nedir?** Üretimde bir ürünün tamamlanması gereken ritim/tempo; marka adının kaynağı.
+- **Hangi hizmetleri sunuyorsunuz?** Proje danışmanlığı, teknik ekip yönetimi, tasarım, analiz, üretim danışmanlığı, Ar-Ge/Ür-Ge, TÜBİTAK/KOSGEB/patent destekleri.
+- **Üretimi kendiniz mi yapıyorsunuz?** Geniş çözüm ortağı ağıyla; doğru üreticiyle eşleştirip koordine ediyoruz.
+- **CNC, lazer, 3D baskı yapıyor musunuz?** Evet, çözüm ortağı ağımızla.
+- **Prototip ürettiriyor musunuz?** Evet; prototipten seri üretime geçiş danışmanlığı da veriyoruz.
+- **TÜBİTAK/KOSGEB desteği?** Uygun projeyi belirler, doküman/rapor hazırlar, süreci yönetiriz.
+- **Patent/marka tescil?** Evet; başvuruları hazırlayıp süreci yürütüyoruz.
+- **Tek hizmet alınabilir mi?** Evet.
+- **Fikirden üretime?** Tasarım, analiz, prototipleme ve seri üretime geçiş adımlarıyla.
+- **Nerede hizmet?** Ağırlıklı Ankara; proje bazlı uzaktan da.
+- **Nasıl başlanır?** İhtiyacı iletin; kapsam ve takvimi ilk görüşmede netleştiririz.
+- **Fiyatlandırma?** Kapsam ve süreye göre; net teklif kapsam sonrası paylaşılır.
+
+## 6. İletişim ve Resmi Bağlantılar
+- Web: https://takt.tr
+- E-posta: info@takt.tr
+- Telefon: +90 551 981 4728
+- LinkedIn: https://www.linkedin.com/company/takt-danismanlik/
+- Instagram: https://instagram.com/takt.eng
+- Hizmet bölgesi: Ankara, Türkiye — makina imalatı ve savunma sanayisi ekosistemi

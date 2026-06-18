@@ -7,7 +7,7 @@ export const siteConfig = {
   tagline: "Teknik ekibinizin eksik halkası.",
   description:
     "Makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan mühendislik danışmanlığı.",
-  linkedin: "https://www.linkedin.com/company/takt",
+  linkedin: "https://www.linkedin.com/company/takt-danismanlik/",
   instagram: "https://instagram.com/takt.eng",
   /** Tam adres eklendiğinde güncellenecek */
   addressLabel: "Ankara, Türkiye",
@@ -45,11 +45,13 @@ export const appointmentTypes = [
 ] as const;
 
 export const navLinks = [
-  { href: "/", id: "hakkimizda", label: "Hakkımızda" },
+  { href: "/hakkimizda", id: "hakkimizda", label: "Hakkımızda" },
   { href: "/hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
   { href: "/kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
   { href: "/yaklasim", id: "yaklasim", label: "Yaklaşım" },
   { href: "/iletisim", id: "iletisim", label: "İletişim" },
+  { href: "/blog", id: "blog", label: "Blog" },
+  { href: "/sss", id: "sss", label: "SSS" },
 ] as const;
 
 export const appointmentCta = {
@@ -191,25 +193,80 @@ export const faqItems = [
   {
     question: "Takt ne iş yapar?",
     answer:
-      "Takt, makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan mühendislik gücü katan bir danışmanlıktır. Tasarım, analiz, proje ve operasyon yönetimi, üretim optimizasyonu ve Ar-Ge/proje desteği sunar.",
+      "Takt, makina imalatı ve sanayide çalışan firmaların teknik ekibine dışarıdan mühendislik gücü katan bir danışmanlıktır. Proje danışmanlığı, tasarım, analiz, üretim koordinasyonu ve Ar-Ge/proje desteği sunar.",
+  },
+  {
+    question: "Mühendislik danışmanlığı ne işe yarar?",
+    answer:
+      "Mühendislik danışmanlığı, bir firmanın teknik kararlarını, tasarımını ve süreçlerini dışarıdan uzman desteğiyle güçlendirmesini sağlar. Eksik kapasiteyi tam zamanlı kadro maliyeti olmadan tamamlar.",
+  },
+  {
+    question: "Tersine mühendislik nedir?",
+    answer:
+      "Tersine mühendislik, mevcut bir parça veya ürünün ölçülerek ve analiz edilerek dijital/üretilebilir modeline ulaşılmasıdır. Eski veya teknik resmi olmayan parçaların yeniden üretimini mümkün kılar.",
+  },
+  {
+    question: "Fason üretim nedir?",
+    answer:
+      "Fason üretim, bir ürünün başka bir üreticiye yaptırılmasıdır. Takt, işi doğru çözüm ortağıyla eşleştirir ve imalat sürecini sizin adınıza koordine eder.",
+  },
+  {
+    question: "Takt time nedir?",
+    answer:
+      "Takt time, üretimde talebi karşılamak için bir ürünün tamamlanması gereken ritmi/temposu tanımlar. Markamızın adı buradan gelir: işi doğru tempoda akıtmak.",
+  },
+  {
+    question: "Hangi hizmetleri sunuyorsunuz?",
+    answer:
+      "Proje danışmanlığı; teknik ekip & süreç yönetimi; tasarım & geliştirme; analiz, hesaplama & raporlama; üretim danışmanlığı; Ar-Ge & Ür-Ge; TÜBİTAK/KOSGEB/Türk Patent destekleri.",
+  },
+  {
+    question: "Üretimi kendiniz mi yapıyorsunuz?",
+    answer:
+      "Üretimi geniş çözüm ortağı ağımızla yürütüyoruz; doğru üreticiyle eşleştirir ve süreci sizin adınıza koordine ediyoruz.",
+  },
+  {
+    question: "CNC, lazer kesim, 3D baskı gibi işler yapıyor musunuz?",
+    answer:
+      "Evet. CNC işleme/torna, lazer kesim ve markalama, 3D tarama/baskı, kaynak, kaplama ve boyamayı çözüm ortağı ağımızla karşılıyoruz.",
+  },
+  {
+    question: "Prototip ürettiriyor musunuz?",
+    answer:
+      "Evet. Prototipleme ve prototipten seri üretime geçiş danışmanlığı veriyoruz.",
+  },
+  {
+    question: "TÜBİTAK/KOSGEB projesinde nasıl destek veriyorsunuz?",
+    answer:
+      "Uygun projeyi belirler, teknik dokümanları ve raporları hazırlar, başvurudan yürütmeye kadar süreci yönetiriz.",
+  },
+  {
+    question: "Patent veya marka tescilinde yardımcı oluyor musunuz?",
+    answer:
+      "Evet; patent ve marka başvurularını hazırlayıp süreci yürütüyoruz.",
   },
   {
     question: "Tek bir hizmet alabilir miyim?",
-    answer: "Evet. Hizmetler tek tek de, uçtan uca da alınabilir.",
+    answer: "Evet; hizmetler tek tek de, uçtan uca da alınabilir.",
+  },
+  {
+    question: "Fikrimi üretime nasıl taşıyorsunuz?",
+    answer:
+      "Tasarım, analiz, prototipleme ve seri üretime geçiş adımlarıyla fikirden ürüne kadar süreci yönetiyoruz.",
   },
   {
     question: "Nerede hizmet veriyorsunuz?",
     answer:
-      "Ağırlıklı olarak Ankara sanayi ekosistemine; proje bazlı olarak uzaktan da çalışırız.",
+      "Ağırlıklı Ankara sanayi ekosistemine; proje bazlı olarak uzaktan da çalışıyoruz.",
   },
   {
-    question: "TÜBİTAK/KOSGEB projelerinde destek veriyor musunuz?",
+    question: "Çalışmaya nasıl başlıyoruz?",
     answer:
-      "Evet; proje hazırlama, yürütme ve raporlama konusunda destek veriyoruz.",
+      "İhtiyacınızı kısaca iletin; ilk görüşmede kapsamı netleştirir, takvim ve çıktıları yazılı koyarız. İlk görüşme bağlayıcı değildir.",
   },
   {
-    question: "Fikrimi üretime nasıl taşırsınız?",
+    question: "Fiyatlandırma nasıl?",
     answer:
-      "İmalata hazırlık, prototipleme ve seri üretime geçiş adımlarıyla, tasarımdan üretime kadar süreci yönetiriz.",
+      "Ücretlendirme projenin kapsamına ve süresine göre belirlenir; net teklifi kapsamı konuştuktan sonra paylaşırız.",
   },
 ] as const;

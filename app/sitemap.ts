@@ -1,22 +1,14 @@
 import type { MetadataRoute } from "next";
+import { getStaticSitemapEntries } from "@/lib/sitemap-routes";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
-  const routes = [
-    "/",
-    "/hizmetler",
-    "/kapasitemiz",
-    "/yaklasim",
-    "/iletisim",
-    "/gorusme-planla",
-    "/kvkk-aydinlatma-metni",
-  ];
 
-  return routes.map((route) => ({
-    url: `${base}${route}`,
+  return getStaticSitemapEntries().map((entry) => ({
+    url: `${base}${entry.path}`,
     lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: route === "/" ? 1 : 0.8,
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
   }));
 }
