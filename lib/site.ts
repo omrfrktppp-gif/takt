@@ -13,6 +13,8 @@ export const siteConfig = {
   addressLabel: "Ankara, Türkiye",
   /** Google Haritalar — adres netleşince `q=` parametresi güncellenir */
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ankara%2C+Turkey",
+  /** Web3Forms — ücretsiz planda istemci tarafında kullanılır (public key) */
+  web3formsAccessKey: "01980218-5dbb-42ef-8b56-3fbc2c93d874",
 } as const;
 
 /** Google Takvim randevu sayfası — Takvim → Randevu planları → paylaşım linki */

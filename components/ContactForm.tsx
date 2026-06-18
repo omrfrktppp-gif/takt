@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 import { siteConfig } from "@/lib/site";
 
-const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+const accessKey = siteConfig.web3formsAccessKey;
 
 type Status = "idle" | "loading" | "success" | "error";
 
