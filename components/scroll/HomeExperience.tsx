@@ -16,7 +16,7 @@ export function HomeExperience({ chapter }: { chapter?: string }) {
   }, [chapter, scrollToChapter]);
 
   return (
-    <div className="relative h-full overflow-hidden">
+    <div className="relative flex h-full min-h-0 flex-1 flex-col overflow-hidden">
       <WheelScrollController />
       <SiteExperience />
       <CadenceIndicators />

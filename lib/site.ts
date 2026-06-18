@@ -45,17 +45,17 @@ export const appointmentTypes = [
 ] as const;
 
 export const navLinks = [
-  { href: "/hakkimizda", id: "hakkimizda", label: "Hakkımızda" },
-  { href: "/hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
-  { href: "/kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
-  { href: "/yaklasim", id: "yaklasim", label: "Yaklaşım" },
-  { href: "/iletisim", id: "iletisim", label: "İletişim" },
+  { href: "/?b=hakkimizda", id: "hakkimizda", label: "Hakkımızda" },
+  { href: "/?b=hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
+  { href: "/?b=kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
+  { href: "/?b=yaklasim", id: "yaklasim", label: "Yaklaşım" },
+  { href: "/?b=iletisim", id: "iletisim", label: "İletişim" },
   { href: "/blog", id: "blog", label: "Blog" },
   { href: "/sss", id: "sss", label: "SSS" },
 ] as const;
 
 export const appointmentCta = {
-  href: "/gorusme-planla",
+  href: "/?b=gorusme-planla",
   label: "Görüşme planla",
 } as const;
 

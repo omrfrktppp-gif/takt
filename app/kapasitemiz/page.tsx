@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import {
-  ChapterListingPage,
-  generateChapterListingMetadata,
-} from "@/components/ChapterPages";
+import { redirect } from "next/navigation";
+import { buildMetadata, chapterSeo } from "@/lib/seo";
 
-export const metadata: Metadata = generateChapterListingMetadata("kapasitemiz");
+export const metadata: Metadata = buildMetadata(chapterSeo.kapasitemiz);
 
 export default function KapasitemizPage() {
-  return <ChapterListingPage chapterId="kapasitemiz" />;
+  redirect("/?b=kapasitemiz");
 }

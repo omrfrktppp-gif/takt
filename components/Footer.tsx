@@ -12,7 +12,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link
-              href="/hakkimizda"
+              href="/"
               className="font-display text-lg font-semibold tracking-tight text-ink"
             >
               takt

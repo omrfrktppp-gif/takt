@@ -21,6 +21,10 @@ export function getChapterPanel(
   return getChapter(chapterId)?.panels.find((panel) => panel.id === panelId);
 }
 
+export function experienceChapterPath(chapterId: string): string {
+  return `/?b=${chapterId}`;
+}
+
 export function chapterPath(chapterId: string): string {
   if (chapterId === "hakkimizda") return "/hakkimizda";
   if (chapterId === "gorusme-planla") return "/gorusme-planla";

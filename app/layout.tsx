@@ -76,13 +76,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={`${fontVariables} h-full antialiased`}>
-      <body className="flex min-h-dvh flex-col bg-paper font-body text-ink">
+      <body className="flex h-dvh flex-col overflow-hidden bg-paper font-body text-ink">
         <JsonLd
           data={[organizationSchema(), websiteSchema(), howToSchema()]}
         />
         <ScrollProvider>
           <Nav />
-          <div className="relative min-h-0 flex-1">{children}</div>
+          <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
         </ScrollProvider>
       </body>
     </html>

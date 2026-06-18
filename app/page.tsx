@@ -20,9 +20,5 @@ export const metadata: Metadata = {
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   const { b } = await searchParams;
-  return (
-    <div className="relative min-h-0 flex-1 overflow-hidden">
-      <HomeExperience chapter={b} />
-    </div>
-  );
+  return <HomeExperience chapter={b} />;
 }
