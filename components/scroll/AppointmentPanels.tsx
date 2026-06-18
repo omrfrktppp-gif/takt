@@ -11,19 +11,19 @@ export function AppointmentPanels() {
 
   if (!selected) {
     return (
-      <div className="flex h-full w-full items-center justify-center px-6 py-8">
-        <div className="mx-auto w-full max-w-lg">
+      <div className="flex h-full w-full items-center justify-center px-5 py-5 pr-14 pb-14 md:px-8 md:pr-28 md:pb-16">
+        <div className="mx-auto w-full max-w-md">
           <Eyebrow>RANDEVU</Eyebrow>
-          <h2 className="mt-4 font-display text-h2 text-ink">
+          <h2 className="mt-3 font-display text-h2 text-ink">
             Randevu türünü seçin
           </h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {appointmentTypes.map((type) => (
               <button
                 key={type.id}
                 type="button"
                 onClick={() => setSelectedId(type.id)}
-                className="rounded border border-line bg-white px-6 py-8 text-left transition-colors hover:border-accent hover:bg-accent/5"
+                className="rounded border border-line bg-white px-5 py-6 text-left transition-colors hover:border-accent hover:bg-accent/5"
               >
                 <span className="font-display text-h3 text-ink">
                   {type.title}
@@ -37,24 +37,32 @@ export function AppointmentPanels() {
   }
 
   return (
-    <div className="relative flex h-full w-full flex-col px-4 py-4 md:px-6">
-      <button
-        type="button"
-        onClick={() => setSelectedId(null)}
-        className="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-line bg-white/95 px-3 py-1.5 text-small font-medium text-ink shadow-sm backdrop-blur-sm transition-colors hover:border-accent hover:text-accent md:left-6"
-        aria-label="Randevu türü seçimine dön"
-      >
-        <ArrowLeft size={14} strokeWidth={2} aria-hidden="true" />
-        Geri
-      </button>
-      <div className="min-h-0 flex-1 overflow-hidden rounded border border-line bg-white pt-10">
-        <iframe
-          src={selected.url}
-          title={`${selected.title} — Google Takvim randevu`}
-          className="h-full w-full border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+    <div className="flex h-full w-full items-center justify-center px-5 py-5 pr-14 pb-16 md:px-8 md:pr-28 md:pb-20">
+      <div className="flex w-full max-w-2xl flex-col">
+        <button
+          type="button"
+          onClick={() => setSelectedId(null)}
+          className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-small font-medium text-ink shadow-sm transition-all hover:border-accent hover:text-accent hover:shadow-md"
+          aria-label="Randevu türü seçimine dön"
+        >
+          <ArrowLeft size={15} strokeWidth={2} aria-hidden="true" />
+          Randevu türüne dön
+        </button>
+
+        <div className="overflow-hidden rounded-lg border border-line bg-white shadow-sm">
+          <div className="border-b border-line bg-paper px-4 py-2.5">
+            <p className="font-display text-small font-medium text-ink">
+              {selected.title}
+            </p>
+          </div>
+          <iframe
+            src={selected.url}
+            title={`${selected.title} — Google Takvim randevu`}
+            className="h-[min(420px,48vh)] w-full border-0 md:h-[min(460px,50vh)]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </div>
     </div>
   );

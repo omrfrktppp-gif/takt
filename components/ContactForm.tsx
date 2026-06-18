@@ -7,7 +7,13 @@ const accessKey = siteConfig.web3formsAccessKey;
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function ContactForm({ compact = false }: { compact?: boolean }) {
+export function ContactForm({
+  compact = false,
+  dense = false,
+}: {
+  compact?: boolean;
+  dense?: boolean;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedback, setFeedback] = useState("");
 
@@ -83,9 +89,13 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     }
   }
 
+  const gap = dense ? "gap-3" : compact ? "gap-4" : "gap-5";
+  const fieldPad = dense ? "px-3 py-2 text-sm" : "px-4 py-3";
+  const spaceY = dense ? "space-y-3" : "space-y-5";
+
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className={spaceY}>
         <input
           type="checkbox"
           name="botcheck"
@@ -95,72 +105,72 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
           autoComplete="off"
         />
 
-        <div className={compact ? "grid gap-4" : "grid gap-5 md:grid-cols-2"}>
+        <div className={compact || dense ? `grid ${gap}` : `grid ${gap} md:grid-cols-2`}>
           <label className="block">
-            <span className="mb-2 block text-small text-steel">Ad Soyad</span>
+            <span className="mb-1.5 block text-small text-steel">Ad Soyad</span>
             <input
               required
               name="name"
               type="text"
               autoComplete="name"
-              className="w-full rounded-sm border border-line bg-white px-4 py-3 text-ink outline-none focus:border-signal"
+              className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
           <label className="block">
-            <span className="mb-2 block text-small text-steel">Firma</span>
+            <span className="mb-1.5 block text-small text-steel">Firma</span>
             <input
               required
               name="company"
               type="text"
               autoComplete="organization"
-              className="w-full rounded-sm border border-line bg-white px-4 py-3 text-ink outline-none focus:border-signal"
+              className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
         </div>
 
-        <div className={compact ? "grid gap-4" : "grid gap-5 md:grid-cols-2"}>
+        <div className={compact || dense ? `grid ${gap}` : `grid ${gap} md:grid-cols-2`}>
           <label className="block">
-            <span className="mb-2 block text-small text-steel">E-posta</span>
+            <span className="mb-1.5 block text-small text-steel">E-posta</span>
             <input
               required
               name="email"
               type="email"
               autoComplete="email"
-              className="w-full rounded-sm border border-line bg-white px-4 py-3 text-ink outline-none focus:border-signal"
+              className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
           <label className="block">
-            <span className="mb-2 block text-small text-steel">
+            <span className="mb-1.5 block text-small text-steel">
               Telefon (opsiyonel)
             </span>
             <input
               name="phone"
               type="tel"
               autoComplete="tel"
-              className="w-full rounded-sm border border-line bg-white px-4 py-3 text-ink outline-none focus:border-signal"
+              className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
         </div>
 
         <label className="block">
-          <span className="mb-2 block text-small text-steel">İhtiyaç / konu</span>
+          <span className="mb-1.5 block text-small text-steel">İhtiyaç / konu</span>
           <textarea
             required
             name="message"
-            rows={compact ? 3 : 5}
-            className="w-full rounded-sm border border-line bg-white px-4 py-3 text-ink outline-none focus:border-signal"
+            rows={dense ? 2 : compact ? 3 : 5}
+            className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
           />
         </label>
 
-        <div className="mt-4 flex items-start gap-2">
+        <div className="flex items-start gap-2">
           <input
             type="checkbox"
             id="kvkk-onay"
             name="kvkk-onay"
             required
-            className="mt-1 h-4 w-4 shrink-0 rounded-sm border-line accent-signal"
+            className="mt-0.5 h-4 w-4 shrink-0 rounded-sm border-line accent-signal"
           />
-          <label htmlFor="kvkk-onay" className="text-small text-steel">
+          <label htmlFor="kvkk-onay" className="text-small leading-snug text-steel">
             Formu kullanarak kişisel verilerinizin işlenmesine ilişkin{" "}
             <a
               href="/kvkk-aydinlatma-metni"
@@ -177,7 +187,9 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center justify-center rounded bg-ink px-[22px] py-[14px] text-sm font-medium text-white transition-colors hover:bg-signal disabled:opacity-60"
+          className={`inline-flex items-center justify-center rounded bg-ink font-medium text-white transition-colors hover:bg-signal disabled:opacity-60 ${
+            dense ? "px-4 py-2 text-sm" : "px-[22px] py-[14px] text-sm"
+          }`}
         >
           {status === "loading" ? "Gönderiliyor…" : "Gönder"}
         </button>
