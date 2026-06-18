@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Cadence } from "@/components/Cadence";
-import { getChapterPanels } from "@/lib/pages";
+import { getChapterPanels, experiencePanelPath } from "@/lib/pages";
 import { navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -48,7 +48,7 @@ export function Footer() {
               {services.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={`/hizmetler/${service.id}`}
+                    href={experiencePanelPath("hizmetler", service.id)}
                     className="text-small text-ink hover:text-signal"
                   >
                     {service.title ?? service.id}

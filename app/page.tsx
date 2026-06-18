@@ -3,7 +3,7 @@ import { HomeExperience } from "@/components/scroll/HomeExperience";
 import { buildMetadata } from "@/lib/seo";
 
 type HomePageProps = {
-  searchParams: Promise<{ b?: string }>;
+  searchParams: Promise<{ b?: string; p?: string }>;
 };
 
 export const metadata: Metadata = {
@@ -19,6 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage({ searchParams }: HomePageProps) {
-  const { b } = await searchParams;
-  return <HomeExperience chapter={b} />;
+  const { b, p } = await searchParams;
+  return <HomeExperience chapter={b} panel={p} />;
 }

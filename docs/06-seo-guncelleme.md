@@ -21,7 +21,7 @@
 
 ## Weak #1 — Gerçek route (TAMAMLANDI)
 
-Ana sayfa (`/`) scroll deneyimi korunur; her bölümün crawlable SEO sayfası vardır. Scroll bölümleri `/?b=...` ile ana sayfada açılır; SEO sayfalarında "İnteraktif deneyimde aç" linki bulunur.
+Ana sayfa (`/`) scroll deneyimi korunur; her bölümün crawlable SEO sayfası vardır. Scroll bölümleri `/?b=...` ve alt paneller `/?b=...&p=...` ile ana sayfada açılır; SEO sayfaları aynı site içinde kalır, ayrı “deneyim” butonu yoktur.
 
 ---
 

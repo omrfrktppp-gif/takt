@@ -25,6 +25,17 @@ export function experienceChapterPath(chapterId: string): string {
   return `/?b=${chapterId}`;
 }
 
+export function experiencePanelPath(chapterId: string, panelId: string): string {
+  return `/?b=${chapterId}&p=${panelId}`;
+}
+
+export function getPanelIndex(chapterId: string, panelId: string): number {
+  const chapter = getChapter(chapterId);
+  if (!chapter) return 0;
+  const index = chapter.panels.findIndex((panel) => panel.id === panelId);
+  return index >= 0 ? index : 0;
+}
+
 export function chapterPath(chapterId: string): string {
   if (chapterId === "hakkimizda") return "/hakkimizda";
   if (chapterId === "gorusme-planla") return "/gorusme-planla";

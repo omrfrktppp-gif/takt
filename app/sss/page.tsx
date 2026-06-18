@@ -18,7 +18,7 @@ export default function SssPage() {
       <JsonLd
         data={[
           breadcrumbSchema([
-            { name: "Hakkımızda", path: "/hakkimizda" },
+            { name: "Ana Sayfa", path: "/" },
             { name: "SSS", path: seo.path },
           ]),
           faqPageSchema(),
@@ -35,14 +35,14 @@ export default function SssPage() {
             Mühendislik danışmanlığı, hizmet kapsamı ve çalışma modelimiz hakkında
             kısa yanıtlar. Daha fazla bilgi için{" "}
             <Link
-              href="/hakkimizda"
+              href="/?b=hakkimizda"
               className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               hakkımızda
             </Link>{" "}
             sayfasına bakabilir veya{" "}
             <Link
-              href="/iletisim"
+              href="/?b=iletisim"
               className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               iletişime

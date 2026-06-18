@@ -41,35 +41,3 @@ export function PanelCard({ href, title, excerpt }: PanelCardProps) {
     </article>
   );
 }
-
-type ExperienceLinkProps = {
-  chapterId: string;
-  label?: string;
-};
-
-const chapterLabels: Record<string, string> = {
-  hakkimizda: "Hakkımızda",
-  hizmetler: "Hizmetler",
-  kapasitemiz: "Kapasite",
-  yaklasim: "Yaklaşım",
-  iletisim: "İletişim",
-  "gorusme-planla": "Randevu",
-};
-
-export function ExperienceLink({
-  chapterId,
-  label = "İnteraktif deneyimde aç",
-}: ExperienceLinkProps) {
-  const section = chapterLabels[chapterId] ?? chapterId;
-  return (
-    <p className="mt-8 text-small text-steel">
-      <Link
-        href={`/?b=${chapterId}`}
-        className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-      >
-        {label}
-      </Link>
-      <span className="text-steel"> — ana sayfada {section} bölümüne gider.</span>
-    </p>
-  );
-}

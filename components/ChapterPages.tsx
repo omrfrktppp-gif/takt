@@ -1,18 +1,20 @@
 import Link from "next/link";
-import { Cadence } from "@/components/Cadence";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { ServiceDetailBody } from "@/components/ServiceDetailBody";
-import {
-  ExperienceLink,
-  PanelCard,
-  SeoPageLayout,
-} from "@/components/SeoPageLayout";
+import { PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
-import { getChapter, getChapterPanels, panelPath } from "@/lib/pages";
+import {
+  experienceChapterPath,
+  experiencePanelPath,
+  getChapter,
+  getChapterPanels,
+  panelPath,
+} from "@/lib/pages";
 import { buildMetadata, chapterSeo, panelSeo } from "@/lib/seo";
 import { getHizmetSeoContent } from "@/lib/seo-content";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { appointmentCta } from "@/lib/site";
 import type { DetailChapterId } from "@/lib/pages";
 
 type ChapterListingPageProps = {
@@ -35,7 +37,7 @@ export function ChapterListingPage({ chapterId }: ChapterListingPageProps) {
     <SeoPageLayout>
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Hakkımızda", path: "/hakkimizda" },
+          { name: "Ana Sayfa", path: "/" },
           { name: chapter.label, path: seo.path },
         ])}
       />
@@ -50,13 +52,12 @@ export function ChapterListingPage({ chapterId }: ChapterListingPageProps) {
             {panels.map((panel) => (
               <PanelCard
                 key={panel.id}
-                href={panelPath(chapterId, panel.id)}
+                href={experiencePanelPath(chapterId, panel.id)}
                 title={panel.title ?? chapter.label}
                 excerpt={panel.body}
               />
             ))}
           </div>
-          <ExperienceLink chapterId={chapterId} />
         </Section>
       </PageShell>
     </SeoPageLayout>
@@ -99,7 +100,7 @@ export function ChapterDetailPage({
       <JsonLd
         data={[
           breadcrumbSchema([
-            { name: "Hakkımızda", path: "/hakkimizda" },
+            { name: "Ana Sayfa", path: "/" },
             { name: chapter.label, path: parentSeo.path },
             { name: title, path },
           ]),
@@ -127,20 +128,18 @@ export function ChapterDetailPage({
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href={parentSeo.path}
+              href={experienceChapterPath(chapterId)}
               className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               ← {chapter.label}
             </Link>
             <Link
-              href="/gorusme-planla"
+              href={appointmentCta.href}
               className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
-              Görüşme planla →
+              {appointmentCta.label} →
             </Link>
           </div>
-
-          <ExperienceLink chapterId={chapterId} />
         </Section>
       </PageShell>
     </SeoPageLayout>
