@@ -3,7 +3,13 @@ import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
-  const routes = ["", "/hizmetler", "/yaklasim", "/iletisim"];
+  const routes = [
+    "",
+    "/hizmetler",
+    "/yaklasim",
+    "/iletisim",
+    "/kvkk-aydinlatma-metni",
+  ];
 
   return routes.map((route) => ({
     url: `${base}${route}`,

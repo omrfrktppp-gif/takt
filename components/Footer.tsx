@@ -72,11 +72,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
           <Cadence variant="footer" tickCount={9} activeIndex={4} />
-          <p className="font-mono text-small text-steel">
-            © {new Date().getFullYear()} Takt. Tüm hakları saklıdır.
-          </p>
+          <div className="flex flex-col items-start gap-2 md:items-end">
+            <Link
+              href="/kvkk-aydinlatma-metni"
+              className="font-mono text-small text-steel hover:text-signal"
+            >
+              KVKK Aydınlatma Metni
+            </Link>
+            <p className="font-mono text-small text-steel">
+              © {new Date().getFullYear()} Takt. Tüm hakları saklıdır.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

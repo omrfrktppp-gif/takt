@@ -152,17 +152,27 @@ export function ContactForm() {
           />
         </label>
 
-        <p className="text-small text-steel">
-          Formu gönderdiğinizde mesaj doğrudan{" "}
-          <span className="text-ink">{siteConfig.email}</span> adresine iletilir;
-          e-posta uygulamanız açılmaz.
-        </p>
-
-        <p className="text-small text-steel">
-          Formu kullanarak kişisel verilerinizin işlenmesine ilişkin{" "}
-          <span className="text-ink">aydınlatma metnini</span> okuduğunuzu
-          kabul edersiniz. (Metin yakında eklenecek.)
-        </p>
+        <div className="mt-4 flex items-start gap-2">
+          <input
+            type="checkbox"
+            id="kvkk-onay"
+            name="kvkk-onay"
+            required
+            className="mt-1 h-4 w-4 shrink-0 rounded-sm border-line accent-signal"
+          />
+          <label htmlFor="kvkk-onay" className="text-small text-steel">
+            Formu kullanarak kişisel verilerinizin işlenmesine ilişkin{" "}
+            <a
+              href="/kvkk-aydinlatma-metni"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+            >
+              Aydınlatma Metni
+            </a>
+            &apos;ni okuduğunuzu kabul edersiniz.
+          </label>
+        </div>
 
         <button
           type="submit"
