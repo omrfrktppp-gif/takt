@@ -17,20 +17,27 @@ export const siteConfig = {
   web3formsAccessKey: "01980218-5dbb-42ef-8b56-3fbc2c93d874",
 } as const;
 
+export const appointmentTimezone = "Europe/Istanbul";
+
+function calendarUrl(base: string) {
+  const separator = base.includes("?") ? "&" : "?";
+  return `${base}${separator}ctz=${appointmentTimezone}`;
+}
+
 export const appointmentTypes = [
   {
     id: "danismanlik",
     title: "Danışmanlık hizmetleri",
     description:
       "Teknik danışmanlık, proje ve mühendislik kapasitesi için görüşme planlayın.",
-    url: "https://calendar.app.google/BJoURaTnE2SWE6bJ7",
+    url: calendarUrl("https://calendar.app.google/BJoURaTnE2SWE6bJ7"),
   },
   {
     id: "on-gorusme",
     title: "Ön görüşme (online)",
     description:
       "İlk tanışma ve ihtiyaç değerlendirmesi için kısa online görüşme.",
-    url: "https://calendar.app.google/zgpaKtJn46CB1pxc6",
+    url: calendarUrl("https://calendar.app.google/zgpaKtJn46CB1pxc6"),
   },
 ] as const;
 

@@ -14,9 +14,10 @@ export function AppointmentBooking() {
         <div className="flex-1">
           <h2 className="font-display text-h3 text-ink">Görüşme randevusu</h2>
           <p className="mt-3 text-body text-steel">
-            İhtiyacınıza uygun randevu türünü seçin. Talebiniz Google Takvim
-            üzerinden bize iletilir; onaylandığında randevu bilgilerini içeren
-            bir e-posta alırsınız.
+            İhtiyacınıza uygun randevu türünü seçin. Saatler{" "}
+            <strong className="font-medium text-ink">Türkiye saati (GMT+3)</strong>{" "}
+            olarak gösterilir. Onaylandığında randevu bilgilerini içeren bir
+            e-posta alırsınız.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-2">
