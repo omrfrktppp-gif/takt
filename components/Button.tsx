@@ -1,14 +1,26 @@
 import Link from "next/link";
 
-type ButtonProps = {
-  href: string;
+type ButtonBaseProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "light";
   className?: string;
 };
 
+type ButtonAsLink = ButtonBaseProps & {
+  href: string;
+  onClick?: never;
+};
+
+type ButtonAsButton = ButtonBaseProps & {
+  href?: never;
+  onClick: () => void;
+};
+
+type ButtonProps = ButtonAsLink | ButtonAsButton;
+
 export function Button({
   href,
+  onClick,
   children,
   variant = "primary",
   className = "",
@@ -23,8 +35,18 @@ export function Button({
         ? "bg-white text-ink hover:bg-signal hover:text-white"
         : "border border-line bg-transparent text-ink hover:border-signal";
 
+  const classes = `${base} ${styles} ${className}`;
+
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className={classes}>
+        {children}
+      </button>
+    );
+  }
+
   return (
-    <Link href={href} className={`${base} ${styles} ${className}`}>
+    <Link href={href} className={classes}>
       {children}
     </Link>
   );

@@ -6,10 +6,10 @@ export function Footer() {
   return (
     <footer className="border-t border-line bg-white">
       <div className="mx-auto max-w-content px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-3">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link
-              href="/"
+              href="/hakkimizda"
               className="font-display text-lg font-semibold tracking-tight text-ink"
             >
               takt
@@ -17,6 +17,24 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-small text-steel">
               {siteConfig.description}
             </p>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Sayfalar
+            </p>
+            <ul className="space-y-2">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-small text-ink hover:text-signal"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

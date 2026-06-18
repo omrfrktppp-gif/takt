@@ -1,12 +1,10 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 
-export function ContactDetails() {
+export function ContactDetails({ className = "" }: { className?: string }) {
   return (
-    <aside className="space-y-6">
-      <div className="rounded border border-line bg-white p-6">
-        <h2 className="font-display text-h3 text-ink">Doğrudan iletişim</h2>
-        <ul className="mt-6 space-y-5 text-body">
+    <aside className={`space-y-6 ${className}`}>
+      <ul className="space-y-5 text-body">
           <li className="flex gap-3">
             <Mail
               className="mt-0.5 shrink-0 text-signal"
@@ -62,7 +60,6 @@ export function ContactDetails() {
             </div>
           </li>
         </ul>
-      </div>
     </aside>
   );
 }

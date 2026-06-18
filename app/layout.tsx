@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/Footer";
-import { JsonLd } from "@/components/JsonLd";
 import { Nav } from "@/components/Nav";
+import { JsonLd } from "@/components/JsonLd";
+import { ScrollProvider } from "@/components/scroll/ScrollContext";
 import { fontVariables } from "@/lib/fonts";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
@@ -40,10 +40,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={`${fontVariables} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-paper font-body text-ink">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="min-h-dvh bg-paper font-body text-ink">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        <ScrollProvider>
+          <Nav />
+          {children}
+        </ScrollProvider>
       </body>
     </html>
   );

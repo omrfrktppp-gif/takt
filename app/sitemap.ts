@@ -4,10 +4,12 @@ import { siteConfig } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
   const routes = [
-    "",
+    "/",
     "/hizmetler",
+    "/kapasitemiz",
     "/yaklasim",
     "/iletisim",
+    "/gorusme-planla",
     "/kvkk-aydinlatma-metni",
   ];
 
@@ -15,6 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${base}${route}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "/" ? 1 : 0.8,
   }));
 }

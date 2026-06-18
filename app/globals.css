@@ -42,6 +42,39 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+}
+
+.scroll-vertical {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+}
+
+.scroll-chapter {
+  height: calc(100dvh - 4rem);
+  min-height: calc(100dvh - 4rem);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.scroll-horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-panel {
+  min-width: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

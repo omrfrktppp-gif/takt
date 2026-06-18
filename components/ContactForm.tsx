@@ -7,7 +7,7 @@ const accessKey = siteConfig.web3formsAccessKey;
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function ContactForm() {
+export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedback, setFeedback] = useState("");
 
@@ -95,7 +95,7 @@ export function ContactForm() {
           autoComplete="off"
         />
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className={compact ? "grid gap-4" : "grid gap-5 md:grid-cols-2"}>
           <label className="block">
             <span className="mb-2 block text-small text-steel">Ad Soyad</span>
             <input
@@ -118,7 +118,7 @@ export function ContactForm() {
           </label>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className={compact ? "grid gap-4" : "grid gap-5 md:grid-cols-2"}>
           <label className="block">
             <span className="mb-2 block text-small text-steel">E-posta</span>
             <input
@@ -147,7 +147,7 @@ export function ContactForm() {
           <textarea
             required
             name="message"
-            rows={5}
+            rows={compact ? 3 : 5}
             className="w-full rounded-sm border border-line bg-white px-4 py-3 text-ink outline-none focus:border-signal"
           />
         </label>

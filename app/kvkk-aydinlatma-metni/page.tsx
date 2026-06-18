@@ -19,7 +19,7 @@ export default function KvkkPage() {
     <>
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Ana Sayfa", path: "/" },
+          { name: "Hakkımızda", path: "/hakkimizda" },
           { name: "KVKK Aydınlatma Metni", path: "/kvkk-aydinlatma-metni" },
         ])}
       />

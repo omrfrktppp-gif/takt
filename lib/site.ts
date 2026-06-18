@@ -29,8 +29,7 @@ export const appointmentTypes = [
   {
     id: "danismanlik",
     title: "Danışmanlık hizmetleri",
-    description:
-      "Teknik danışmanlık, proje ve mühendislik kapasitesi için görüşme planlayın.",
+    description: "",
     url: calendarUrl(
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1n2azEHI4a465C161L-PdGwZZhofU7e6778UNeRUhDAyTOd36l2Gf2x2H5s0UwbGlLWw-rRBbs",
     ),
@@ -38,8 +37,7 @@ export const appointmentTypes = [
   {
     id: "on-gorusme",
     title: "Ön görüşme (online)",
-    description:
-      "İlk tanışma ve ihtiyaç değerlendirmesi için kısa online görüşme.",
+    description: "",
     url: calendarUrl(
       "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0kWu7f05RIiS6rGhPMIkYdnXtQsBWzWkyC4lD8ky34XEwhsJYK0oBL0k9LU7rfBlt03xJSdZGZ",
     ),
@@ -47,10 +45,17 @@ export const appointmentTypes = [
 ] as const;
 
 export const navLinks = [
-  { href: "/hizmetler", label: "Hizmetler" },
-  { href: "/yaklasim", label: "Yaklaşım" },
-  { href: "/iletisim", label: "İletişim" },
+  { href: "/", id: "hakkimizda", label: "Hakkımızda" },
+  { href: "/hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
+  { href: "/kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
+  { href: "/yaklasim", id: "yaklasim", label: "Yaklaşım" },
+  { href: "/iletisim", id: "iletisim", label: "İletişim" },
 ] as const;
+
+export const appointmentCta = {
+  href: "/gorusme-planla",
+  label: "Görüşme planla",
+} as const;
 
 export const servicePillars = [
   {
