@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function KvkkPage() {
   return (
-    <>
+    <div className="scrollbar-none h-full overflow-y-auto">
       <JsonLd
         data={breadcrumbSchema([
           { name: "Hakkımızda", path: "/hakkimizda" },
@@ -203,6 +203,6 @@ export default function KvkkPage() {
           </p>
         </article>
       </Section>
-    </>
+    </div>
   );
 }

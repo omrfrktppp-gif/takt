@@ -17,7 +17,7 @@ export function Nav() {
   const { chapterId, panelIndex, scrollToChapter } = useScroll();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-white/95 backdrop-blur-sm">
+    <header className="z-50 shrink-0 border-b border-line bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-content items-center justify-between gap-4 px-4 md:gap-6 md:px-6">
         <button
           type="button"

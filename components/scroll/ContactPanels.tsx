@@ -25,7 +25,7 @@ export function ContactPanels() {
           <div className="lg:col-span-7">
             <div className="rounded border border-line bg-white p-4 md:p-5">
               <h3 className="font-display text-h3 text-ink">Mesaj gönderin</h3>
-              <div className="mt-4 max-h-[min(300px,42vh)] overflow-y-auto pr-1">
+              <div className="scrollbar-none mt-4 max-h-[min(280px,38vh)] overflow-y-auto pr-1">
                 <ContactForm compact dense />
               </div>
             </div>

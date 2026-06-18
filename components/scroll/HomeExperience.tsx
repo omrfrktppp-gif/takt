@@ -16,12 +16,10 @@ export function HomeExperience({ chapter }: { chapter?: string }) {
   }, [chapter, scrollToChapter]);
 
   return (
-    <>
+    <div className="relative h-full overflow-hidden">
       <WheelScrollController />
-      <main className="h-[calc(100dvh-4rem)] overflow-hidden">
-        <SiteExperience />
-      </main>
+      <SiteExperience />
       <CadenceIndicators />
-    </>
+    </div>
   );
 }

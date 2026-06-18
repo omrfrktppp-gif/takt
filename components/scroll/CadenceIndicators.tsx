@@ -87,8 +87,11 @@ export function CadenceIndicators() {
 
   return (
     <>
-      {/* Sayfalar — sağda yatay çizgiler, içeri uzanır */}
-      <div className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 md:block lg:right-8">
+      {/* Sayfalar — içerik alanının dikey ortasında */}
+      <div
+        className="fixed right-5 z-40 hidden -translate-y-1/2 md:block lg:right-8"
+        style={{ top: "calc(var(--nav-h) + (100dvh - var(--nav-h)) / 2)" }}
+      >
         <CadenceRuler
           mode="chapter"
           count={chapters.length}

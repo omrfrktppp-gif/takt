@@ -19,7 +19,7 @@ export function WheelScrollController() {
         return;
       }
 
-      const innerScroll = target?.closest("[data-inner-scroll]") as
+      const innerScroll = target?.closest(".scrollbar-none") as
         | HTMLElement
         | null;
       if (innerScroll && innerScroll.scrollHeight > innerScroll.clientHeight) {
@@ -36,8 +36,11 @@ export function WheelScrollController() {
         }
       }
 
+      const navH = 64;
       const viewportH = window.innerHeight;
-      const inBottomThird = event.clientY > viewportH * (2 / 3);
+      const contentH = viewportH - navH;
+      const relativeY = event.clientY - navH;
+      const inBottomThird = relativeY > contentH * (2 / 3);
       const delta =
         Math.abs(event.deltaX) > Math.abs(event.deltaY)
           ? event.deltaX
