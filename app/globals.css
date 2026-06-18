@@ -49,6 +49,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow: hidden;
+  height: 100%;
 }
 
 html,
@@ -90,6 +92,16 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+/* İç içe kaydırılabilir alanlar — WheelScrollController önceliği için */
+.scroll-inner {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-inner::-webkit-scrollbar {
+  display: none;
 }
 
 .scroll-horizontal::-webkit-scrollbar {

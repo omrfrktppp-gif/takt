@@ -1,7 +1,7 @@
 # Takt — SEO / GEO / AEO
 *Doküman 4 / 5 — güncel*
 
-İlgili paketler: `07-seo-etiket-paketi.md` (meta + JSON-LD + anahtar kelime haritası), `08-aeo-paketi.md` (SSS + HowTo + önce-cevap yapısı).
+İlgili paketler: `07-seo-etiket-paketi.md` (meta + JSON-LD + anahtar kelime haritası), `08-aeo-paketi.md` (SSS + HowTo + önce-cevap yapısı), **`09-seo-geo-aeo-altyapi.md`** (veri dosyaları + genişletme rehberi).
 
 ## metadataBase
 `https://takt.tr`

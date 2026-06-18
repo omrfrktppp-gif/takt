@@ -7,7 +7,7 @@ type SeoPageLayoutProps = {
 
 export function SeoPageLayout({ children }: SeoPageLayoutProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto scrollbar-none">
+    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto scroll-inner scrollbar-none">
       {children}
       <Footer />
     </div>

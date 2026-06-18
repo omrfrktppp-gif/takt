@@ -1,3 +1,9 @@
+/**
+ * Derin SEO içerik — crawlable detay sayfaları için AEO blokları.
+ * Panel id = slug. Yeni hizmet/kapasite: ilgili Record'a kayıt ekle.
+ * Detay: docs/09-seo-geo-aeo-altyapi.md
+ */
+
 export type SeoContentSection = {
   heading: string;
   paragraphs: string[];
@@ -360,4 +366,15 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
 
 export function getHizmetSeoContent(panelId: string): PanelSeoContent | undefined {
   return hizmetSeoContent[panelId];
+}
+
+/** Kapasite detay AEO içeriği — panel id ile eşleşir; boş kayıt genişletmeye hazır */
+export const kapasiteSeoContent: Record<string, PanelSeoContent> = {
+  // "3d-tarama": { summary: "...", sections: [...], faq: [...] },
+};
+
+export function getKapasiteSeoContent(
+  panelId: string,
+): PanelSeoContent | undefined {
+  return kapasiteSeoContent[panelId];
 }

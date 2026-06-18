@@ -1,7 +1,7 @@
 # Takt — SEO/AEO/GEO Güncelleme Paketi
 *Doküman 06 · Yayın sonrası düzeltmeler*
 
-> Site canlı: https://takt.tr · Bu paket tespit edilen zayıf noktaları çözer.
+> Teknik genişletme rehberi: **`09-seo-geo-aeo-altyapi.md`**
 
 ---
 

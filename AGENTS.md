@@ -20,6 +20,7 @@ Next.js App Router · TypeScript · Tailwind CSS · lucide-react · Vercel deplo
 | `03-domain-ve-yayinlama.md` | Vercel + Natro DNS |
 | `04-seo-geo-aeo.md` | Meta, schema, robots, llms.txt |
 | `05-orkestrator-cursor-rehberi.md` | İş sırası + bitti tanımı |
+| `09-seo-geo-aeo-altyapi.md` | SEO veri dosyaları + genişletme rehberi |
 
 ## Marka guardrail'leri
 - Sadece Doküman 1 token'ları; tek aksan `--signal`; paper-first

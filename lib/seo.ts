@@ -1,3 +1,8 @@
+/**
+ * SEO metadata — bölüm ve panel sayfaları için title/description/canonical.
+ * Yeni bölüm: `chapterSeo` kaydı + `app/{path}/page.tsx` redirect.
+ * Detay: docs/09-seo-geo-aeo-altyapi.md
+ */
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 import type { ContentPanel } from "@/lib/content";

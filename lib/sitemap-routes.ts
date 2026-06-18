@@ -1,3 +1,8 @@
+/**
+ * Sitemap URL kaynağı — build sırasında tüm statik rotalar.
+ * Yeni statik sayfa veya bölüm: ilgili döngüye ekle veya `chapterSeo`/`blogPosts` güncelle.
+ * Detay: docs/09-seo-geo-aeo-altyapi.md
+ */
 import { getPublishedPosts, getAllTagIds } from "@/lib/blog";
 import {
   detailChapters,

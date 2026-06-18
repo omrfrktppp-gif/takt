@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Eyebrow } from "@/components/Eyebrow";
 import type { ContentPanel } from "@/lib/content";
 
@@ -11,11 +12,10 @@ type ContentPanelViewProps = {
   panelCount: number;
 };
 
-export function ContentPanelView({
+export const ContentPanelView = memo(function ContentPanelView({
   eyebrow,
   chapterTitle,
   panel,
-  panelIndex,
 }: ContentPanelViewProps) {
   return (
     <article className="scroll-panel flex h-full w-full shrink-0 snap-start snap-always flex-col justify-center px-4 py-4 pb-20 pr-10 md:px-10 md:py-6 md:pb-6 md:pr-28 lg:pr-36">
@@ -36,4 +36,4 @@ export function ContentPanelView({
       </div>
     </article>
   );
-}
+});

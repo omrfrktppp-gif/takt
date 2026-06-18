@@ -4,13 +4,7 @@ import { useEffect } from "react";
 import { useScroll } from "@/components/scroll/ScrollContext";
 
 export function WheelScrollController() {
-  const {
-    chapterId,
-    panelCount,
-    verticalRef,
-    scrollVerticalBy,
-    scrollHorizontalBy,
-  } = useScroll();
+  const { panelCount, scrollVerticalBy, scrollHorizontalBy } = useScroll();
 
   useEffect(() => {
     const onWheel = (event: WheelEvent) => {
@@ -19,7 +13,7 @@ export function WheelScrollController() {
         return;
       }
 
-      const innerScroll = target?.closest(".scrollbar-none") as
+      const innerScroll = target?.closest(".scroll-inner") as
         | HTMLElement
         | null;
       if (innerScroll && innerScroll.scrollHeight > innerScroll.clientHeight) {
@@ -61,13 +55,7 @@ export function WheelScrollController() {
 
     window.addEventListener("wheel", onWheel, { passive: false });
     return () => window.removeEventListener("wheel", onWheel);
-  }, [
-    chapterId,
-    panelCount,
-    verticalRef,
-    scrollVerticalBy,
-    scrollHorizontalBy,
-  ]);
+  }, [panelCount, scrollVerticalBy, scrollHorizontalBy]);
 
   return null;
 }

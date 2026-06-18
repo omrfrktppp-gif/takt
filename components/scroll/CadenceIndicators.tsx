@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { useScroll } from "@/components/scroll/ScrollContext";
 
 type CadenceRulerProps = {
@@ -26,7 +27,7 @@ function pyramidLength(
   return Math.max(min, peak - distance * step);
 }
 
-function CadenceRuler({
+const CadenceRuler = memo(function CadenceRuler({
   mode,
   count,
   activeIndex,
@@ -80,7 +81,7 @@ function CadenceRuler({
       })}
     </div>
   );
-}
+});
 
 export function CadenceIndicators() {
   const {

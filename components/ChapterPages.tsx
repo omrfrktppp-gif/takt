@@ -12,7 +12,7 @@ import {
   panelPath,
 } from "@/lib/pages";
 import { buildMetadata, chapterSeo, panelSeo } from "@/lib/seo";
-import { getHizmetSeoContent } from "@/lib/seo-content";
+import { getHizmetSeoContent, getKapasiteSeoContent } from "@/lib/seo-content";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { appointmentCta } from "@/lib/site";
 import type { DetailChapterId } from "@/lib/pages";
@@ -92,7 +92,9 @@ export function ChapterDetailPage({
   const title = panel.title ?? chapter.label;
   const parentSeo = chapterSeo[chapterId];
   const seoContent =
-    chapterId === "hizmetler" ? getHizmetSeoContent(panelId) : undefined;
+    chapterId === "hizmetler"
+      ? getHizmetSeoContent(panelId)
+      : getKapasiteSeoContent(panelId);
   const serviceDescription = seoContent?.summary ?? panel.body;
 
   return (

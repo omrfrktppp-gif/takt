@@ -143,7 +143,7 @@ export function Nav() {
       {open ? (
         <nav
           id="mobile-nav"
-          className="max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-white px-4 py-3 scrollbar-none lg:hidden"
+          className="scroll-inner scrollbar-none max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-white px-4 py-3 lg:hidden"
           aria-label="Mobil navigasyon"
         >
           <ul className="flex flex-col gap-1">

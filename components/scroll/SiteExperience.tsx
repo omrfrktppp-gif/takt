@@ -10,7 +10,7 @@ export function SiteExperience() {
   const { verticalRef, chapterRefs, registerTrack } = useScroll();
 
   return (
-    <div ref={verticalRef} className="scroll-vertical h-full">
+    <div ref={verticalRef} className="scroll-vertical scrollbar-none h-full">
       {visibleChapters.map((chapter) => (
         <section
           key={chapter.id}
@@ -25,7 +25,7 @@ export function SiteExperience() {
           {chapter.id === "iletisim" ? (
             <div
               ref={(el) => registerTrack(chapter.id, el)}
-              className="scroll-horizontal flex h-full"
+              className="scroll-horizontal scrollbar-none flex h-full"
             >
               <ContactPanels />
             </div>
@@ -36,7 +36,7 @@ export function SiteExperience() {
           ) : (
             <div
               ref={(el) => registerTrack(chapter.id, el)}
-              className="scroll-horizontal flex h-full"
+              className="scroll-horizontal scrollbar-none flex h-full"
             >
               {chapter.panels.map((panel, index) => (
                 <ContentPanelView
