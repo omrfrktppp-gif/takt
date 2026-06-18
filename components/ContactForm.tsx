@@ -3,6 +3,8 @@
 import { FormEvent, useState } from "react";
 import { siteConfig } from "@/lib/site";
 
+const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+
 type Status = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
@@ -14,32 +16,57 @@ export function ContactForm() {
     setStatus("loading");
     setFeedback("");
 
+    if (!accessKey) {
+      setStatus("error");
+      setFeedback("Form anahtarı tanımlı değil. Lütfen doğrudan e-posta yazın.");
+      return;
+    }
+
     const form = event.currentTarget;
     const data = new FormData(form);
 
+    const name = String(data.get("name") ?? "").trim();
+    const company = String(data.get("company") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
-          name: data.get("name"),
-          company: data.get("company"),
-          email: data.get("email"),
-          phone: data.get("phone"),
-          message: data.get("message"),
+          access_key: accessKey,
+          subject: `İletişim talebi — ${company}`,
+          from_name: name,
+          name,
+          email,
+          phone,
+          replyto: email,
+          message: [
+            `Firma: ${company}`,
+            phone ? `Telefon: ${phone}` : null,
+            "",
+            "İhtiyaç / konu:",
+            message,
+          ]
+            .filter(Boolean)
+            .join("\n"),
         }),
       });
 
       const result = (await response.json()) as {
-        ok?: boolean;
+        success?: boolean;
         message?: string;
-        error?: string;
       };
 
-      if (!response.ok) {
+      if (!response.ok || !result.success) {
         setStatus("error");
         setFeedback(
-          result.error ??
+          result.message ??
             "Gönderilemedi, lütfen tekrar deneyin ya da doğrudan e-posta yazın.",
         );
         return;
@@ -47,7 +74,7 @@ export function ContactForm() {
 
       form.reset();
       setStatus("success");
-      setFeedback(result.message ?? "Aldık. En kısa sürede dönüş yapacağız.");
+      setFeedback("Aldık. En kısa sürede dönüş yapacağız.");
     } catch {
       setStatus("error");
       setFeedback(
@@ -59,6 +86,15 @@ export function ContactForm() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="space-y-5">
+        <input
+          type="checkbox"
+          name="botcheck"
+          className="hidden"
+          style={{ display: "none" }}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+
         <div className="grid gap-5 md:grid-cols-2">
           <label className="block">
             <span className="mb-2 block text-small text-steel">Ad Soyad</span>
