@@ -21,23 +21,28 @@ export const appointmentTimezone = "Europe/Istanbul";
 
 function calendarUrl(base: string) {
   const separator = base.includes("?") ? "&" : "?";
-  return `${base}${separator}ctz=${appointmentTimezone}&hl=tr`;
+  return `${base}${separator}ctz=${encodeURIComponent(appointmentTimezone)}&hl=tr`;
 }
 
+/** Tam randevu URL'leri — kısa calendar.app.google linkleri yönlendirmede ?ctz= parametresini düşürür */
 export const appointmentTypes = [
   {
     id: "danismanlik",
     title: "Danışmanlık hizmetleri",
     description:
       "Teknik danışmanlık, proje ve mühendislik kapasitesi için görüşme planlayın.",
-    url: calendarUrl("https://calendar.app.google/BJoURaTnE2SWE6bJ7"),
+    url: calendarUrl(
+      "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1n2azEHI4a465C161L-PdGwZZhofU7e6778UNeRUhDAyTOd36l2Gf2x2H5s0UwbGlLWw-rRBbs",
+    ),
   },
   {
     id: "on-gorusme",
     title: "Ön görüşme (online)",
     description:
       "İlk tanışma ve ihtiyaç değerlendirmesi için kısa online görüşme.",
-    url: calendarUrl("https://calendar.app.google/zgpaKtJn46CB1pxc6"),
+    url: calendarUrl(
+      "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0kWu7f05RIiS6rGhPMIkYdnXtQsBWzWkyC4lD8ky34XEwhsJYK0oBL0k9LU7rfBlt03xJSdZGZ",
+    ),
   },
 ] as const;
 
