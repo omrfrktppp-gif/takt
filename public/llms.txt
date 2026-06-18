@@ -1,0 +1,19 @@
+# Takt
+> Makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan mühendislik danışmanlığı. Ankara merkezli.
+
+## Ne yaparız
+- Mühendislik danışmanlığı, proje ve teknik ekip yönetimi
+- Özel makina / sistem / ürün tasarımı
+- Mühendislik analizi, simülasyon ve hesaplama
+- İmalata hazırlık, prototipleme, seri üretime geçiş, imalat optimizasyonu
+- TÜBİTAK / KOSGEB proje hazırlama ve üniversite-sanayi iş birliği
+
+## Sayfalar
+- Ana Sayfa: https://takt.tr/ — konum ve hizmet özeti
+- Hizmetler: https://takt.tr/hizmetler — beş hizmet piları
+- Yaklaşım: https://takt.tr/yaklasim — çalışma anlayışı
+- İletişim: https://takt.tr/iletisim — görüşme talebi
+
+## İletişim
+- E-posta: iletisim@takt.tr
+- LinkedIn: https://www.linkedin.com/company/takt

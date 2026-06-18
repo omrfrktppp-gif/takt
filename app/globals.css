@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --ink: #12161c;
+  --steel: #4a5563;
+  --line: #d7dce2;
+  --paper: #f4f6f4;
+  --white: #ffffff;
+  --signal: #1f4fe0;
+  --signal-tint: rgba(31, 79, 224, 0.08);
+  --ink-80: #12161ccc;
+
+  --radius: 4px;
+  --radius-sm: 2px;
+  --border: 1px solid var(--line);
+  --maxw: 1200px;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-steel: var(--steel);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
+  --color-white: var(--white);
+  --color-signal: var(--signal);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --animate-cadence-in: cadence-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes cadence-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
