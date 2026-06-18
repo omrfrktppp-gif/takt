@@ -31,8 +31,10 @@
 - `Article` (blog yazıları)
 
 ## Dosyalar
-- `public/robots.txt` — GPTBot, ClaudeBot, Google-Extended, PerplexityBot Allow
+- `public/robots.txt` — Googlebot, Bingbot, AI botları + sitemap
 - `app/sitemap.ts` — dinamik rota listesi (`lib/sitemap-routes.ts`)
+- `lib/indexing.ts` + `lib/indexnow.ts` — Search Console doğrulama, IndexNow
+- `docs/10-arama-motoru-indeksleme.md` — Google/Bing yeniden dizin rehberi
 - `public/llms.txt` + `public/llms-full.txt` — AI botları için site özeti
 - `lib/seo.ts` — metadata şablonları
 - `lib/blog.ts` — yazı ve etiket kaynağı (Dok. 07 konu haritası)
@@ -50,7 +52,7 @@
 - [x] robots.txt + sitemap + llms.txt + llms-full.txt
 - [x] Ayrı crawlable URL'ler (redirect kaldırıldı)
 - [x] Blog altyapısı (içerik bekliyor)
-- [ ] Google Search Console kaydı
+- [ ] Google Search Console kaydı → `docs/10-arama-motoru-indeksleme.md`
 - [ ] Google Business Profile
 - [ ] OG görsel / logo asset'leri
 - [ ] Referanslar sayfası (içerik)

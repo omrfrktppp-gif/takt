@@ -9,6 +9,7 @@ import {
   websiteSchema,
 } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
+import { buildSearchVerificationMetadata } from "@/lib/indexing";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -61,6 +62,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon",
   },
+  ...buildSearchVerificationMetadata(),
 };
 
 export const viewport: Viewport = {

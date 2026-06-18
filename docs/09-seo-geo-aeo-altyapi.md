@@ -17,6 +17,7 @@
 | Site sabitleri | `lib/site.ts` | `faqItems`, `processSteps`, iletişim, nav |
 | Blog | `lib/blog.ts` | `blogTags`, `blogPosts` |
 | Sitemap | `lib/sitemap-routes.ts` | Tüm statik URL'ler |
+| İndeksleme | `lib/indexing.ts`, `lib/indexnow.ts`, `app/api/indexnow/route.ts` | Google/Bing doğrulama + IndexNow |
 | AI bot özeti | `public/llms.txt`, `public/llms-full.txt` | GEO/AEO indeks |
 | URL yardımcıları | `lib/pages.ts` | `panelPath()`, `experiencePanelPath()`, `detailChapters` |
 
@@ -116,6 +117,8 @@ Yeni schema türü: `lib/schema.ts`'e fonksiyon ekle, ilgili `page.tsx`'te `<Jso
 
 Yeni statik sayfa: `entries` dizisine veya uygun döngüye ekle. Build hedefi: **42+ route** (içerik arttıkça artar).
 
+Google/Bing gönderimi ve IndexNow: **`docs/10-arama-motoru-indeksleme.md`**.
+
 ---
 
 ## llms.txt senkronizasyonu
@@ -174,3 +177,4 @@ SEO detay sayfalarından scroll'a link: `experiencePanelPath(chapterId, panelId)
 | `06-seo-guncelleme.md` | Yayın sonrası düzeltme paketi durumu |
 | `07-seo-etiket-paketi.md` | Meta, OG, JSON-LD örnekleri |
 | `08-aeo-paketi.md` | Önce-cevap, soru başlıkları, SSS seti |
+| `10-arama-motoru-indeksleme.md` | Google Search Console, Bing, IndexNow |

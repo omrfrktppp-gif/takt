@@ -19,6 +19,7 @@ Next.js App Router · TypeScript · Tailwind CSS · lucide-react · Vercel deplo
 | `02-icerik-ve-sayfalar.md` | Site haritası + birebir metinler |
 | `03-domain-ve-yayinlama.md` | Vercel + Natro DNS |
 | `04-seo-geo-aeo.md` | Meta, schema, robots, llms.txt |
+| `10-arama-motoru-indeksleme.md` | Google/Bing indeksleme + IndexNow |
 | `05-orkestrator-cursor-rehberi.md` | İş sırası + bitti tanımı |
 | `09-seo-geo-aeo-altyapi.md` | SEO veri dosyaları + genişletme rehberi |
 
