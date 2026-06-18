@@ -21,7 +21,7 @@ export const appointmentTimezone = "Europe/Istanbul";
 
 function calendarUrl(base: string) {
   const separator = base.includes("?") ? "&" : "?";
-  return `${base}${separator}ctz=${appointmentTimezone}`;
+  return `${base}${separator}ctz=${appointmentTimezone}&hl=tr`;
 }
 
 export const appointmentTypes = [

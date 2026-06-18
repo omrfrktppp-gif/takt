@@ -14,49 +14,62 @@ export function AppointmentBooking() {
         <div className="flex-1">
           <h2 className="font-display text-h3 text-ink">Görüşme randevusu</h2>
           <p className="mt-3 text-body text-steel">
-            İhtiyacınıza uygun randevu türünü seçin. Saatler{" "}
-            <strong className="font-medium text-ink">Türkiye saati (GMT+3)</strong>{" "}
-            olarak gösterilir. Onaylandığında randevu bilgilerini içeren bir
-            e-posta alırsınız.
+            İhtiyacınıza uygun randevu türünü seçin. Takvim{" "}
+            <strong className="font-medium text-ink">Türkiye saati</strong> ve{" "}
+            <strong className="font-medium text-ink">Türkçe</strong> olarak
+            gösterilir.
           </p>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="mt-8 space-y-10">
             {appointmentTypes.map((type) => (
-              <article
-                key={type.id}
-                className="flex flex-col rounded border border-line bg-paper p-5"
-              >
-                <div className="flex items-start gap-2">
-                  {type.id === "on-gorusme" ? (
-                    <Video
-                      className="mt-0.5 shrink-0 text-signal"
-                      size={18}
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  ) : (
-                    <Calendar
-                      className="mt-0.5 shrink-0 text-signal"
-                      size={18}
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  )}
-                  <h3 className="font-display text-h3 text-ink">{type.title}</h3>
+              <section key={type.id}>
+                <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                  <div className="flex items-start gap-2">
+                    {type.id === "on-gorusme" ? (
+                      <Video
+                        className="mt-0.5 shrink-0 text-signal"
+                        size={18}
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <Calendar
+                        className="mt-0.5 shrink-0 text-signal"
+                        size={18}
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <div>
+                      <h3 className="font-display text-h3 text-ink">
+                        {type.title}
+                      </h3>
+                      <p className="mt-1 text-small text-steel">
+                        {type.description}
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href={type.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                  >
+                    Yeni sekmede aç
+                    <ExternalLink size={14} strokeWidth={1.5} aria-hidden="true" />
+                  </a>
                 </div>
-                <p className="mt-3 flex-1 text-small text-steel">
-                  {type.description}
-                </p>
-                <a
-                  href={type.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 rounded bg-ink px-[22px] py-[14px] text-sm font-medium text-white transition-colors hover:bg-signal"
-                >
-                  Randevu al
-                  <ExternalLink size={16} strokeWidth={1.5} aria-hidden="true" />
-                </a>
-              </article>
+
+                <div className="overflow-hidden rounded border border-line bg-paper">
+                  <iframe
+                    src={type.url}
+                    title={`${type.title} — Google Takvim randevu`}
+                    className="h-[min(720px,80vh)] w-full border-0 bg-white"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              </section>
             ))}
           </div>
         </div>
