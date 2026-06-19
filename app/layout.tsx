@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { Nav } from "@/components/Nav";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollProvider } from "@/components/scroll/ScrollContext";
@@ -79,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${fontVariables} h-full antialiased`}>
       <body className="flex h-dvh flex-col overflow-hidden bg-paper font-body text-ink">
+        <GoogleTagManager />
         <JsonLd
           data={[organizationSchema(), websiteSchema(), howToSchema()]}
         />
