@@ -16,6 +16,7 @@ Bu doküman, `takt.tr` sitesinin Google ve Bing tarafından taranması ve yenide
 | `lib/indexing.ts` | Merkezi indeksleme yapılandırması |
 | `app/api/indexnow/route.ts` | Deploy sonrası toplu URL bildirimi (opsiyonel) |
 | `public/BingSiteAuth.xml.example` | Bing XML doğrulama şablonu |
+| `public/yandex_d355b3ae5e2c91ac.html` | Yandex HTML dosya doğrulama |
 
 ---
 
@@ -28,7 +29,7 @@ Vercel → Project → Settings → Environment Variables:
 | `GOOGLE_SITE_VERIFICATION` | Google Search Console → HTML etiketi → `content=` değeri | Önerilir |
 | `BING_MSVALIDATE` | Bing Webmaster Tools → Meta tag → `content=` değeri | Önerilir |
 | `INDEXNOW_API_SECRET` | Kendiniz üretin (uzun rastgele string) | Opsiyonel |
-| `INDEXNOW_KEY` | Varsayılan projede tanımlı; değiştirmeyin | Hayır |
+| `YANDEX_VERIFICATION` | Yandex Webmaster → meta tag `content=` (alternatif: `yandex_*.html` dosyası) | Önerilir |
 
 Deploy sonrası `<head>` içinde doğrulama meta etiketleri otomatik eklenir (`app/layout.tsx` → `buildSearchVerificationMetadata()`).
 
