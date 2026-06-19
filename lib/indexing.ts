@@ -34,15 +34,13 @@ export function buildSearchVerificationMetadata(): Pick<
 > {
   const google = process.env.GOOGLE_SITE_VERIFICATION?.trim();
   const bing = process.env.BING_MSVALIDATE?.trim();
-  const yandex = process.env.YANDEX_VERIFICATION?.trim();
 
-  if (!google && !bing && !yandex) {
+  if (!google && !bing) {
     return {};
   }
 
   const other: Record<string, string> = {};
   if (bing) other["msvalidate.01"] = bing;
-  if (yandex) other["yandex-verification"] = yandex;
 
   return {
     verification: {
