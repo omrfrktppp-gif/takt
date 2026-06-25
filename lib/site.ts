@@ -18,7 +18,13 @@ export function formatSiteAddressLines(): readonly [string, string] {
 }
 
 const siteAddressOneLine = formatSiteAddressOneLine();
-const siteMapsQuery = encodeURIComponent(siteAddressOneLine);
+
+/** Google Haritalar — doğrulanmış işletme/konum pini */
+const siteMapsPlaceUrl = "https://maps.app.goo.gl/MQd2WNjEsfLMg1Xo7";
+const siteMapsCoordinates = {
+  lat: 39.991268,
+  lng: 32.7429904,
+} as const;
 
 export const siteConfig = {
   name: "Takt",
@@ -33,8 +39,9 @@ export const siteConfig = {
   instagram: "https://instagram.com/takt.eng",
   address: siteAddress,
   addressLabel: siteAddressOneLine,
-  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${siteMapsQuery}`,
-  mapsEmbedUrl: `https://www.google.com/maps?q=${siteMapsQuery}&hl=tr&z=16&output=embed`,
+  mapsUrl: siteMapsPlaceUrl,
+  mapsEmbedUrl: `https://www.google.com/maps?q=${siteMapsCoordinates.lat},${siteMapsCoordinates.lng}&hl=tr&z=17&output=embed`,
+  mapsCoordinates: siteMapsCoordinates,
   logo: {
     src: "/logo.webp",
     width: 700,

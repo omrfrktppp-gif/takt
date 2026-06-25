@@ -36,6 +36,11 @@ export function organizationSchema() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: siteConfig.address.addressCountry,
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.mapsCoordinates.lat,
+      longitude: siteConfig.mapsCoordinates.lng,
+    },
     areaServed: {
       "@type": "Place",
       name: `${siteConfig.address.addressLocality}, ${siteConfig.address.addressRegion}, Türkiye`,
