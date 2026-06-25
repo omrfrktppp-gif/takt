@@ -16,9 +16,11 @@ Teknik Faz 2 (schema, sitemap lastmod, dinamik llms.txt, ekip/vaka altyapısı) 
 
 ## 2. Google Business Profile (GBP)
 
-- [ ] Profil bilgileri güncel (adres, telefon, web sitesi `https://takt.tr`)
-- [ ] Hizmet kategorileri ve açıklama Türkçe, marka diliyle uyumlu
-- [ ] Fotoğraf/logo (uydurma müşteri veya sahte istatistik yok)
+- [x] Profil bilgileri güncel (adres, telefon, web sitesi `https://takt.tr`) — **kullanıcı tamamladı — link doğrulandı** (`https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9`)
+- [x] Hizmet kategorileri ve açıklama Türkçe, marka diliyle uyumlu — kullanıcı tamamladı
+- [x] Fotoğraf/logo (uydurma müşteri veya sahte istatistik yok) — kullanıcı tamamladı
+
+Site tarafı: `lib/site.ts` → `mapsUrl`, embed koordinatları ve schema `hasMap` / `sameAs` güncel.
 
 ---
 
@@ -61,6 +63,12 @@ Teknik Faz 2 (schema, sitemap lastmod, dinamik llms.txt, ekip/vaka altyapısı) 
 - [ ] `https://takt.tr/hakkimizda` — Person JSON-LD (ekip)
 - [ ] Hizmet detay — FAQPage JSON-LD (panel SSS)
 - [ ] Blog yazısı — Article author Person şeması
+
+---
+
+## Faz 3 (sıradaki)
+
+Faz 2 + blog 16–35 deploy doğrulandıktan sonra Faz 3’e geçilir: ekip içeriği (`lib/team.ts`), onaylı vaka çalışmaları (`lib/case-studies.ts`), GSC/IndexNow toplu indeksleme ve GEO aylık test döngüsü (yukarıdaki açık maddeler).
 
 ---
 
