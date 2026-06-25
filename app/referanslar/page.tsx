@@ -4,7 +4,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
-import { breadcrumbSchema } from "@/lib/schema";
+import { caseStudies } from "@/lib/case-studies";
+import { breadcrumbSchema, creativeWorkSchema } from "@/lib/schema";
 import { buildMetadata, chapterSeo } from "@/lib/seo";
 import { appointmentCta } from "@/lib/site";
 
@@ -36,19 +37,28 @@ const workAreas = [
 export const metadata: Metadata = buildMetadata(seo);
 
 export default function ReferanslarPage() {
+  const hasCaseStudies = caseStudies.length > 0;
+
   return (
     <SeoPageLayout>
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Ana Sayfa", path: "/" },
-          { name: "Referanslar", path: seo.path },
-        ])}
+        data={[
+          breadcrumbSchema([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Referanslar", path: seo.path },
+          ]),
+          ...(hasCaseStudies ? caseStudies.map(creativeWorkSchema) : []),
+        ]}
       />
 
       <PageShell
         eyebrow="REFERANSLAR"
         title="Referanslar"
-        description="Çalıştığımız proje tipleri ve çalışma alanları. İsimlendirilmiş vaka çalışmaları yakında."
+        description={
+          hasCaseStudies
+            ? "Çalıştığımız proje tipleri ve seçilmiş vaka çalışmaları."
+            : "Çalıştığımız proje tipleri ve çalışma alanları. İsimlendirilmiş vaka çalışmaları yakında."
+        }
       >
         <Section>
           <div className="max-w-3xl space-y-6 text-body text-steel">
@@ -57,11 +67,41 @@ export default function ReferanslarPage() {
               veya isimlendirilmiş müşteri listesi paylaşmıyoruz. Aşağıda, sık
               çalıştığımız proje tiplerini ve teknik alanları özetliyoruz.
             </p>
-            <p>
-              İsimlendirilmiş vaka çalışmaları ve proje özetleri yakında bu sayfada
-              yer alacak.
-            </p>
+            {!hasCaseStudies && (
+              <p>
+                İsimlendirilmiş vaka çalışmaları ve proje özetleri yakında bu sayfada
+                yer alacak.
+              </p>
+            )}
           </div>
+
+          {hasCaseStudies && (
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {caseStudies.map((study) => (
+                <article
+                  key={study.id}
+                  id={study.id}
+                  className="rounded border border-line bg-white p-6"
+                >
+                  <p className="text-caption uppercase tracking-wide text-steel">
+                    {study.sector}
+                  </p>
+                  <h2 className="mt-2 font-display text-h3 text-ink">
+                    {study.title}
+                  </h2>
+                  <p className="mt-3 text-body text-steel">{study.summary}</p>
+                  {study.href && (
+                    <Link
+                      href={study.href}
+                      className="mt-4 inline-block text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                    >
+                      Detay →
+                    </Link>
+                  )}
+                </article>
+              ))}
+            </div>
+          )}
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {workAreas.map((area) => (

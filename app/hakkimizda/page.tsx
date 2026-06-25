@@ -4,8 +4,9 @@ import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
 import { getChapter, getChapterPanels } from "@/lib/pages";
-import { breadcrumbSchema, founderPersonSchema } from "@/lib/schema";
+import { breadcrumbSchema, personSchema } from "@/lib/schema";
 import { buildMetadata, chapterSeo } from "@/lib/seo";
+import { teamMembers } from "@/lib/team";
 
 const seo = chapterSeo.hakkimizda;
 
@@ -16,6 +17,8 @@ export default function HakkimizdaPage() {
   const panels = getChapterPanels("hakkimizda");
   if (!chapter) return null;
 
+  const dataController = teamMembers.find((member) => member.isDataController);
+
   return (
     <SeoPageLayout>
       <JsonLd
@@ -24,7 +27,7 @@ export default function HakkimizdaPage() {
             { name: "Ana Sayfa", path: "/" },
             { name: chapter.label, path: seo.path },
           ]),
-          founderPersonSchema(),
+          ...teamMembers.map(personSchema),
         ]}
       />
 
@@ -40,24 +43,35 @@ export default function HakkimizdaPage() {
             ))}
           </div>
 
-          <div className="mt-12 max-w-3xl rounded border border-line bg-white p-6 md:p-8">
-            <h2 className="font-display text-h3 text-ink">Ekip</h2>
-            <p className="mt-4 text-body text-steel">
-              Takt, mühendislik danışmanlığı ve proje koordinasyonu odaklı küçük
-              bir ekiptir. Kişisel verilerin korunması kapsamında veri sorumlusu{" "}
-              <strong className="font-medium text-ink">Ömer Faruk Top</strong>
-              &apos;tur.
-            </p>
-            <dl className="mt-6 space-y-4 text-body">
-              <div>
-                <dt className="font-medium text-ink">Ömer Faruk Top</dt>
-                <dd className="mt-1 text-steel">
-                  Kurucu. Mühendislik danışmanlığı, proje yönetimi ve teknik
-                  koordinasyon alanlarında Takt&apos;ı yürütür.
-                </dd>
-              </div>
-            </dl>
-          </div>
+          {teamMembers.length > 0 && (
+            <div className="mt-12 max-w-3xl rounded border border-line bg-white p-6 md:p-8">
+              <h2 className="font-display text-h3 text-ink">Ekip</h2>
+              <p className="mt-4 text-body text-steel">
+                Takt, mühendislik danışmanlığı ve proje koordinasyonu odaklı küçük
+                bir ekiptir.
+                {dataController && (
+                  <>
+                    {" "}
+                    Kişisel verilerin korunması kapsamında veri sorumlusu{" "}
+                    <strong className="font-medium text-ink">
+                      {dataController.name}
+                    </strong>
+                    &apos;tur.
+                  </>
+                )}
+              </p>
+              <dl className="mt-6 space-y-4 text-body">
+                {teamMembers.map((member) => (
+                  <div key={member.id}>
+                    <dt className="font-medium text-ink">{member.name}</dt>
+                    <dd className="mt-1 text-steel">
+                      {member.role}. {member.bio}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
         </Section>
       </PageShell>
     </SeoPageLayout>

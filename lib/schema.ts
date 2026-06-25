@@ -3,14 +3,41 @@
  * Detay: docs/09-seo-geo-aeo-altyapi.md
  */
 import type { BlogPost } from "@/lib/blog-types";
+import type { CaseStudy } from "@/lib/case-studies";
 import type { SeoFaqItem } from "@/lib/seo-content";
+import { getTeamMemberByName, personIdForMember, teamMembers } from "@/lib/team";
 import { faqItems, processSteps, siteConfig } from "@/lib/site";
 
 const orgId = `${siteConfig.url}/#org`;
 const websiteId = `${siteConfig.url}/#website`;
 const founderId = `${siteConfig.url}/#founder`;
 
+export function personSchema(member: {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": personIdForMember(member),
+    name: member.name,
+    jobTitle: member.role,
+    description: member.bio,
+    worksFor: { "@id": orgId },
+    url: siteConfig.url,
+  };
+}
+
 export function founderPersonSchema() {
+  const founder = teamMembers.find((member) => member.id === "omer-faruk-top");
+  if (founder) {
+    return {
+      ...personSchema(founder),
+      "@id": founderId,
+    };
+  }
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -29,6 +56,7 @@ export function organizationSchema() {
     name: siteConfig.name,
     alternateName: "Takt Danışmanlık",
     founder: { "@id": founderId },
+    employee: teamMembers.map((member) => ({ "@id": personIdForMember(member) })),
     description:
       "Makina imalatı ve sanayide firmalara mühendislik danışmanlığı; tasarım, analiz, proje yönetimi ve üretim koordinasyonu.",
     url: siteConfig.url,
@@ -131,22 +159,8 @@ export function breadcrumbSchema(
   };
 }
 
-export function faqPageSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
-}
-
-export function panelFaqSchema(faq: SeoFaqItem[]) {
+export function faqPageSchema(items?: SeoFaqItem[]) {
+  const faq = items ?? faqItems;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -159,6 +173,11 @@ export function panelFaqSchema(faq: SeoFaqItem[]) {
       },
     })),
   };
+}
+
+/** @deprecated Use faqPageSchema(items) */
+export function panelFaqSchema(faq: SeoFaqItem[]) {
+  return faqPageSchema(faq);
 }
 
 export function serviceSchema({
@@ -185,17 +204,37 @@ export function serviceSchema({
   };
 }
 
+export function creativeWorkSchema(study: CaseStudy) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: study.title,
+    description: study.summary,
+    about: study.sector,
+    url: study.href
+      ? `${siteConfig.url}${study.href}`
+      : `${siteConfig.url}/referanslar#${study.id}`,
+    creator: { "@id": orgId },
+  };
+}
+
 function articleAuthor(post: BlogPost) {
   if (!post.author) {
     return { "@id": orgId };
   }
-  const name =
-    post.author === "Ömer Faruk" ? "Ömer Faruk Top" : post.author;
+  const member = getTeamMemberByName(post.author);
+  if (member) {
+    return {
+      "@type": "Person" as const,
+      "@id": personIdForMember(member),
+      name: member.name,
+      url: siteConfig.url,
+      worksFor: { "@id": orgId },
+    };
+  }
   return {
     "@type": "Person" as const,
-    "@id": founderId,
-    name,
-    url: siteConfig.url,
+    name: post.author,
     worksFor: { "@id": orgId },
   };
 }

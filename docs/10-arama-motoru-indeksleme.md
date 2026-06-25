@@ -10,9 +10,10 @@ Bu doküman, `takt.tr` sitesinin Google ve Bing tarafından taranması ve yenide
 | Dosya / URL | Amaç |
 |-------------|------|
 | `https://takt.tr/robots.txt` | Tüm botlara izin + sitemap adresi |
-| `https://takt.tr/sitemap.xml` | ~50 indekslenebilir URL (`docs/gsc-url-list.txt`; build ~62 statik sayfa) |
+| `https://takt.tr/sitemap.xml` | ~70 indekslenebilir URL (`docs/gsc-url-list.txt`; build ~82 route) |
 | `docs/gsc-url-list.txt` | Search Console toplu dizin için tam URL listesi |
-| `https://takt.tr/llms.txt` | AI/GEO bot özeti |
+| `https://takt.tr/llms.txt` | AI/GEO bot özeti (dinamik — `app/llms.txt/route.ts`; blog listesi otomatik) |
+| `public/llms-full.txt` | Derin GEO özeti (manuel senkron gerekebilir) |
 | `https://takt.tr/a8f3c2e1b9d0475682acf1e03b4d1597.txt` | **IndexNow** anahtar dosyası (Bing hızlı bildirim) |
 | `lib/indexing.ts` | Merkezi indeksleme yapılandırması |
 | `app/api/indexnow/route.ts` | Deploy sonrası toplu URL bildirimi (opsiyonel) |
@@ -97,7 +98,7 @@ Boş `{}` gövdesi tüm sitemap URL'lerini Bing/IndexNow ağına bildirir.
 
 | Yeni içerik | Otomatik güncellenen |
 |-------------|----------------------|
-| Hizmet paneli | sitemap, `/hizmetler/[slug]`, llms.txt (manuel senkron) |
+| Hizmet paneli | sitemap, `/hizmetler/[slug]`, `llms.txt` (dinamik route) |
 | Blog yazısı | sitemap, `/blog/[slug]` |
 | Yeni bölüm | `chapterSeo` → sitemap |
 
@@ -109,3 +110,4 @@ Detay: `docs/09-seo-geo-aeo-altyapi.md`
 
 - `04-seo-geo-aeo.md` — SEO/GEO strateji
 - `09-seo-geo-aeo-altyapi.md` — Veri dosyaları ve genişletme
+- `12-kalan-adimlar.md` — Faz 2 sonrası manuel görevler (GSC, GBP, ekip, vaka, blog)

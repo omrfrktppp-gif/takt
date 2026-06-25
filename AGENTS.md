@@ -20,6 +20,7 @@ Next.js App Router · TypeScript · Tailwind CSS · lucide-react · Vercel deplo
 | `03-domain-ve-yayinlama.md` | Vercel + Natro DNS |
 | `04-seo-geo-aeo.md` | Meta, schema, robots, llms.txt |
 | `10-arama-motoru-indeksleme.md` | Google/Bing indeksleme + IndexNow |
+| `12-kalan-adimlar.md` | Faz 2 sonrası manuel görevler |
 | `05-orkestrator-cursor-rehberi.md` | İş sırası + bitti tanımı |
 | `09-seo-geo-aeo-altyapi.md` | SEO veri dosyaları + genişletme rehberi |
 
@@ -34,4 +35,4 @@ Next.js App Router · TypeScript · Tailwind CSS · lucide-react · Vercel deplo
 2. ✅ Cadence + Nav/Footer + metadata/JSON-LD
 3. ✅ Sayfalar (Dok. 2 metinleri birebir)
 4. ✅ SEO/GEO tam kontrol listesi
-5. ✅ Deploy (Vercel + takt.tr DNS — kod tarafı tamam; GSC/Bing/GBP manuel → `docs/10-arama-motoru-indeksleme.md`)
+5. ✅ Deploy (Vercel + takt.tr DNS — kod tarafı tamam; GSC/Bing/GBP manuel → `docs/10-arama-motoru-indeksleme.md`, kalan görevler → `docs/12-kalan-adimlar.md`)

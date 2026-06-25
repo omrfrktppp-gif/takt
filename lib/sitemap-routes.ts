@@ -10,17 +10,36 @@ import {
 } from "@/lib/pages";
 import { chapterSeo } from "@/lib/seo";
 
+/** Statik sayfa içeriği son revizyon — deploy tarihiyle güncelleyin. */
+export const STATIC_CONTENT_REVISED = "2026-06-26";
+
 export type SitemapEntry = {
   path: string;
   priority: number;
   changeFrequency: "weekly" | "monthly" | "yearly";
+  lastModified: string;
 };
 
 export function getStaticSitemapEntries(): SitemapEntry[] {
   const entries: SitemapEntry[] = [
-    { path: "/", priority: 1, changeFrequency: "weekly" },
-    { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
-    { path: "/kvkk-aydinlatma-metni", priority: 0.3, changeFrequency: "yearly" },
+    {
+      path: "/",
+      priority: 1,
+      changeFrequency: "weekly",
+      lastModified: STATIC_CONTENT_REVISED,
+    },
+    {
+      path: "/blog",
+      priority: 0.7,
+      changeFrequency: "weekly",
+      lastModified: STATIC_CONTENT_REVISED,
+    },
+    {
+      path: "/kvkk-aydinlatma-metni",
+      priority: 0.3,
+      changeFrequency: "yearly",
+      lastModified: STATIC_CONTENT_REVISED,
+    },
   ];
 
   for (const chapter of Object.values(chapterSeo)) {
@@ -28,6 +47,7 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       path: chapter.path,
       priority: chapter.path === "/hakkimizda" ? 0.9 : 0.8,
       changeFrequency: "monthly",
+      lastModified: STATIC_CONTENT_REVISED,
     });
   }
 
@@ -37,6 +57,7 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
         path: `/${chapterId}/${panel.id}`,
         priority: 0.75,
         changeFrequency: "monthly",
+        lastModified: STATIC_CONTENT_REVISED,
       });
     }
   }
@@ -46,6 +67,7 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       path: `/blog/${post.slug}`,
       priority: 0.65,
       changeFrequency: "monthly",
+      lastModified: post.updatedAt ?? post.publishedAt,
     });
   }
 
@@ -58,6 +80,7 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
         path: `/blog/etiket/${tagId}`,
         priority: 0.5,
         changeFrequency: "weekly",
+        lastModified: STATIC_CONTENT_REVISED,
       });
     }
   }

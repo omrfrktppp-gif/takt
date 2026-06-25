@@ -12,7 +12,7 @@ import {
 } from "@/lib/pages";
 import { buildMetadata, chapterSeo, panelSeo } from "@/lib/seo";
 import { getHizmetSeoContent, getKapasiteSeoContent } from "@/lib/seo-content";
-import { breadcrumbSchema, panelFaqSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqPageSchema, serviceSchema } from "@/lib/schema";
 import { appointmentCta } from "@/lib/site";
 import type { DetailChapterId } from "@/lib/pages";
 
@@ -111,7 +111,7 @@ export function ChapterDetailPage({
             path,
           }),
           ...(seoContent && seoContent.faq.length > 0
-            ? [panelFaqSchema(seoContent.faq)]
+            ? [faqPageSchema(seoContent.faq)]
             : []),
         ]}
       />

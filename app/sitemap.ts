@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return getStaticSitemapEntries().map((entry) => ({
     url: `${base}${entry.path}`,
-    lastModified: new Date(),
+    lastModified: entry.lastModified,
     changeFrequency: entry.changeFrequency,
     priority: entry.priority,
   }));
