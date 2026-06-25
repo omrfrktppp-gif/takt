@@ -1,4 +1,5 @@
 import { FaqList } from "@/components/FaqList";
+import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
 import type { PanelSeoContent } from "@/lib/seo-content";
 
 type ServiceDetailBodyProps = {
@@ -72,6 +73,8 @@ export function ServiceDetailBody({ content, intro }: ServiceDetailBodyProps) {
           </dl>
         </section>
       ) : null}
+
+      <LeadMagnetPromo />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 # Takt — Google Search Console toplu dizin URL listesi
 # Kaynak: lib/sitemap-routes.ts getStaticSitemapEntries()
-# Toplam: 70 URL
+# Toplam: 76 URL
 # Kullanım: Search Console → URL Denetimi veya toplu gönderim
 
 https://takt.tr/
@@ -14,6 +14,12 @@ https://takt.tr/iletisim
 https://takt.tr/gorusme-planla
 https://takt.tr/referanslar
 https://takt.tr/sss
+https://takt.tr/kaynaklar/baslangic-kontrol-listesi
+https://takt.tr/sektorler
+https://takt.tr/sektorler/savunma-sanayi
+https://takt.tr/sektorler/gida-makineleri
+https://takt.tr/sektorler/otomotiv-yan-sanayi
+https://takt.tr/sektorler/tibbi-cihaz
 https://takt.tr/hizmetler/proje-danismanligi
 https://takt.tr/hizmetler/teknik-ekip
 https://takt.tr/hizmetler/tasarim-gelistirme

@@ -3,17 +3,19 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { Cadence } from "@/components/Cadence";
 import { ContactChannelLink } from "@/components/ContactChannelLink";
 import { getChapterPanels, panelPath } from "@/lib/pages";
-import { navLinks, siteConfig } from "@/lib/site";
+import { sectors } from "@/lib/sectors";
+import { leadMagnet, navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
   const services = getChapterPanels("hizmetler");
   const capacity = getChapterPanels("kapasitemiz").filter((panel) => panel.title);
+  const pageLinks = navLinks.filter((link) => link.id !== "lead-magnet");
 
   return (
     <footer className="border-t border-line bg-white">
       <div className="mx-auto max-w-content px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-          <div>
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
+          <div className="md:col-span-2 xl:col-span-1 2xl:col-span-1">
             <Link
               href="/"
               className="inline-flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-ink"
@@ -31,7 +33,7 @@ export function Footer() {
               Sayfalar
             </p>
             <ul className="space-y-2">
-              {navLinks.map((link) => (
+              {pageLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -41,6 +43,48 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Sektörler
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/sektorler"
+                  className="text-small text-ink hover:text-signal"
+                >
+                  Tüm sektörler
+                </Link>
+              </li>
+              {sectors.map((sector) => (
+                <li key={sector.id}>
+                  <Link
+                    href={`/sektorler/${sector.id}`}
+                    className="text-small text-ink hover:text-signal"
+                  >
+                    {sector.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Kaynaklar
+            </p>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href={leadMagnet.href}
+                  className="text-small text-ink hover:text-signal"
+                >
+                  {leadMagnet.label}
+                </Link>
+              </li>
             </ul>
           </div>
 

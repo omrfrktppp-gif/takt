@@ -1,13 +1,23 @@
 # Takt — Kalan Manuel Adımlar
-*Doküman 12 · Faz 3 sonrası operasyonel görevler*
+*Doküman 12 · Faz 3–5 sonrası operasyonel görevler*
 
-Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka çalışması modeli, hizmet meta kutuları, blog→hizmet linkleri, sektör sayfaları, schema/sitemap güncellemeleri) kod tarafında tamamlandı. Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
+Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka çalışması modeli, hizmet meta kutuları, blog→hizmet linkleri, sektör sayfaları, schema/sitemap güncellemeleri) kod tarafında tamamlandı.
+
+**Faz 4/5 (teknik) tamamlandı:**
+- Öksüz sayfa linkleme: nav + footer (Sektörler hub/slug, Referanslar, Kaynaklar/lead magnet)
+- Ana sayfa hero (`giris` bölümü): tagline, CTA, lead magnet linki
+- Mobil kalıcı CTA şeridi (`MobileCtaBar`) + WhatsApp butonu konumu
+- Bağlamsal lead magnet promosu (hizmet detay + iletişim)
+- WhatsApp varsayılan mesajı güncellendi: *"Hizmetleriniz hakkında bilgi almak istiyorum."*
+
+Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 
 ---
 
 ## 1. Arama motoru indeksleme
 
-- [ ] **Google Search Console** — `docs/gsc-url-list.txt` güncelle (yeni `/sektorler/*`, `/kaynaklar/*` URL'leri) ve toplu dizin (`docs/10-arama-motoru-indeksleme.md`)
+- [x] **GSC URL listesi** — `docs/gsc-url-list.txt` Faz 3 rotaları eklendi (**76 URL**)
+- [ ] **Google Search Console** — listedeki URL'ler için toplu dizin (`docs/10-arama-motoru-indeksleme.md`)
 - [ ] **Sitemap yeniden gönder** — `https://takt.tr/sitemap.xml` (Faz 3 sayfaları sonrası)
 - [ ] **IndexNow** — Deploy sonrası `POST https://takt.tr/api/indexnow` (Bearer `INDEXNOW_API_SECRET`)
 - [ ] **Bing Webmaster Tools** — Sitemap ve doğrulama kontrolü
@@ -49,7 +59,7 @@ Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka ç
 
 ## 6. Lead magnet (içerik)
 
-- [x] Kod: `/kaynaklar/baslangic-kontrol-listesi` + e-posta formu (`source: lead_magnet`)
+- [x] Kod: `/kaynaklar/baslangic-kontrol-listesi` + e-posta formu (`source: lead_magnet`) + nav/footer/bağlamsal linkler
 - [ ] **PDF içeriği** hazırla ve `public/baslangic-kontrol-listesi.pdf` olarak yükle (veya e-posta otomasyonu)
 - [ ] Form gönderimlerinin `info@takt.tr` adresine ulaştığını doğrula
 
@@ -58,6 +68,7 @@ Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka ç
 ## 7. WhatsApp hattı
 
 - [x] Kod: yüzen WhatsApp butonu (`components/WhatsAppButton.tsx`, `lib/site.ts`)
+- [x] Varsayılan mesaj güncellendi (hizmetler odaklı metin)
 - [ ] Mesajlara kimin bakacağını operasyonel olarak netleştir
 - [ ] İşletme numarası değişirse `lib/site.ts` → `whatsapp` güncelle
 
@@ -83,6 +94,7 @@ Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka ç
 ## 10. Deploy sonrası teknik kontrol
 
 - [ ] `npm run build` geçti
+- [ ] `site_audit.py` — ORPHAN: 0 (öksüz sayfa kalmamalı)
 - [ ] `https://takt.tr/sitemap.xml` — lastmod tarihleri mantıklı; sektör + kaynak URL'leri dahil
 - [ ] `https://takt.tr/hakkimizda` — Person JSON-LD (ekip + founder `knowsAbout`)
 - [ ] Hizmet detay — süre/ücret kutusu + FAQPage JSON-LD

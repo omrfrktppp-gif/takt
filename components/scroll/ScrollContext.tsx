@@ -14,6 +14,7 @@ import { visibleChapters, type Chapter } from "@/lib/content";
 import { useMediaQuery } from "@/lib/useMediaQuery";
 
 function panelCountFor(chapter: Chapter, isDesktop: boolean) {
+  if (chapter.kind === "hero") return 1;
   if (chapter.kind === "contact") return isDesktop ? 1 : 3;
   if (chapter.kind === "booking") return 1;
   return chapter.panels.length;

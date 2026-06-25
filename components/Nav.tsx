@@ -8,12 +8,20 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/Button";
 import { useScroll } from "@/components/scroll/ScrollContext";
 import { trackEvent } from "@/lib/analytics";
-import { appointmentCta } from "@/lib/site";
+import { appointmentCta, navLinks } from "@/lib/site";
 import { visibleChapters } from "@/lib/content";
 import { chapterPath } from "@/lib/pages";
 
 const navChapters = visibleChapters.filter(
-  (chapter) => chapter.id !== "gorusme-planla",
+  (chapter) => chapter.id !== "gorusme-planla" && chapter.kind !== "hero",
+);
+
+const extraNavLinks = navLinks.filter(
+  (link) =>
+    link.id === "sektorler" ||
+    link.id === "referanslar" ||
+    link.id === "blog" ||
+    link.id === "sss",
 );
 
 export function Nav() {
@@ -60,7 +68,7 @@ export function Nav() {
         {isHome ? (
           <button
             type="button"
-            onClick={() => scrollToChapter("hakkimizda")}
+            onClick={() => scrollToChapter("giris")}
             className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
             aria-label="Takt ana sayfa"
           >
@@ -110,26 +118,21 @@ export function Nav() {
               </Link>
             );
           })}
-          <Link
-            href="/blog"
-            className={`text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
-              pathname.startsWith("/blog")
-                ? "font-medium text-signal"
-                : "text-ink"
-            }`}
-          >
-            Blog
-          </Link>
-          <Link
-            href="/sss"
-            className={`text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
-              pathname.startsWith("/sss")
-                ? "font-medium text-signal"
-                : "text-ink"
-            }`}
-          >
-            SSS
-          </Link>
+          {extraNavLinks.map((link) => {
+            const active =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
+                  active ? "font-medium text-signal" : "text-ink"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           {isHome ? (
             <Button
               onClick={() => {
@@ -215,32 +218,26 @@ export function Nav() {
                 </li>
               );
             })}
-            <li>
-              <Link
-                href="/blog"
-                className={`block rounded-sm px-2 py-3 text-base ${
-                  pathname.startsWith("/blog")
-                    ? "bg-accent/10 font-medium text-accent"
-                    : "text-ink"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/sss"
-                className={`block rounded-sm px-2 py-3 text-base ${
-                  pathname.startsWith("/sss")
-                    ? "bg-accent/10 font-medium text-accent"
-                    : "text-ink"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                SSS
-              </Link>
-            </li>
+            {extraNavLinks.map((link) => {
+              const active =
+                pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`block rounded-sm px-2 py-3 text-base ${
+                      active
+                        ? "bg-accent/10 font-medium text-accent"
+                        : "text-ink"
+                    }`}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
             <li className="mt-2 border-t border-line pt-3">
               {isHome ? (
                 <Button

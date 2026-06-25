@@ -1,8 +1,9 @@
 "use client";
 
+import { AppointmentPanels } from "@/components/scroll/AppointmentPanels";
 import { ContactPanels } from "@/components/scroll/ContactPanels";
 import { ContentPanelView } from "@/components/scroll/ContentPanelView";
-import { AppointmentPanels } from "@/components/scroll/AppointmentPanels";
+import { HomeHeroPanel } from "@/components/scroll/HomeHeroPanel";
 import { useScroll } from "@/components/scroll/ScrollContext";
 import { visibleChapters } from "@/lib/content";
 
@@ -32,6 +33,13 @@ export function SiteExperience() {
           ) : chapter.id === "gorusme-planla" ? (
             <div className="h-full">
               <AppointmentPanels />
+            </div>
+          ) : chapter.kind === "hero" ? (
+            <div
+              ref={(el) => registerTrack(chapter.id, el)}
+              className="scroll-horizontal scrollbar-none flex h-full"
+            >
+              <HomeHeroPanel />
             </div>
           ) : (
             <div

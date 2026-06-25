@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
+import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
@@ -102,6 +103,10 @@ export default function IletisimPage() {
             <div className="mt-6">
               <ContactForm compact />
             </div>
+          </div>
+
+          <div className="mt-10">
+            <LeadMagnetPromo />
           </div>
         </Section>
       </PageShell>

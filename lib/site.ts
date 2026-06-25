@@ -36,8 +36,8 @@ export const siteConfig = {
     enabled: true,
     number: "905519814728",
     message:
-      "Merhaba, Takt web sitesinden yazıyorum. Projem hakkında bilgi almak istiyorum.",
-    href: "https://wa.me/905519814728?text=Merhaba%2C%20Takt%20web%20sitesinden%20yaz%C4%B1yorum.%20Projem%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
+      "Merhaba, Takt web sitesinden yazıyorum. Hizmetleriniz hakkında bilgi almak istiyorum.",
+    href: "https://wa.me/905519814728?text=Merhaba%2C%20Takt%20web%20sitesinden%20yaz%C4%B1yorum.%20Hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
   },
   tagline: "Teknik ekibinizin eksik halkası.",
   description:
@@ -86,14 +86,24 @@ export const appointmentTypes = [
   },
 ] as const;
 
+export const leadMagnet = {
+  href: "/kaynaklar/baslangic-kontrol-listesi",
+  label: "Başlangıç kontrol listesi",
+  description:
+    "Özel makina projeleriniz için ücretsiz teknik kontrol listesi — e-posta ile talep edin.",
+} as const;
+
 export const navLinks = [
   { href: "/hakkimizda", id: "hakkimizda", label: "Hakkımızda" },
   { href: "/hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
   { href: "/kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
   { href: "/yaklasim", id: "yaklasim", label: "Yaklaşım" },
+  { href: "/sektorler", id: "sektorler", label: "Sektörler" },
+  { href: "/referanslar", id: "referanslar", label: "Referanslar" },
   { href: "/iletisim", id: "iletisim", label: "İletişim" },
   { href: "/blog", id: "blog", label: "Blog" },
   { href: "/sss", id: "sss", label: "SSS" },
+  { href: leadMagnet.href, id: "lead-magnet", label: leadMagnet.label },
 ] as const;
 
 export const appointmentCta = {

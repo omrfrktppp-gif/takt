@@ -10,10 +10,17 @@ export type Chapter = {
   eyebrow: string;
   panels: ContentPanel[];
   hidden?: boolean;
-  kind?: "content" | "contact" | "booking";
+  kind?: "content" | "contact" | "booking" | "hero";
 };
 
 export const chapters: Chapter[] = [
+  {
+    id: "giris",
+    label: "Giriş",
+    eyebrow: "TAKT",
+    kind: "hero",
+    panels: [{ id: "hero", body: "" }],
+  },
   {
     id: "hakkimizda",
     label: "Hakkımızda",

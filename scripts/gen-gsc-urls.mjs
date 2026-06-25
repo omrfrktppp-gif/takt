@@ -21,6 +21,15 @@ const chapterSeoPaths = [
   "/sss",
 ];
 
+const faz3Paths = [
+  "/kaynaklar/baslangic-kontrol-listesi",
+  "/sektorler",
+  "/sektorler/savunma-sanayi",
+  "/sektorler/gida-makineleri",
+  "/sektorler/otomotiv-yan-sanayi",
+  "/sektorler/tibbi-cihaz",
+];
+
 const hizmetSlugs = [
   "proje-danismanligi",
   "teknik-ekip",
@@ -177,6 +186,7 @@ const paths = [
   "/blog",
   "/kvkk-aydinlatma-metni",
   ...chapterSeoPaths,
+  ...faz3Paths,
   ...hizmetSlugs.map((s) => `/hizmetler/${s}`),
   ...kapasiteSlugs.map((s) => `/kapasitemiz/${s}`),
   ...publishedPosts.map((p) => `/blog/${p.slug}`),
