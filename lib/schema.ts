@@ -3,10 +3,23 @@
  * Detay: docs/09-seo-geo-aeo-altyapi.md
  */
 import type { BlogPost } from "@/lib/blog-types";
+import type { SeoFaqItem } from "@/lib/seo-content";
 import { faqItems, processSteps, siteConfig } from "@/lib/site";
 
 const orgId = `${siteConfig.url}/#org`;
 const websiteId = `${siteConfig.url}/#website`;
+const founderId = `${siteConfig.url}/#founder`;
+
+export function founderPersonSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": founderId,
+    name: "Ömer Faruk Top",
+    worksFor: { "@id": orgId },
+    url: siteConfig.url,
+  };
+}
 
 export function organizationSchema() {
   return {
@@ -15,6 +28,7 @@ export function organizationSchema() {
     "@id": orgId,
     name: siteConfig.name,
     alternateName: "Takt Danışmanlık",
+    founder: { "@id": founderId },
     description:
       "Makina imalatı ve sanayide firmalara mühendislik danışmanlığı; tasarım, analiz, proje yönetimi ve üretim koordinasyonu.",
     url: siteConfig.url,
@@ -122,6 +136,21 @@ export function faqPageSchema() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function panelFaqSchema(faq: SeoFaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {

@@ -6,11 +6,12 @@ import { navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
   const services = getChapterPanels("hizmetler");
+  const capacity = getChapterPanels("kapasitemiz").filter((panel) => panel.title);
 
   return (
     <footer className="border-t border-line bg-white">
       <div className="mx-auto max-w-content px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div>
             <Link
               href="/"
@@ -54,6 +55,24 @@ export function Footer() {
                     className="text-small text-ink hover:text-signal"
                   >
                     {service.title ?? service.id}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="mb-4 font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Kapasitemiz
+            </p>
+            <ul className="space-y-2">
+              {capacity.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={panelPath("kapasitemiz", item.id)}
+                    className="text-small text-ink hover:text-signal"
+                  >
+                    {item.title ?? item.id}
                   </Link>
                 </li>
               ))}

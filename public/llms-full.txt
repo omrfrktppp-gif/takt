@@ -16,12 +16,14 @@ Takt, makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışa
 
 ## 3. İmalat ve Çözüm Ortağı Kapasitesi
 https://takt.tr/kapasitemiz
-- 3D Tarama & 3D Baskı (Tersine mühendislik ve hızlı prototipleme)
-- Lazer Kesim & Lazer Markalama
-- CNC İşleme & Torna
-- Fason Üretim & Kaynak
-- Yüzey İşlemleri (Kaplama ve endüstriyel boyama)
-- Prototip & Seri Üretim Danışmanlığı
+- Genel bakış: https://takt.tr/kapasitemiz/intro
+- 3D Tarama & 3D Baskı (Tersine mühendislik ve hızlı prototipleme): https://takt.tr/kapasitemiz/3d-tarama
+- Lazer Kesim & Lazer Markalama: https://takt.tr/kapasitemiz/lazer
+- CNC İşleme & Torna: https://takt.tr/kapasitemiz/cnc
+- Fason Üretim & Kaynak: https://takt.tr/kapasitemiz/fason
+- Yüzey İşlemleri (Kaplama ve endüstriyel boyama): https://takt.tr/kapasitemiz/yuzey
+- Prototip & Seri Üretim Danışmanlığı: https://takt.tr/kapasitemiz/prototip-seri
+- Tek noktadan üretim özeti: https://takt.tr/kapasitemiz/ozet
 
 ## 4. Yaklaşım ve Çalışma Metodolojisi
 https://takt.tr/yaklasim
@@ -51,6 +53,10 @@ https://takt.tr/sss
 
 ## 6. İletişim ve Resmi Bağlantılar
 - Web: https://takt.tr
+- Hakkımızda: https://takt.tr/hakkimizda
+- Referanslar: https://takt.tr/referanslar
+- Görüşme planla: https://takt.tr/gorusme-planla
+- İletişim: https://takt.tr/iletisim
 - E-posta: info@takt.tr
 - Telefon: +90 551 981 4728
 - LinkedIn: https://www.linkedin.com/company/takt-danismanlik/

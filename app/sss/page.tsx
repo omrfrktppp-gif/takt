@@ -35,14 +35,14 @@ export default function SssPage() {
             Mühendislik danışmanlığı, hizmet kapsamı ve çalışma modelimiz hakkında
             kısa yanıtlar. Daha fazla bilgi için{" "}
             <Link
-              href="/?b=hakkimizda"
+              href="/hakkimizda"
               className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               hakkımızda
             </Link>{" "}
             sayfasına bakabilir veya{" "}
             <Link
-              href="/?b=iletisim"
+              href="/iletisim"
               className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               iletişime

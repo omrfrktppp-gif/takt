@@ -196,7 +196,7 @@ export default function KvkkPage() {
 
           <p>
             <Link
-              href="/?b=iletisim"
+              href="/iletisim"
               className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               ← İletişim sayfasına dön

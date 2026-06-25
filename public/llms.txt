@@ -13,12 +13,14 @@
 - TÜBİTAK & KOSGEB & Türk Patent Proje Desteği: proje hazırlama, teknik doküman/rapor, patent ve marka başvuruları. https://takt.tr/hizmetler/tubitak-kosgeb
 
 ## Kapasitemiz (geniş çözüm ortağı ağıyla)
+- Genel bakış: https://takt.tr/kapasitemiz/intro
 - 3D tarama ve 3D baskı: https://takt.tr/kapasitemiz/3d-tarama
 - Lazer kesim ve lazer markalama: https://takt.tr/kapasitemiz/lazer
 - CNC işleme ve torna: https://takt.tr/kapasitemiz/cnc
 - Fason üretim ve kaynak: https://takt.tr/kapasitemiz/fason
 - Kaplama, boyama ve yüzey işlemleri: https://takt.tr/kapasitemiz/yuzey
 - Prototip ve seri üretim danışmanlığı: https://takt.tr/kapasitemiz/prototip-seri
+- Tek noktadan üretim: https://takt.tr/kapasitemiz/ozet
 
 ## Nasıl çalışırız (4 adım)
 1. Tespit — ihtiyacı ve eksik halkayı birlikte netleştiririz.

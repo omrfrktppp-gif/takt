@@ -368,9 +368,329 @@ export function getHizmetSeoContent(panelId: string): PanelSeoContent | undefine
   return hizmetSeoContent[panelId];
 }
 
-/** Kapasite detay AEO içeriği — panel id ile eşleşir; boş kayıt genişletmeye hazır */
+/** Kapasite detay AEO içeriği — panel id ile eşleşir */
 export const kapasiteSeoContent: Record<string, PanelSeoContent> = {
-  // "3d-tarama": { summary: "...", sections: [...], faq: [...] },
+  intro: {
+    summary:
+      "Kapasitemiz, makina ve endüstriyel projelerinizde ihtiyaç duyduğunuz üretim çözümlerini geniş çözüm ortağı ağımızla tek noktadan sunmaktır; tasarımdan imalata süreci biz koordine ederiz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Birden fazla üretim yöntemi, tedarikçi ve atölye içeren projelerde koordinasyon yükü artar. Teknik gereksinimleri netleştirir, doğru üreticiyi seçer ve imalat adımlarını sizin adınıza takip ederiz.",
+          "Kendi fabrikamızda seri üretim yapmıyoruz; güvenilir çözüm ortağı ağımızla işi doğru adrese yönlendiriyoruz.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Tasarımı hazır ama imalat ve tedarik kapasitesi sınırlı üretici firmalar.",
+          "Prototipten seri üretime geçişte birden fazla üretim yöntemi gerektiren projeler.",
+          "Tek muhatap isteyen, fason üretim ve yüzey işlemlerini bir arada koordine etmek isteyen ekipler.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Parça veya proje gereksinimlerini, toleransları ve teslim beklentisini yazılı netleştiririz.",
+          "Uygun üretim yöntemi ve çözüm ortağını belirler, teklif ve kapasite değerlendirmesi yaparız.",
+          "Üretim, kalite kontrol ve teslimat adımlarını koordine ederiz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Üretimi kendiniz mi yapıyorsunuz?",
+        answer:
+          "Üretimi geniş çözüm ortağı ağımızla yürütüyoruz; doğru üreticiyle eşleştirir ve süreci sizin adınıza koordine ediyoruz.",
+      },
+      {
+        question: "Hangi üretim yöntemlerini kapsıyorsunuz?",
+        answer:
+          "3D tarama/baskı, lazer kesim, CNC, fason üretim, kaynak, yüzey işlemleri ve prototipten seri üretime geçiş danışmanlığı bu kapsamdadır.",
+      },
+    ],
+  },
+  "3d-tarama": {
+    summary:
+      "3D tarama ve 3D baskı ile mevcut parçaları dijitale taşıyor, tersine mühendislik ve hızlı prototipleme ihtiyaçlarını karşılıyoruz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Teknik resmi olmayan, eski veya hasarlı parçaların yeniden üretimi ölçü ve model eksikliğinde tıkanır. 3D tarama ile geometriyi dijitale aktarır, modelleme ve baskı ile prototip veya fonksiyonel parça üretimine zemin hazırlarız.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Tersine mühendislik ve yedek parça üretimi gerektiren imalat firmaları.",
+          "Hızlı prototip ile tasarım doğrulaması yapmak isteyen Ar-Ge ekipleri.",
+          "Ölçü ve tolerans doğrulaması gereken mevcut parça projeleri.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Parça geometrisi, malzeme ve kullanım koşullarını netleştiririz.",
+          "Tarama, modelleme ve gerekirse 3D baskı adımlarını uygun çözüm ortağımızla yürütürüz.",
+          "Çıktıları imalat veya analiz için kullanılabilir formatta teslim ederiz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "3D tarama ile tersine mühendislik aynı şey mi?",
+        answer:
+          "Tarama ölçüm adımıdır; tersine mühendislik tarama verisinin üretilebilir modele dönüştürülmesini de kapsar.",
+      },
+      {
+        question: "Hangi malzemelerde 3D baskı yapılıyor?",
+        answer:
+          "Proje ihtiyacına göre plastik, reçine veya metal eklemeli imalat seçenekleri değerlendirilir; kapsam baştan netleştirilir.",
+      },
+    ],
+  },
+  lazer: {
+    summary:
+      "Lazer kesim ve lazer markalama ile parçalarınızı hassas toleransta keser, izlenebilirlik için kalıcı markalama uygularız.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Sac ve plaka işlerinde hassas kesim, delik ve kontur ihtiyaçları; seri üretimde parça takibi için markalama gereksinimleri bu kapasiteyle karşılanır.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Sac metal parça ve gövde üreten makina imalatçıları.",
+          "Seri numarası, logo veya kod markalaması gerektiren üretim hatları.",
+          "Prototip sac parça kesimi ihtiyacı olan tasarım ekipleri.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Kesim dosyası, malzeme kalınlığı ve tolerans gereksinimlerini netleştiririz.",
+          "Uygun lazer kesim ve markalama kapasitesine sahip çözüm ortağımızla üretimi koordine ederiz.",
+          "Teslim ve kalite kontrol adımlarını takip ederiz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Lazer kesim hangi malzemelerde uygulanır?",
+        answer:
+          "Çelik, paslanmaz ve alüminyum sac gibi yaygın endüstriyel malzemeler; detay proje dosyasına göre değerlendirilir.",
+      },
+      {
+        question: "Markalama kalıcı mı?",
+        answer:
+          "Lazer markalama yüzeye kalıcı iz bırakır; izlenebilirlik ve kimliklendirme için uygundur.",
+      },
+    ],
+  },
+  cnc: {
+    summary:
+      "CNC torna ve işleme ile tekil parçadan adetli üretime kadar hassas talaşlı imalat ihtiyaçlarını çözüm ortağı ağımızla karşılıyoruz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Mekanik parçaların toleranslı imalatı, torna ve freze işlemleri ve karmaşık geometrilerin üretimi CNC kapasitesiyle yürütülür.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Özel makina ve mekanik sistem üreten firmalar.",
+          "Prototip veya küçük seri mekanik parça ihtiyacı olan projeler.",
+          "Mevcut parçanın revizyonu veya iyileştirilmiş versiyonunun imalatı.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Teknik resim, tolerans ve malzeme spesifikasyonunu netleştiririz.",
+          "Uygun CNC kapasitesine sahip atölyeyle üretimi planlarız ve koordine ederiz.",
+          "Ölçü kontrolü ve teslimat adımlarını takip ederiz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Tek parça da üretim yapılıyor mu?",
+        answer:
+          "Evet. Prototip ve tekil parça ile adetli üretim ihtiyaçları kapsamda değerlendirilir.",
+      },
+      {
+        question: "Hangi dosya formatları gerekir?",
+        answer:
+          "STEP model veya imalat çizimleri (PDF/DXF) genelde yeterlidir; eksikse tasarım desteği sağlayabiliriz.",
+      },
+    ],
+  },
+  fason: {
+    summary:
+      "Fason üretim ve kaynak işçiliği ile çeşitli metallerde imalat ihtiyaçlarını uçtan uca koordine ediyoruz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Kaynaklı gövde, şase ve montaj gruplarının farklı atölyelerde üretilmesi koordinasyon gerektirir. Doğru fason üreticiyi seçer, kaynak ve montaj adımlarını tek muhatap olarak yönetiriz.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Kaynaklı konstrüksiyon ve gövde imalatı gerektiren makina projeleri.",
+          "İç kapasitesi yetmeyen, dışarıya imalat verdiren üreticiler.",
+          "Birden fazla parçanın bir araya getirildiği montaj ağırlıklı işler.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Kaynak prosedürü, malzeme ve muayene gereksinimlerini netleştiririz.",
+          "Uygun fason üretici ve kaynak atölyesiyle işi eşleştiririz.",
+          "İmalat ilerlemesini ve teslimatı koordine ederiz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Fason üretimde kalite kontrolü nasıl yapılıyor?",
+        answer:
+          "Teknik gereksinimler baştan yazılır; ölçü ve görsel kontrol adımları kapsamda tanımlanır ve takip edilir.",
+      },
+      {
+        question: "Hangi kaynak türleri destekleniyor?",
+        answer:
+          "Proje ihtiyacına göre MIG/MAG, TIG ve benzeri yöntemler uygun atölyeyle değerlendirilir.",
+      },
+    ],
+  },
+  yuzey: {
+    summary:
+      "Kaplama, boyama ve yüzey işlemleriyle parçalarınızı dayanıklılık ve görünüm açısından kullanıma hazır hale getiriyoruz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Mekanik imalat sonrası korozyon koruması, estetik boya ve özel yüzey işlemleri ayrı tedarikçiler gerektirir. Bu adımları projenize uygun çözüm ortağıyla koordine ederiz.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Saha koşullarında dayanıklılık gerektiren makina ve ekipman üreticileri.",
+          "Kurumsal renk veya marka standardına uygun boya ihtiyacı olan firmalar.",
+          "Galvaniz, elektrostatik boya veya özel kaplama gerektiren parçalar.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Yüzey hazırlığı, kaplama türü ve kalite kriterlerini netleştiririz.",
+          "Uygun kaplama ve boya tesisini seçer, parti takibini yaparız.",
+          "Teslim öncesi görsel ve ölçü kontrolünü koordine ederiz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Hangi kaplama türleri mümkün?",
+        answer:
+          "Proje ihtiyacına göre elektrostatik boya, galvaniz ve benzeri endüstriyel yüzey işlemleri değerlendirilir.",
+      },
+      {
+        question: "Boyama öncesi yüzey hazırlığı dahil mi?",
+        answer:
+          "Kapsamda tanımlanır; zımpara, fosfat ve benzeri hazırlık adımları gereksinime göre planlanır.",
+      },
+    ],
+  },
+  "prototip-seri": {
+    summary:
+      "Prototip ve seri üretim danışmanlığında doğru yöntemi, malzemeyi ve üreticiyi belirleyip süreci sizin adınıza yönetiyoruz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Prototipten seri üretime geçişte malzeme seçimi, üretim yöntemi, tedarikçi ve maliyet dengesi kritik hale gelir. Teknik olgunluk değerlendirmesi ve üretim planı ile bu geçişi yapılandırırız.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "İlk fonksiyonel prototipi tamamlamış, seri üretime hazırlanan ürün ekipleri.",
+          "Üretim yöntemini ve tedarik zincirini henüz netleştirmemiş Ar-Ge projeleri.",
+          "Mevcut ürünün maliyet veya üretilebilirlik optimizasyonu arayan firmalar.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Prototip çıktılarını ve hedef adet/maliyet beklentisini değerlendiririz.",
+          "Üretim yöntemi alternatiflerini teknik ve ekonomik açıdan karşılaştırırız.",
+          "Seri üretim için tedarikçi seçimi ve ilk parti koordinasyonunu yürütürüz.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Sadece danışmanlık mı, üretim koordinasyonu da var mı?",
+        answer:
+          "İkisi birlikte. Yöntem seçiminden üretici eşleştirmesine ve parti takibine kadar kapsam birlikte belirlenir.",
+      },
+      {
+        question: "Kaç adetten itibaren seri üretim sayılır?",
+        answer:
+          "Tek tip bir eşik yoktur; parça geometrisi, malzeme ve yönteme göre proje bazında değerlendiririz.",
+      },
+    ],
+  },
+  ozet: {
+    summary:
+      "Makina ve endüstriyel projelerinizde ihtiyaç ne olursa olsun, doğru üretim çözümünü geniş ağımızla bir araya getirip işi tek elden hayata geçiriyoruz.",
+    sections: [
+      {
+        heading: "Bu kapasite ne çözer?",
+        paragraphs: [
+          "Dağınık tedarikçi ve üretim adımları proje gecikmesine yol açar. Tüm üretim ihtiyaçlarını tek muhatap altında toplar, tasarım ve proje yönetimi hizmetlerimizle birleştiririz.",
+        ],
+      },
+      {
+        heading: "Kimler için?",
+        paragraphs: [
+          "Uçtan uca mühendislik ve imalat koordinasyonu isteyen makina projeleri.",
+          "Birden fazla üretim yöntemi içeren karmaşık teslimatlar.",
+          "Teknik ekibi güçlü ama tedarik yönetimi kapasitesi sınırlı firmalar.",
+        ],
+      },
+      {
+        heading: "Nasıl çalışıyoruz?",
+        paragraphs: [
+          "Proje gereksinimlerini haritalarız; hangi adımların hangi yöntemle yapılacağını planlarız.",
+          "Çözüm ortaklarımızla üretimi koordine eder, ilerlemeyi raporlarız.",
+          "Gerekirse tasarım, analiz veya proje danışmanlığı ile süreci tamamlarız.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "Tüm kapasiteleri aynı anda kullanmak zorunda mıyım?",
+        answer:
+          "Hayır. Yalnızca ihtiyacınız olan üretim adımlarını kapsamda tanımlarız.",
+      },
+      {
+        question: "Hizmetler sayfasıyla farkı nedir?",
+        answer:
+          "Hizmetler mühendislik danışmanlığı ve proje yönetimini; kapasitemiz koordine ettiğimiz üretim yöntemlerini anlatır. İkisi birlikte çalışır.",
+      },
+    ],
+  },
 };
 
 export function getKapasiteSeoContent(

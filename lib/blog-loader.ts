@@ -142,7 +142,7 @@ function parseCtaBlock(text: string): BlogPostSection["callToAction"] | undefine
 
   let href = linkMatch[3].trim();
   if (href.includes("takt.tr/iletisim") || href === "/iletisim") {
-    href = "/?b=iletisim";
+    href = "/iletisim";
   } else if (href.startsWith("https://takt.tr")) {
     href = href.replace("https://takt.tr", "");
   }

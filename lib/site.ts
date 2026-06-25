@@ -90,7 +90,7 @@ export const navLinks = [
 ] as const;
 
 export const appointmentCta = {
-  href: "/?b=gorusme-planla",
+  href: "/gorusme-planla",
   label: "Görüşme planla",
 } as const;
 
