@@ -28,9 +28,17 @@ export function organizationSchema() {
     image: `${siteConfig.url}${siteConfig.logo.src}`,
     email: siteConfig.email,
     telephone: siteConfig.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.address.streetAddress,
+      addressLocality: siteConfig.address.addressLocality,
+      addressRegion: siteConfig.address.addressRegion,
+      postalCode: siteConfig.address.postalCode,
+      addressCountry: siteConfig.address.addressCountry,
+    },
     areaServed: {
       "@type": "Place",
-      name: "Ankara, Türkiye",
+      name: `${siteConfig.address.addressLocality}, ${siteConfig.address.addressRegion}, Türkiye`,
     },
     knowsAbout: [
       "Mühendislik danışmanlığı",

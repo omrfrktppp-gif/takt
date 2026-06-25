@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ContactDetails } from "@/components/ContactDetails";
 import { ContactForm } from "@/components/ContactForm";
 import { Eyebrow } from "@/components/Eyebrow";
-import { siteConfig } from "@/lib/site";
+import { formatSiteAddressLines, siteConfig } from "@/lib/site";
 
 const panelClass =
   "scroll-panel flex h-full w-full shrink-0 snap-start snap-always flex-col justify-center px-4 py-4 pb-20 md:px-8 md:py-5 md:pb-5 md:pr-28 lg:pr-36";
@@ -27,7 +27,13 @@ function ContactMapBlock() {
   return (
     <>
       <p className="font-mono text-eyebrow text-steel">KONUM</p>
-      <p className="mt-1 text-body text-ink">{siteConfig.addressLabel}</p>
+      <p className="mt-1 text-body text-ink">
+        {formatSiteAddressLines().map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
+      </p>
       <a
         href={siteConfig.mapsUrl}
         className="mt-1 inline-block text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
@@ -39,7 +45,7 @@ function ContactMapBlock() {
       <div className="mt-4 overflow-hidden rounded border border-line bg-white">
         <iframe
           title="Takt konum — Google Haritalar"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.0!2d32.8597!3d39.9334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d520732db1%3A0xbdc57b23c07f742!2sAnkara!5e0!3m2!1str!2str!4v1"
+          src={siteConfig.mapsEmbedUrl}
           className="h-40 w-full border-0 sm:h-44 md:h-36"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -112,7 +118,13 @@ function ContactDesktopPanel() {
         <div className="mt-6 grid items-center gap-4 border-t border-line pt-6 md:grid-cols-[1fr_1.4fr]">
           <div className="text-small">
             <p className="font-mono text-eyebrow text-steel">KONUM</p>
-            <p className="mt-1 text-ink">{siteConfig.addressLabel}</p>
+            <p className="mt-1 text-ink">
+              {formatSiteAddressLines().map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
             <a
               href={siteConfig.mapsUrl}
               className="mt-1 inline-block text-ink underline decoration-signal underline-offset-4 hover:text-signal"
@@ -134,7 +146,7 @@ function ContactDesktopPanel() {
           <div className="overflow-hidden rounded border border-line bg-white">
             <iframe
               title="Takt konum — Google Haritalar"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3060.0!2d32.8597!3d39.9334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d347d520732db1%3A0xbdc57b23c07f742!2sAnkara!5e0!3m2!1str!2str!4v1"
+              src={siteConfig.mapsEmbedUrl}
               className="h-36 w-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

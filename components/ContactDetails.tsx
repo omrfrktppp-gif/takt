@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { siteConfig } from "@/lib/site";
+import { formatSiteAddressLines, siteConfig } from "@/lib/site";
 
 type ContactDetailsProps = {
   className?: string;
@@ -62,7 +62,13 @@ export function ContactDetails({
           />
           <div>
             <p className={labelClass}>Konum</p>
-            <p className={valueClass}>{siteConfig.addressLabel}</p>
+            <p className={valueClass}>
+              {formatSiteAddressLines().map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
             <a
               href={siteConfig.mapsUrl}
               className="mt-1 inline-block text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"

@@ -1,3 +1,25 @@
+export const siteAddress = {
+  streetAddress: "İvedik OSB, 1476. Sk. İvedik İş Merkezi D:8/11",
+  postalCode: "06378",
+  addressLocality: "Yenimahalle",
+  addressRegion: "Ankara",
+  addressCountry: "TR",
+} as const;
+
+export function formatSiteAddressOneLine(): string {
+  return `${siteAddress.streetAddress}, ${siteAddress.postalCode} ${siteAddress.addressLocality}/${siteAddress.addressRegion}`;
+}
+
+export function formatSiteAddressLines(): readonly [string, string] {
+  return [
+    siteAddress.streetAddress,
+    `${siteAddress.postalCode} ${siteAddress.addressLocality} / ${siteAddress.addressRegion}`,
+  ];
+}
+
+const siteAddressOneLine = formatSiteAddressOneLine();
+const siteMapsQuery = encodeURIComponent(siteAddressOneLine);
+
 export const siteConfig = {
   name: "Takt",
   url: "https://takt.tr",
@@ -9,10 +31,10 @@ export const siteConfig = {
     "Makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan mühendislik danışmanlığı.",
   linkedin: "https://www.linkedin.com/company/takt-danismanlik/",
   instagram: "https://instagram.com/takt.eng",
-  /** Tam adres eklendiğinde güncellenecek */
-  addressLabel: "Ankara, Türkiye",
-  /** Google Haritalar — adres netleşince `q=` parametresi güncellenir */
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ankara%2C+Turkey",
+  address: siteAddress,
+  addressLabel: siteAddressOneLine,
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${siteMapsQuery}`,
+  mapsEmbedUrl: `https://www.google.com/maps?q=${siteMapsQuery}&hl=tr&z=16&output=embed`,
   logo: {
     src: "/logo.webp",
     width: 700,
@@ -263,7 +285,7 @@ export const faqItems = [
   {
     question: "Nerede hizmet veriyorsunuz?",
     answer:
-      "Ağırlıklı Ankara sanayi ekosistemine; proje bazlı olarak uzaktan da çalışıyoruz.",
+      "Merkezimiz İvedik OSB, Yenimahalle / Ankara’dadır. Ağırlıklı Ankara sanayi ekosistemine hizmet veriyoruz; proje bazlı olarak uzaktan da çalışıyoruz.",
   },
   {
     question: "Çalışmaya nasıl başlıyoruz?",
