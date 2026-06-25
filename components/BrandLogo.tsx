@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { siteConfig } from "@/lib/site";
 
-const LOGO_SRC = "/logo.webp";
+const LOGO_SRC = siteConfig.logo.src;
 
 type BrandLogoProps = {
   /** Piksel cinsinden kare boyut */
@@ -17,11 +18,11 @@ export function BrandLogo({
   return (
     <Image
       src={LOGO_SRC}
-      alt=""
+      alt={siteConfig.logo.alt}
       width={size}
       height={size}
       sizes={`${size}px`}
-      className={`shrink-0 rounded-sm ${className}`}
+      className={`shrink-0 ${className}`}
       priority={priority}
     />
   );
@@ -29,5 +30,5 @@ export function BrandLogo({
 
 export const brandLogo = {
   src: LOGO_SRC,
-  alt: "Takt",
+  alt: siteConfig.logo.alt,
 } as const;

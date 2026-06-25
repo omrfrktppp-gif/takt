@@ -13,6 +13,12 @@ export const siteConfig = {
   addressLabel: "Ankara, Türkiye",
   /** Google Haritalar — adres netleşince `q=` parametresi güncellenir */
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ankara%2C+Turkey",
+  logo: {
+    src: "/logo.webp",
+    width: 700,
+    height: 700,
+    alt: "Takt logosu",
+  },
   /** Web3Forms — sunucu tarafında `WEB3FORMS_ACCESS_KEY` env ile kullanılır */
   web3formsAccessKey: "",
 } as const;

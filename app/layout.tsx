@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: siteConfig.tagline,
     images: [
       {
-        url: "/opengraph-image",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.tagline,
-    images: ["/opengraph-image"],
+    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,
@@ -61,7 +61,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/icon",
+    icon: [
+      { url: "/icon", sizes: "32x32", type: "image/webp" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/logo.webp", sizes: "700x700", type: "image/webp" },
+    ],
+    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/webp" }],
+    shortcut: "/favicon-48.png",
   },
   ...buildSearchVerificationMetadata(),
 };

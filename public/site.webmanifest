@@ -1,10 +1,32 @@
 {
   "name": "Takt",
   "short_name": "Takt",
+  "description": "Mühendislik danışmanlığı",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F4F6F4",
+  "background_color": "#FFFFFF",
   "theme_color": "#12161C",
   "lang": "tr",
-  "icons": [{ "src": "/icon", "sizes": "32x32", "type": "image/png" }]
+  "icons": [
+    {
+      "src": "/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
 }

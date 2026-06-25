@@ -18,8 +18,14 @@ export function organizationSchema() {
     description:
       "Makina imalatı ve sanayide firmalara mühendislik danışmanlığı; tasarım, analiz, proje yönetimi ve üretim koordinasyonu.",
     url: siteConfig.url,
-    logo: `${siteConfig.url}/logo.webp`,
-    image: `${siteConfig.url}/logo.webp`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteConfig.url}${siteConfig.logo.src}`,
+      width: siteConfig.logo.width,
+      height: siteConfig.logo.height,
+      caption: siteConfig.logo.alt,
+    },
+    image: `${siteConfig.url}${siteConfig.logo.src}`,
     email: siteConfig.email,
     telephone: siteConfig.phone,
     areaServed: {
