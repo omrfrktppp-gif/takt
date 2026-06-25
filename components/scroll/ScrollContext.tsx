@@ -55,13 +55,29 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
   chapterIndexRef.current = chapterIndex;
 
   const scrollToChapter = useCallback((id: string, panel = 0) => {
-    const chapterEl = chapterRefs.current.get(id);
-    const trackEl = trackRefs.current.get(id);
-    chapterEl?.scrollIntoView({ behavior: "smooth", block: "start" });
-    if (trackEl) {
-      const width = trackEl.clientWidth || 1;
-      trackEl.scrollTo({ left: width * panel, behavior: "smooth" });
+    if (!visibleChapters.some((chapter) => chapter.id === id)) {
+      return;
     }
+
+    const run = (attemptsLeft: number) => {
+      const chapterEl = chapterRefs.current.get(id);
+      const trackEl = trackRefs.current.get(id);
+
+      if (!chapterEl) {
+        if (attemptsLeft > 0) {
+          requestAnimationFrame(() => run(attemptsLeft - 1));
+        }
+        return;
+      }
+
+      chapterEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (trackEl) {
+        const width = trackEl.clientWidth || 1;
+        trackEl.scrollTo({ left: width * panel, behavior: "smooth" });
+      }
+    };
+
+    run(40);
   }, []);
 
   const setPanelIndex = useCallback((id: string, index: number) => {
@@ -151,8 +167,14 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("b")) return;
+
     const hash = window.location.hash.slice(1);
-    if (!hash) return;
+    if (!hash || !visibleChapters.some((chapter) => chapter.id === hash)) {
+      return;
+    }
+
     const timer = window.setTimeout(() => scrollToChapter(hash), 120);
     return () => window.clearTimeout(timer);
   }, [scrollToChapter]);

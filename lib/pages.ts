@@ -21,6 +21,10 @@ export function getChapterPanel(
   return getChapter(chapterId)?.panels.find((panel) => panel.id === panelId);
 }
 
+export function isScrollChapter(chapterId: string): boolean {
+  return getVisibleChapters().some((chapter) => chapter.id === chapterId);
+}
+
 export function experienceChapterPath(chapterId: string): string {
   return `/?b=${chapterId}`;
 }

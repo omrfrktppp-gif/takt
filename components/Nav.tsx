@@ -36,7 +36,18 @@ export function Nav() {
     syncNavHeight();
     const observer = new ResizeObserver(syncNavHeight);
     observer.observe(el);
-    return () => observer.disconnect();
+
+    const onViewportChange = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", onViewportChange);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", onViewportChange);
+    };
   }, [open]);
 
   return (
