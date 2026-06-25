@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Cadence } from "@/components/Cadence";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/Button";
 import { useScroll } from "@/components/scroll/ScrollContext";
 import { appointmentCta } from "@/lib/site";
@@ -20,7 +20,7 @@ export function Nav() {
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
-  const { chapterId, panelIndex, scrollToChapter } = useScroll();
+  const { chapterId, scrollToChapter } = useScroll();
 
   useEffect(() => {
     const el = headerRef.current;
@@ -60,28 +60,19 @@ export function Nav() {
           <button
             type="button"
             onClick={() => scrollToChapter("hakkimizda")}
-            className="flex items-center gap-2 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
+            className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
             aria-label="Takt ana sayfa"
           >
-            <Cadence
-              variant="mark"
-              activeIndex={Math.min(panelIndex, 3)}
-              pulseKey={`${chapterId}-${panelIndex}`}
-              className="origin-left scale-[0.65] md:scale-75"
-            />
+            <BrandLogo size={40} className="h-9 w-9 md:h-10 md:w-10" priority />
             <span>takt</span>
           </button>
         ) : (
           <Link
             href="/"
-            className="flex items-center gap-2 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
+            className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
             aria-label="Takt ana sayfa"
           >
-            <Cadence
-              variant="mark"
-              activeIndex={0}
-              className="origin-left scale-[0.65] md:scale-75"
-            />
+            <BrandLogo size={40} className="h-9 w-9 md:h-10 md:w-10" priority />
             <span>takt</span>
           </Link>
         )}

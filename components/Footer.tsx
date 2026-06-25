@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { Cadence } from "@/components/Cadence";
 import { getChapterPanels, experiencePanelPath } from "@/lib/pages";
 import { navLinks, siteConfig } from "@/lib/site";
@@ -13,8 +14,9 @@ export function Footer() {
           <div>
             <Link
               href="/"
-              className="font-display text-lg font-semibold tracking-tight text-ink"
+              className="inline-flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-ink"
             >
+              <BrandLogo size={32} />
               takt
             </Link>
             <p className="mt-4 max-w-sm text-small text-steel">
