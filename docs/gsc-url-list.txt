@@ -1,6 +1,6 @@
 # Takt — Google Search Console toplu dizin URL listesi
 # Kaynak: lib/sitemap-routes.ts getStaticSitemapEntries()
-# Toplam: 50 URL
+# Toplam: 70 URL
 # Kullanım: Search Console → URL Denetimi veya toplu gönderim
 
 https://takt.tr/
@@ -44,6 +44,26 @@ https://takt.tr/blog/metal-eklemeli-imalat
 https://takt.tr/blog/generative-design-topoloji-optimizasyonu
 https://takt.tr/blog/surdurulebilir-uretim-hafifletme
 https://takt.tr/blog/termal-genlesme-yonetimi
+https://takt.tr/blog/hibrit-imalat-eklemeli-talasli
+https://takt.tr/blog/kobot-robotik-makine-besleme
+https://takt.tr/blog/kestirimci-bakim
+https://takt.tr/blog/makine-gorusu-kalite-kontrol
+https://takt.tr/blog/endustri-5-0
+https://takt.tr/blog/sac-metal-tasarimi-dfm
+https://takt.tr/blog/hafif-malzeme-secimi
+https://takt.tr/blog/yerlilestirme-reshoring
+https://takt.tr/blog/dijital-iplik-digital-thread
+https://takt.tr/blog/akilli-fabrika-kobi
+https://takt.tr/blog/metal-yerine-muhendislik-plastik
+https://takt.tr/blog/uretimde-agentik-yapay-zeka
+https://takt.tr/blog/kaynak-carpilmasi-kontrolu
+https://takt.tr/blog/uretimde-enerji-verimliligi
+https://takt.tr/blog/insansiz-uretim-lights-out
+https://takt.tr/blog/sonlu-elemanlar-analizi-fea
+https://takt.tr/blog/modal-titresim-analizi
+https://takt.tr/blog/kafes-lattice-hafifletme
+https://takt.tr/blog/darbogaz-kisitlar-teorisi
+https://takt.tr/blog/surec-ikizi-process-twin
 https://takt.tr/blog/etiket/proje-danismanligi
 https://takt.tr/blog/etiket/tasarim-gelistirme
 https://takt.tr/blog/etiket/analiz-hesaplama

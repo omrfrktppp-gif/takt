@@ -65,7 +65,7 @@ https://takt.tr/sss
 - Google Business: https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9
 - Hizmet bölgesi: Ankara ve Türkiye geneli — makina imalatı ve savunma sanayisi ekosistemi
 
-## 7. Blog yazıları (15)
+## 7. Blog yazıları (35)
 - Üretime Yönelik Tasarım (DFM): https://takt.tr/blog/uretime-yonelik-tasarim-dfm
 - Montaja Yönelik Tasarım (DFA): https://takt.tr/blog/montaja-yonelik-tasarim-dfa
 - Geometrik Toleranslama (GD&T): https://takt.tr/blog/geometrik-toleranslama-gdt
@@ -81,4 +81,24 @@ https://takt.tr/sss
 - Generative Design: https://takt.tr/blog/generative-design-topoloji-optimizasyonu
 - Sürdürülebilir Üretim / Hafifletme: https://takt.tr/blog/surdurulebilir-uretim-hafifletme
 - Termal Genleşme Yönetimi: https://takt.tr/blog/termal-genlesme-yonetimi
+- Hibrit İmalat (Eklemeli + Talaşlı): https://takt.tr/blog/hibrit-imalat-eklemeli-talasli
+- Kobotlar ve Robotik Makine Besleme: https://takt.tr/blog/kobot-robotik-makine-besleme
+- Kestirimci Bakım: https://takt.tr/blog/kestirimci-bakim
+- Makine Görüşü ile Kalite Kontrol: https://takt.tr/blog/makine-gorusu-kalite-kontrol
+- Endüstri 5.0: https://takt.tr/blog/endustri-5-0
+- Sac Metal Tasarımı (DFM): https://takt.tr/blog/sac-metal-tasarimi-dfm
+- Malzeme Seçimi: https://takt.tr/blog/hafif-malzeme-secimi
+- Yerlileştirme (Reshoring): https://takt.tr/blog/yerlilestirme-reshoring
+- Dijital İplik (Digital Thread): https://takt.tr/blog/dijital-iplik-digital-thread
+- KOBİ için Akıllı Fabrika: https://takt.tr/blog/akilli-fabrika-kobi
+- Metal Yerine Mühendislik Plastikleri: https://takt.tr/blog/metal-yerine-muhendislik-plastik
+- Üretimde Agentik Yapay Zeka: https://takt.tr/blog/uretimde-agentik-yapay-zeka
+- Kaynak Çarpılması Yönetimi: https://takt.tr/blog/kaynak-carpilmasi-kontrolu
+- Üretimde Enerji Verimliliği: https://takt.tr/blog/uretimde-enerji-verimliligi
+- İnsansız Üretim (Lights-Out): https://takt.tr/blog/insansiz-uretim-lights-out
+- Sonlu Elemanlar Analizi (FEA): https://takt.tr/blog/sonlu-elemanlar-analizi-fea
+- Modal ve Titreşim Analizi: https://takt.tr/blog/modal-titresim-analizi
+- Kafes (Lattice) Yapılarla Hafifletme: https://takt.tr/blog/kafes-lattice-hafifletme
+- Darboğaz Yönetimi (Kısıtlar Teorisi): https://takt.tr/blog/darbogaz-kisitlar-teorisi
+- Süreç İkizi (Process Digital Twin): https://takt.tr/blog/surec-ikizi-process-twin
 - Blog indeks: https://takt.tr/blog
