@@ -80,3 +80,19 @@ npm run dev
 ```
 
 Canlı: `https://takt.tr` — aynı matris.
+
+---
+
+## Güvenlik (2026-06 denetimi)
+
+| Bulgu | Önem | Durum |
+|-------|------|-------|
+| Web3Forms anahtarı client bundle | Yüksek | ✅ `/api/contact` proxy + `WEB3FORMS_ACCESS_KEY` env |
+| IndexNow key ile rastgele URL ping | Orta | ✅ `takt.tr` allowlist + timing-safe secret |
+| Güvenlik header'ları yok | Orta | ✅ `next.config.ts` (HSTS, XFO, nosniff) |
+| JSON-LD `</script>` breakout | Orta (gelecek) | ✅ `safeJsonLdStringify` |
+| Honeypot gönderilmiyordu | Orta | ✅ API'de kontrol |
+| `/referanslar` sitemap'te ama redirect | Düşük | ✅ sitemap'ten çıkarıldı |
+| Nav'da SSS eksik | Düşük | ✅ eklendi |
+
+**Manuel:** Web3Forms dashboard → domain kısıtı `takt.tr`. CAPTCHA isteğe bağlı.

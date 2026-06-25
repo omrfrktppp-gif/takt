@@ -13,6 +13,22 @@ function siteHost(): string {
   return new URL(siteConfig.url).host;
 }
 
+export function filterIndexNowUrls(urls: string[]): string[] {
+  const allowedHost = siteHost();
+  return urls.filter((raw) => {
+    try {
+      const parsed = new URL(raw);
+      return (
+        parsed.protocol === "https:" &&
+        parsed.host === allowedHost &&
+        parsed.pathname.startsWith("/")
+      );
+    } catch {
+      return false;
+    }
+  });
+}
+
 export function buildIndexNowPayload(urls?: string[]): IndexNowPayload {
   const urlList =
     urls ??

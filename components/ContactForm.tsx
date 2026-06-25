@@ -1,9 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { contactFieldLimits } from "@/lib/contact-validation";
 import { siteConfig } from "@/lib/site";
-
-const accessKey = siteConfig.web3formsAccessKey;
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -22,46 +21,27 @@ export function ContactForm({
     setStatus("loading");
     setFeedback("");
 
-    if (!accessKey) {
-      setStatus("error");
-      setFeedback("Form anahtarı tanımlı değil. Lütfen doğrudan e-posta yazın.");
-      return;
-    }
-
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    const name = String(data.get("name") ?? "").trim();
-    const company = String(data.get("company") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const phone = String(data.get("phone") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      company: String(data.get("company") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      phone: String(data.get("phone") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+      botcheck: String(data.get("botcheck") ?? ""),
+      kvkkAccepted: data.get("kvkk-onay") === "on",
+    };
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: accessKey,
-          subject: `İletişim talebi — ${company}`,
-          from_name: name,
-          name,
-          email,
-          phone,
-          replyto: email,
-          message: [
-            `Firma: ${company}`,
-            phone ? `Telefon: ${phone}` : null,
-            "",
-            "İhtiyaç / konu:",
-            message,
-          ]
-            .filter(Boolean)
-            .join("\n"),
-        }),
+        body: JSON.stringify(payload),
       });
 
       const result = (await response.json()) as {
@@ -92,6 +72,7 @@ export function ContactForm({
   const gap = dense ? "gap-3" : compact ? "gap-4" : "gap-5";
   const fieldPad = dense ? "px-3 py-2 text-sm" : "px-4 py-3";
   const spaceY = dense ? "space-y-3" : "space-y-5";
+  const limits = contactFieldLimits;
 
   return (
     <div>
@@ -113,6 +94,7 @@ export function ContactForm({
               name="name"
               type="text"
               autoComplete="name"
+              maxLength={limits.name}
               className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
@@ -123,6 +105,7 @@ export function ContactForm({
               name="company"
               type="text"
               autoComplete="organization"
+              maxLength={limits.company}
               className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
@@ -136,6 +119,7 @@ export function ContactForm({
               name="email"
               type="email"
               autoComplete="email"
+              maxLength={limits.email}
               className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
@@ -147,6 +131,7 @@ export function ContactForm({
               name="phone"
               type="tel"
               autoComplete="tel"
+              maxLength={limits.phone}
               className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
             />
           </label>
@@ -158,6 +143,7 @@ export function ContactForm({
             required
             name="message"
             rows={dense ? 2 : compact ? 3 : 5}
+            maxLength={limits.message}
             className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
           />
         </label>

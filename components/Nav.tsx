@@ -126,6 +126,16 @@ export function Nav() {
           >
             Blog
           </Link>
+          <Link
+            href="/sss"
+            className={`text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
+              pathname.startsWith("/sss")
+                ? "font-medium text-signal"
+                : "text-ink"
+            }`}
+          >
+            SSS
+          </Link>
           {isHome ? (
             <Button onClick={() => scrollToChapter("gorusme-planla")}>
               {appointmentCta.label}
@@ -210,6 +220,19 @@ export function Nav() {
                 onClick={() => setOpen(false)}
               >
                 Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/sss"
+                className={`block rounded-sm px-2 py-3 text-base ${
+                  pathname.startsWith("/sss")
+                    ? "bg-accent/10 font-medium text-accent"
+                    : "text-ink"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                SSS
               </Link>
             </li>
             <li className="mt-2 border-t border-line pt-3">

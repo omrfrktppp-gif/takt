@@ -24,6 +24,7 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
   ];
 
   for (const chapter of Object.values(chapterSeo)) {
+    if (chapter.path === "/referanslar") continue;
     entries.push({
       path: chapter.path,
       priority: chapter.path === "/hakkimizda" ? 0.9 : 0.8,
