@@ -41,6 +41,7 @@ export function organizationSchema() {
       latitude: siteConfig.mapsCoordinates.lat,
       longitude: siteConfig.mapsCoordinates.lng,
     },
+    hasMap: siteConfig.mapsUrl,
     areaServed: {
       "@type": "Place",
       name: `${siteConfig.address.addressLocality}, ${siteConfig.address.addressRegion}, Türkiye`,
@@ -70,7 +71,7 @@ export function organizationSchema() {
       "KOSGEB",
       "Patent ve marka tescili",
     ],
-    sameAs: [siteConfig.linkedin, siteConfig.instagram],
+    sameAs: [siteConfig.linkedin, siteConfig.instagram, siteConfig.mapsUrl],
   };
 }
 

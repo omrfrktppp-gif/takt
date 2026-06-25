@@ -19,11 +19,11 @@ export function formatSiteAddressLines(): readonly [string, string] {
 
 const siteAddressOneLine = formatSiteAddressOneLine();
 
-/** Google Haritalar — doğrulanmış işletme/konum pini */
-const siteMapsPlaceUrl = "https://maps.app.goo.gl/MQd2WNjEsfLMg1Xo7";
+/** Google Business — Takt Danışmanlık */
+const siteMapsPlaceUrl = "https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9";
 const siteMapsCoordinates = {
-  lat: 39.991268,
-  lng: 32.7429904,
+  lat: 39.9913941,
+  lng: 32.7425308,
 } as const;
 
 export const siteConfig = {
