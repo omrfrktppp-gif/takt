@@ -2,7 +2,7 @@
  * JSON-LD schema üreticileri — yeni tür: fonksiyon ekle, ilgili page.tsx'te JsonLd ile render et.
  * Detay: docs/09-seo-geo-aeo-altyapi.md
  */
-import type { BlogPost } from "@/lib/blog";
+import type { BlogPost } from "@/lib/blog-types";
 import { faqItems, processSteps, siteConfig } from "@/lib/site";
 
 const orgId = `${siteConfig.url}/#org`;

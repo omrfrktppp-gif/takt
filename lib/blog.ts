@@ -1,49 +1,13 @@
 /**
- * Blog altyapısı — yazıları ve etiketleri buraya ekleyin.
+ * Blog altyapısı — yazılar content/blog altındaki index.md dosyalarından yüklenir.
  *
- * Yeni yazı:
- * 1. `blogTags` içine etiket ekleyin (yoksa)
- * 2. `blogPosts` dizisine yazıyı ekleyin
- * 3. `draft: true` ise yayına almak için kaldırın
+ * Yeni yazı: NN-slug klasörüne index.md ekleyin, status published veya review yapın.
  */
 
-export type BlogTag = {
-  /** URL slug — küçük harf, tire ile: `makina-tasarimi` */
-  id: string;
-  /** Görünen ad */
-  label: string;
-  description?: string;
-};
+import { loadBlogPostsFromContent } from "@/lib/blog-loader";
+import type { BlogPost, BlogTag } from "@/lib/blog-types";
 
-export type BlogPostSection = {
-  heading?: string;
-  paragraphs: string[];
-  /** Madde işaretli liste (opsiyonel) */
-  list?: string[];
-  /** Bölüm sonu CTA (opsiyonel) */
-  callToAction?: {
-    lead: string;
-    label: string;
-    href: string;
-  };
-};
-
-export type BlogPost = {
-  slug: string;
-  title: string;
-  description: string;
-  /** ISO tarih: YYYY-MM-DD */
-  publishedAt: string;
-  updatedAt?: string;
-  /** `blogTags` içindeki id'ler */
-  tags: string[];
-  author?: string;
-  category?: string;
-  readingTimeMinutes?: number;
-  /** Yayınlanmadan önce true bırakın */
-  draft?: boolean;
-  sections: BlogPostSection[];
-};
+export type { BlogPost, BlogPostSection, BlogTag } from "@/lib/blog-types";
 
 /** Etiket listesi — Dok. 07 konu haritasından */
 export const blogTags: BlogTag[] = [
@@ -102,104 +66,24 @@ export const blogTags: BlogTag[] = [
     label: "DFM / DFA",
     description: "Üretime ve montaja yönelik tasarım, maliyet optimizasyonu",
   },
-];
-
-export const blogPosts: BlogPost[] = [
   {
-    slug: "uretime-yonelik-tasarim-dfm",
-    title:
-      "Üretime Yönelik Tasarım (DFM): Maliyeti Tezgâhta Değil, Tasarımda Düşürmek",
-    description:
-      "Üretime yönelik tasarım (DFM) ile 30 dakikalık talaşlı imalat işçiliğinin tek operasyonlu lazer kesime nasıl indiğini gerçek bir parça örneğiyle anlatıyoruz.",
-    publishedAt: "2026-06-26",
-    updatedAt: "2026-06-26",
-    author: "Ömer Faruk",
-    category: "DFM/DFA",
-    readingTimeMinutes: 4,
-    tags: ["dfm-dfa", "tasarim-gelistirme", "uretim-danismanligi", "kapasite-imalat"],
-    sections: [
-      {
-        paragraphs: [
-          "Bir parça çalışıyordu. Silindirik bir sıkma görevi yapıyor, sahada sorun çıkarmıyordu. Ama her bir adedi AISI 304 malzemeden torna, freze ve tesviye operasyonlarıyla üretiliyor; parça başına yaklaşık 30 dakika işçilik istiyordu. Sorun parçanın çalışması değildi. Sorun, çalışması için ödenen bedeldi.",
-          "İşte üretime yönelik tasarım (Design for Manufacturing — DFM) tam da bu noktada devreye girer. DFM, bir parçayı sadece çalışır hale getirmekle ilgilenmez; onu en hızlı, en ucuz ve en tekrarlanabilir şekilde üretilebilir kılmakla ilgilenir. Bu yazıda DFM'in ne olduğunu, gerçek bir parça üzerinden 30 dakikalık işçiliğin nasıl saniyelere indiğini ve bu yaklaşımın bir ürünün maliyetini neden daha çizim aşamasında belirlediğini ele alıyoruz.",
-        ],
-      },
-      {
-        heading: "DFM nedir?",
-        paragraphs: [
-          "DFM, tasarımı üretime uydurmaz. Tasarımı, üretimin gerçeklerine hizalar.",
-          "Bu ayrım önemlidir. Bir parça teknik olarak doğru çizilmiş, montaja oturmuş ve işlevini yerine getiriyor olabilir; yine de üretim açısından pahalı bir tasarım olabilir. Çünkü maliyetin büyük kısmı malzeme, operasyon sayısı, tezgâh saati ve operatör bağımlılığı gibi kalemlerde gizlidir ve bu kalemlerin neredeyse tamamı geometriyle birlikte, tasarım masasında kilitlenir. Üretim mühendisi sahada ancak sınırlı bir iyileştirme yapabilir; asıl kazanç, parçanın nasıl üretileceğine karar verildiği anda kazanılır ya da kaybedilir.",
-          "DFM'in temel sorusu şudur: \"Bu geometri, bu işlevi yerine getirmek için gerçekten gerekli mi, yoksa sadece alışkanlıktan mı böyle çizildi?\"",
-        ],
-      },
-      {
-        heading: "Sahadaki parça: çalışıyor ama pahalı",
-        paragraphs: [
-          "Söz konusu parça, silindirik bir sıkma fonksiyonu taşıyordu ve klasik talaşlı imalat akışıyla üretiliyordu:",
-        ],
-        list: [
-          "Malzeme: AISI 304 paslanmaz çelik",
-          "Operasyonlar: torna + freze + tesviye",
-          "İşçilik: parça başına ~30 dakika",
-        ],
-      },
-      {
-        paragraphs: [
-          "İlk akla gelen iyileştirme, üretimi hızlandırmaktı. CNC torna ve canlı takım kullanmak çevrim süresini gerçekten düşürebilirdi. Ancak bu yaklaşım maliyeti bir yerden alıp başka yere taşıyordu: makine saati, bağlama (fikstür), yatırım maliyeti ve operatör bağımlılığı devreye giriyor, süreç farklı bir biçimde yine verimsiz kalıyordu. Daha hızlı bir talaşlı imalat, hâlâ talaşlı imalattı.",
-        ],
-      },
-      {
-        heading: "Bu parça neden işleniyor?",
-        paragraphs: [
-          "DFM ve DFA (montaja yönelik tasarım) birlikte ele alındığında kritik bir nokta görünür hale gelir: parçanın talaşlı imalatla üretilmesi işlevsel bir zorunluluk değildi. Silindirik form, sıkma fonksiyonu için şart olan bir özellik değil, sadece üretim yönteminin dayattığı bir biçimdi.",
-          "Bu fark edildiğinde tasarım hedefi değişir. Amaç daha iyi işlemek değil, işlemeye ihtiyaç bırakmamaktı.",
-          "Sıkma fonksiyonu ve işlevsel ölçüler korunarak, geometri ve üretim yöntemi yeniden tanımlandı. Tasarımın çıkış noktası \"bu parçayı nasıl daha hızlı işleriz\" değil, \"bu işlevi işleme operasyonu olmadan nasıl elde ederiz\" sorusu oldu.",
-        ],
-      },
-      {
-        heading: "Çözüm: tek operasyonda üretim",
-        paragraphs: [
-          "Yeniden tanımlanan tasarımda parça, hazır AISI 304 boru profilden üretildi:",
-        ],
-        list: [
-          "Stoktan AISI 304 boru profil temin edildi.",
-          "Parça, lazer profil kesim ile tek operasyonda ve adetli olarak kesildi.",
-          "Kısa bir tesviye sonrası parça kullanıma hazır hale geldi.",
-        ],
-      },
-      {
-        paragraphs: [
-          "İşlevi sağlayan ölçüler birebir korundu; değişen tek şey, o ölçülere ulaşma yöntemiydi. Talaşla şekil verilen bir geometri yerine, doğru başlangıç malzemesi ve tek bir kesim operasyonu kullanıldı.",
-        ],
-      },
-      {
-        heading: "Sonuç",
-        list: [
-          "Üretim süresi dakikalardan saniyelere indi.",
-          "Torna ve freze operasyonları tamamen devreden çıktı.",
-          "Talaşlı imalatta kaybedilen hammadde minimize edildi.",
-          "Operatör ve bağlama kaynaklı hata payı ortadan kalktı.",
-          "Süreç, seri üretime uygun hale geldi.",
-        ],
-        paragraphs: [
-          "Kazanç tek bir operasyonun hızlanmasından değil, bir operasyon zincirinin tümden ortadan kalkmasından geldi. Maliyet, tezgâhta değil, tasarım kararında düştü.",
-        ],
-      },
-      {
-        heading: "Bu yaklaşım nerede geçerli?",
-        paragraphs: [
-          "Bu örnek tek bir parçayla ilgili görünse de, altında yatan ilke geneldir. Bir geometri çoğu zaman işlevin değil, ilk akla gelen üretim yönteminin izini taşır. \"Hep böyle üretildi\" cümlesi, çoğu zaman gizli bir maliyet kaleminin örtüsüdür. DFM, bu örtüyü kaldırıp şu soruyu sorar: işlevi koruyarak operasyon sayısını, malzeme kaybını ve insan bağımlılığını azaltabilir miyiz?",
-          "DFM teorik bir kavram değildir. Tasarımcı, imalatçı gibi düşünmeye başladığında gerçek değer ortaya çıkar.",
-        ],
-        callToAction: {
-          lead: "Üretimde tekrar eden, pahalı ya da operatöre bağımlı bir parçanız mı var?",
-          label: "Tasarım gözden geçirme için iletişime geçin",
-          href: "/?b=iletisim",
-        },
-      },
-    ],
+    id: "japon-muhendislik",
+    label: "Japon Mühendislik İlkeleri",
+    description: "Kaizen, muda, gemba, yalın üretim ve sürekli iyileştirme",
+  },
+  {
+    id: "kalite-ilkeleri",
+    label: "Kalite İlkeleri",
+    description: "FMEA, Six Sigma, Taguchi ve süreç yeteneği",
+  },
+  {
+    id: "muhendislik-trendleri",
+    label: "Mühendislik Trendleri",
+    description: "Dijital ikiz, eklemeli imalat, generative design",
   },
 ];
+
+export const blogPosts: BlogPost[] = loadBlogPostsFromContent();
 
 export function getPublishedPosts(): BlogPost[] {
   return blogPosts

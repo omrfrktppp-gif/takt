@@ -37,7 +37,23 @@
 - İletişim: https://takt.tr/iletisim
 - Görüşme planla: https://takt.tr/gorusme-planla
 - Blog: https://takt.tr/blog
+
+## Blog yazıları
 - Üretime Yönelik Tasarım (DFM): https://takt.tr/blog/uretime-yonelik-tasarim-dfm
+- Montaja Yönelik Tasarım (DFA): https://takt.tr/blog/montaja-yonelik-tasarim-dfa
+- Geometrik Toleranslama (GD&T): https://takt.tr/blog/geometrik-toleranslama-gdt
+- Poka-Yoke: https://takt.tr/blog/poka-yoke-hata-onleyici-tasarim
+- Kaizen: https://takt.tr/blog/kaizen-surekli-iyilestirme
+- Muda (7 İsraf): https://takt.tr/blog/muda-yedi-israf
+- Genchi Genbutsu (Gemba): https://takt.tr/blog/gemba-genchi-genbutsu
+- FMEA: https://takt.tr/blog/fmea-hata-turu-etki-analizi
+- Taguchi Yöntemi: https://takt.tr/blog/taguchi-robust-tasarim
+- Six Sigma: https://takt.tr/blog/six-sigma-surec-yetenegi
+- Dijital İkiz: https://takt.tr/blog/dijital-ikiz
+- Metal Eklemeli İmalat: https://takt.tr/blog/metal-eklemeli-imalat
+- Generative Design: https://takt.tr/blog/generative-design-topoloji-optimizasyonu
+- Sürdürülebilir Üretim / Hafifletme: https://takt.tr/blog/surdurulebilir-uretim-hafifletme
+- Termal Genleşme Yönetimi: https://takt.tr/blog/termal-genlesme-yonetimi
 
 ## Sık sorulan sorular (tam liste: https://takt.tr/sss)
 - Takt ne iş yapar? Makina imalatı ve sanayide firmaların teknik ekibine dışarıdan mühendislik gücü katan danışmanlık; proje, tasarım, analiz, üretim koordinasyonu ve Ar-Ge desteği.

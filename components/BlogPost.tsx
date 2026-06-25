@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { BlogPost } from "@/lib/blog";
+import type { BlogPost } from "@/lib/blog-types";
 import { resolvePostTags } from "@/lib/blog";
 
 type BlogPostBodyProps = {
