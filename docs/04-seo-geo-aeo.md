@@ -16,6 +16,7 @@
 | `/kapasitemiz` | Kapasite listesi |
 | `/kapasitemiz/[slug]` | Kapasite detay |
 | `/yaklasim` | Yaklaşım |
+| `/referanslar` | Referanslar (proje tipleri; vaka çalışmaları yakında) |
 | `/iletisim` | İletişim + form + harita |
 | `/gorusme-planla` | Randevu |
 | `/blog` | Blog indeks |
@@ -51,11 +52,13 @@
 - [x] JSON-LD: Organization, WebSite, HowTo, Breadcrumb, FAQ, Service, Article
 - [x] robots.txt + sitemap + llms.txt + llms-full.txt
 - [x] Ayrı crawlable URL'ler (redirect kaldırıldı)
-- [x] Blog altyapısı (içerik bekliyor)
+- [x] Blog altyapısı — 15 yayınlanmış yazı
+- [x] Kapasite detay AEO (`lib/seo-content.ts` — Round 2/3)
+- [x] `/gorusme-planla` ve `/referanslar` gerçek sayfalar
 - [ ] Google Search Console kaydı → `docs/10-arama-motoru-indeksleme.md`
 - [ ] Google Business Profile
 - [ ] OG görsel / logo asset'leri
-- [ ] Referanslar sayfası (içerik)
+- [ ] Referanslar — isimlendirilmiş vaka çalışmaları (içerik)
 
 ## Ölçüm (GEO/AEO)
 Ayda bir 20–30 sabit prompt ile test:

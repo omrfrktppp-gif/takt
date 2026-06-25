@@ -23,7 +23,7 @@ export type PanelSeoContent = {
 export const hizmetSeoContent: Record<string, PanelSeoContent> = {
   "proje-danismanligi": {
     summary:
-      "Proje danışmanlığı, üretim ve tesis projelerinizi baştan sona teknik bir gözle yönetmek; dağınık ya da tıkanmış işleri ölçülebilir plana ve doğru tempoya bağlamaktır.",
+      "Proje danışmanlığı, üretim ve tesis projelerinizi baştan sona teknik bir gözle yönetmek; dağınık ya da tıkanmış işleri ölçülebilir plana ve doğru tempoya bağlamaktır. Ankara sanayi ve İvedik OSB bölgesindeki üreticilerle sık çalışıyoruz.",
     sections: [
       {
         heading: "Bu hizmet ne çözer?",
@@ -121,7 +121,7 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
   },
   "tasarim-gelistirme": {
     summary:
-      "Tasarım ve geliştirme, özel makina, sistem ve ürünleri fikirden imalata hazır teknik çözüme dönüştürmek; mevcut tasarımları performans ve maliyet açısından iyileştirmektir.",
+      "Tasarım ve geliştirme, özel makina, sistem ve ürünleri fikirden imalata hazır teknik çözüme dönüştürmek; mevcut tasarımları performans ve maliyet açısından iyileştirmektir. Ankara ve çevresindeki imalatçılar için tersine mühendislik ve 3D tarama desteği sunuyoruz.",
     sections: [
       {
         heading: "Bu hizmet ne çözer?",
@@ -315,7 +315,7 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
   },
   "tubitak-kosgeb": {
     summary:
-      "TÜBİTAK, KOSGEB ve Türk Patent proje desteği; destek programlarına uygun projeleri hazırlamak, teknik doküman ve raporları oluşturmak ve süreci başvurudan raporlamaya kadar yönetmektir.",
+      "TÜBİTAK, KOSGEB ve Türk Patent proje desteği; destek programlarına uygun projeleri hazırlamak, teknik doküman ve raporları oluşturmak ve süreci başvurudan raporlamaya kadar yönetmektir. Ankara merkezli üretici ve teknoloji firmalarının TÜBİTAK ve KOSGEB başvurularında teknik içerik desteği veriyoruz.",
     sections: [
       {
         heading: "Bu hizmet ne çözer?",
@@ -372,7 +372,7 @@ export function getHizmetSeoContent(panelId: string): PanelSeoContent | undefine
 export const kapasiteSeoContent: Record<string, PanelSeoContent> = {
   intro: {
     summary:
-      "Kapasitemiz, makina ve endüstriyel projelerinizde ihtiyaç duyduğunuz üretim çözümlerini geniş çözüm ortağı ağımızla tek noktadan sunmaktır; tasarımdan imalata süreci biz koordine ederiz.",
+      "Kapasitemiz, makina ve endüstriyel projelerinizde ihtiyaç duyduğunuz üretim çözümlerini geniş çözüm ortağı ağımızla tek noktadan sunmaktır; tasarımdan imalata süreci biz koordine ederiz. Merkezimiz İvedik OSB'de; Ankara sanayi ekosistemindeki projeleri çözüm ortağı ağımızla yönetiyoruz.",
     sections: [
       {
         heading: "Bu kapasite ne çözer?",
@@ -413,7 +413,7 @@ export const kapasiteSeoContent: Record<string, PanelSeoContent> = {
   },
   "3d-tarama": {
     summary:
-      "3D tarama ve 3D baskı ile mevcut parçaları dijitale taşıyor, tersine mühendislik ve hızlı prototipleme ihtiyaçlarını karşılıyoruz.",
+      "3D tarama ve 3D baskı ile mevcut parçaları dijitale taşıyor, tersine mühendislik ve hızlı prototipleme ihtiyaçlarını karşılıyoruz. Ankara'daki imalatçıların yedek parça ve tersine mühendislik ihtiyaçları için 3D tarama kapasitesini koordine ediyoruz.",
     sections: [
       {
         heading: "Bu kapasite ne çözer?",
@@ -493,7 +493,7 @@ export const kapasiteSeoContent: Record<string, PanelSeoContent> = {
   },
   cnc: {
     summary:
-      "CNC torna ve işleme ile tekil parçadan adetli üretime kadar hassas talaşlı imalat ihtiyaçlarını çözüm ortağı ağımızla karşılıyoruz.",
+      "CNC torna ve işleme ile tekil parçadan adetli üretime kadar hassas talaşlı imalat ihtiyaçlarını çözüm ortağı ağımızla karşılıyoruz. Ankara sanayisindeki CNC fason ihtiyaçlarını uygun atölyelerle eşleştiriyoruz.",
     sections: [
       {
         heading: "Bu kapasite ne çözer?",
@@ -533,7 +533,7 @@ export const kapasiteSeoContent: Record<string, PanelSeoContent> = {
   },
   fason: {
     summary:
-      "Fason üretim ve kaynak işçiliği ile çeşitli metallerde imalat ihtiyaçlarını uçtan uca koordine ediyoruz.",
+      "Fason üretim ve kaynak işçiliği ile çeşitli metallerde imalat ihtiyaçlarını uçtan uca koordine ediyoruz. İvedik OSB ve Ankara çevresindeki fason üretim ve kaynak atölyeleriyle projeleri yönetiyoruz.",
     sections: [
       {
         heading: "Bu kapasite ne çözer?",

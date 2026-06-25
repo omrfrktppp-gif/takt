@@ -34,4 +34,4 @@ Next.js App Router · TypeScript · Tailwind CSS · lucide-react · Vercel deplo
 2. ✅ Cadence + Nav/Footer + metadata/JSON-LD
 3. ✅ Sayfalar (Dok. 2 metinleri birebir)
 4. ✅ SEO/GEO tam kontrol listesi
-5. ⏳ Deploy (Vercel + takt.tr DNS)
+5. ✅ Deploy (Vercel + takt.tr DNS — kod tarafı tamam; GSC/Bing/GBP manuel → `docs/10-arama-motoru-indeksleme.md`)

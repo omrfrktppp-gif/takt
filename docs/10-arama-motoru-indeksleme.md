@@ -10,7 +10,8 @@ Bu doküman, `takt.tr` sitesinin Google ve Bing tarafından taranması ve yenide
 | Dosya / URL | Amaç |
 |-------------|------|
 | `https://takt.tr/robots.txt` | Tüm botlara izin + sitemap adresi |
-| `https://takt.tr/sitemap.xml` | 42+ URL (bölümler, hizmet/kapasite detay, blog, SSS, KVKK) |
+| `https://takt.tr/sitemap.xml` | ~50 indekslenebilir URL (`docs/gsc-url-list.txt`; build ~62 statik sayfa) |
+| `docs/gsc-url-list.txt` | Search Console toplu dizin için tam URL listesi |
 | `https://takt.tr/llms.txt` | AI/GEO bot özeti |
 | `https://takt.tr/a8f3c2e1b9d0475682acf1e03b4d1597.txt` | **IndexNow** anahtar dosyası (Bing hızlı bildirim) |
 | `lib/indexing.ts` | Merkezi indeksleme yapılandırması |
@@ -46,6 +47,7 @@ Deploy sonrası `<head>` içinde doğrulama meta etiketleri otomatik eklenir (`a
 4. **Yeniden dizine alma (deploy sonrası):**
    - URL Denetimi → `https://takt.tr/` → **Dizine eklenmesini iste**
    - Önemli sayfalar için tekrarlayın: `/hizmetler/proje-danismanligi`, `/sss`, `/blog`
+   - Veya `docs/gsc-url-list.txt` içindeki URL'leri toplu denetimle gönderin
    - Veya sitemap gönderimi sonrası birkaç gün bekleyin (Google otomatik tarar)
 
 > Google sitemap ping URL'si (2023'te kaldırıldı) artık kullanılmıyor; Search Console yeterli.

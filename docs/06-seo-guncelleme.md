@@ -8,7 +8,7 @@
 ## Uygulama durumu
 
 - [x] **#1 Gerçek route'lar** — `/hakkimizda`, `/hizmetler`, `/hizmetler/[slug]`, `/kapasitemiz`, `/kapasitemiz/[slug]`, `/yaklasim`, `/referanslar`, `/iletisim`, `/gorusme-planla`, `/blog`, `/sss`
-- [x] **#4 İçerik derinliği** — 7 hizmet sayfası `lib/seo-content.ts` ile genişletildi (önce cevap, kimler için, nasıl, senaryo, mini FAQ)
+- [x] **#4 İçerik derinliği** — 7 hizmet + 8 kapasite sayfası `lib/seo-content.ts` ile genişletildi (önce cevap, kimler için, nasıl, senaryo, mini FAQ; kapasite Round 2/3 GEO)
 - [x] **#2 llms.txt** — `public/llms.txt` güncel; `public/llms-full.txt` eklendi
 - [x] **#3 FAQ + FAQPage** — 16 soru (Dok. 08) `lib/site.ts`; `/sss` (FAQPage JSON-LD); `/hakkimizda#sss` özet
 - [x] **HowTo JSON-LD** — 4 adım süreç (`lib/schema.ts` → `howToSchema()`, kök layout)
@@ -29,9 +29,9 @@ Ana sayfa (`/`) scroll deneyimi korunur; her bölümün crawlable SEO sayfası v
 
 Her hizmet detay sayfası: özet cevap → kimler için → nasıl çalışıyoruz → örnek senaryolar → mini FAQ.
 
-Kapasite detay sayfaları kısa panel metniyle; ileride genişletilebilir.
+Kapasite detay sayfaları `lib/seo-content.ts` ile genişletildi (Round 2/3; Ankara/İvedik OSB GEO bağlamı).
 
-Blog altyapısı hazır (`lib/blog.ts`); içerik kullanıcı tarafından doldurulacak.
+Blog: 15 yayınlanmış yazı (`content/blog/`).
 
 ---
 
@@ -58,7 +58,7 @@ Sayfalar: `/sss` (FAQPage schema), `/hakkimizda#sss` (liste, schema yok — tekr
 |-----|-------|
 | ProfessionalService + WebSite | `app/layout.tsx` |
 | BreadcrumbList | Tüm SEO sayfaları |
-| FAQPage | `/sss`, `/hakkimizda` |
+| FAQPage | `/sss` |
 | Service | `/hizmetler/[slug]`, `/kapasitemiz/[slug]` |
 | Article | `/blog/[slug]` |
 

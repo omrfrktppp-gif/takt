@@ -1,0 +1,55 @@
+# Takt — Google Search Console toplu dizin URL listesi
+# Kaynak: lib/sitemap-routes.ts getStaticSitemapEntries()
+# Toplam: 50 URL
+# Kullanım: Search Console → URL Denetimi veya toplu gönderim
+
+https://takt.tr/
+https://takt.tr/blog
+https://takt.tr/kvkk-aydinlatma-metni
+https://takt.tr/hakkimizda
+https://takt.tr/hizmetler
+https://takt.tr/kapasitemiz
+https://takt.tr/yaklasim
+https://takt.tr/iletisim
+https://takt.tr/gorusme-planla
+https://takt.tr/referanslar
+https://takt.tr/sss
+https://takt.tr/hizmetler/proje-danismanligi
+https://takt.tr/hizmetler/teknik-ekip
+https://takt.tr/hizmetler/tasarim-gelistirme
+https://takt.tr/hizmetler/analiz-hesaplama
+https://takt.tr/hizmetler/uretim-danismanligi
+https://takt.tr/hizmetler/arge-urge
+https://takt.tr/hizmetler/tubitak-kosgeb
+https://takt.tr/kapasitemiz/intro
+https://takt.tr/kapasitemiz/3d-tarama
+https://takt.tr/kapasitemiz/lazer
+https://takt.tr/kapasitemiz/cnc
+https://takt.tr/kapasitemiz/fason
+https://takt.tr/kapasitemiz/yuzey
+https://takt.tr/kapasitemiz/prototip-seri
+https://takt.tr/kapasitemiz/ozet
+https://takt.tr/blog/uretime-yonelik-tasarim-dfm
+https://takt.tr/blog/montaja-yonelik-tasarim-dfa
+https://takt.tr/blog/geometrik-toleranslama-gdt
+https://takt.tr/blog/poka-yoke-hata-onleyici-tasarim
+https://takt.tr/blog/kaizen-surekli-iyilestirme
+https://takt.tr/blog/muda-yedi-israf
+https://takt.tr/blog/gemba-genchi-genbutsu
+https://takt.tr/blog/fmea-hata-turu-etki-analizi
+https://takt.tr/blog/taguchi-robust-tasarim
+https://takt.tr/blog/six-sigma-surec-yetenegi
+https://takt.tr/blog/dijital-ikiz
+https://takt.tr/blog/metal-eklemeli-imalat
+https://takt.tr/blog/generative-design-topoloji-optimizasyonu
+https://takt.tr/blog/surdurulebilir-uretim-hafifletme
+https://takt.tr/blog/termal-genlesme-yonetimi
+https://takt.tr/blog/etiket/proje-danismanligi
+https://takt.tr/blog/etiket/tasarim-gelistirme
+https://takt.tr/blog/etiket/analiz-hesaplama
+https://takt.tr/blog/etiket/uretim-danismanligi
+https://takt.tr/blog/etiket/kapasite-imalat
+https://takt.tr/blog/etiket/dfm-dfa
+https://takt.tr/blog/etiket/japon-muhendislik
+https://takt.tr/blog/etiket/kalite-ilkeleri
+https://takt.tr/blog/etiket/muhendislik-trendleri

@@ -185,6 +185,21 @@ export function serviceSchema({
   };
 }
 
+function articleAuthor(post: BlogPost) {
+  if (!post.author) {
+    return { "@id": orgId };
+  }
+  const name =
+    post.author === "Ömer Faruk" ? "Ömer Faruk Top" : post.author;
+  return {
+    "@type": "Person" as const,
+    "@id": founderId,
+    name,
+    url: siteConfig.url,
+    worksFor: { "@id": orgId },
+  };
+}
+
 export function articleSchema(post: BlogPost) {
   return {
     "@context": "https://schema.org",
@@ -193,15 +208,12 @@ export function articleSchema(post: BlogPost) {
     description: post.description,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt ?? post.publishedAt,
-    author: {
-      "@type": "Organization",
-      name: post.author ?? siteConfig.name,
-      url: siteConfig.url,
-    },
+    author: articleAuthor(post),
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
+      "@id": orgId,
     },
     mainEntityOfPage: {
       "@type": "WebPage",

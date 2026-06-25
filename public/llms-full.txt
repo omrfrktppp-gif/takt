@@ -64,3 +64,21 @@ https://takt.tr/sss
 - Adres: İvedik OSB, 1476. Sk. İvedik İş Merkezi D:8/11, 06378 Yenimahalle/Ankara
 - Google Business: https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9
 - Hizmet bölgesi: Ankara ve Türkiye geneli — makina imalatı ve savunma sanayisi ekosistemi
+
+## 7. Blog yazıları (15)
+- Üretime Yönelik Tasarım (DFM): https://takt.tr/blog/uretime-yonelik-tasarim-dfm
+- Montaja Yönelik Tasarım (DFA): https://takt.tr/blog/montaja-yonelik-tasarim-dfa
+- Geometrik Toleranslama (GD&T): https://takt.tr/blog/geometrik-toleranslama-gdt
+- Poka-Yoke: https://takt.tr/blog/poka-yoke-hata-onleyici-tasarim
+- Kaizen: https://takt.tr/blog/kaizen-surekli-iyilestirme
+- Muda (7 İsraf): https://takt.tr/blog/muda-yedi-israf
+- Genchi Genbutsu (Gemba): https://takt.tr/blog/gemba-genchi-genbutsu
+- FMEA: https://takt.tr/blog/fmea-hata-turu-etki-analizi
+- Taguchi Yöntemi: https://takt.tr/blog/taguchi-robust-tasarim
+- Six Sigma: https://takt.tr/blog/six-sigma-surec-yetenegi
+- Dijital İkiz: https://takt.tr/blog/dijital-ikiz
+- Metal Eklemeli İmalat: https://takt.tr/blog/metal-eklemeli-imalat
+- Generative Design: https://takt.tr/blog/generative-design-topoloji-optimizasyonu
+- Sürdürülebilir Üretim / Hafifletme: https://takt.tr/blog/surdurulebilir-uretim-hafifletme
+- Termal Genleşme Yönetimi: https://takt.tr/blog/termal-genlesme-yonetimi
+- Blog indeks: https://takt.tr/blog
