@@ -80,11 +80,11 @@ export const appointmentTypes = [
 ] as const;
 
 export const navLinks = [
-  { href: "/?b=hakkimizda", id: "hakkimizda", label: "Hakkımızda" },
-  { href: "/?b=hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
-  { href: "/?b=kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
-  { href: "/?b=yaklasim", id: "yaklasim", label: "Yaklaşım" },
-  { href: "/?b=iletisim", id: "iletisim", label: "İletişim" },
+  { href: "/hakkimizda", id: "hakkimizda", label: "Hakkımızda" },
+  { href: "/hizmetler", id: "hizmetler", label: "Hizmetlerimiz" },
+  { href: "/kapasitemiz", id: "kapasitemiz", label: "Kapasitemiz" },
+  { href: "/yaklasim", id: "yaklasim", label: "Yaklaşım" },
+  { href: "/iletisim", id: "iletisim", label: "İletişim" },
   { href: "/blog", id: "blog", label: "Blog" },
   { href: "/sss", id: "sss", label: "SSS" },
 ] as const;

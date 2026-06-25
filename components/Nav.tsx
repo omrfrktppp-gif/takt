@@ -9,7 +9,7 @@ import { Button } from "@/components/Button";
 import { useScroll } from "@/components/scroll/ScrollContext";
 import { appointmentCta } from "@/lib/site";
 import { visibleChapters } from "@/lib/content";
-import { experienceChapterPath } from "@/lib/pages";
+import { chapterPath } from "@/lib/pages";
 
 const navChapters = visibleChapters.filter(
   (chapter) => chapter.id !== "gorusme-planla",
@@ -82,8 +82,10 @@ export function Nav() {
           aria-label="Ana navigasyon"
         >
           {navChapters.map((chapter) => {
-            const href = experienceChapterPath(chapter.id);
-            const active = isHome && chapterId === chapter.id;
+            const href = chapterPath(chapter.id);
+            const active = isHome
+              ? chapterId === chapter.id
+              : pathname === href || pathname.startsWith(`${href}/`);
             const className = `text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
               active ? "font-medium text-signal" : "text-ink"
             }`;
@@ -160,8 +162,10 @@ export function Nav() {
         >
           <ul className="flex flex-col gap-1">
             {navChapters.map((chapter) => {
-              const href = experienceChapterPath(chapter.id);
-              const active = isHome && chapterId === chapter.id;
+              const href = chapterPath(chapter.id);
+              const active = isHome
+                ? chapterId === chapter.id
+                : pathname === href || pathname.startsWith(`${href}/`);
 
               if (isHome) {
                 return (

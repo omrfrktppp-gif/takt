@@ -5,8 +5,7 @@ import { ServiceDetailBody } from "@/components/ServiceDetailBody";
 import { PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import {
-  experienceChapterPath,
-  experiencePanelPath,
+  chapterPath,
   getChapter,
   getChapterPanels,
   panelPath,
@@ -52,7 +51,7 @@ export function ChapterListingPage({ chapterId }: ChapterListingPageProps) {
             {panels.map((panel) => (
               <PanelCard
                 key={panel.id}
-                href={experiencePanelPath(chapterId, panel.id)}
+                href={panelPath(chapterId, panel.id)}
                 title={panel.title ?? chapter.label}
                 excerpt={panel.body}
               />
@@ -130,7 +129,7 @@ export function ChapterDetailPage({
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href={experienceChapterPath(chapterId)}
+              href={chapterPath(chapterId)}
               className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
             >
               ← {chapter.label}

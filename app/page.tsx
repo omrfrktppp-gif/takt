@@ -20,5 +20,13 @@ export const metadata: Metadata = {
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   const { b, p } = await searchParams;
-  return <HomeExperience chapter={b} panel={p} />;
+  return (
+    <>
+      <h1 className="sr-only">
+        Takt — Ankara&apos;da makina imalatı ve sanayi için mühendislik
+        danışmanlığı: tasarım, analiz, üretim ve Ar-Ge.
+      </h1>
+      <HomeExperience chapter={b} panel={p} />
+    </>
+  );
 }

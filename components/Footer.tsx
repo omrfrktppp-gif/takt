@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Cadence } from "@/components/Cadence";
-import { getChapterPanels, experiencePanelPath } from "@/lib/pages";
+import { getChapterPanels, panelPath } from "@/lib/pages";
 import { navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -50,7 +50,7 @@ export function Footer() {
               {services.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={experiencePanelPath("hizmetler", service.id)}
+                    href={panelPath("hizmetler", service.id)}
                     className="text-small text-ink hover:text-signal"
                   >
                     {service.title ?? service.id}
@@ -79,6 +79,16 @@ export function Footer() {
                   className="text-ink hover:text-signal"
                 >
                   {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.mapsUrl}
+                  className="text-ink hover:text-signal"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Google Haritalar
                 </a>
               </li>
               <li>
