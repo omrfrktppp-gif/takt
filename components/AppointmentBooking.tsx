@@ -1,4 +1,7 @@
+"use client";
+
 import { Calendar, ExternalLink, Video } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 import { appointmentTypes } from "@/lib/site";
 
 export function AppointmentBooking() {
@@ -54,6 +57,9 @@ export function AppointmentBooking() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                    onClick={() =>
+                      trackEvent("booking_click", { type: type.id })
+                    }
                   >
                     Yeni sekmede aç
                     <ExternalLink size={14} strokeWidth={1.5} aria-hidden="true" />

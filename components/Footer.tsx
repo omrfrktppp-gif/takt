@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Cadence } from "@/components/Cadence";
+import { ContactChannelLink } from "@/components/ContactChannelLink";
 import { getChapterPanels, panelPath } from "@/lib/pages";
 import { navLinks, siteConfig } from "@/lib/site";
 
@@ -85,20 +86,22 @@ export function Footer() {
             </p>
             <ul className="space-y-2 text-small">
               <li>
-                <a
+                <ContactChannelLink
                   href={`mailto:${siteConfig.email}`}
+                  channel="email"
                   className="text-ink hover:text-signal"
                 >
                   {siteConfig.email}
-                </a>
+                </ContactChannelLink>
               </li>
               <li>
-                <a
+                <ContactChannelLink
                   href={siteConfig.phoneHref}
+                  channel="phone"
                   className="text-ink hover:text-signal"
                 >
                   {siteConfig.phone}
-                </a>
+                </ContactChannelLink>
               </li>
               <li>
                 <a

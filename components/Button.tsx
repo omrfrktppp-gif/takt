@@ -8,7 +8,7 @@ type ButtonBaseProps = {
 
 type ButtonAsLink = ButtonBaseProps & {
   href: string;
-  onClick?: never;
+  onClick?: () => void;
 };
 
 type ButtonAsButton = ButtonBaseProps & {
@@ -37,17 +37,17 @@ export function Button({
 
   const classes = `${base} ${styles} ${className}`;
 
-  if (onClick) {
+  if (href) {
     return (
-      <button type="button" onClick={onClick} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {children}
-      </button>
+      </Link>
     );
   }
 
   return (
-    <Link href={href} className={classes}>
+    <button type="button" onClick={onClick} className={classes}>
       {children}
-    </Link>
+    </button>
   );
 }

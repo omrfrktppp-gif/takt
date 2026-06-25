@@ -32,6 +32,13 @@ export const siteConfig = {
   email: "info@takt.tr",
   phone: "+90 551 981 4728",
   phoneHref: "tel:+905519814728",
+  whatsapp: {
+    enabled: true,
+    number: "905519814728",
+    message:
+      "Merhaba, Takt web sitesinden yazıyorum. Projem hakkında bilgi almak istiyorum.",
+    href: "https://wa.me/905519814728?text=Merhaba%2C%20Takt%20web%20sitesinden%20yaz%C4%B1yorum.%20Projem%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
+  },
   tagline: "Teknik ekibinizin eksik halkası.",
   description:
     "Makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan mühendislik danışmanlığı.",

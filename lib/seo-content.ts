@@ -18,6 +18,11 @@ export type PanelSeoContent = {
   summary: string;
   sections: SeoContentSection[];
   faq: SeoFaqItem[];
+  meta?: {
+    typicalDuration?: string;
+    pricingNote?: string;
+    proofPoint?: string;
+  };
 };
 
 export const hizmetSeoContent: Record<string, PanelSeoContent> = {
@@ -57,6 +62,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "2–12 hafta (kapsama göre)",
+      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
+      proofPoint: "Yazılı kapsam, takvim ve raporlanabilir çıktılar.",
+    },
     faq: [
       {
         question: "Sadece proje danışmanlığı alabilir miyim?",
@@ -106,6 +116,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "1–6 ay (süreklilik modeline göre)",
+      pricingNote: "Aylık veya proje bazlı; ilk görüşme ücretsiz.",
+      proofPoint: "Takip edilebilir iş akışı ve teknik karar kayıtları.",
+    },
     faq: [
       {
         question: "Tam zamanlı ekip gibi mi çalışıyorsunuz?",
@@ -155,6 +170,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "2–10 hafta (karmaşıklığa göre)",
+      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
+      proofPoint: "İmalata hazır teknik çizim ve dokümantasyon teslimi.",
+    },
     faq: [
       {
         question: "Hangi CAD/formatlarda teslim ediyorsunuz?",
@@ -204,6 +224,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "1–4 hafta (analiz kapsamına göre)",
+      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
+      proofPoint: "Varsayımlar, sonuçlar ve öneriler içeren teknik rapor.",
+    },
     faq: [
       {
         question: "Hangi analiz türlerini kapsıyorsunuz?",
@@ -251,6 +276,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "2–8 hafta (parça sayısı ve yönteme göre)",
+      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
+      proofPoint: "Tek muhatap koordinasyon ve teslim takibi.",
+    },
     faq: [
       {
         question: "Üretimi kendiniz mi yapıyorsunuz?",
@@ -300,6 +330,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "3–12 ay (ürün olgunluğuna göre)",
+      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
+      proofPoint: "Milestone tabanlı ilerleme ve dokümantasyon.",
+    },
     faq: [
       {
         question: "TÜBİTAK veya KOSGEB destekleriyle birlikte çalışıyor musunuz?",
@@ -349,6 +384,11 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
         ],
       },
     ],
+    meta: {
+      typicalDuration: "4–12 hafta (program ve proje kapsamına göre)",
+      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
+      proofPoint: "Başvuru dosyası ve yürütme dönemi teknik rapor desteği.",
+    },
     faq: [
       {
         question: "Başvuru garantisi veriyor musunuz?",

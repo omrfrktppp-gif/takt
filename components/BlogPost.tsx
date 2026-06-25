@@ -1,12 +1,18 @@
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blog-types";
-import { resolvePostTags } from "@/lib/blog";
+import {
+  relatedServiceLabel,
+  resolvePostTags,
+  resolveRelatedServicePath,
+} from "@/lib/blog";
 
 type BlogPostBodyProps = {
   post: BlogPost;
 };
 
 export function BlogPostBody({ post }: BlogPostBodyProps) {
+  const relatedPath = resolveRelatedServicePath(post);
+
   return (
     <article className="max-w-3xl space-y-10">
       {post.sections.map((section, index) => (
@@ -42,6 +48,24 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
           </div>
         </section>
       ))}
+
+      {relatedPath ? (
+        <aside className="rounded border border-line bg-white p-6">
+          <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+            İlgili hizmet
+          </p>
+          <p className="mt-3 text-body text-steel">
+            Bu yazıdaki konularla ilgili teknik destek ve danışmanlık için
+            hizmet sayfamıza göz atın.
+          </p>
+          <Link
+            href={relatedPath}
+            className="mt-4 inline-block font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+          >
+            {relatedServiceLabel(relatedPath)} →
+          </Link>
+        </aside>
+      ) : null}
     </article>
   );
 }

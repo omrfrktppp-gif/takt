@@ -4,6 +4,7 @@
  */
 import type { BlogPost } from "@/lib/blog-types";
 import type { CaseStudy } from "@/lib/case-studies";
+import { caseStudySchema } from "@/lib/case-studies";
 import type { SeoFaqItem } from "@/lib/seo-content";
 import { getTeamMemberByName, personIdForMember, teamMembers } from "@/lib/team";
 import { faqItems, processSteps, siteConfig } from "@/lib/site";
@@ -32,10 +33,20 @@ export function personSchema(member: {
 
 export function founderPersonSchema() {
   const founder = teamMembers.find((member) => member.id === "omer-faruk-top");
+  const knowsAbout = [
+    "Mühendislik danışmanlığı",
+    "Makine tasarımı",
+    "Proje yönetimi",
+    "Tersine mühendislik",
+    "Üretim koordinasyonu",
+  ];
   if (founder) {
     return {
       ...personSchema(founder),
       "@id": founderId,
+      jobTitle: founder.role,
+      knowsAbout,
+      ...(founder.linkedin ? { sameAs: [founder.linkedin] } : {}),
     };
   }
   return {
@@ -43,6 +54,8 @@ export function founderPersonSchema() {
     "@type": "Person",
     "@id": founderId,
     name: "Ömer Faruk Top",
+    jobTitle: "Kurucu",
+    knowsAbout,
     worksFor: { "@id": orgId },
     url: siteConfig.url,
   };
@@ -189,33 +202,36 @@ export function serviceSchema({
   description: string;
   path: string;
 }) {
+  const url = `${siteConfig.url}${path}`;
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: name,
     name,
     description,
-    url: `${siteConfig.url}${path}`,
+    url,
+    termsOfService: `${siteConfig.url}/yaklasim`,
     provider: { "@id": orgId },
     areaServed: {
       "@type": "Place",
       name: "Ankara, Türkiye",
     },
+    offers: {
+      "@type": "Offer",
+      url,
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "TRY",
+        description: "Proje kapsamına göre teklif; ilk görüşme ücretsiz.",
+      },
+    },
   };
 }
 
+/** @deprecated caseStudySchema kullanın */
 export function creativeWorkSchema(study: CaseStudy) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: study.title,
-    description: study.summary,
-    about: study.sector,
-    url: study.href
-      ? `${siteConfig.url}${study.href}`
-      : `${siteConfig.url}/referanslar#${study.id}`,
-    creator: { "@id": orgId },
-  };
+  return caseStudySchema(study);
 }
 
 function articleAuthor(post: BlogPost) {

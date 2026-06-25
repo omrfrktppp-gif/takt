@@ -8,6 +8,7 @@ import {
   detailChapters,
   getChapterPanels,
 } from "@/lib/pages";
+import { getAllSectorIds } from "@/lib/sectors";
 import { chapterSeo } from "@/lib/seo";
 
 /** Statik sayfa içeriği son revizyon — deploy tarihiyle güncelleyin. */
@@ -38,6 +39,18 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       path: "/kvkk-aydinlatma-metni",
       priority: 0.3,
       changeFrequency: "yearly",
+      lastModified: STATIC_CONTENT_REVISED,
+    },
+    {
+      path: "/kaynaklar/baslangic-kontrol-listesi",
+      priority: 0.55,
+      changeFrequency: "monthly",
+      lastModified: STATIC_CONTENT_REVISED,
+    },
+    {
+      path: "/sektorler",
+      priority: 0.7,
+      changeFrequency: "monthly",
       lastModified: STATIC_CONTENT_REVISED,
     },
   ];
@@ -83,6 +96,15 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
         lastModified: STATIC_CONTENT_REVISED,
       });
     }
+  }
+
+  for (const sectorId of getAllSectorIds()) {
+    entries.push({
+      path: `/sektorler/${sectorId}`,
+      priority: 0.72,
+      changeFrequency: "monthly",
+      lastModified: STATIC_CONTENT_REVISED,
+    });
   }
 
   return entries;

@@ -1,14 +1,14 @@
 # Takt — Kalan Manuel Adımlar
-*Doküman 12 · Faz 2 sonrası operasyonel görevler*
+*Doküman 12 · Faz 3 sonrası operasyonel görevler*
 
-Teknik Faz 2 (schema, sitemap lastmod, dinamik llms.txt, ekip/vaka altyapısı) kod tarafında tamamlandı. Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
+Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka çalışması modeli, hizmet meta kutuları, blog→hizmet linkleri, sektör sayfaları, schema/sitemap güncellemeleri) kod tarafında tamamlandı. Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 
 ---
 
 ## 1. Arama motoru indeksleme
 
-- [ ] **Google Search Console** — `docs/gsc-url-list.txt` içindeki **70 URL** için toplu dizin veya URL Denetimi (`docs/10-arama-motoru-indeksleme.md`)
-- [ ] **Sitemap yeniden gönder** — `https://takt.tr/sitemap.xml` (blog 16–35 ve Faz 2 değişiklikleri sonrası)
+- [ ] **Google Search Console** — `docs/gsc-url-list.txt` güncelle (yeni `/sektorler/*`, `/kaynaklar/*` URL'leri) ve toplu dizin (`docs/10-arama-motoru-indeksleme.md`)
+- [ ] **Sitemap yeniden gönder** — `https://takt.tr/sitemap.xml` (Faz 3 sayfaları sonrası)
 - [ ] **IndexNow** — Deploy sonrası `POST https://takt.tr/api/indexnow` (Bearer `INDEXNOW_API_SECRET`)
 - [ ] **Bing Webmaster Tools** — Sitemap ve doğrulama kontrolü
 
@@ -16,59 +16,78 @@ Teknik Faz 2 (schema, sitemap lastmod, dinamik llms.txt, ekip/vaka altyapısı) 
 
 ## 2. Google Business Profile (GBP)
 
-- [x] Profil bilgileri güncel (adres, telefon, web sitesi `https://takt.tr`) — **kullanıcı tamamladı — link doğrulandı** (`https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9`)
-- [x] Hizmet kategorileri ve açıklama Türkçe, marka diliyle uyumlu — kullanıcı tamamladı
-- [x] Fotoğraf/logo (uydurma müşteri veya sahte istatistik yok) — kullanıcı tamamladı
-
-Site tarafı: `lib/site.ts` → `mapsUrl`, embed koordinatları ve schema `hasMap` / `sameAs` güncel.
+- [x] Profil bilgileri güncel (adres, telefon, web sitesi `https://takt.tr`) — link doğrulandı (`https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9`)
+- [x] Hizmet kategorileri ve açıklama Türkçe, marka diliyle uyumlu
+- [x] Fotoğraf/logo (uydurma müşteri veya sahte istatistik yok)
+- [ ] İlk **3–5 müşteri yorumu** (yerel sıralama + güven) — `SAHIBI-AKSIYONLARI.md` P0-1
 
 ---
 
-## 3. Ekip içeriği (`lib/team.ts`)
+## 3. Dönüşüm ölçümü (GTM / GA4)
+
+- [x] Kod: `lead_form_submit`, `booking_click`, `contact_click` event'leri (`lib/analytics.ts`)
+- [ ] **GTM arayüzü:** Bu event'leri GA4 conversion olarak işaretle
+- [ ] Deploy sonrası Tag Assistant ile form, randevu, tel/e-posta/WhatsApp tıklamalarını doğrula
+
+---
+
+## 4. Ekip içeriği (`lib/team.ts`)
 
 - [ ] Kurucu dışı ekip üyesi eklenecekse: `teamMembers` dizisine kayıt (uydurma sertifika veya diploma yok)
-- [ ] LinkedIn veya iletişim linkleri yalnızca doğrulanmış profiller için
+- [ ] Kişisel **LinkedIn** URL'si doğrulandığında `linkedin` alanına ekle (founder schema `sameAs`)
 - [ ] KVKK veri sorumlusu (`isDataController`) doğru kişide
 
 ---
 
-## 4. Vaka çalışmaları (`lib/case-studies.ts`)
+## 5. Vaka çalışmaları (`lib/case-studies.ts`)
 
-- [ ] Müşteri onayı alınmış proje özetleri `caseStudies` dizisine eklenir
+- [ ] Müşteri onayı alınmış **rakamlı** proje özetleri `caseStudies` dizisine eklenir (`problem`, `approach`, `results[]`)
 - [ ] Logo, isim veya rakam yalnızca izinli ve doğrulanmış içerik
 - [ ] Eklendikten sonra `/referanslar` CreativeWork schema otomatik üretir
 
 ---
 
-## 5. Blog operasyonu
+## 6. Lead magnet (içerik)
+
+- [x] Kod: `/kaynaklar/baslangic-kontrol-listesi` + e-posta formu (`source: lead_magnet`)
+- [ ] **PDF içeriği** hazırla ve `public/baslangic-kontrol-listesi.pdf` olarak yükle (veya e-posta otomasyonu)
+- [ ] Form gönderimlerinin `info@takt.tr` adresine ulaştığını doğrula
+
+---
+
+## 7. WhatsApp hattı
+
+- [x] Kod: yüzen WhatsApp butonu (`components/WhatsAppButton.tsx`, `lib/site.ts`)
+- [ ] Mesajlara kimin bakacağını operasyonel olarak netleştir
+- [ ] İşletme numarası değişirse `lib/site.ts` → `whatsapp` güncelle
+
+---
+
+## 8. Blog operasyonu
 
 - [ ] `status: review` yazılar editör incelemesi → `published` (content/blog/*/index.md)
-- [ ] Kapak görselleri: `content/blog/NN-slug/images/` (README’ye bakın)
+- [ ] Ticari-niyetli yeni yazılar (Faz 3 öneri başlıkları — `SAHIBI-AKSIYONLARI.md` P1-5)
+- [ ] Yazı sonu `callToAction` veya frontmatter `related_service` ile hizmet bağlantısı
 - [ ] Yeni yazı sonrası: build → deploy → GSC/IndexNow
 
 ---
 
-## 6. GEO aylık test
+## 9. GEO aylık test
 
-- [ ] ChatGPT, Perplexity, Gemini, Claude’da marka + hizmet sorguları (`docs/04-seo-geo-aeo.md`)
+- [ ] ChatGPT, Perplexity, Gemini, Claude'da marka + hizmet sorguları (`docs/04-seo-geo-aeo.md`)
 - [ ] `https://takt.tr/llms.txt` dinamik çıktısı güncel blog listesini içeriyor mu kontrol
 - [ ] `public/llms-full.txt` — derin GEO içeriği gerektiğinde manuel senkron
 
 ---
 
-## 7. Deploy sonrası teknik kontrol
+## 10. Deploy sonrası teknik kontrol
 
 - [ ] `npm run build` geçti
-- [ ] `https://takt.tr/sitemap.xml` — lastmod tarihleri mantıklı
-- [ ] `https://takt.tr/hakkimizda` — Person JSON-LD (ekip)
-- [ ] Hizmet detay — FAQPage JSON-LD (panel SSS)
-- [ ] Blog yazısı — Article author Person şeması
-
----
-
-## Faz 3 (sıradaki)
-
-Faz 2 + blog 16–35 deploy doğrulandıktan sonra Faz 3’e geçilir: ekip içeriği (`lib/team.ts`), onaylı vaka çalışmaları (`lib/case-studies.ts`), GSC/IndexNow toplu indeksleme ve GEO aylık test döngüsü (yukarıdaki açık maddeler).
+- [ ] `https://takt.tr/sitemap.xml` — lastmod tarihleri mantıklı; sektör + kaynak URL'leri dahil
+- [ ] `https://takt.tr/hakkimizda` — Person JSON-LD (ekip + founder `knowsAbout`)
+- [ ] Hizmet detay — süre/ücret kutusu + FAQPage JSON-LD
+- [ ] Blog yazısı — "İlgili hizmet" kartı + Article author şeması
+- [ ] PageSpeed Insights (mobil) — CWV ölçümü; scroll-UX mobilde klasik scroll'a düşüyor mu
 
 ---
 
@@ -77,3 +96,4 @@ Faz 2 + blog 16–35 deploy doğrulandıktan sonra Faz 3’e geçilir: ekip içe
 - `docs/10-arama-motoru-indeksleme.md` — GSC, Bing, IndexNow ayrıntıları
 - `docs/09-seo-geo-aeo-altyapi.md` — Veri dosyaları ve genişletme
 - `docs/04-seo-geo-aeo.md` — SEO/GEO strateji
+- `takt-oneri-yedek/faz3/SAHIBI-AKSIYONLARI.md` — Sahip manuel görevler (GBP yorumları, vaka verisi, PDF, LinkedIn)

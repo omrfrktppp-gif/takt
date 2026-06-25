@@ -30,7 +30,13 @@ export async function POST(request: Request) {
     );
   }
 
-  const { name, company, email, phone, message } = parsed.data;
+  const { name, company, email, phone, message, source } = parsed.data;
+  const subjectPrefix =
+    source === "lead_magnet"
+      ? "Lead magnet talebi"
+      : source === "contact_form"
+        ? "İletişim talebi"
+        : `Form talebi (${source})`;
 
   try {
     const response = await fetch("https://api.web3forms.com/submit", {
@@ -41,13 +47,14 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         access_key: accessKey,
-        subject: `İletişim talebi — ${company}`.slice(0, 200),
+        subject: `${subjectPrefix} — ${company}`.slice(0, 200),
         from_name: name,
         name,
         email,
         phone,
         replyto: email,
         message: [
+          `Kaynak: ${source}`,
           `Firma: ${company}`,
           phone ? `Telefon: ${phone}` : null,
           "",

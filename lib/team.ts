@@ -7,6 +7,8 @@ export type TeamMember = {
   bio: string;
   /** KVKK veri sorumlusu */
   isDataController?: boolean;
+  /** Opsiyonel LinkedIn — doğrulanmış profil URL'si */
+  linkedin?: string;
 };
 
 export const teamMembers: TeamMember[] = [

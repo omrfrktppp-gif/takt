@@ -3,11 +3,21 @@
 import { useEffect } from "react";
 import { useScroll } from "@/components/scroll/ScrollContext";
 
+function shouldBypassWheelHijack(): boolean {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
+  if (window.matchMedia("(max-width: 1023px)").matches) return true;
+  if (window.matchMedia("(pointer: coarse)").matches) return true;
+  return false;
+}
+
 export function WheelScrollController() {
   const { panelCount, scrollVerticalBy, scrollHorizontalBy } = useScroll();
 
   useEffect(() => {
     const onWheel = (event: WheelEvent) => {
+      if (shouldBypassWheelHijack()) return;
+
       const target = event.target as HTMLElement | null;
       if (target?.closest("input, textarea, select, iframe")) {
         return;

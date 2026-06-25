@@ -14,6 +14,7 @@ export type ContactPayload = {
   message: string;
   botcheck: string;
   kvkkAccepted: boolean;
+  source?: string;
 };
 
 export function parseContactPayload(body: unknown):
@@ -31,6 +32,10 @@ export function parseContactPayload(body: unknown):
   const message = trimField(record.message, LIMITS.message);
   const botcheck = typeof record.botcheck === "string" ? record.botcheck : "";
   const kvkkAccepted = record.kvkkAccepted === true;
+  const source =
+    typeof record.source === "string"
+      ? record.source.trim().slice(0, 80)
+      : "contact_form";
 
   if (botcheck) {
     return { ok: false, error: "Spam algılandı." };
@@ -54,7 +59,7 @@ export function parseContactPayload(body: unknown):
 
   return {
     ok: true,
-    data: { name, company, email, phone, message, botcheck, kvkkAccepted },
+    data: { name, company, email, phone, message, botcheck, kvkkAccepted, source },
   };
 }
 

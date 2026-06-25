@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { ContactChannelLink } from "@/components/ContactChannelLink";
 import { formatSiteAddressLines, siteConfig } from "@/lib/site";
 
 type ContactDetailsProps = {
@@ -28,12 +29,13 @@ export function ContactDetails({
           />
           <div>
             <p className={labelClass}>E-posta</p>
-            <a
+            <ContactChannelLink
               href={`mailto:${siteConfig.email}`}
+              channel="email"
               className={`${valueClass} underline decoration-signal underline-offset-4 hover:text-signal`}
             >
               {siteConfig.email}
-            </a>
+            </ContactChannelLink>
           </div>
         </li>
         <li className="flex gap-4">
@@ -45,12 +47,13 @@ export function ContactDetails({
           />
           <div>
             <p className={labelClass}>Telefon</p>
-            <a
+            <ContactChannelLink
               href={siteConfig.phoneHref}
+              channel="phone"
               className={`${valueClass} underline decoration-signal underline-offset-4 hover:text-signal`}
             >
               {siteConfig.phone}
-            </a>
+            </ContactChannelLink>
           </div>
         </li>
         <li className="flex gap-4">

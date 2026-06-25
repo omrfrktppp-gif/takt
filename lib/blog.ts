@@ -119,3 +119,46 @@ export function resolvePostTags(post: BlogPost): BlogTag[] {
     .map((id) => getTagById(id))
     .filter((tag): tag is BlogTag => Boolean(tag));
 }
+
+const TAG_SERVICE_MAP: Record<string, string> = {
+  "muhendislik-danismanligi": "/hizmetler/proje-danismanligi",
+  "proje-danismanligi": "/hizmetler/proje-danismanligi",
+  "teknik-ekip-yonetimi": "/hizmetler/teknik-ekip",
+  "tasarim-gelistirme": "/hizmetler/tasarim-gelistirme",
+  "analiz-hesaplama": "/hizmetler/analiz-hesaplama",
+  "uretim-danismanligi": "/hizmetler/uretim-danismanligi",
+  "kapasite-imalat": "/kapasitemiz/cnc",
+  "arge-urge": "/hizmetler/arge-urge",
+  "tubitak-kosgeb-patent": "/hizmetler/tubitak-kosgeb",
+  "ankara-sanayi": "/hizmetler/proje-danismanligi",
+  "dfm-dfa": "/hizmetler/tasarim-gelistirme",
+  "japon-muhendislik": "/hizmetler/proje-danismanligi",
+  "kalite-ilkeleri": "/hizmetler/analiz-hesaplama",
+  "muhendislik-trendleri": "/hizmetler/tasarim-gelistirme",
+};
+
+const SERVICE_LABELS: Record<string, string> = {
+  "/hizmetler/proje-danismanligi": "Proje danışmanlığı",
+  "/hizmetler/teknik-ekip": "Teknik ekip yönetimi",
+  "/hizmetler/tasarim-gelistirme": "Tasarım & geliştirme",
+  "/hizmetler/analiz-hesaplama": "Analiz & hesaplama",
+  "/hizmetler/uretim-danismanligi": "Üretim danışmanlığı",
+  "/hizmetler/arge-urge": "Ar-Ge & Ür-Ge",
+  "/hizmetler/tubitak-kosgeb": "TÜBİTAK / KOSGEB",
+  "/kapasitemiz/cnc": "CNC işleme",
+  "/kapasitemiz/3d-tarama": "3D tarama",
+  "/kapasitemiz/prototip-seri": "Prototip & seri üretim",
+};
+
+export function resolveRelatedServicePath(post: BlogPost): string | undefined {
+  if (post.relatedServicePath) return post.relatedServicePath;
+  for (const tagId of post.tags) {
+    const path = TAG_SERVICE_MAP[tagId];
+    if (path) return path;
+  }
+  return undefined;
+}
+
+export function relatedServiceLabel(path: string): string {
+  return SERVICE_LABELS[path] ?? "İlgili hizmet";
+}

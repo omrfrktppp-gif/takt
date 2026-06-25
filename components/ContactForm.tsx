@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { contactFieldLimits } from "@/lib/contact-validation";
 import { siteConfig } from "@/lib/site";
 
@@ -9,9 +10,11 @@ type Status = "idle" | "loading" | "success" | "error";
 export function ContactForm({
   compact = false,
   dense = false,
+  source = "contact_form",
 }: {
   compact?: boolean;
   dense?: boolean;
+  source?: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedback, setFeedback] = useState("");
@@ -32,6 +35,7 @@ export function ContactForm({
       message: String(data.get("message") ?? "").trim(),
       botcheck: String(data.get("botcheck") ?? ""),
       kvkkAccepted: data.get("kvkk-onay") === "on",
+      source,
     };
 
     try {
@@ -60,6 +64,7 @@ export function ContactForm({
 
       form.reset();
       setStatus("success");
+      trackEvent("lead_form_submit", { location: source });
       setFeedback("Aldık. En kısa sürede dönüş yapacağız.");
     } catch {
       setStatus("error");

@@ -34,4 +34,6 @@ export type BlogPost = {
   /** Yayınlanmadan önce true bırakın */
   draft?: boolean;
   sections: BlogPostSection[];
+  /** İlgili hizmet sayfası — yazı sonunda kart gösterilir */
+  relatedServicePath?: string;
 };

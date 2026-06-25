@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { Nav } from "@/components/Nav";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { JsonLd } from "@/components/JsonLd";
 import { ScrollProvider } from "@/components/scroll/ScrollContext";
 import { fontVariables } from "@/lib/fonts";
@@ -94,6 +95,7 @@ export default function RootLayout({
         <ScrollProvider>
           <Nav />
           <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
+          <WhatsAppButton />
         </ScrollProvider>
       </body>
     </html>

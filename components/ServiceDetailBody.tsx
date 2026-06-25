@@ -7,8 +7,40 @@ type ServiceDetailBodyProps = {
 };
 
 export function ServiceDetailBody({ content, intro }: ServiceDetailBodyProps) {
+  const meta = content.meta;
+
   return (
     <div className="max-w-3xl space-y-10">
+      {meta &&
+      (meta.typicalDuration || meta.pricingNote || meta.proofPoint) ? (
+        <div className="grid gap-4 rounded border border-line bg-white p-6 sm:grid-cols-3">
+          {meta.typicalDuration ? (
+            <div>
+              <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+                Tipik süre
+              </p>
+              <p className="mt-2 text-body text-ink">{meta.typicalDuration}</p>
+            </div>
+          ) : null}
+          {meta.pricingNote ? (
+            <div>
+              <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+                Ücretlendirme
+              </p>
+              <p className="mt-2 text-body text-ink">{meta.pricingNote}</p>
+            </div>
+          ) : null}
+          {meta.proofPoint ? (
+            <div>
+              <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+                Örnek sonuç
+              </p>
+              <p className="mt-2 text-body text-ink">{meta.proofPoint}</p>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       <p className="text-body-lg text-ink">{content.summary}</p>
       {intro ? <p className="text-body text-steel">{intro}</p> : null}
 

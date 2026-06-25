@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/Button";
 import { useScroll } from "@/components/scroll/ScrollContext";
+import { trackEvent } from "@/lib/analytics";
 import { appointmentCta } from "@/lib/site";
 import { visibleChapters } from "@/lib/content";
 import { chapterPath } from "@/lib/pages";
@@ -130,11 +131,21 @@ export function Nav() {
             SSS
           </Link>
           {isHome ? (
-            <Button onClick={() => scrollToChapter("gorusme-planla")}>
+            <Button
+              onClick={() => {
+                trackEvent("booking_click", { type: "nav_home" });
+                scrollToChapter("gorusme-planla");
+              }}
+            >
               {appointmentCta.label}
             </Button>
           ) : (
-            <Button href={appointmentCta.href}>{appointmentCta.label}</Button>
+            <Button
+              href={appointmentCta.href}
+              onClick={() => trackEvent("booking_click", { type: "nav" })}
+            >
+              {appointmentCta.label}
+            </Button>
           )}
         </nav>
 
@@ -235,6 +246,7 @@ export function Nav() {
                 <Button
                   className="w-full"
                   onClick={() => {
+                    trackEvent("booking_click", { type: "nav_mobile_home" });
                     scrollToChapter("gorusme-planla");
                     setOpen(false);
                   }}
@@ -242,7 +254,14 @@ export function Nav() {
                   {appointmentCta.label}
                 </Button>
               ) : (
-                <Button href={appointmentCta.href} className="w-full">
+                <Button
+                  href={appointmentCta.href}
+                  className="w-full"
+                  onClick={() => {
+                    trackEvent("booking_click", { type: "nav_mobile" });
+                    setOpen(false);
+                  }}
+                >
                   {appointmentCta.label}
                 </Button>
               )}
