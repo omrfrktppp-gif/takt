@@ -37,6 +37,7 @@
 - İletişim: https://takt.tr/iletisim
 - Görüşme planla: https://takt.tr/gorusme-planla
 - Blog: https://takt.tr/blog
+- Üretime Yönelik Tasarım (DFM): https://takt.tr/blog/uretime-yonelik-tasarim-dfm
 
 ## Sık sorulan sorular (tam liste: https://takt.tr/sss)
 - Takt ne iş yapar? Makina imalatı ve sanayide firmaların teknik ekibine dışarıdan mühendislik gücü katan danışmanlık; proje, tasarım, analiz, üretim koordinasyonu ve Ar-Ge desteği.
