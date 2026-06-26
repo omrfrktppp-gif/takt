@@ -1,20 +1,19 @@
 "use client";
 
-import { Download, FileUp, Loader2 } from "lucide-react";
+import { Download, FileUp } from "lucide-react";
 import Link from "next/link";
 import { DragEvent, FormEvent, useCallback, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
-import {
-  baslangicFormuAsset,
-} from "@/lib/baslangic-formu";
+import { baslangicFormuAsset } from "@/lib/baslangic-formu";
 import { contactFieldLimits } from "@/lib/contact-validation";
 import { siteConfig } from "@/lib/site";
 import {
-  getWeb3FormsAccessKey,
-  parseWeb3FormsResponse,
+  WEB3FORMS_SUBMIT_URL,
+  Web3FormsHiddenFields,
+  web3formsRedirect,
 } from "@/lib/web3forms";
 
-type Status = "idle" | "dragging" | "uploading" | "success" | "error";
+type Status = "idle" | "dragging" | "error";
 
 export function BaslangicIhtiyacFormu() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -48,6 +47,7 @@ export function BaslangicIhtiyacFormu() {
       const error = validatePdf(file);
       if (error) {
         setSelectedFile(null);
+        if (inputRef.current) inputRef.current.value = "";
         setStatus("error");
         setFeedback(error);
         return;
@@ -69,101 +69,24 @@ export function BaslangicIhtiyacFormu() {
     [pickFile],
   );
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!selectedFile) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    const file = inputRef.current?.files?.[0] ?? selectedFile;
+    if (!file) {
+      event.preventDefault();
       setStatus("error");
       setFeedback("Lütfen bir PDF dosyası seçin veya sürükleyip bırakın.");
       return;
     }
 
-    const accessKey = getWeb3FormsAccessKey();
-    if (!accessKey) {
+    const error = validatePdf(file);
+    if (error) {
+      event.preventDefault();
       setStatus("error");
-      setFeedback(
-        "Form yapılandırması eksik. WhatsApp veya e-posta ile gönderebilirsiniz.",
-      );
+      setFeedback(error);
       return;
     }
 
-    setStatus("uploading");
-    setFeedback("");
-
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const company = String(data.get("company") ?? "").trim();
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const storedName = `takt-baslangic-formu_${timestamp}_${selectedFile.name}`;
-
-    const web3Data = new FormData();
-    web3Data.append("access_key", accessKey);
-    web3Data.append(
-      "subject",
-      `Başlangıç ihtiyaç formu — ${name || "İsimsiz"}`.slice(0, 200),
-    );
-    web3Data.append("from_name", name || "takt.tr ziyaretçisi");
-    web3Data.append("email", email || siteConfig.email);
-    web3Data.append("replyto", email || siteConfig.email);
-    web3Data.append(
-      "message",
-      [
-        "Kaynak: baslangic_ihtiyac_formu_upload",
-        name ? `Ad Soyad: ${name}` : null,
-        company ? `Firma: ${company}` : null,
-        email ? `Ziyaretçi e-posta: ${email}` : null,
-        `Dosya: ${storedName}`,
-        "",
-        "Ekte doldurulmuş PDF bulunmaktadır.",
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    );
-    web3Data.append("attachment", selectedFile, storedName);
-
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: web3Data,
-      });
-      const result = await parseWeb3FormsResponse(response);
-
-      if (!result.success) {
-        setStatus("error");
-        setFeedback(
-          result.message ??
-            "Yükleme başarısız. WhatsApp veya e-posta ile de gönderebilirsiniz.",
-        );
-        return;
-      }
-
-      // Drive yedeklemesi (opsiyonel, hata olursa e-posta yine gitti)
-      const driveData = new FormData();
-      driveData.append("file", selectedFile, storedName);
-      try {
-        await fetch("/api/baslangic-formu/drive", {
-          method: "POST",
-          body: driveData,
-        });
-      } catch {
-        /* Drive isteğe bağlı */
-      }
-
-      setStatus("success");
-      trackEvent("lead_form_submit", { location: "baslangic_formu_upload" });
-      setFeedback(
-        "Teşekkürler. Formunuz bize ulaştı; en kısa sürede dönüş yapacağız.",
-      );
-      setSelectedFile(null);
-      form.reset();
-      if (inputRef.current) inputRef.current.value = "";
-    } catch {
-      setStatus("error");
-      setFeedback(
-        `Yükleme başarısız. ${siteConfig.email} adresine veya WhatsApp üzerinden gönderebilirsiniz.`,
-      );
-    }
+    trackEvent("lead_form_submit", { location: "baslangic_formu_upload" });
   }
 
   return (
@@ -215,7 +138,26 @@ export function BaslangicIhtiyacFormu() {
           üzerinden iletebilirsiniz. Yükleme yalnızca PDF kabul eder.
         </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <form
+          action={WEB3FORMS_SUBMIT_URL}
+          method="POST"
+          encType="multipart/form-data"
+          onSubmit={handleSubmit}
+          className="mt-6 space-y-4"
+        >
+          <Web3FormsHiddenFields
+            redirect={web3formsRedirect(
+              "/kaynaklar/baslangic-kontrol-listesi?gonderildi=1",
+            )}
+            subject="Başlangıç ihtiyaç formu — takt.tr"
+            kaynak="baslangic_ihtiyac_formu_upload"
+          />
+          <input
+            type="hidden"
+            name="message"
+            value="Ekte doldurulmuş başlangıç ihtiyaç formu PDF dosyası bulunmaktadır."
+          />
+
           <input
             type="checkbox"
             name="botcheck"
@@ -262,7 +204,8 @@ export function BaslangicIhtiyacFormu() {
             <input
               ref={inputRef}
               type="file"
-              name="file"
+              name="attachment"
+              required
               accept={baslangicFormuAsset.acceptMime}
               className="sr-only"
               onChange={(event) =>
@@ -312,26 +255,12 @@ export function BaslangicIhtiyacFormu() {
 
           <button
             type="submit"
-            disabled={status === "uploading" || !selectedFile}
-            className="inline-flex items-center justify-center gap-2 rounded bg-ink px-[22px] py-[14px] text-sm font-medium text-white transition-colors hover:bg-signal disabled:opacity-60"
+            className="inline-flex items-center justify-center gap-2 rounded bg-ink px-[22px] py-[14px] text-sm font-medium text-white transition-colors hover:bg-signal"
           >
-            {status === "uploading" ? (
-              <Loader2
-                className="animate-spin"
-                size={18}
-                strokeWidth={1.5}
-                aria-hidden="true"
-              />
-            ) : null}
-            {status === "uploading" ? "Yükleniyor…" : "PDF yükle"}
+            PDF yükle
           </button>
         </form>
 
-        {status === "success" ? (
-          <p className="mt-4 text-body text-ink" role="status">
-            {feedback}
-          </p>
-        ) : null}
         {status === "error" ? (
           <p className="mt-4 text-body text-ink" role="alert">
             {feedback}{" "}

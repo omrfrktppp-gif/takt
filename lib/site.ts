@@ -55,8 +55,6 @@ export const siteConfig = {
     height: 700,
     alt: "Takt logosu",
   },
-  /** Web3Forms — sunucu tarafında `WEB3FORMS_ACCESS_KEY` env ile kullanılır */
-  web3formsAccessKey: "",
 } as const;
 
 export const appointmentTimezone = "Europe/Istanbul";

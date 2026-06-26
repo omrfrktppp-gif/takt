@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BaslangicIhtiyacFormu } from "@/components/BaslangicIhtiyacFormu";
+import { FormSuccessBanner } from "@/components/FormSuccessBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
@@ -17,7 +18,13 @@ export const metadata: Metadata = buildMetadata({
   path,
 });
 
-export default function BaslangicKontrolListesiPage() {
+export default async function BaslangicKontrolListesiPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ gonderildi?: string }>;
+}) {
+  const { gonderildi } = await searchParams;
+
   return (
     <SeoPageLayout>
       <JsonLd
@@ -33,6 +40,9 @@ export default function BaslangicKontrolListesiPage() {
         description="Projeye başlamadan önce kapsam, kısıt ve çıktıları netleştirmenize yardımcı olan interaktif PDF form."
       >
         <Section>
+          {gonderildi ? (
+            <FormSuccessBanner message="Teşekkürler. Formunuz bize ulaştı; en kısa sürede dönüş yapacağız." />
+          ) : null}
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="max-w-xl space-y-4 text-body text-steel">
               <p>

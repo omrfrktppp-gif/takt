@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
+import { FormSuccessBanner } from "@/components/FormSuccessBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
 import { PageShell } from "@/components/PageShell";
@@ -19,7 +20,18 @@ const addressLines = formatSiteAddressLines();
 
 export const metadata: Metadata = buildMetadata(seo);
 
-export default function IletisimPage() {
+export default async function IletisimPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ gonderildi?: string; lead?: string }>;
+}) {
+  const { gonderildi, lead } = await searchParams;
+  const successMessage = gonderildi
+    ? "Aldık. En kısa sürede dönüş yapacağız."
+    : lead
+      ? "Teşekkürler. Talebiniz bize ulaştı."
+      : null;
+
   return (
     <SeoPageLayout>
       <JsonLd
@@ -100,7 +112,12 @@ export default function IletisimPage() {
             <p className="mt-2 text-body text-steel">
               Formu doldurun; en kısa sürede dönüş yapalım.
             </p>
-            <div className="mt-6">
+            {successMessage ? (
+              <div className="mt-6">
+                <FormSuccessBanner message={successMessage} />
+              </div>
+            ) : null}
+            <div className={successMessage ? "mt-2" : "mt-6"}>
               <ContactForm compact />
             </div>
           </div>
