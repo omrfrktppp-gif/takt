@@ -88,9 +88,9 @@ export const appointmentTypes = [
 
 export const leadMagnet = {
   href: "/kaynaklar/baslangic-kontrol-listesi",
-  label: "Başlangıç kontrol listesi",
+  label: "Başlangıç ihtiyaç formu",
   description:
-    "Özel makina projeleriniz için ücretsiz teknik kontrol listesi — e-posta ile talep edin.",
+    "Interaktif PDF başlangıç ihtiyaç formunu indirin, doldurun ve site üzerinden yükleyin.",
 } as const;
 
 export const navLinks = [

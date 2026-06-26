@@ -13,7 +13,7 @@ export function LeadMagnetPromo() {
         href={leadMagnet.href}
         className="mt-4 inline-block font-mono text-small text-signal underline-offset-4 hover:underline"
       >
-        Listeyi talep et →
+        Formu indir →
       </Link>
     </aside>
   );

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BaslangicIhtiyacFormu } from "@/components/BaslangicIhtiyacFormu";
 import { JsonLd } from "@/components/JsonLd";
-import { LeadMagnetForm } from "@/components/LeadMagnetForm";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
@@ -11,9 +11,9 @@ import { buildMetadata } from "@/lib/seo";
 const path = "/kaynaklar/baslangic-kontrol-listesi";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Özel Makine Projesi Başlangıç Kontrol Listesi",
+  title: "Başlangıç İhtiyaç Formu",
   description:
-    "Özel makine veya sistem projesine başlamadan önce netleştirmeniz gereken teknik ve operasyonel maddeler. Ücretsiz kontrol listesi talebi.",
+    "Özel makine ve Ar-Ge projeleri için interaktif başlangıç ihtiyaç formunu indirin, doldurun ve PDF olarak yükleyin veya WhatsApp/e-posta ile gönderin.",
   path,
 });
 
@@ -23,31 +23,28 @@ export default function BaslangicKontrolListesiPage() {
       <JsonLd
         data={breadcrumbSchema([
           { name: "Ana Sayfa", path: "/" },
-          { name: "Kaynaklar", path: "/kaynaklar/baslangic-kontrol-listesi" },
+          { name: "Kaynaklar", path },
         ])}
       />
 
       <PageShell
         eyebrow="KAYNAKLAR"
-        title="Özel Makine Projesi Başlangıç Kontrol Listesi"
-        description="Projeye başlamadan önce kapsam, kısıt ve çıktıları netleştirmenize yardımcı olacak kısa bir kontrol listesi."
+        title="Başlangıç ihtiyaç formu"
+        description="Projeye başlamadan önce kapsam, kısıt ve çıktıları netleştirmenize yardımcı olan interaktif PDF form."
       >
         <Section>
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="max-w-xl space-y-4 text-body text-steel">
               <p>
-                Özel makine veya endüstriyel sistem projelerinde erken aşamada
-                netleştirilmeyen maddeler ileride revizyon, gecikme ve maliyet
-                sürprizine dönüşür.
+                Başlangıç ihtiyaç formunu indirdikten sonra interaktif PDF
+                dosyasını ihtiyaçlarınıza göre doldurabilir ve bize bu
+                sayfadan, WhatsApp yoluyla veya e-posta üzerinden
+                gönderebilirsiniz.
               </p>
               <p>
-                Bu kontrol listesi; ihtiyaç tanımı, teknik kısıtlar, üretim
-                yöntemi, teslim formatı ve paydaş sorumlulukları gibi başlangıç
-                sorularını tek sayfada toplar.
-              </p>
-              <p>
-                E-posta adresinizi bırakın; liste hazır olduğunda paylaşılır.
-                İlk görüşme bağlayıcı değildir.
+                Form; ihtiyaç tanımı, teknik kısıtlar, üretim yöntemi, teslim
+                formatı ve paydaş sorumlulukları gibi erken aşama sorularını tek
+                yerde toplar. İlk görüşme bağlayıcı değildir.
               </p>
               <p>
                 Acil bir ihtiyaç varsa{" "}
@@ -68,12 +65,7 @@ export default function BaslangicKontrolListesiPage() {
               </p>
             </div>
 
-            <div className="rounded border border-line bg-white p-6">
-              <h2 className="font-display text-h3 text-ink">Listeyi talep edin</h2>
-              <div className="mt-6">
-                <LeadMagnetForm />
-              </div>
-            </div>
+            <BaslangicIhtiyacFormu />
           </div>
         </Section>
       </PageShell>
