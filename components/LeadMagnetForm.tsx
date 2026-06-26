@@ -4,6 +4,10 @@ import { FormEvent, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { contactFieldLimits } from "@/lib/contact-validation";
 import { siteConfig } from "@/lib/site";
+import {
+  getWeb3FormsAccessKey,
+  parseWeb3FormsResponse,
+} from "@/lib/web3forms";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -20,34 +24,55 @@ export function LeadMagnetForm() {
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    const payload = {
-      name: String(data.get("name") ?? "").trim(),
-      company: String(data.get("company") ?? "").trim() || "Belirtilmedi",
-      email: String(data.get("email") ?? "").trim(),
-      phone: "",
-      message:
-        "Özel Makine Projesi Başlangıç Kontrol Listesi indirme talebi (lead magnet).",
-      botcheck: String(data.get("botcheck") ?? ""),
-      kvkkAccepted: data.get("kvkk-onay") === "on",
-      source: "lead_magnet",
-    };
+    const botcheck = String(data.get("botcheck") ?? "");
+    if (botcheck) {
+      setStatus("error");
+      setFeedback("Gönderilemedi.");
+      return;
+    }
+
+    const accessKey = getWeb3FormsAccessKey();
+    if (!accessKey) {
+      setStatus("error");
+      setFeedback(
+        "Form yapılandırması eksik. Doğrudan e-posta yazın.",
+      );
+      return;
+    }
+
+    const name = String(data.get("name") ?? "").trim();
+    const company = String(data.get("company") ?? "").trim() || "Belirtilmedi";
+    const email = String(data.get("email") ?? "").trim();
+    const message =
+      "Özel Makine Projesi Başlangıç Kontrol Listesi indirme talebi (lead magnet).";
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Lead magnet talebi — ${company}`.slice(0, 200),
+          from_name: name,
+          name,
+          email,
+          replyto: email,
+          message: [
+            "Kaynak: lead_magnet",
+            `Firma: ${company}`,
+            "",
+            "İhtiyaç / konu:",
+            message,
+          ].join("\n"),
+        }),
       });
 
-      const result = (await response.json()) as {
-        success?: boolean;
-        message?: string;
-      };
+      const result = await parseWeb3FormsResponse(response);
 
-      if (!response.ok || !result.success) {
+      if (!result.success) {
         setStatus("error");
         setFeedback(
           result.message ??

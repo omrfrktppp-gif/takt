@@ -64,11 +64,13 @@ Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 
 ---
 
-## 6. Lead magnet (içerik)
+## 6. Başlangıç ihtiyaç formu
 
-- [x] Kod: `/kaynaklar/baslangic-kontrol-listesi` + e-posta formu (`source: lead_magnet`) + nav/footer/bağlamsal linkler
-- [ ] **PDF içeriği** hazırla ve `public/baslangic-kontrol-listesi.pdf` olarak yükle (veya e-posta otomasyonu)
-- [ ] Form gönderimlerinin `info@takt.tr` adresine ulaştığını doğrula
+- [x] Kod: PDF indirme + PDF yükleme (`/kaynaklar/baslangic-kontrol-listesi`, `docs/13-baslangic-formu-drive-kurulum.md`)
+- [x] PDF: `public/kaynaklar/takt-baslangic-ihtiyac-formu.pdf`
+- [ ] **Web3Forms** — Vercel'de `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (paneldeki aynı anahtar); domain kısıtı `takt.tr`; `/iletisim` + başlangıç formu canlı test
+- [ ] **Google Drive** — Vercel: `GOOGLE_DRIVE_FOLDER_ID=1YA9TvB55atwCQSA_vOBR_tTzo1xc5kbf` + service account (`docs/13-baslangic-formu-drive-kurulum.md`); klasörü service account ile paylaş
+- [ ] Drive linkini paylaşınca test yükleme yap
 
 ---
 

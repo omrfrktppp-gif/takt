@@ -1,13 +1,23 @@
 import { NextResponse } from "next/server";
-import { safeCompareSecret } from "@/lib/api-secrets";
 import { parseContactPayload } from "@/lib/contact-validation";
+import {
+  parseWeb3FormsResponse,
+} from "@/lib/web3forms";
 import { siteConfig } from "@/lib/site";
 
+/**
+ * @deprecated İletişim formu artık tarayıcıdan doğrudan Web3Forms'a gider.
+ * Ücretsiz planda sunucu IP'si engellenir. Bu route geriye dönük uyumluluk içindir.
+ */
 export async function POST(request: Request) {
   const accessKey = process.env.WEB3FORMS_ACCESS_KEY?.trim();
   if (!accessKey) {
     return NextResponse.json(
-      { success: false, message: "Form yapılandırması eksik." },
+      {
+        success: false,
+        message:
+          "Sunucu proxy devre dışı. NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ile istemci tarafı kullanın.",
+      },
       { status: 503 },
     );
   }
@@ -66,18 +76,15 @@ export async function POST(request: Request) {
       }),
     });
 
-    const result = (await response.json()) as {
-      success?: boolean;
-      message?: string;
-    };
+    const result = await parseWeb3FormsResponse(response);
 
-    if (!response.ok || !result.success) {
+    if (!result.success) {
       return NextResponse.json(
         {
           success: false,
           message:
             result.message ??
-            "Gönderilemedi, lütfen tekrar deneyin ya da doğrudan e-posta yazın.",
+            "Web3Forms reddetti. Ücretsiz planda sunucudan gönderim kapalı olabilir — formu güncel sürümle deneyin.",
         },
         { status: 502 },
       );

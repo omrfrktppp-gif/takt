@@ -4,6 +4,11 @@ import { FormEvent, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { contactFieldLimits } from "@/lib/contact-validation";
 import { siteConfig } from "@/lib/site";
+import {
+  getWeb3FormsAccessKey,
+  isWeb3FormsConfigured,
+  parseWeb3FormsResponse,
+} from "@/lib/web3forms";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -24,36 +29,69 @@ export function ContactForm({
     setStatus("loading");
     setFeedback("");
 
+    const accessKey = getWeb3FormsAccessKey();
+    if (!accessKey) {
+      setStatus("error");
+      setFeedback(
+        "Form yapılandırması eksik (NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY). Doğrudan e-posta yazın.",
+      );
+      return;
+    }
+
     const form = event.currentTarget;
     const data = new FormData(form);
 
-    const payload = {
-      name: String(data.get("name") ?? "").trim(),
-      company: String(data.get("company") ?? "").trim(),
-      email: String(data.get("email") ?? "").trim(),
-      phone: String(data.get("phone") ?? "").trim(),
-      message: String(data.get("message") ?? "").trim(),
-      botcheck: String(data.get("botcheck") ?? ""),
-      kvkkAccepted: data.get("kvkk-onay") === "on",
-      source,
-    };
+    const name = String(data.get("name") ?? "").trim();
+    const company = String(data.get("company") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    const botcheck = String(data.get("botcheck") ?? "");
+
+    if (botcheck) {
+      setStatus("error");
+      setFeedback("Gönderilemedi.");
+      return;
+    }
+
+    const subjectPrefix =
+      source === "lead_magnet"
+        ? "Lead magnet talebi"
+        : source === "contact_form"
+          ? "İletişim talebi"
+          : `Form talebi (${source})`;
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `${subjectPrefix} — ${company}`.slice(0, 200),
+          from_name: name,
+          name,
+          email,
+          phone,
+          replyto: email,
+          message: [
+            `Kaynak: ${source}`,
+            `Firma: ${company}`,
+            phone ? `Telefon: ${phone}` : null,
+            "",
+            "İhtiyaç / konu:",
+            message,
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        }),
       });
 
-      const result = (await response.json()) as {
-        success?: boolean;
-        message?: string;
-      };
+      const result = await parseWeb3FormsResponse(response);
 
-      if (!response.ok || !result.success) {
+      if (!result.success) {
         setStatus("error");
         setFeedback(
           result.message ??
@@ -81,6 +119,18 @@ export function ContactForm({
 
   return (
     <div>
+      {!isWeb3FormsConfigured() ? (
+        <p className="mb-4 text-small text-steel" role="status">
+          Form geçici olarak yapılandırılıyor.{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-ink underline decoration-signal underline-offset-4"
+          >
+            {siteConfig.email}
+          </a>
+        </p>
+      ) : null}
+
       <form onSubmit={handleSubmit} className={spaceY}>
         <input
           type="checkbox"
@@ -177,7 +227,7 @@ export function ContactForm({
 
         <button
           type="submit"
-          disabled={status === "loading"}
+          disabled={status === "loading" || !isWeb3FormsConfigured()}
           className={`inline-flex items-center justify-center rounded bg-ink font-medium text-white transition-colors hover:bg-signal disabled:opacity-60 ${
             dense ? "px-4 py-2 text-sm" : "px-[22px] py-[14px] text-sm"
           }`}
