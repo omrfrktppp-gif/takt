@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { HomeExperience } from "@/components/scroll/HomeExperience";
 import { buildMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 type HomePageProps = {
   searchParams: Promise<{ b?: string; p?: string }>;
@@ -9,8 +10,7 @@ type HomePageProps = {
 export const metadata: Metadata = {
   ...buildMetadata({
     title: "Mühendislik Danışmanlığı",
-    description:
-      "Makina imalatı ve sanayide teknik ekiplere dışarıdan mühendislik gücü: tasarım, analiz, proje ve üretim yönetimi.",
+    description: siteConfig.description,
     path: "/",
   }),
   title: {
@@ -23,8 +23,8 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   return (
     <>
       <h1 className="sr-only">
-        Takt — Ankara&apos;da makina imalatı ve sanayi için mühendislik
-        danışmanlığı: tasarım, analiz, üretim ve Ar-Ge.
+        Takt — Makina imalatı, Ar-Ge ve savunma sanayisinde mühendislik
+        danışmanlığı: tasarım, analiz, proje yönetimi ve üretim koordinasyonu.
       </h1>
       <HomeExperience chapter={b} panel={p} />
     </>

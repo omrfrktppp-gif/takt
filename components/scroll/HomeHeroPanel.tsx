@@ -22,8 +22,7 @@ export function HomeHeroPanel() {
             {siteConfig.tagline}
           </h2>
           <p className="mt-4 max-w-2xl text-body text-steel md:text-body-lg">
-            {siteConfig.description} Tasarım, analiz, proje yönetimi ve üretim
-            koordinasyonunda teknik ekibinize dışarıdan güç katıyoruz.
+            {siteConfig.description}
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">

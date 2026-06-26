@@ -21,8 +21,7 @@ export const metadata: Metadata = {
     default: "Takt — Mühendislik Danışmanlığı",
     template: "%s — Takt",
   },
-  description:
-    "Makina imalatı ve sanayide firmaların teknik ekibine dışarıdan güç katan mühendislik danışmanlığı.",
+  description: siteConfig.description,
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
