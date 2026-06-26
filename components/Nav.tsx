@@ -20,6 +20,7 @@ const extraNavLinks = navLinks.filter(
   (link) =>
     link.id === "sektorler" ||
     link.id === "referanslar" ||
+    link.id === "rehber" ||
     link.id === "blog" ||
     link.id === "sss",
 );

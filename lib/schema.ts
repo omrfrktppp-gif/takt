@@ -4,6 +4,8 @@
  */
 import type { BlogPost } from "@/lib/blog-types";
 import type { CaseStudy } from "@/lib/case-studies";
+import type { Pillar } from "@/lib/pillars";
+import type { PageSeo } from "@/lib/seo";
 import { caseStudySchema } from "@/lib/case-studies";
 import type { SeoFaqItem } from "@/lib/seo-content";
 import { getTeamMemberByName, personIdForMember, teamMembers } from "@/lib/team";
@@ -274,6 +276,43 @@ export function articleSchema(post: BlogPost) {
       "@type": "WebPage",
       "@id": `${siteConfig.url}/blog/${post.slug}`,
     },
+    inLanguage: "tr-TR",
+  };
+}
+
+export function collectionPageSchema(page: PageSeo) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: page.title,
+    description: page.description,
+    url: `${siteConfig.url}${page.path}`,
+    inLanguage: "tr-TR",
+    isPartOf: { "@id": websiteId },
+    publisher: { "@id": orgId },
+  };
+}
+
+export function pillarArticleSchema(pillar: Pillar) {
+  const url = `${siteConfig.url}/rehber/${pillar.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: pillar.title,
+    description: pillar.description,
+    dateModified: pillar.updatedAt,
+    author: { "@id": founderId },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      "@id": orgId,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    url,
     inLanguage: "tr-TR",
   };
 }

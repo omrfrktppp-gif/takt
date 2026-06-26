@@ -70,6 +70,13 @@ export const blogSeo: PageSeo = {
   path: "/blog",
 };
 
+export const rehberSeo: PageSeo = {
+  title: "Teknik rehberler",
+  description:
+    "Tersine mühendislik, FEA analizi, yalın üretim ve TÜBİTAK/KOSGEB destek programları üzerine kapsamlı rehberler.",
+  path: "/rehber",
+};
+
 function truncate(text: string, max = 155): string {
   const normalized = text.replace(/\s+/g, " ").trim();
   if (normalized.length <= max) return normalized;

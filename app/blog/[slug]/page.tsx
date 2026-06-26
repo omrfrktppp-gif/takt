@@ -13,6 +13,7 @@ import {
 } from "@/lib/blog";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { getTeamMemberByName } from "@/lib/team";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -42,6 +43,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const tags = resolvePostTags(post);
+  const authorMember = post.author ? getTeamMemberByName(post.author) : undefined;
   const date = new Date(post.publishedAt).toLocaleDateString("tr-TR", {
     year: "numeric",
     month: "long",
@@ -70,6 +72,21 @@ export default async function BlogPostPage({ params }: PageProps) {
             >
               {date}
             </time>
+            {post.author ? (
+              <span className="font-mono text-eyebrow text-steel">
+                Yazar:{" "}
+                {authorMember ? (
+                  <Link
+                    href="/hakkimizda#omer-faruk-top"
+                    className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                  >
+                    {authorMember.name}
+                  </Link>
+                ) : (
+                  post.author
+                )}
+              </span>
+            ) : null}
             {tags.length > 0 ? (
               <ul className="flex flex-wrap gap-2">
                 {tags.map((tag) => (

@@ -79,6 +79,14 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
+                  href="/rehber"
+                  className="text-small text-ink hover:text-signal"
+                >
+                  Teknik rehberler
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={leadMagnet.href}
                   className="text-small text-ink hover:text-signal"
                 >

@@ -10,14 +10,21 @@ Teknik Faz 3 (dönüşüm ölçümü, WhatsApp, lead magnet altyapısı, vaka ç
 - Bağlamsal lead magnet promosu (hizmet detay + iletişim)
 - WhatsApp varsayılan mesajı güncellendi: *"Hizmetleriniz hakkında bilgi almak istiyorum."*
 
+**Faz 6 (teknik P0) tamamlandı:**
+- `public/llms.txt` silindi; dinamik `app/llms.txt/route.ts` sektörler, rehberler, kaynaklar ve 35 blogu içerir
+- 4 pillar rehber sayfası: `/rehber` hub + `/rehber/[slug]` (topic cluster)
+- Blog yazılarında pillar geri linki + görünür yazar künyesi (`/hakkimizda#omer-faruk-top`)
+- `WheelScrollController` mobil + `prefers-reduced-motion` bypass doğrulandı (Faz 3)
+- Sitemap + GSC URL listesi rehber rotalarıyla güncellendi
+
 Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 
 ---
 
 ## 1. Arama motoru indeksleme
 
-- [x] **GSC URL listesi** — `docs/gsc-url-list.txt` Faz 3 rotaları eklendi (**76 URL**)
-- [ ] **Google Search Console** — listedeki URL'ler için toplu dizin (`docs/10-arama-motoru-indeksleme.md`)
+- [x] **GSC URL listesi** — Faz 6 rehber rotaları eklendi (gen-gsc-urls.mjs)
+- [ ] **Google Search Console** — listedeki URL'ler için toplu dizin; Faz 6 `/rehber/*` dahil (`docs/10-arama-motoru-indeksleme.md`)
 - [ ] **Sitemap yeniden gönder** — `https://takt.tr/sitemap.xml` (Faz 3 sayfaları sonrası)
 - [ ] **IndexNow** — Deploy sonrası `POST https://takt.tr/api/indexnow` (Bearer `INDEXNOW_API_SECRET`)
 - [ ] **Bing Webmaster Tools** — Sitemap ve doğrulama kontrolü
@@ -86,7 +93,7 @@ Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 ## 9. GEO aylık test
 
 - [ ] ChatGPT, Perplexity, Gemini, Claude'da marka + hizmet sorguları (`docs/04-seo-geo-aeo.md`)
-- [ ] `https://takt.tr/llms.txt` dinamik çıktısı güncel blog listesini içeriyor mu kontrol
+- [x] `https://takt.tr/llms.txt` dinamik route — bayat statik dosya kaldırıldı; blog + sektör + rehber senkron
 - [ ] `public/llms-full.txt` — derin GEO içeriği gerektiğinde manuel senkron
 
 ---
@@ -100,6 +107,33 @@ Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 - [ ] Hizmet detay — süre/ücret kutusu + FAQPage JSON-LD
 - [ ] Blog yazısı — "İlgili hizmet" kartı + Article author şeması
 - [ ] PageSpeed Insights (mobil) — CWV ölçümü; scroll-UX mobilde klasik scroll'a düşüyor mu
+
+---
+
+## 11. Faz 6 — manuel / sahip görevleri
+
+- [ ] **SoM (Share of Model) aylık test** — ChatGPT, Perplexity, Gemini, Google AI Mode'da marka + hizmet sorguları (`docs/04-seo-geo-aeo.md`)
+- [ ] **Türkçe sanayi/OSB dizin kayıtları** — Ostim, sektör rehberleri, citation çoğaltma
+- [ ] **Özgün mini-raporu** + basın bülteni (gerçek veri toplandığında; uydurma istatistik yok)
+- [ ] **LinkedIn / kısa video** düzenli yayın ritmi (kurucu + şirket)
+- [ ] **GSC re-index** — yeni `/rehber` ve `/rehber/*` URL'leri (`docs/gsc-url-list.txt` güncellendi)
+- [ ] **GTM** — conversion event'leri (`docs/12-kalan-adimlar.md` §3)
+- [ ] **Ticari-niyetli blog yazıları** — özellikle TÜBİTAK/KOSGEB kümesi (pillar hazır, cluster genişletilecek)
+- [ ] **Ana sayfalara özgün istatistik / uzman alıntısı** — yalnızca doğrulanmış veri veya nitel ifadeler
+
+### Etiket hijyeni (Faz 6 inceleme)
+
+Her etiket sayfasında en az 3 yazı hedeflenir. İnce etiketler (<3 yazı):
+
+| Etiket | Yazı sayısı | Not |
+|---|---|---|
+| `muhendislik-danismanligi` | 0 | Fallback etiket; pratikte kullanılmıyor |
+| `teknik-ekip-yonetimi` | 0 | İçerik eklenene kadar etiket sayfası 404 |
+| `arge-urge` | 0 | Ar-Ge odaklı yazılar eklenecek |
+| `tubitak-kosgeb-patent` | 0 | Ticari blog kümesi planlandı |
+| `ankara-sanayi` | 0 | Yerel-niyetli yazılar eklenecek |
+
+3 yazılı etiketler: `proje-danismanligi`, `uretim-danismanligi`, `kalite-ilkeleri` — genişletme önerilir.
 
 ---
 

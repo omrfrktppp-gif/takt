@@ -1,12 +1,15 @@
 import { getPublishedPosts } from "@/lib/blog";
 import { getChapterPanels } from "@/lib/pages";
+import { pillars } from "@/lib/pillars";
+import { sectors } from "@/lib/sectors";
 import {
   faqItems,
   formatSiteAddressOneLine,
+  leadMagnet,
   processSteps,
   siteConfig,
 } from "@/lib/site";
-import { chapterSeo } from "@/lib/seo";
+import { chapterSeo, rehberSeo } from "@/lib/seo";
 
 function buildLlmsTxt(): string {
   const base = siteConfig.url;
@@ -47,7 +50,22 @@ function buildLlmsTxt(): string {
     ...Object.values(chapterSeo).map(
       (page) => `- ${page.title}: ${base}${page.path}`,
     ),
+    `- ${rehberSeo.title}: ${base}${rehberSeo.path}`,
     `- Blog: ${base}/blog`,
+    `- Sektörler: ${base}/sektorler`,
+    `- Kaynaklar — ${leadMagnet.label}: ${base}${leadMagnet.href}`,
+    "",
+    "## Teknik rehberler (pillar)",
+    ...pillars.map(
+      (pillar) =>
+        `- ${pillar.title}: ${base}/rehber/${pillar.slug}`,
+    ),
+    "",
+    "## Sektörler",
+    ...sectors.map(
+      (sector) =>
+        `- ${sector.title}: ${base}/sektorler/${sector.id}`,
+    ),
     "",
     "## Blog yazıları",
     ...blogPosts.map(

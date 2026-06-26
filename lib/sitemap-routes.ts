@@ -8,6 +8,7 @@ import {
   detailChapters,
   getChapterPanels,
 } from "@/lib/pages";
+import { getAllPillarSlugs } from "@/lib/pillars";
 import { getAllSectorIds } from "@/lib/sectors";
 import { chapterSeo } from "@/lib/seo";
 
@@ -50,6 +51,12 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
     {
       path: "/sektorler",
       priority: 0.7,
+      changeFrequency: "monthly",
+      lastModified: STATIC_CONTENT_REVISED,
+    },
+    {
+      path: "/rehber",
+      priority: 0.75,
       changeFrequency: "monthly",
       lastModified: STATIC_CONTENT_REVISED,
     },
@@ -102,6 +109,15 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
     entries.push({
       path: `/sektorler/${sectorId}`,
       priority: 0.72,
+      changeFrequency: "monthly",
+      lastModified: STATIC_CONTENT_REVISED,
+    });
+  }
+
+  for (const pillarSlug of getAllPillarSlugs()) {
+    entries.push({
+      path: `/rehber/${pillarSlug}`,
+      priority: 0.74,
       changeFrequency: "monthly",
       lastModified: STATIC_CONTENT_REVISED,
     });

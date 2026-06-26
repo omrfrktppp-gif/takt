@@ -5,6 +5,7 @@ import {
   resolvePostTags,
   resolveRelatedServicePath,
 } from "@/lib/blog";
+import { getPillarForBlogSlug } from "@/lib/pillars";
 
 type BlogPostBodyProps = {
   post: BlogPost;
@@ -12,6 +13,7 @@ type BlogPostBodyProps = {
 
 export function BlogPostBody({ post }: BlogPostBodyProps) {
   const relatedPath = resolveRelatedServicePath(post);
+  const pillar = getPillarForBlogSlug(post.slug);
 
   return (
     <article className="max-w-3xl space-y-10">
@@ -48,6 +50,23 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
           </div>
         </section>
       ))}
+
+      {pillar ? (
+        <aside className="rounded border border-line bg-accent/5 p-6">
+          <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+            Rehber kümesi
+          </p>
+          <p className="mt-3 text-body text-steel">
+            Bu rehberin parçası:{" "}
+            <Link
+              href={`/rehber/${pillar.slug}`}
+              className="font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+            >
+              {pillar.title}
+            </Link>
+          </p>
+        </aside>
+      ) : null}
 
       {relatedPath ? (
         <aside className="rounded border border-line bg-white p-6">
