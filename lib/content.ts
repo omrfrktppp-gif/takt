@@ -155,7 +155,7 @@ export const chapters: Chapter[] = [
     panels: [
       {
         id: "placeholder",
-        body: "Müşteri gizliliğine saygı duyuyoruz; uydurma logo, istatistik veya isimlendirilmiş müşteri listesi paylaşmıyoruz. Sık çalıştığımız proje tipleri — makina imalatı, Ar-Ge, tersine mühendislik ve proje danışmanlığı — /referanslar sayfasında özetlenmektedir; isimlendirilmiş vaka çalışmaları yakında.",
+        body: "Sık çalıştığımız proje tipleri — makina imalatı, Ar-Ge, tersine mühendislik ve proje danışmanlığı — /referanslar sayfasında özetlenmektedir; isimlendirilmiş vaka çalışmaları yakında.",
       },
     ],
   },

@@ -1,6 +1,7 @@
 # Takt Danışmanlık — Kapsamlı AI ve LLM İçerik İndeksi
 
-> Tam içerik dosyası. Kısa indeks: https://takt.tr/llms.txt
+> Tam içerik dosyası. Kısa indeks dinamik olarak üretilir: https://takt.tr/llms.txt
+> (Statik public/llms.txt kaldırıldı — route.ts tüm blog, sektör ve rehber URL'lerini içerir.)
 
 ## 1. Kurumsal Kimlik ve Konumlandırma
 Takt, makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan güç katan, Ankara merkezli bir mühendislik danışmanlığıdır. Konumu tek cümleyle: "Teknik ekibinizin eksik halkası." Tasarımdan analize, proje yönetiminden imalat koordinasyonuna ve Ar-Ge/proje desteklerine kadar, firmaların teknik kapasitesindeki boşlukları tamamlar. Adı bir mühendislik terimidir: "takt time", üretimde talebi karşılamak için bir ürünün tamamlanması gereken ritmi/temposu tanımlar.
@@ -64,6 +65,25 @@ https://takt.tr/sss
 - Adres: İvedik OSB, 1476. Sk. İvedik İş Merkezi D:8/11, 06378 Yenimahalle/Ankara
 - Google Business: https://maps.app.goo.gl/YUMHiBNjMPWLpg5f9
 - Hizmet bölgesi: Ankara ve Türkiye geneli — makina imalatı ve savunma sanayisi ekosistemi
+
+## 6b. Sektörler
+- Sektörler hub: https://takt.tr/sektorler
+- Savunma sanayi: https://takt.tr/sektorler/savunma-sanayi
+- Ar-Ge ve ürün geliştirme: https://takt.tr/sektorler/arge-urun-gelistirme
+- Prototipten seri üretime: https://takt.tr/sektorler/prototipten-seri-uretime
+- Özel makina imalatı: https://takt.tr/sektorler/ozel-makina-imalati
+- Otomotiv yan sanayi: https://takt.tr/sektorler/otomotiv-yan-sanayi
+- Tıbbi cihaz: https://takt.tr/sektorler/tibbi-cihaz
+
+## 6c. Kaynaklar
+- Başlangıç kontrol listesi: https://takt.tr/kaynaklar/baslangic-kontrol-listesi
+
+## 6d. Teknik rehberler (pillar)
+- Rehberler hub: https://takt.tr/rehber
+- Tersine mühendislik rehberi: https://takt.tr/rehber/tersine-muhendislik
+- FEA / mühendislik analizi rehberi: https://takt.tr/rehber/muhendislik-analizi
+- Yalın üretim & DFM rehberi: https://takt.tr/rehber/yalin-uretim-dfm
+- TÜBİTAK / KOSGEB proje rehberi: https://takt.tr/rehber/tubitak-kosgeb-rehberi
 
 ## 7. Blog yazıları (35)
 - Üretime Yönelik Tasarım (DFM): https://takt.tr/blog/uretime-yonelik-tasarim-dfm

@@ -25,9 +25,19 @@ const faz3Paths = [
   "/kaynaklar/baslangic-kontrol-listesi",
   "/sektorler",
   "/sektorler/savunma-sanayi",
-  "/sektorler/gida-makineleri",
+  "/sektorler/arge-urun-gelistirme",
+  "/sektorler/prototipten-seri-uretime",
+  "/sektorler/ozel-makina-imalati",
   "/sektorler/otomotiv-yan-sanayi",
   "/sektorler/tibbi-cihaz",
+];
+
+const rehberPaths = [
+  "/rehber",
+  "/rehber/tersine-muhendislik",
+  "/rehber/muhendislik-analizi",
+  "/rehber/yalin-uretim-dfm",
+  "/rehber/tubitak-kosgeb-rehberi",
 ];
 
 const hizmetSlugs = [
@@ -187,6 +197,7 @@ const paths = [
   "/kvkk-aydinlatma-metni",
   ...chapterSeoPaths,
   ...faz3Paths,
+  ...rehberPaths,
   ...hizmetSlugs.map((s) => `/hizmetler/${s}`),
   ...kapasiteSlugs.map((s) => `/kapasitemiz/${s}`),
   ...publishedPosts.map((p) => `/blog/${p.slug}`),

@@ -30,21 +30,57 @@ export const sectors: Sector[] = [
     ],
   },
   {
-    id: "gida-makineleri",
-    title: "Gıda makineleri",
+    id: "arge-urun-gelistirme",
+    title: "Ar-Ge ve ürün geliştirme",
     description:
-      "Gıda işleme ve paketleme makineleri için tasarım, hijyen gereksinimleri ve üretim koordinasyonu.",
+      "Fikirden prototipe, prototipten ürüne giden Ar-Ge süreçlerinde teknik yol haritası, dokümantasyon ve olgunluk yönetimi.",
     summary:
-      "Gıda makinelerinde temizlenebilirlik, malzeme uyumu ve üretilebilirlik birlikte ele alınmalıdır. Mevcut hatların modernizasyonu ve yeni makina geliştirmede teknik destek veriyoruz.",
+      "Ar-Ge ve ürün geliştirme projelerinde kavram doğrulamadan seri üretime hazır tasarıma kadar teknik disiplin gereklidir. Takt, ekibinize dışarıdan mühendislik gücü ekleyerek kararları dokümante eder ve süreci tek muhatap olarak yönetir.",
     paragraphs: [
-      "Konseptten imalata hazır tasarıma; paslanmaz çelik ve gıda uyumlu malzeme seçiminde danışmanlık.",
-      "Mevcut ekipmanın ölçülmesi, modelleme ve yedek parça üretilebilirliği için tersine mühendislik.",
-      "Prototipten seri üretime geçişte tedarikçi seçimi ve imalat takibi.",
+      "Konsept tasarım, teknik gereksinim analizi ve fizibilite değerlendirmesiyle projenin ilk aşamasını yapılandırırız.",
+      "Prototip döngüleri, test planları ve revizyon takibiyle ürün olgunluğunu adım adım ilerletiriz.",
+      "TÜBİTAK ve KOSGEB uygun projelerde teknik başvuru içeriği ve mühendislik dokümantasyonu hazırlığında destek veririz.",
+    ],
+    relatedPaths: [
+      "/hizmetler/arge-urge",
+      "/hizmetler/tasarim-gelistirme",
+      "/hizmetler/tubitak-kosgeb",
+    ],
+  },
+  {
+    id: "prototipten-seri-uretime",
+    title: "Prototipten seri üretime",
+    description:
+      "Sanatsal veya fonksiyonel prototipten seri üretime geçişte tasarım olgunlaştırma, DFM ve imalat koordinasyonu.",
+    summary:
+      "Prototip aşamasındaki bir ürünün seri üretime taşınması; tolerans, malzeme, montaj ve tedarik zinciri kararlarını birlikte gerektirir. Bu geçişte tasarımı üretilebilir hale getirir ve imalat adımlarını koordine ederiz.",
+    paragraphs: [
+      "Prototip geometrisini imalat dostu tasarıma dönüştürür; malzeme ve proses seçimini üretim gerçekleriyle hizalarız.",
+      "Pilot üretim, kalite kontrol noktaları ve tedarikçi değerlendirmesiyle seri üretime hazırlık yaparız.",
+      "Fason üretim, CNC işleme ve yüzey işlemi dahil çözüm ortağı ağımızla imalat takibini tek elden yürütürüz.",
+    ],
+    relatedPaths: [
+      "/kapasitemiz/prototip-seri",
+      "/hizmetler/uretim-danismanligi",
+      "/hizmetler/tasarim-gelistirme",
+    ],
+  },
+  {
+    id: "ozel-makina-imalati",
+    title: "Özel makina imalatı",
+    description:
+      "Özel makina ve endüstriyel sistemlerde tasarım, analiz, imalat koordinasyonu ve devreye alma desteği.",
+    summary:
+      "Özel makina projelerinde tasarım, yapısal analiz ve üretim koordinasyonu bir arada yürütülmelidir. Konseptten montaja kadar teknik ekibinize dışarıdan mühendislik desteği sağlıyoruz.",
+    paragraphs: [
+      "Mekanik tasarım, 3D modelleme ve imalata hazır teknik resim çıktıları üretiriz.",
+      "Yapısal analiz ve hareket simülasyonu ile kritik bileşenlerde kararları sayıyla destekleriz.",
+      "CNC, kaynak, lazer kesim ve montaj adımlarını çözüm ortağı ağımızla koordine ederiz.",
     ],
     relatedPaths: [
       "/hizmetler/tasarim-gelistirme",
-      "/hizmetler/uretim-danismanligi",
-      "/kapasitemiz/prototip-seri",
+      "/hizmetler/analiz-hesaplama",
+      "/kapasitemiz/cnc",
     ],
   },
   {

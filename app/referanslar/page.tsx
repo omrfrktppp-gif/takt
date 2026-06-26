@@ -65,9 +65,8 @@ export default function ReferanslarPage() {
         <Section>
           <div className="max-w-3xl space-y-6 text-body text-steel">
             <p>
-              Müşteri gizliliğine saygı duyuyoruz; bu sayfada uydurma logo, istatistik
-              veya isimlendirilmiş müşteri listesi paylaşmıyoruz. Aşağıda, sık
-              çalıştığımız proje tiplerini ve teknik alanları özetliyoruz.
+              Müşteri gizliliğine saygı duyuyoruz. Aşağıda sık çalıştığımız proje
+              tiplerini ve teknik alanları özetliyoruz.
             </p>
             {!hasCaseStudies && (
               <p>
