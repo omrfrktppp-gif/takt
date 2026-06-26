@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BaslangicIhtiyacFormu } from "@/components/BaslangicIhtiyacFormu";
-import { FormSuccessBanner } from "@/components/FormSuccessBanner";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
@@ -14,17 +13,11 @@ const path = "/kaynaklar/baslangic-kontrol-listesi";
 export const metadata: Metadata = buildMetadata({
   title: "Başlangıç İhtiyaç Formu",
   description:
-    "Özel makine ve Ar-Ge projeleri için interaktif başlangıç ihtiyaç formunu indirin, doldurun ve PDF olarak yükleyin veya WhatsApp/e-posta ile gönderin.",
+    "Özel makine ve Ar-Ge projeleri için interaktif başlangıç ihtiyaç formunu indirin, doldurun ve WhatsApp veya e-posta ile gönderin.",
   path,
 });
 
-export default async function BaslangicKontrolListesiPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ gonderildi?: string }>;
-}) {
-  const { gonderildi } = await searchParams;
-
+export default function BaslangicKontrolListesiPage() {
   return (
     <SeoPageLayout>
       <JsonLd
@@ -40,16 +33,12 @@ export default async function BaslangicKontrolListesiPage({
         description="Projeye başlamadan önce kapsam, kısıt ve çıktıları netleştirmenize yardımcı olan interaktif PDF form."
       >
         <Section>
-          {gonderildi ? (
-            <FormSuccessBanner message="Teşekkürler. Formunuz bize ulaştı; en kısa sürede dönüş yapacağız." />
-          ) : null}
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="max-w-xl space-y-4 text-body text-steel">
               <p>
                 Başlangıç ihtiyaç formunu indirdikten sonra interaktif PDF
-                dosyasını ihtiyaçlarınıza göre doldurabilir ve bize bu
-                sayfadan, WhatsApp yoluyla veya e-posta üzerinden
-                gönderebilirsiniz.
+                dosyasını ihtiyaçlarınıza göre doldurabilir; doldurulmuş
+                dosyayı WhatsApp veya e-posta ile bize iletebilirsiniz.
               </p>
               <p>
                 Form; ihtiyaç tanımı, teknik kısıtlar, üretim yöntemi, teslim

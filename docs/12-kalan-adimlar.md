@@ -66,11 +66,10 @@ Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 
 ## 6. Başlangıç ihtiyaç formu
 
-- [x] Kod: PDF indirme + PDF yükleme (`/kaynaklar/baslangic-kontrol-listesi`, `docs/13-baslangic-formu-drive-kurulum.md`)
+- [x] Kod: PDF indirme + WhatsApp/e-posta ile gönderim (`/kaynaklar/baslangic-kontrol-listesi`)
 - [x] PDF: `public/kaynaklar/takt-baslangic-ihtiyac-formu.pdf`
-- [ ] **Web3Forms** — Vercel'de `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` (paneldeki aynı anahtar); domain kısıtı `takt.tr`; `/iletisim` + başlangıç formu canlı test
-- [ ] **Google Drive** — Vercel: `GOOGLE_DRIVE_FOLDER_ID=1YA9TvB55atwCQSA_vOBR_tTzo1xc5kbf` + service account (`docs/13-baslangic-formu-drive-kurulum.md`); klasörü service account ile paylaş
-- [ ] Drive linkini paylaşınca test yükleme yap
+- [ ] Canlıda indirme + WP/mailto linklerini test et
+- [ ] (İleride) Sunucu tarafı PDF yükleme — `docs/13-baslangic-formu-drive-kurulum.md`
 
 ---
 
