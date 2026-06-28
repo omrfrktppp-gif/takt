@@ -26,11 +26,14 @@ export function isScrollChapter(chapterId: string): boolean {
 }
 
 export function experienceChapterPath(chapterId: string): string {
-  return `/?b=${chapterId}`;
+  return chapterPath(chapterId);
 }
 
 export function experiencePanelPath(chapterId: string, panelId: string): string {
-  return `/?b=${chapterId}&p=${panelId}`;
+  if (isDetailChapter(chapterId) && getChapterPanel(chapterId, panelId)) {
+    return panelPath(chapterId, panelId);
+  }
+  return chapterPath(chapterId);
 }
 
 export function getPanelIndex(chapterId: string, panelId: string): number {
@@ -41,6 +44,7 @@ export function getPanelIndex(chapterId: string, panelId: string): number {
 }
 
 export function chapterPath(chapterId: string): string {
+  if (chapterId === "giris") return "/";
   if (chapterId === "hakkimizda") return "/hakkimizda";
   if (chapterId === "gorusme-planla") return "/gorusme-planla";
   return `/${chapterId}`;

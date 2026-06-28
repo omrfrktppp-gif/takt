@@ -77,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className={`${fontVariables} h-full antialiased`}>
+    <html lang="tr" className={`${fontVariables} antialiased`}>
       <body className="flex min-h-dvh flex-col overflow-x-hidden bg-paper font-body text-ink">
         <GoogleTagManager />
         <JsonLd
