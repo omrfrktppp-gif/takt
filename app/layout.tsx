@@ -7,7 +7,6 @@ import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { Nav } from "@/components/Nav";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { JsonLd } from "@/components/JsonLd";
-import { ScrollProvider } from "@/components/scroll/ScrollContext";
 import { fontVariables } from "@/lib/fonts";
 import {
   howToSchema,
@@ -84,13 +83,11 @@ export default function RootLayout({
         <JsonLd
           data={[organizationSchema(), websiteSchema(), howToSchema()]}
         />
-        <ScrollProvider>
-          <Nav />
-          <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
-          <MobileCtaBar />
-          <WhatsAppButton />
-          <CookieConsentBanner />
-        </ScrollProvider>
+        <Nav />
+        <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
+        <MobileCtaBar />
+        <WhatsAppButton />
+        <CookieConsentBanner />
         <Analytics />
         <SpeedInsights />
       </body>

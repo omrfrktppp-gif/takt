@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HomeExperience } from "@/components/scroll/HomeExperience";
+import { HomeHub } from "@/components/HomeHub";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -26,13 +26,5 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return (
-    <>
-      <h1 className="sr-only">
-        Takt — Makina imalatı, Ar-Ge ve savunma sanayisinde mühendislik
-        danışmanlığı: tasarım, analiz, proje yönetimi ve üretim koordinasyonu.
-      </h1>
-      <HomeExperience />
-    </>
-  );
+  return <HomeHub />;
 }

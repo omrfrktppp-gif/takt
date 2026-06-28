@@ -88,7 +88,7 @@ export const leadMagnet = {
   href: "/kaynaklar/baslangic-kontrol-listesi",
   label: "Başlangıç ihtiyaç formu",
   description:
-    "Interaktif PDF başlangıç ihtiyaç formunu indirin, doldurun ve site üzerinden yükleyin.",
+    "Interaktif PDF başlangıç ihtiyaç formunu indirin, doldurun; WhatsApp veya e-posta ile iletin.",
 } as const;
 
 export const navLinks = [

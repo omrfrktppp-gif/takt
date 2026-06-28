@@ -18,13 +18,8 @@ type ButtonAsButton = ButtonBaseProps & {
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
-export function Button({
-  href,
-  onClick,
-  children,
-  variant = "primary",
-  className = "",
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const { children, variant = "primary", className = "" } = props;
   const base =
     "inline-flex items-center justify-center rounded px-[22px] py-[14px] text-sm font-medium transition-colors duration-200 ease-takt";
 
@@ -37,7 +32,8 @@ export function Button({
 
   const classes = `${base} ${styles} ${className}`;
 
-  if (href) {
+  if ("href" in props && props.href) {
+    const { href, onClick } = props;
     return (
       <Link href={href} className={classes} onClick={onClick}>
         {children}
@@ -45,6 +41,7 @@ export function Button({
     );
   }
 
+  const { onClick } = props as ButtonAsButton;
   return (
     <button type="button" onClick={onClick} className={classes}>
       {children}
