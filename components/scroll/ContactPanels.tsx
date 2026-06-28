@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ContactDetails } from "@/components/ContactDetails";
 import { ContactForm } from "@/components/ContactForm";
 import { Eyebrow } from "@/components/Eyebrow";
+import { LazyGoogleMap } from "@/components/LazyGoogleMap";
 import { formatSiteAddressLines, siteConfig } from "@/lib/site";
 
 const panelClass =
@@ -43,13 +44,10 @@ function ContactMapBlock() {
         Haritada aç →
       </a>
       <div className="mt-4 overflow-hidden rounded border border-line bg-white">
-        <iframe
+        <LazyGoogleMap
           title="Takt konum — Google Haritalar"
           src={siteConfig.mapsEmbedUrl}
           className="h-40 w-full border-0 sm:h-44 md:h-36"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
         />
       </div>
       <p className="mt-4 font-mono text-small text-steel">
@@ -144,13 +142,10 @@ function ContactDesktopPanel() {
             </p>
           </div>
           <div className="overflow-hidden rounded border border-line bg-white">
-            <iframe
+            <LazyGoogleMap
               title="Takt konum — Google Haritalar"
               src={siteConfig.mapsEmbedUrl}
               className="h-36 w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
             />
           </div>
         </div>

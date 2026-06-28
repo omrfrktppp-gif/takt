@@ -1,4 +1,7 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { Nav } from "@/components/Nav";
@@ -15,6 +18,14 @@ import { siteConfig } from "@/lib/site";
 import { buildSearchVerificationMetadata } from "@/lib/indexing";
 import "./globals.css";
 
+const ogImage = {
+  url: "/opengraph-image.png",
+  width: 1200,
+  height: 630,
+  alt: siteConfig.name,
+  type: "image/png" as const,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
@@ -26,7 +37,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  alternates: { canonical: "/" },
   category: "engineering",
   manifest: "/site.webmanifest",
   openGraph: {
@@ -36,14 +46,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: "Takt — Mühendislik Danışmanlığı",
     description: siteConfig.tagline,
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
@@ -51,22 +54,11 @@ export const metadata: Metadata = {
     description: siteConfig.tagline,
     images: ["/opengraph-image.png"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   icons: {
     icon: [
       { url: "/icon", sizes: "32x32", type: "image/webp" },
       { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
       { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
-      { url: "/logo.webp", sizes: "700x700", type: "image/webp" },
     ],
     apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/webp" }],
     shortcut: "/favicon-48.png",
@@ -75,7 +67,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#12161C",
+  themeColor: "#f4f6f4",
   width: "device-width",
   initialScale: 1,
 };
@@ -87,7 +79,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={`${fontVariables} h-full antialiased`}>
-      <body className="flex h-dvh flex-col overflow-hidden bg-paper font-body text-ink">
+      <body className="flex min-h-dvh flex-col overflow-x-hidden bg-paper font-body text-ink">
         <GoogleTagManager />
         <JsonLd
           data={[organizationSchema(), websiteSchema(), howToSchema()]}
@@ -97,7 +89,10 @@ export default function RootLayout({
           <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
           <MobileCtaBar />
           <WhatsAppButton />
+          <CookieConsentBanner />
         </ScrollProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

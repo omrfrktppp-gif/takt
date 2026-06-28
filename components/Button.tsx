@@ -8,12 +8,12 @@ type ButtonBaseProps = {
 
 type ButtonAsLink = ButtonBaseProps & {
   href: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 type ButtonAsButton = ButtonBaseProps & {
   href?: never;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;

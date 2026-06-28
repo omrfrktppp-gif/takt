@@ -81,6 +81,7 @@ export const chapters: Chapter[] = [
     panels: [
       {
         id: "intro",
+        title: "Genel bakış",
         body: "Makina ve endüstriyel projeleriniz için ihtiyaç duyduğunuz tüm üretim çözümlerini, geniş çözüm ortağı ağımız sayesinde tek noktadan sunuyoruz. Tasarımdan imalata, prototipten seri üretime kadar süreci biz koordine ediyoruz; siz tek bir muhatapla çalışıyor, doğru iş için doğru üreticiyi aramakla uğraşmıyorsunuz.",
       },
       {

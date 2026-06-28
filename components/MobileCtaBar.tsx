@@ -16,7 +16,9 @@ export function MobileCtaBar() {
       {isHome ? (
         <Button
           className="flex-1"
-          onClick={() => {
+          href={appointmentCta.href}
+          onClick={(event) => {
+            event.preventDefault();
             trackEvent("booking_click", { type: "mobile_bar_home" });
             scrollToChapter("gorusme-planla");
           }}

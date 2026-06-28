@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { FormSuccessBanner } from "@/components/FormSuccessBanner";
 import { JsonLd } from "@/components/JsonLd";
+import { LazyGoogleMap } from "@/components/LazyGoogleMap";
 import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
 import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
@@ -97,11 +98,9 @@ export default async function IletisimPage({
             </div>
 
             <div className="overflow-hidden rounded border border-line">
-              <iframe
+              <LazyGoogleMap
                 src={siteConfig.mapsEmbedUrl}
                 title="Takt — Ankara İvedik OSB konum"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
                 className="h-full min-h-[320px] w-full border-0"
               />
             </div>

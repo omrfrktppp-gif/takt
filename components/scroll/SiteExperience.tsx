@@ -20,6 +20,7 @@ export function SiteExperience() {
             else chapterRefs.current.delete(chapter.id);
           }}
           data-chapter-id={chapter.id}
+          id={chapter.id}
           className="scroll-chapter relative"
           aria-label={chapter.label}
         >

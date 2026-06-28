@@ -16,9 +16,10 @@ const navChapters = visibleChapters.filter(
   (chapter) => chapter.id !== "gorusme-planla" && chapter.kind !== "hero",
 );
 
-const extraNavLinks = navLinks.filter(
+const primaryExtraLinks = navLinks.filter((link) => link.id === "sektorler");
+
+const secondaryExtraLinks = navLinks.filter(
   (link) =>
-    link.id === "sektorler" ||
     link.id === "referanslar" ||
     link.id === "rehber" ||
     link.id === "blog" ||
@@ -67,15 +68,18 @@ export function Nav() {
     >
       <div className="mx-auto flex h-14 max-w-content items-center justify-between gap-3 px-4 md:h-16 md:gap-6 md:px-6">
         {isHome ? (
-          <button
-            type="button"
-            onClick={() => scrollToChapter("giris")}
+          <Link
+            href="/"
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToChapter("giris");
+            }}
             className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
             aria-label="Takt ana sayfa"
           >
             <BrandLogo size={40} className="h-9 w-9 md:h-10 md:w-10" priority />
             <span>takt</span>
-          </button>
+          </Link>
         ) : (
           <Link
             href="/"
@@ -102,14 +106,17 @@ export function Nav() {
 
             if (isHome) {
               return (
-                <button
+                <Link
                   key={chapter.id}
-                  type="button"
-                  onClick={() => scrollToChapter(chapter.id)}
+                  href={chapterPath(chapter.id)}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    scrollToChapter(chapter.id);
+                  }}
                   className={className}
                 >
                   {chapter.label}
-                </button>
+                </Link>
               );
             }
 
@@ -119,7 +126,7 @@ export function Nav() {
               </Link>
             );
           })}
-          {extraNavLinks.map((link) => {
+          {primaryExtraLinks.map((link) => {
             const active =
               pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
@@ -134,9 +141,26 @@ export function Nav() {
               </Link>
             );
           })}
+          {secondaryExtraLinks.map((link) => {
+            const active =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`hidden text-sm underline-offset-4 transition-colors hover:text-signal hover:underline xl:inline ${
+                  active ? "font-medium text-signal" : "text-ink"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           {isHome ? (
             <Button
-              onClick={() => {
+              href={appointmentCta.href}
+              onClick={(event) => {
+                event.preventDefault();
                 trackEvent("booking_click", { type: "nav_home" });
                 scrollToChapter("gorusme-planla");
               }}
@@ -185,20 +209,21 @@ export function Nav() {
               if (isHome) {
                 return (
                   <li key={chapter.id}>
-                    <button
-                      type="button"
-                      className={`block w-full rounded-sm px-2 py-3 text-left text-base ${
+                    <Link
+                      href={href}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        scrollToChapter(chapter.id);
+                        setOpen(false);
+                      }}
+                      className={`block rounded-sm px-2 py-3 text-base ${
                         active
                           ? "bg-accent/10 font-medium text-accent"
                           : "text-ink"
                       }`}
-                      onClick={() => {
-                        scrollToChapter(chapter.id);
-                        setOpen(false);
-                      }}
                     >
                       {chapter.label}
-                    </button>
+                    </Link>
                   </li>
                 );
               }
@@ -219,7 +244,7 @@ export function Nav() {
                 </li>
               );
             })}
-            {extraNavLinks.map((link) => {
+            {[...primaryExtraLinks, ...secondaryExtraLinks].map((link) => {
               const active =
                 pathname === link.href || pathname.startsWith(`${link.href}/`);
 
@@ -243,7 +268,9 @@ export function Nav() {
               {isHome ? (
                 <Button
                   className="w-full"
-                  onClick={() => {
+                  href={appointmentCta.href}
+                  onClick={(event) => {
+                    event.preventDefault();
                     trackEvent("booking_click", { type: "nav_mobile_home" });
                     scrollToChapter("gorusme-planla");
                     setOpen(false);

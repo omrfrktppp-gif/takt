@@ -22,6 +22,7 @@ export function BrandLogo({
       width={size}
       height={size}
       sizes={`${size}px`}
+      quality={85}
       className={`shrink-0 ${className}`}
       priority={priority}
     />
