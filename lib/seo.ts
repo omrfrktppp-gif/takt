@@ -77,6 +77,13 @@ export const rehberSeo: PageSeo = {
   path: "/rehber",
 };
 
+export const ihtiyacAnaliziSeo: PageSeo = {
+  title: "İhtiyaç Analizi — 2 Dakikada Projenizi Tanımlayın",
+  description:
+    "İnteraktif ihtiyaç analizi formu ile projenizi 2–3 dakikada tanımlayın; size uygun mühendislik hizmetini birlikte netleştirelim.",
+  path: "/ihtiyac-analizi",
+};
+
 function truncate(text: string, max = 155): string {
   const normalized = text.replace(/\s+/g, " ").trim();
   if (normalized.length <= max) return normalized;

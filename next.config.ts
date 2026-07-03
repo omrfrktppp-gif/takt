@@ -15,6 +15,15 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/kaynaklar/baslangic-kontrol-listesi",
+        destination: "/ihtiyac-analizi",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

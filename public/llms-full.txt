@@ -76,7 +76,7 @@ https://takt.tr/sss
 - Tıbbi cihaz: https://takt.tr/sektorler/tibbi-cihaz
 
 ## 6c. Kaynaklar
-- Başlangıç kontrol listesi: https://takt.tr/kaynaklar/baslangic-kontrol-listesi
+- İhtiyaç analizi: https://takt.tr/ihtiyac-analizi
 
 ## 6d. Teknik rehberler (pillar)
 - Rehberler hub: https://takt.tr/rehber

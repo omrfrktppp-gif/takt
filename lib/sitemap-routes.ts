@@ -43,8 +43,8 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       lastModified: STATIC_CONTENT_REVISED,
     },
     {
-      path: "/kaynaklar/baslangic-kontrol-listesi",
-      priority: 0.55,
+      path: "/ihtiyac-analizi",
+      priority: 0.6,
       changeFrequency: "monthly",
       lastModified: STATIC_CONTENT_REVISED,
     },

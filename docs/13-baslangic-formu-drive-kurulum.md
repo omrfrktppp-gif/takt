@@ -1,30 +1,34 @@
-# Başlangıç ihtiyaç formu — indir + WhatsApp/e-posta
-*Doküman 13 · PDF kaynak*
+# İhtiyaç analizi formu — kurulum
+*Doküman 13 · İnteraktif form + Resend*
 
-Sayfa: `/kaynaklar/baslangic-kontrol-listesi`
+Sayfa: `/ihtiyac-analizi`  
+Eski URL: `/kaynaklar/baslangic-kontrol-listesi` → 301 redirect
 
 ## Akış
 
-1. Ziyaretçi **PDF indirir** (`public/kaynaklar/takt-baslangic-ihtiyac-formu.pdf`).
-2. Interaktif formu bilgisayarında doldurur.
-3. **WhatsApp** veya **e-posta** ile doldurulmuş PDF’i ekleyerek gönderir.
+1. Ziyaretçi `/ihtiyac-analizi` üzerinde dallanmalı formu doldurur (sessionStorage ile devam edebilir).
+2. **Randevu oluştur** veya **Sizinle iletişime geçin** CTA’sı `POST /api/ihtiyac-analizi` ile gönderilir.
+3. **Resend** ile `info@takt.tr` adresine yapılandırılmış rapor e-postası gider.
+4. Randevu CTA → `/gorusme-planla?ref=ihtiyac-analizi`; iletişim CTA → `/ihtiyac-analizi/tesekkur` (noindex).
 
-Site üzerinde dosya yükleme yok; iletişim kanalları hazır linklerle açılır.
+## Vercel ortam değişkenleri
 
-## PDF güncelleme
+| Değişken | Açıklama |
+|----------|----------|
+| `RESEND_API_KEY` | Resend API anahtarı |
+| `RESEND_FROM` | Gönderen (örn. `Takt <noreply@takt.tr>`) — domain doğrulaması gerekir |
+| `RESEND_TO` | Alıcı (varsayılan `info@takt.tr`) |
 
-```
-public/kaynaklar/takt-baslangic-ihtiyac-formu.pdf
-```
+`.env.example` dosyasına bakın.
 
-üzerine kopyalayın → commit → deploy.
+## Faz 2 (opsiyonel)
 
-## İleride (opsiyonel)
-
-- Sunucu tarafı PDF yükleme + e-posta bildirimi (Resend vb.)
-- Google Drive arşivi
+WhatsApp Cloud API bildirimi için `WHATSAPP_CLOUD_API_TOKEN`, `WHATSAPP_PHONE_NUMBER_ID`, `WHATSAPP_NOTIFY_TO` — stub hazır (`app/api/ihtiyac-analizi/route.ts`).
 
 ## İlgili dosyalar
 
-- `components/BaslangicIhtiyacFormu.tsx` — indir + WP/mailto
-- `lib/baslangic-formu.ts` — PDF yolu
+- `lib/ihtiyac-analizi/` — şema, akış motoru, rapor, doğrulama
+- `components/ihtiyac-analizi/` — sihirbaz UI
+- `app/ihtiyac-analizi/page.tsx` — sayfa
+- `app/api/ihtiyac-analizi/route.ts` — API + Resend
+- `lib/site.ts` → `leadMagnet` — site genelinde CTA linki

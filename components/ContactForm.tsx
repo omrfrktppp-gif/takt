@@ -25,9 +25,7 @@ export function ContactForm({
   const subject =
     source === "contact_form"
       ? "İletişim talebi — takt.tr"
-      : source === "lead_magnet"
-        ? "Lead magnet talebi — takt.tr"
-        : `Form talebi — ${source}`;
+      : `Form talebi — ${source}`;
 
   const redirect =
     redirectPath ?? web3formsRedirect("/iletisim?gonderildi=1");

@@ -85,10 +85,10 @@ export const appointmentTypes = [
 ] as const;
 
 export const leadMagnet = {
-  href: "/kaynaklar/baslangic-kontrol-listesi",
-  label: "Başlangıç ihtiyaç formu",
+  href: "/ihtiyac-analizi",
+  label: "İhtiyaç analizi",
   description:
-    "Interaktif PDF başlangıç ihtiyaç formunu indirin, doldurun; WhatsApp veya e-posta ile iletin.",
+    "2 dakikada projenizi tanımlayın; size uygun hizmeti birlikte netleştirelim.",
 } as const;
 
 export const navLinks = [

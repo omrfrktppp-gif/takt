@@ -24,14 +24,12 @@ export const metadata: Metadata = buildMetadata(seo);
 export default async function IletisimPage({
   searchParams,
 }: {
-  searchParams: Promise<{ gonderildi?: string; lead?: string }>;
+  searchParams: Promise<{ gonderildi?: string }>;
 }) {
-  const { gonderildi, lead } = await searchParams;
+  const { gonderildi } = await searchParams;
   const successMessage = gonderildi
     ? "Aldık. En kısa sürede dönüş yapacağız."
-    : lead
-      ? "Teşekkürler. Talebiniz bize ulaştı."
-      : null;
+    : null;
 
   return (
     <SeoPageLayout>

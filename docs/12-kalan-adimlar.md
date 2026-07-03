@@ -64,12 +64,13 @@ Aşağıdaki adımlar manuel veya içerik ekibi tarafından yürütülür.
 
 ---
 
-## 6. Başlangıç ihtiyaç formu
+## 6. İhtiyaç analizi formu
 
-- [x] Kod: PDF indirme + WhatsApp/e-posta ile gönderim (`/kaynaklar/baslangic-kontrol-listesi`)
-- [x] PDF: `public/kaynaklar/takt-baslangic-ihtiyac-formu.pdf`
-- [ ] Canlıda indirme + WP/mailto linklerini test et
-- [ ] (İleride) Sunucu tarafı PDF yükleme — `docs/13-baslangic-formu-drive-kurulum.md`
+- [x] Kod: interaktif form `/ihtiyac-analizi` + `POST /api/ihtiyac-analizi`
+- [x] 301: `/kaynaklar/baslangic-kontrol-listesi` → `/ihtiyac-analizi`
+- [ ] Vercel: `RESEND_API_KEY`, `RESEND_FROM`, `RESEND_TO` tanımla + domain doğrula
+- [ ] Canlıda tüm dallar + her iki CTA test
+- [ ] (Faz 2) WhatsApp Cloud API bildirimi — `docs/13-baslangic-formu-drive-kurulum.md`
 
 ---
 

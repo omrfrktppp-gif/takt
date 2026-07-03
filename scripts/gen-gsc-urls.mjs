@@ -22,7 +22,7 @@ const chapterSeoPaths = [
 ];
 
 const faz3Paths = [
-  "/kaynaklar/baslangic-kontrol-listesi",
+  "/ihtiyac-analizi",
   "/sektorler",
   "/sektorler/savunma-sanayi",
   "/sektorler/arge-urun-gelistirme",

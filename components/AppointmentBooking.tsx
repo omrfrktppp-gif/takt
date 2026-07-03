@@ -1,12 +1,23 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Calendar, ExternalLink, Video } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { appointmentTypes } from "@/lib/site";
 
-export function AppointmentBooking() {
+function AppointmentBookingInner() {
+  const searchParams = useSearchParams();
+  const ref = searchParams.get("ref");
+
   return (
     <div className="rounded border border-line bg-white p-6 md:p-8">
+      {ref === "ihtiyac-analizi" ? (
+        <p className="mb-6 rounded border border-signal/20 bg-signal/5 px-4 py-3 text-body text-steel">
+          İhtiyaç analizi formunuz bize ulaştı. Aşağıdan size uygun randevu
+          türünü seçerek görüşme planlayabilirsiniz.
+        </p>
+      ) : null}
       <div className="flex items-start gap-3">
         <Calendar
           className="mt-1 shrink-0 text-signal"
@@ -58,7 +69,10 @@ export function AppointmentBooking() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
                     onClick={() =>
-                      trackEvent("booking_click", { type: type.id })
+                      trackEvent("booking_click", {
+                        type: type.id,
+                        ...(ref ? { ref } : {}),
+                      })
                     }
                   >
                     Yeni sekmede aç
@@ -81,5 +95,13 @@ export function AppointmentBooking() {
         </div>
       </div>
     </div>
+  );
+}
+
+export function AppointmentBooking() {
+  return (
+    <Suspense fallback={null}>
+      <AppointmentBookingInner />
+    </Suspense>
   );
 }
