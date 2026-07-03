@@ -1,7 +1,8 @@
 import { getSectorById } from "@/lib/sectors";
 import { getServiceById } from "@/lib/ihtiyac-analizi/branches";
-import { FORM_SCREENS } from "@/lib/ihtiyac-analizi/definition";
+import { COMPANY_SIZE_OPTIONS, FORM_SCREENS } from "@/lib/ihtiyac-analizi/definition";
 import { resolvePrimaryService, resolveScreenPath } from "@/lib/ihtiyac-analizi/flow-engine";
+import { urgencyLabel } from "@/lib/ihtiyac-analizi/validation";
 import type { FormSubmissionPayload } from "@/lib/ihtiyac-analizi/types";
 
 function labelFor(questionId: string, value: string): string {
@@ -13,27 +14,22 @@ function labelFor(questionId: string, value: string): string {
   return value;
 }
 
-function formatValues(questionId: string, value: string | string[]): string {
+function formatValues(questionId: string, value: string | string[] | undefined): string {
+  if (!value || (Array.isArray(value) && value.length === 0)) return "—";
   if (Array.isArray(value)) {
     return value.map((item) => labelFor(questionId, item)).join(", ");
   }
   return labelFor(questionId, value);
 }
 
-const COMPANY_SIZE_LABELS: Record<string, string> = {
-  girisim: "Girişim / şahıs",
-  "1-9": "1–9 kişi",
-  "10-49": "10–49 kişi",
-  "50-249": "50–249 kişi",
-  "250+": "250+ kişi",
-  kamu: "Kamu / üniversite",
-};
+const COMPANY_SIZE_LABELS = Object.fromEntries(
+  COMPANY_SIZE_OPTIONS.map((option) => [option.value, option.label]),
+);
 
 export function buildEmailSubject(payload: FormSubmissionPayload): string {
   const service = getServiceById(payload.primaryService);
   const company = payload.contact.company || payload.contact.name;
-  const urgency =
-    payload.answers["s2-urgency"] === "hemen" ? "Acil" : "Normal";
+  const urgency = urgencyLabel(payload.answers["s2-urgency"] as string | undefined);
   return `[İhtiyaç Analizi] ${company} — ${service?.shortLabel ?? payload.primaryService} (${urgency})`;
 }
 
@@ -76,14 +72,17 @@ export function buildEmailBody(payload: FormSubmissionPayload): string {
       ? "Randevu oluşturdu ✓"
       : "İletişim bekliyor";
 
+  const companySize =
+    COMPANY_SIZE_LABELS[payload.contact.companySize] ?? payload.contact.companySize;
+
   return [
     `ANA İHTİYAÇ : ${service?.label ?? payload.primaryService}`,
     `DAL CEVAPLARI:`,
     ...dalLines.map((line) => `  ${line}`),
     `ZAMAN/BÜTÇE : ${formatValues("s2-urgency", payload.answers["s2-urgency"] as string)} · ${formatValues("s2-budget", payload.answers["s2-budget"] as string)}`,
-    `DOKÜMANLAR  : ${formatValues("s3-docs", (payload.answers["s3-docs"] as string[]) ?? [])} | Gizlilik: ${formatValues("s3-privacy", payload.answers["s3-privacy"] as string)}`,
+    `DOKÜMANLAR  : ${formatValues("s3-docs", payload.answers["s3-docs"] as string[])} | Gizlilik: ${formatValues("s3-privacy", payload.answers["s3-privacy"] as string)}`,
     `İKİNCİL     : ${secondary}`,
-    `İLETİŞİM    : ${payload.contact.name} · ${payload.contact.company || "—"} · ${payload.contact.email} · ${payload.contact.phone} · ${payload.contact.city || "—"} · ${COMPANY_SIZE_LABELS[payload.contact.companySize] ?? payload.contact.companySize} · ${sector}`,
+    `İLETİŞİM    : ${payload.contact.name} · ${payload.contact.company || "—"} · ${payload.contact.email} · ${payload.contact.phone} · ${payload.contact.city || "—"} · ${companySize || "—"} · ${sector || "—"}`,
     `CTA         : ${ctaLabel}`,
     "",
     `ÖZET: ${payload.summaryText}`,
@@ -93,7 +92,7 @@ export function buildEmailBody(payload: FormSubmissionPayload): string {
 export function buildWhatsAppSummaryStub(payload: FormSubmissionPayload): string {
   const company = payload.contact.company || payload.contact.name;
   const service = getServiceById(payload.primaryService)?.shortLabel ?? "";
-  const urgency = payload.answers["s2-urgency"] === "hemen" ? "ACİL" : "Normal";
+  const urgency = urgencyLabel(payload.answers["s2-urgency"] as string | undefined);
   const nda = payload.answers["s3-privacy"] === "nda" ? "NDA'lı" : "";
   const cta =
     payload.ctaChoice === "randevu" ? "Randevu oluşturdu." : "İletişim bekliyor.";

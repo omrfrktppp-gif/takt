@@ -9,7 +9,10 @@ import { parseIhtiyacPayload } from "@/lib/ihtiyac-analizi/validation";
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 3;
+const MAX_BODY_BYTES = 100_000;
+const MAX_RATE_LIMIT_ENTRIES = 5_000;
 const hits = new Map<string, number[]>();
+let lastRateLimitPrune = 0;
 
 function getClientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -17,8 +20,31 @@ function getClientIp(request: Request): string {
   return request.headers.get("x-real-ip") ?? "unknown";
 }
 
+function pruneRateLimitMap(now: number): void {
+  if (now - lastRateLimitPrune < 60_000) return;
+  lastRateLimitPrune = now;
+
+  for (const [ip, timestamps] of hits) {
+    const fresh = timestamps.filter((time) => now - time < RATE_LIMIT_WINDOW_MS);
+    if (fresh.length === 0) hits.delete(ip);
+    else hits.set(ip, fresh);
+  }
+
+  if (hits.size <= MAX_RATE_LIMIT_ENTRIES) return;
+
+  const overflow = hits.size - MAX_RATE_LIMIT_ENTRIES;
+  let removed = 0;
+  for (const ip of hits.keys()) {
+    hits.delete(ip);
+    removed += 1;
+    if (removed >= overflow) break;
+  }
+}
+
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+  pruneRateLimitMap(now);
+
   const timestamps = (hits.get(ip) ?? []).filter(
     (time) => now - time < RATE_LIMIT_WINDOW_MS,
   );
@@ -40,6 +66,14 @@ export async function POST(request: Request) {
     );
   }
 
+  const contentLength = Number(request.headers.get("content-length") ?? 0);
+  if (contentLength > MAX_BODY_BYTES) {
+    return NextResponse.json(
+      { success: false, message: "İstek çok büyük." },
+      { status: 413 },
+    );
+  }
+
   const ip = getClientIp(request);
   if (isRateLimited(ip)) {
     return NextResponse.json(
@@ -50,7 +84,14 @@ export async function POST(request: Request) {
 
   let body: unknown;
   try {
-    body = await request.json();
+    const raw = await request.text();
+    if (raw.length > MAX_BODY_BYTES) {
+      return NextResponse.json(
+        { success: false, message: "İstek çok büyük." },
+        { status: 413 },
+      );
+    }
+    body = raw ? JSON.parse(raw) : null;
   } catch {
     return NextResponse.json(
       { success: false, message: "Geçersiz istek." },

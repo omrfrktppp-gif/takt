@@ -4,7 +4,7 @@ type FormProgressProps = {
 
 export function FormProgress({ percent }: FormProgressProps) {
   return (
-    <div className="mb-8">
+    <div className="sticky top-16 z-10 -mx-1 mb-6 rounded bg-paper/95 px-1 pb-2 pt-1 backdrop-blur">
       <div className="mb-2 flex items-center justify-between font-mono text-small text-steel">
         <span>İlerleme</span>
         <span>{percent}%</span>

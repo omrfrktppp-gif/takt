@@ -1,6 +1,6 @@
 import type { PersistedFormState } from "@/lib/ihtiyac-analizi/types";
 
-export const STORAGE_KEY = "takt-ihtiyac-analizi-v1";
+export const STORAGE_KEY = "takt-ihtiyac-analizi-v2";
 
 export function loadFormState(): PersistedFormState | null {
   if (typeof window === "undefined") return null;

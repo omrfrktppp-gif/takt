@@ -6,6 +6,12 @@ type QuestionRendererProps = {
   onChange: (questionId: string, value: string | string[]) => void;
 };
 
+function inputTypeForQuestion(questionId: string): "text" | "email" | "tel" {
+  if (questionId === "s4-email") return "email";
+  if (questionId === "s4-phone") return "tel";
+  return "text";
+}
+
 export function QuestionRenderer({
   question,
   value,
@@ -25,7 +31,7 @@ export function QuestionRenderer({
         </label>
         <input
           id={question.id}
-          type="text"
+          type={inputTypeForQuestion(question.id)}
           value={typeof value === "string" ? value : ""}
           placeholder={question.placeholder}
           onChange={(event) => onChange(question.id, event.target.value)}
@@ -46,7 +52,7 @@ export function QuestionRenderer({
           <span className="font-normal text-steel"> (opsiyonel)</span>
         ) : null}
       </legend>
-      <div className="flex flex-col gap-2 sm:grid sm:grid-cols-2">
+      <div className="flex flex-wrap gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3">
         {question.options?.map((option) => {
           const active = selected.includes(option.value);
           return (
@@ -64,7 +70,7 @@ export function QuestionRenderer({
                   onChange(question.id, option.value);
                 }
               }}
-              className={`rounded border px-4 py-3 text-left text-body transition-colors ${
+              className={`rounded border px-3 py-2.5 text-left text-body transition-colors sm:px-4 sm:py-3 ${
                 active
                   ? "border-signal bg-signal/10 text-ink"
                   : "border-line bg-white text-steel hover:border-signal/40 hover:text-ink"

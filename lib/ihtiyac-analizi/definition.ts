@@ -3,13 +3,15 @@ import { S1_OPTIONS } from "@/lib/ihtiyac-analizi/branches";
 import type { FormScreen } from "@/lib/ihtiyac-analizi/types";
 
 const COMPANY_SIZE_OPTIONS = [
-  { value: "girisim", label: "Girişim / şahıs" },
-  { value: "1-9", label: "1–9 kişi" },
-  { value: "10-49", label: "10–49 kişi" },
-  { value: "50-249", label: "50–249 kişi" },
-  { value: "250+", label: "250+ kişi" },
+  { value: "girisim", label: "Girişim" },
+  { value: "1-9", label: "1–9" },
+  { value: "10-49", label: "10–49" },
+  { value: "50-249", label: "50–249" },
+  { value: "250+", label: "250+" },
   { value: "kamu", label: "Kamu / üniversite" },
 ];
+
+export { COMPANY_SIZE_OPTIONS };
 
 const SECTOR_OPTIONS = [
   ...sectors.map((sector) => ({
@@ -159,7 +161,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
     questions: [
       {
         id: "a3-compliance",
-        label: "Uygunluk (opsiyonel)",
+        label: "Uygunluk",
         type: "multi",
         optional: true,
         options: [
@@ -173,7 +175,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "a3-note",
-        label: "Makina / ürün ne yapmalı? (opsiyonel)",
+        label: "Makina / ürün ne yapmalı?",
         type: "text",
         optional: true,
         placeholder: "Bir cümleyle özetleyin",
@@ -264,7 +266,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "b3-note",
-        label: "Analiz konusu (opsiyonel)",
+        label: "Analiz konusu",
         type: "text",
         optional: true,
         placeholder: "Parça / sistem ve merak edilen soru",
@@ -304,10 +306,10 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
         type: "single",
         required: true,
         options: [
-          { value: "tek", label: "Tek parça / prototip" },
-          { value: "kucuk", label: "Küçük seri (onlu)" },
-          { value: "orta", label: "Orta seri (yüzlü)" },
-          { value: "seri", label: "Seri üretim (binli+)" },
+          { value: "tek", label: "1" },
+          { value: "kucuk", label: "2–10" },
+          { value: "orta", label: "11–100" },
+          { value: "seri", label: "100+" },
         ],
       },
       {
@@ -323,14 +325,14 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "c2-malzeme",
-        label: "Malzeme (opsiyonel)",
+        label: "Malzeme",
         type: "text",
         optional: true,
         placeholder: "Örn. paslanmaz, alüminyum",
       },
       {
         id: "c2-tolerans",
-        label: "Kritik tolerans / yüzey (opsiyonel)",
+        label: "Kritik tolerans / yüzey",
         type: "text",
         optional: true,
       },
@@ -354,7 +356,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "c3-kalite",
-        label: "Kalite gereksinimi (opsiyonel)",
+        label: "Kalite gereksinimi",
         type: "multi",
         optional: true,
         options: [
@@ -414,7 +416,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "d2-note",
-        label: "Farkınız (opsiyonel)",
+        label: "Farkınız",
         type: "text",
         optional: true,
         placeholder: "Projenizin mevcut çözümlerden farkı",
@@ -461,13 +463,13 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "e2-program",
-        label: "Hedef program (opsiyonel)",
+        label: "Hedef program",
         type: "text",
         optional: true,
       },
       {
         id: "e2-tarih",
-        label: "Hedef başvuru tarihi (opsiyonel)",
+        label: "Hedef başvuru tarihi",
         type: "text",
         optional: true,
       },
@@ -552,9 +554,9 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
         type: "single",
         required: true,
         options: [
-          { value: "1-3", label: "1–3 kişi" },
-          { value: "4-10", label: "4–10 kişi" },
-          { value: "10+", label: "10+ kişi" },
+          { value: "1-3", label: "1–3" },
+          { value: "4-10", label: "4–10" },
+          { value: "10+", label: "10+" },
         ],
       },
     ],
@@ -576,7 +578,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "f2-note",
-        label: "En büyük tıkanma (opsiyonel)",
+        label: "En büyük tıkanma",
         type: "text",
         optional: true,
       },
@@ -629,7 +631,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
       },
       {
         id: "g2-note",
-        label: "En zorlayan konu (opsiyonel)",
+        label: "En zorlayan konu",
         type: "text",
         optional: true,
       },
@@ -793,7 +795,7 @@ export const FORM_SCREENS: Record<string, FormScreen> = {
     questions: [
       {
         id: "s5-secondary",
-        label: "Bunlardan biri de gündeminizde mi? (opsiyonel)",
+        label: "Bunlardan biri de gündeminizde mi?",
         type: "multi",
         optional: true,
         options: [],

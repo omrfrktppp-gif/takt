@@ -13,7 +13,8 @@ type ButtonAsLink = ButtonBaseProps & {
 
 type ButtonAsButton = ButtonBaseProps & {
   href?: never;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  htmlType?: "button" | "submit";
 };
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;
@@ -41,9 +42,9 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { onClick } = props as ButtonAsButton;
+  const { onClick, htmlType = "button" } = props as ButtonAsButton;
   return (
-    <button type="button" onClick={onClick} className={classes}>
+    <button type={htmlType} onClick={onClick} className={classes}>
       {children}
     </button>
   );

@@ -9,9 +9,11 @@ export type FormQuestion = {
   id: string;
   label: string;
   type: QuestionType;
+  /** Zorunlu alan; `optional: true` varsa yok sayılır */
   required?: boolean;
   options?: FormOption[];
   placeholder?: string;
+  /** Opsiyonel alan — `required` bayrağını geçersiz kılar */
   optional?: boolean;
 };
 

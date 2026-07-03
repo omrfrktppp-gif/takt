@@ -8,7 +8,7 @@ import {
   FIRST_SCREEN_ID,
   FORM_SCREENS,
 } from "@/lib/ihtiyac-analizi/definition";
-import type { Answers, FormScreen, ServiceBranchId } from "@/lib/ihtiyac-analizi/types";
+import type { Answers, FormQuestion, FormScreen, ServiceBranchId } from "@/lib/ihtiyac-analizi/types";
 
 function branchScreensForA(answers: Answers): string[] {
   const sub = answers["a1-sub"];
@@ -111,7 +111,7 @@ function branchScreensForS1(s1: string, answers: Answers): string[] {
     case "G":
       return ["g1-type", "g2-status"];
     case "H":
-      return resolveHBranchScreens(answers).screens.slice(1);
+      return resolveHBranchScreens(answers).screens;
     default:
       return [];
   }
@@ -157,18 +157,44 @@ export function getPreviousScreenId(
   return path[index - 1] ?? null;
 }
 
+/** Kayıtlı oturumda eksik stack'i path'ten yeniden kurar. */
+export function rebuildScreenHistory(answers: Answers, screenId: string): string[] {
+  const path = resolveScreenPath(answers);
+  const index = path.indexOf(screenId);
+  if (index <= 0) return [FIRST_SCREEN_ID];
+  return path.slice(0, index + 1);
+}
+
 export function getProgressPercent(
   currentId: string,
   answers: Answers,
   submitted = false,
 ): number {
   if (submitted) return 100;
+  if (currentId === "s5-summary") return 95;
+
   const path = resolveScreenPath(answers);
   const index = path.indexOf(currentId);
-  if (index === -1) return 0;
-  if (currentId === "s5-summary") return 95;
-  const completed = index + 1;
-  return Math.min(94, Math.round((completed / path.length) * 100));
+  if (index === -1) return 8;
+
+  // Ana ihtiyaç seçilmeden yalnızca S1 — dokümana göre ~%8
+  if (path.length <= 1) return 8;
+
+  const lastIndex = path.length - 1;
+  const ratio = index / lastIndex;
+  return Math.min(94, Math.round(8 + ratio * 86));
+}
+
+export function shouldAutoAdvanceScreen(
+  screen: FormScreen,
+  answers: Answers,
+): boolean {
+  if (screen.id === "s5-summary") return false;
+  if (screen.questions.some((q) => q.type === "text" || q.type === "multi")) {
+    return false;
+  }
+  if (!screen.questions.every((q) => q.type === "single")) return false;
+  return isScreenValid(screen.id, answers);
 }
 
 function labelForAnswer(screenId: string, questionId: string, value: string): string {
@@ -233,12 +259,22 @@ export function getSecondaryServiceOptions(primary: ServiceBranchId) {
   }));
 }
 
+export function isQuestionRequired(
+  question: FormQuestion,
+  screenId: string,
+): boolean {
+  if (screenId === "s5-summary") return false;
+  if (question.optional === true) return false;
+  if (question.required === false) return false;
+  return true;
+}
+
 export function isScreenValid(screenId: string, answers: Answers): boolean {
   const screen = FORM_SCREENS[screenId];
   if (!screen) return false;
 
   for (const question of screen.questions) {
-    if (question.optional || screenId === "s5-summary") continue;
+    if (!isQuestionRequired(question, screenId)) continue;
     const value = answers[question.id];
     if (question.type === "multi") {
       if (!Array.isArray(value) || value.length === 0) return false;

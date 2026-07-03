@@ -34,6 +34,9 @@ export function HomeHeroPanel() {
           >
             {appointmentCta.label}
           </Button>
+          <Button variant="secondary" href={leadMagnet.href}>
+            {leadMagnet.label}
+          </Button>
           <Button
             variant="secondary"
             href={siteConfig.whatsapp.href}
@@ -50,13 +53,6 @@ export function HomeHeroPanel() {
           </Link>
         </div>
         <p className="text-small text-steel">
-          <Link
-            href={leadMagnet.href}
-            className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-          >
-            {leadMagnet.label}
-          </Link>
-          {" — "}
           {leadMagnet.description}
         </p>
       </div>
