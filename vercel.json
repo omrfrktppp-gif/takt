@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.takt.tr" }],
+      "destination": "https://takt.tr/:path*",
+      "permanent": true
+    }
+  ]
+}

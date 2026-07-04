@@ -74,7 +74,7 @@ export function Nav() {
   return (
     <header
       ref={headerRef}
-      className="z-50 shrink-0 border-b border-line bg-white/95 backdrop-blur-sm"
+      className="z-50 shrink-0 border-b border-line bg-paper/90 backdrop-blur-sm"
     >
       <div className="mx-auto flex h-14 max-w-content items-center justify-between gap-3 px-4 md:h-16 md:gap-6 md:px-6">
         <Link
@@ -144,7 +144,7 @@ export function Nav() {
       {open ? (
         <nav
           id="mobile-nav"
-          className="scroll-inner scrollbar-none max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-white px-4 py-3 lg:hidden"
+          className="scroll-inner scrollbar-none max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-paper px-4 py-3 lg:hidden"
           aria-label="Mobil navigasyon"
         >
           <ul className="flex flex-col gap-1">

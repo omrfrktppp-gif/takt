@@ -2,7 +2,7 @@ import Link from "next/link";
 
 type ButtonBaseProps = {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "light";
+  variant?: "primary" | "secondary" | "light" | "signal";
   className?: string;
 };
 
@@ -27,6 +27,8 @@ export function Button(props: ButtonProps) {
   const styles =
     variant === "primary"
       ? "bg-ink text-white hover:bg-signal"
+      : variant === "signal"
+        ? "bg-signal text-white hover:bg-ink"
       : variant === "light"
         ? "bg-white text-ink hover:bg-signal hover:text-white"
         : "border border-line bg-transparent text-ink hover:border-signal";

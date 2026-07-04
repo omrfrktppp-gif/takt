@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
         destination: "/ihtiyac-analizi",
         permanent: true,
       },
+      {
+        source: "/kaynaklar/:path*",
+        destination: "/ihtiyac-analizi",
+        permanent: true,
+      },
     ];
   },
   async headers() {

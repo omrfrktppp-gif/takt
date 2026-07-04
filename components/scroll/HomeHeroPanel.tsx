@@ -27,15 +27,22 @@ export function HomeHeroPanel() {
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <Button
+            variant="signal"
+            href={leadMagnet.href}
+            onClick={() =>
+              trackEvent("contact_click", { channel: "hero_ihtiyac_analizi" })
+            }
+          >
+            {leadMagnet.label}
+          </Button>
+          <Button
+            variant="secondary"
             onClick={() => {
               trackEvent("booking_click", { type: "hero_home" });
               scrollToChapter("gorusme-planla");
             }}
           >
             {appointmentCta.label}
-          </Button>
-          <Button variant="secondary" href={leadMagnet.href}>
-            {leadMagnet.label}
           </Button>
           <Button
             variant="secondary"

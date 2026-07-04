@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:resend": "node --env-file=.env.local scripts/test-resend.mjs"
+    "test:resend": "node --env-file=.env.local scripts/test-resend.mjs",
+    "audit:indexing": "node scripts/audit-indexing.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

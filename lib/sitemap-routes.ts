@@ -13,7 +13,7 @@ import { getAllSectorIds } from "@/lib/sectors";
 import { chapterSeo } from "@/lib/seo";
 
 /** Statik sayfa içeriği son revizyon — deploy tarihiyle güncelleyin. */
-export const STATIC_CONTENT_REVISED = "2026-06-26";
+export const STATIC_CONTENT_REVISED = "2026-07-04";
 
 export type SitemapEntry = {
   path: string;
