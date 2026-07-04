@@ -107,8 +107,13 @@ export function HomeHub() {
           </p>
           <h1 className="mt-4 font-display text-h1 text-ink">{siteConfig.tagline}</h1>
           <p className="mt-4 text-body-lg text-steel">{siteConfig.description}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href={appointmentCta.href}>{appointmentCta.label}</Button>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Button variant="signal" href={leadMagnet.href}>
+              {leadMagnet.label}
+            </Button>
+            <Button variant="secondary" href={appointmentCta.href}>
+              {appointmentCta.label}
+            </Button>
             <Button variant="secondary" href={siteConfig.whatsapp.href}>
               WhatsApp
             </Button>

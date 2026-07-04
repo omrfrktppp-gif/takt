@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { Button } from "@/components/Button";
 import { trackEvent } from "@/lib/analytics";
-import { appointmentCta, navLinks } from "@/lib/site";
+import { appointmentCta, leadMagnet, navLinks } from "@/lib/site";
 
 const primaryExtraLinks = navLinks.filter((link) => link.id === "sektorler");
 
@@ -74,7 +74,7 @@ export function Nav() {
   return (
     <header
       ref={headerRef}
-      className="z-50 shrink-0 border-b border-line bg-paper/90 backdrop-blur-sm"
+      className="z-50 shrink-0 border-b border-line bg-paper backdrop-blur-sm"
     >
       <div className="mx-auto flex h-14 max-w-content items-center justify-between gap-3 px-4 md:h-16 md:gap-6 md:px-6">
         <Link
@@ -118,6 +118,14 @@ export function Nav() {
             </Link>
           ))}
           <Button
+            variant="signal"
+            href={leadMagnet.href}
+            onClick={() => trackEvent("contact_click", { channel: "nav_ihtiyac_analizi" })}
+          >
+            {leadMagnet.label}
+          </Button>
+          <Button
+            variant="secondary"
             href={appointmentCta.href}
             onClick={() => trackEvent("booking_click", { type: "nav" })}
           >
@@ -165,8 +173,20 @@ export function Nav() {
                   </Link>
                 </li>
               ))}
-            <li className="mt-2 border-t border-line pt-3">
+            <li className="mt-2 space-y-2 border-t border-line pt-3">
               <Button
+                variant="signal"
+                href={leadMagnet.href}
+                className="w-full"
+                onClick={() => {
+                  trackEvent("contact_click", { channel: "nav_mobile_ihtiyac_analizi" });
+                  setOpen(false);
+                }}
+              >
+                {leadMagnet.label}
+              </Button>
+              <Button
+                variant="secondary"
                 href={appointmentCta.href}
                 className="w-full"
                 onClick={() => {
