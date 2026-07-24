@@ -19,10 +19,29 @@ export type BlogPostSection = {
   };
 };
 
+export type BlogPostStatus = "published" | "review";
+
+export type BlogPostKind = "article" | "case-study";
+
+export type BlogSchemaType = "Article" | "TechArticle" | "BlogPosting";
+
+export type BlogCover = {
+  src: string;
+  alt: string;
+};
+
+export type BlogHeading = {
+  depth: 2 | 3;
+  id: string;
+  text: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
   description: string;
+  status: BlogPostStatus;
+  kind: BlogPostKind;
   /** ISO tarih: YYYY-MM-DD */
   publishedAt: string;
   updatedAt?: string;
@@ -33,7 +52,12 @@ export type BlogPost = {
   readingTimeMinutes?: number;
   /** Yayınlanmadan önce true bırakın */
   draft?: boolean;
-  sections: BlogPostSection[];
+  canonicalUrl: string;
+  cover?: BlogCover;
+  schemaType: BlogSchemaType;
+  /** Ham HTML içermeyen, sunucuda render edilen Markdown gövdesi. */
+  markdown: string;
+  headings: BlogHeading[];
   /** İlgili hizmet sayfası — yazı sonunda kart gösterilir */
   relatedServicePath?: string;
 };

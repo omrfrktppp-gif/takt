@@ -1,8 +1,11 @@
-import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
-import { PageShell } from "@/components/PageShell";
+import { DetailPageNav, PageShell } from "@/components/PageShell";
 import { ServiceDetailBody } from "@/components/ServiceDetailBody";
-import { PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
+import {
+  ListingGrid,
+  PanelCard,
+  SeoPageLayout,
+} from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import {
   chapterPath,
@@ -45,9 +48,16 @@ export function ChapterListingPage({ chapterId }: ChapterListingPageProps) {
         eyebrow={chapter.eyebrow}
         title={chapter.label}
         description={seo.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: chapter.label },
+        ]}
       >
         <Section>
-          <div className="grid gap-6 md:grid-cols-2">
+          <p className="mb-8 max-w-2xl text-body text-steel">
+            {panels.length} alan — detay için bir başlık seçin.
+          </p>
+          <ListingGrid>
             {panels.map((panel) => (
               <PanelCard
                 key={panel.id}
@@ -56,7 +66,7 @@ export function ChapterListingPage({ chapterId }: ChapterListingPageProps) {
                 excerpt={panel.body}
               />
             ))}
-          </div>
+          </ListingGrid>
         </Section>
       </PageShell>
     </SeoPageLayout>
@@ -120,6 +130,11 @@ export function ChapterDetailPage({
         eyebrow={chapter.eyebrow}
         title={title}
         description={seoContent?.summary ?? panel.body}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: chapter.label, href: parentSeo.path },
+          { label: title },
+        ]}
       >
         <Section>
           {seoContent ? (
@@ -130,20 +145,12 @@ export function ChapterDetailPage({
             </div>
           )}
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href={chapterPath(chapterId)}
-              className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-            >
-              ← {chapter.label}
-            </Link>
-            <Link
-              href={appointmentCta.href}
-              className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-            >
-              {appointmentCta.label} →
-            </Link>
-          </div>
+          <DetailPageNav
+            backHref={chapterPath(chapterId)}
+            backLabel={chapter.label}
+            ctaHref={appointmentCta.href}
+            ctaLabel={appointmentCta.label}
+          />
         </Section>
       </PageShell>
     </SeoPageLayout>

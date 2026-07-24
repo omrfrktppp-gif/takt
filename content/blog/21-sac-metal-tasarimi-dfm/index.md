@@ -1,11 +1,12 @@
 ---
 title: "Sac Metal Tasarımı (DFM): Çizimi Değil, Bükümü Tasarlamak"
-description: "Sac metal tasarımında büküm payı, K-faktörü ve minimum büküm yarıçapı nedir? Üretilebilir sac parça çizmenin DFM kurallarını örnek ve kaynaklarla anlatıyoruz."
+description: "Sac metal tasarımında büküm payı, K-faktörü ve minimum büküm yarıçapı nedir? Açılımın doğru çıkması ve çatlamayan büküm için pratik DFM kuralları."
 slug: "sac-metal-tasarimi-dfm"
-date: 2026-06-26
-updated: 2026-06-26
-status: review
-author: "Ömer Faruk"
+date: 2026-05-25
+updated: 2026-07-25
+status: published
+kind: article
+author: "Ömer Faruk Top"
 category: "DFM/DFA"
 tags: ["sac-metal", "dfm", "bukum-payi", "k-faktoru", "lazer-kesim", "abkant"]
 keywords:
@@ -24,59 +25,57 @@ reading_time: 7
 
 ## Sac Metal Tasarımı (DFM): Çizimi Değil, Bükümü Tasarlamak
 
-Sac metal parçalarda en sık yapılan tasarım hatası, parçayı bükülmüş haliyle çizip açılımın kendiliğinden doğru çıkacağını varsaymaktır. Oysa sac, büküldüğünde dış yüzeyi uzar, iç yüzeyi kısalır ve yalnızca "nötr eksen" denen ince bir tabaka boyunu korur. Bu yüzden bükülmüş parçanın düz açılımı, kenarların basit toplamı değildir. Sac metal tasarımı, parçanın bitmiş halini çizmek kadar, o hale nasıl büküleceğini tasarlamaktır.
+Sac metal tasarımında ölçüsel doğruluğu üç kavram belirler: büküm payı (bend allowance), K-faktörü ve minimum büküm yarıçapı. Sac büküldüğünde dış yüzeyi uzar, iç yüzeyi kısalır ve yalnızca "nötr eksen" denen ince bir tabaka boyunu korur; bu yüzden bükülmüş parçanın düz açılımı, kenar uzunluklarının basit toplamı değildir. Bu üç kavramı doğru ele almayan bir çizim, lazer kesim ne kadar hassas olursa olsun hatalı parça üretir.
 
-Bu yazıda sac metal tasarımının (Design for Manufacturing — DFM) üç temel kavramını ele alıyoruz: büküm payı (bend allowance), K-faktörü ve minimum büküm yarıçapı. Bu kavramlar, lazer kesim ve abkant pres ile üretilen parçaların hem doğru ölçüde çıkmasını hem de çatlamadan, deforme olmadan bükülmesini belirler.
+Sac metalde en sık yapılan tasarım hatası, parçayı bükülmüş haliyle çizip açılımın kendiliğinden doğru çıkacağını varsaymaktır. Sac metal tasarımı, parçanın bitmiş halini çizmek kadar, o hale nasıl büküleceğini tasarlamaktır.
 
-### Nötr Eksen ve K-Faktörü
+## K-Faktörü Nedir?
 
-Bir sac büküldüğünde malzemenin dış kısmı çekmeye, iç kısmı basmaya maruz kalır. Bu ikisi arasında, ne uzayan ne kısalan bir tabaka vardır: nötr eksen. K-faktörü, bu nötr eksenin malzeme kalınlığına oranıdır (SendCutSend; Protolabs). Değeri 0 ile 0,5 arasında değişir ve büküm payı hesabının temelini oluşturur.
+Bir sac büküldüğünde malzemenin dış kısmı çekmeye, iç kısmı basmaya maruz kalır. İkisi arasında ne uzayan ne kısalan bir tabaka vardır: nötr eksen. [K-faktörü, nötr eksenin konumunun malzeme kalınlığına oranıdır](https://sendcutsend.com/blog/what-is-k-factor-in-bending-terminology/) ve pratikte 0 ile 0,5 arasında değer alır; büküm payı hesabının temelini oluşturur.
 
-K-faktörü malzemeye, kalınlığa ve büküm yöntemine göre değişir. Protolabs'in verdiği tipik değerler, havalı bükümde (air bend) yaklaşık 0,33, dipten bükümde (bottom bend) yaklaşık 0,42 civarındadır (Protolabs). Buradaki en yaygın hata, CAD yazılımının varsayılan K-faktörünü gerçek malzemeyle doğrulamadan kullanmaktır; bu, açılım ölçüsünün yanlış çıkmasına ve parçanın hatalı boyutlanmasına yol açar (Simutec).
+K-faktörü malzemeye, kalınlığa ve büküm yöntemine göre değişir. [Protolabs'in sac metal tasarım rehberi](https://www.protolabs.com/resources/design-tips/the-basics-of-bend-radii-in-sheet-metal/), tipik değerlerin büküm yöntemine göre farklılaştığını gösterir (havalı büküm ile dipten büküm aynı K değerini vermez). Buradaki en yaygın hata, CAD yazılımının varsayılan K-faktörünü gerçek malzeme ve gerçek abkant kalıbıyla doğrulamadan kullanmaktır; sonuç, yanlış açılım ve hatalı boyutlanmış parçadır. Seri üretime geçmeden önce, K-faktörünü üreticinizin makinesi ve kalıbıyla yapılan deneme bükümüyle doğrulamak en güvenilir yoldur.
 
-### Büküm Payı
+## Büküm Payı Nasıl Hesaplanır?
 
-Büküm payı, bir bükümün düz açılımda kapladığı uzunluktur ve nötr eksen üzerinden hesaplanır. Kavramsal olarak:
+Büküm payı, bir bükümün düz açılımda kapladığı uzunluktur ve nötr eksen üzerinden hesaplanır:
 
-`Büküm payı = (π/180) × büküm açısı × (büküm yarıçapı + K-faktörü × malzeme kalınlığı)`
+`Büküm payı = (π/180) × büküm açısı × (iç büküm yarıçapı + K-faktörü × malzeme kalınlığı)`
 
-Bu formülün pratik anlamı şudur: bir parçanın doğru açılımını çıkarmak için her bükümün payını ayrı ayrı hesaplayıp düz uzunluklara eklemek gerekir. Açılım yanlışsa, lazer kesim doğru olsa bile bükülmüş parça hatalı ölçüde çıkar. Bu yüzden sac metal tasarımında ölçüsel doğruluk, çizimde değil, büküm payı hesabında belirlenir.
+Pratik anlamı şudur: doğru açılım için her bükümün payı ayrı ayrı hesaplanıp düz uzunluklara eklenir. Açılım yanlışsa, kesim doğru olsa bile bükülmüş parça hatalı ölçüde çıkar. Sac metalde ölçüsel doğruluk çizimde değil, büküm payı hesabında belirlenir.
 
-### Minimum Büküm Yarıçapı
+## Minimum Büküm Yarıçapı Neden Var?
 
-Sac, çok keskin bir yarıçapla bükülmeye zorlanırsa dış yüzeyi çatlar. Bu yüzden her malzemenin bir minimum büküm yarıçapı vardır. Yaygın bir başlangıç kuralı, minimum büküm yarıçapının malzeme kalınlığına (1T kuralı) eşit alınmasıdır; ancak bu, malzemeye göre değişir (Woodward Fab):
+Sac, çok keskin bir yarıçapla bükülmeye zorlanırsa dış yüzeyi çatlar. [Protolabs'in rehberindeki](https://www.protolabs.com/resources/design-tips/the-basics-of-bend-radii-in-sheet-metal/) yaygın başlangıç kuralı, iç büküm yarıçapını en az malzeme kalınlığı kadar (1T) almaktır. Bu bir alt sınırdır; gerçek değer malzemeye ve tavına göre değişir: alüminyum alaşımları genellikle 1T civarından başlarken, paslanmaz çelik gibi daha sert ve pekleşen malzemeler daha büyük yarıçap ister. Kesin değerler için üreticinizin malzeme-kalınlık tablosunu esas alın; [SendCutSend'in malzeme bazlı büküm kılavuzları](https://sendcutsend.com/guidelines/) bu tür tabloların iyi bir örneğidir.
 
-- Alüminyum: yaklaşık 1T–1,5T
-- Yumuşak çelik: yaklaşık 1T–2T
-- Paslanmaz çelik: yaklaşık 2T ve üzeri
+Bu sınırı zorlamak, görünür olmayan mikro çatlaklara ve parçanın erken yorulmasına yol açabilir. Tasarım aşamasında malzemeye uygun yarıçap seçmek, üretimde ıskarta ve yeniden işlemeyi önler.
 
-Paslanmazın daha büyük yarıçap istemesi, daha sert ve gevrek davranmasındandır. Bu sınırı zorlamak, görünür olmayan mikro çatlaklara ve parçanın erken yorulmasına yol açabilir. Tasarım aşamasında malzemeye uygun yarıçap seçmek, üretimde ıskarta ve yeniden işlemeyi önler.
+## Diğer Pratik DFM Kuralları
 
-### Diğer Pratik DFM Kuralları
+Ölçüsel doğruluğun yanında üretilebilirliği belirleyen kurallar da vardır:
 
-Sac metal tasarımında ölçüsel doğruluğun yanında üretilebilirliği belirleyen başka kurallar da vardır (JLC; Woodward Fab):
+| Kural | Neden? |
+| --- | --- |
+| Flanş uzunluğunu yeterli tut (yaygın pratik: kalınlığın en az ~4 katı) | Kısa flanş abkant kalıbında düzgün tutunamaz |
+| Delikleri büküm hattından uzak tut | Büküm hattına yakın delikler büküm sırasında deforme olur |
+| Bükümleri mümkünse aynı yönde topla | Parça abkantta daha az çevrilir, hata payı azalır |
+| Köşe rahatlatma (relief) kesimleri ekle | Büküm hattının kenarında yırtılmayı önler |
 
-- **Minimum flanş uzunluğu:** Bir bükümün tutturulabilmesi için flanş uzunluğu genellikle malzeme kalınlığının en az üç katı olmalıdır; daha kısa flanşlar abkant kalıbında düzgün tutunmaz.
-- **Delik-büküm mesafesi:** Deliklerin büküm hattına çok yakın olması, büküm sırasında deliklerin deforme olmasına yol açar.
-- **Büküm yönü tutarlılığı:** Mümkün olduğunda bükümleri aynı yönde toplamak, parçanın abkantta daha az çevrilmesini ve hata payının azalmasını sağlar.
+Bu değerler üreticiden üreticiye değişir; kesin sınırlar için çalıştığınız atölyenin tasarım kılavuzunu isteyin. Kurallar, [DFM yazımızdaki](https://takt.tr/blog/uretime-yonelik-tasarim-dfm) ilkeyle aynı mantığı taşır: geometri, üretim yönteminin gerçeklerine göre tasarlanmalıdır. Sac metalde bu gerçek, abkant presin ve malzemenin fiziğidir.
 
-Bu kurallar, daha önceki DFM yazımızdaki ilkeyle aynı mantığı taşır: geometri, üretim yönteminin gerçeklerine göre tasarlanmalıdır. Sac metalde bu gerçek, abkant presin ve malzemenin fiziğidir.
+## Teklif Almadan Önce Neyi Netleştirmelisiniz?
 
-### Sonuç
+Bir sac parçayı fason üreticiye gönderirken şu bilgilerin dosyada olması, hem teklifi hem üretimi hızlandırır: malzeme ve kalınlık, iç büküm yarıçapları, kritik ölçülerin hangileri olduğu (hepsi değil), yüzey işlemi ve adet. Açılımı üreticinin çıkarmasına izin vermek çoğu zaman daha sağlıklıdır; çünkü açılım, üreticinin kendi K-faktörü değerleriyle hesaplanmalıdır. [Fason üretici tekliflerini karşılaştırma yazımızda](https://takt.tr/blog/fason-uretici-teklif-karsilastirma) bu konuyu ayrıntılı ele alıyoruz.
 
-Sac metal tasarımı, parçanın bitmiş halini çizmekten ibaret değildir; o hale nasıl büküleceğini, açılımın nasıl çıkacağını ve malzemenin bükümü kaldırıp kaldıramayacağını tasarlamaktır. K-faktörü, büküm payı ve minimum büküm yarıçapı doğru ele alındığında parça hem doğru ölçüde çıkar hem çatlamadan bükülür. Bu kavramları atlamak, lazer kesim ne kadar hassas olursa olsun, hatalı parça üretir.
+## Sonuç
 
-### Bu Yaklaşım Nerede Geçerli?
-
-Lazer kesim ve abkant pres ile üretilen tüm sac parçalar bu kuralların kapsamındadır. "Açılımım neden yanlış çıkıyor, parçam neden büküm hattında çatlıyor?" soruları, neredeyse her zaman K-faktörü, büküm payı veya yarıçap seçimine işaret eder.
+Sac metal tasarımı, parçanın bitmiş halini çizmekten ibaret değildir; o hale nasıl büküleceğini, açılımın nasıl çıkacağını ve malzemenin bükümü kaldırıp kaldıramayacağını tasarlamaktır. K-faktörü, büküm payı ve minimum büküm yarıçapı doğru ele alındığında parça hem doğru ölçüde çıkar hem çatlamadan bükülür.
 
 ---
 
-**Sac parçalarınızın açılımı yanlış mı çıkıyor, büküm hatlarında çatlama ya da ölçü sapması mı yaşıyorsunuz?** takt.tr olarak sac metal parçalarınızı DFM gözüyle inceliyor; K-faktörü, büküm payı ve yarıçap seçimini malzemeye ve sürece göre doğrulayarak üretilebilir, doğru ölçülü parçalar tasarlıyoruz. [İletişime geçin / Sac metal DFM incelemesi talep edin.](https://takt.tr/iletisim)
+**Sac parçalarınızın açılımı yanlış mı çıkıyor, büküm hatlarında çatlama ya da ölçü sapması mı yaşıyorsunuz?** Takt olarak sac metal parçalarınızı DFM gözüyle inceliyor; K-faktörü, büküm payı ve yarıçap seçimini malzemeye ve sürece göre doğruluyoruz. [Tasarım ve geliştirme hizmetimize](https://takt.tr/hizmetler/tasarim-gelistirme) göz atın veya [iletişime geçin](https://takt.tr/iletisim).
 
 ## Kaynaklar
-- Sheet Metal Bend Radius Guidelines (K-faktörü değerleri) — Protolabs. https://www.protolabs.com/resources/design-tips/the-basics-of-bend-radii-in-sheet-metal/
-- What Is K Factor in Sheet Metal Bending? The Ultimate Guide — SendCutSend. https://sendcutsend.com/blog/what-is-k-factor-in-bending-terminology/
-- Sheet Metal Bending Rules: Design, Radius (1T kuralı, malzeme yarıçapları) — Woodward Fab. https://www.woodwardfab.com/blog/sheet-metal-bending-rules/
-- Sheet Metal Design for Manufacturing: Tolerances, Bend Allowances and DFM Tips — Simutec. https://simutecra.com/blogs/sheet-metal-design-for-manufacturing-tolerances-bend-allowances-and-dfm-tips
-- Sheet Metal Design Guidelines for Bends, DFM (minimum flanş) — JLC. https://jlccnc.com/blog/sheet-metal-design
+
+- [The Basics of Bend Radii in Sheet Metal — Protolabs tasarım rehberi](https://www.protolabs.com/resources/design-tips/the-basics-of-bend-radii-in-sheet-metal/) (1T kuralı, K-faktörü ve büküm yöntemi ilişkisi)
+- [What Is K-Factor in Sheet Metal Bending? — SendCutSend](https://sendcutsend.com/blog/what-is-k-factor-in-bending-terminology/) (nötr eksen ve K-faktörü tanımı)
+- [Design Guidelines — SendCutSend](https://sendcutsend.com/guidelines/) (malzeme bazlı büküm kılavuzları)

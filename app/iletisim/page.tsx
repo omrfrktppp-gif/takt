@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactDetails } from "@/components/ContactDetails";
 import { ContactForm } from "@/components/ContactForm";
 import { FormSuccessBanner } from "@/components/FormSuccessBanner";
 import { JsonLd } from "@/components/JsonLd";
@@ -10,14 +11,9 @@ import { Section } from "@/components/Section";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata, chapterSeo } from "@/lib/seo";
-import {
-  appointmentCta,
-  formatSiteAddressLines,
-  siteConfig,
-} from "@/lib/site";
+import { appointmentCta, siteConfig } from "@/lib/site";
 
 const seo = chapterSeo.iletisim;
-const addressLines = formatSiteAddressLines();
 
 export const metadata: Metadata = buildMetadata(seo);
 
@@ -44,51 +40,20 @@ export default async function IletisimPage({
         eyebrow="İLETİŞİM"
         title="İletişim"
         description="Projenizdeki eksik halkayı konuşalım. Ankara İvedik OSB merkezimizden, proje bazlı olarak da uzaktan çalışıyoruz."
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "İletişim" },
+        ]}
       >
         <Section>
-          <div className="grid gap-10 md:grid-cols-2">
-            <div className="space-y-6 text-body text-steel">
-              <div>
-                <h2 className="font-display text-h3 text-ink">Adres</h2>
-                <p className="mt-2">
-                  {addressLines[0]}
-                  <br />
-                  {addressLines[1]}
-                </p>
-                <a
-                  href={siteConfig.mapsUrl}
-                  className="mt-2 inline-block text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Google Haritalar&apos;da aç →
-                </a>
-              </div>
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
+            <div className="space-y-8">
+              <ContactDetails prominent />
 
               <div>
-                <h2 className="font-display text-h3 text-ink">Telefon</h2>
-                <a
-                  href={siteConfig.phoneHref}
-                  className="mt-2 inline-block text-ink hover:text-signal"
-                >
-                  {siteConfig.phone}
-                </a>
-              </div>
-
-              <div>
-                <h2 className="font-display text-h3 text-ink">E-posta</h2>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="mt-2 inline-block text-ink hover:text-signal"
-                >
-                  {siteConfig.email}
-                </a>
-              </div>
-
-              <div className="pt-2">
                 <Link
                   href={appointmentCta.href}
-                  className="inline-block rounded-sm bg-ink px-5 py-3 text-body text-paper transition-colors hover:bg-signal"
+                  className="inline-flex min-h-11 items-center rounded-sm bg-ink px-5 py-3 text-body text-paper transition-colors hover:bg-signal"
                 >
                   {appointmentCta.label} →
                 </Link>
@@ -99,12 +64,12 @@ export default async function IletisimPage({
               <LazyGoogleMap
                 src={siteConfig.mapsEmbedUrl}
                 title="Takt — Ankara İvedik OSB konum"
-                className="h-full min-h-[320px] w-full border-0"
+                className="h-full min-h-[280px] w-full border-0 sm:min-h-[320px]"
               />
             </div>
           </div>
 
-          <div className="mt-12 rounded border border-line bg-white p-6 md:p-8">
+          <div className="interactive-card mt-12 md:mt-14">
             <h2 className="font-display text-h3 text-ink">Mesaj gönderin</h2>
             <p className="mt-2 text-body text-steel">
               Formu doldurun; en kısa sürede dönüş yapalım.
@@ -114,7 +79,7 @@ export default async function IletisimPage({
                 <FormSuccessBanner message={successMessage} />
               </div>
             ) : null}
-            <div className={successMessage ? "mt-2" : "mt-6"}>
+            <div className={successMessage ? "mt-4" : "mt-6"}>
               <ContactForm compact />
             </div>
           </div>

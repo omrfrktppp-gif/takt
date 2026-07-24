@@ -30,11 +30,33 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  return buildMetadata({
+  const metadata = buildMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
   });
+  const openGraph: NonNullable<Metadata["openGraph"]> = {
+    ...metadata.openGraph,
+  };
+  const twitter: NonNullable<Metadata["twitter"]> = {
+    ...metadata.twitter,
+  };
+  delete openGraph.images;
+
+  return {
+    ...metadata,
+    authors: post.author ? [{ name: post.author }] : undefined,
+    alternates: { canonical: post.canonicalUrl },
+    openGraph: {
+      ...openGraph,
+      type: "article",
+      url: post.canonicalUrl,
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
+      authors: post.author ? [post.author] : undefined,
+    },
+    twitter,
+  };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -49,13 +71,21 @@ export default async function BlogPostPage({ params }: PageProps) {
     month: "long",
     day: "numeric",
   });
+  const updatedDate =
+    post.updatedAt && post.updatedAt !== post.publishedAt
+      ? new Date(post.updatedAt).toLocaleDateString("tr-TR", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      : undefined;
 
   return (
     <SeoPageLayout>
       <JsonLd
         data={[
           breadcrumbSchema([
-            { name: "Hakkımızda", path: "/hakkimizda" },
+            { name: "Ana Sayfa", path: "/" },
             { name: "Blog", path: "/blog" },
             { name: post.title, path: `/blog/${post.slug}` },
           ]),
@@ -63,7 +93,16 @@ export default async function BlogPostPage({ params }: PageProps) {
         ]}
       />
 
-      <PageShell eyebrow="BLOG" title={post.title} description={post.description}>
+      <PageShell
+        eyebrow="BLOG"
+        title={post.title}
+        description={post.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: post.title },
+        ]}
+      >
         <Section>
           <div className="mb-8 flex flex-wrap items-center gap-4">
             <time
@@ -72,6 +111,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             >
               {date}
             </time>
+            {updatedDate ? (
+              <span className="font-mono text-eyebrow text-steel">
+                Güncellendi:{" "}
+                <time dateTime={post.updatedAt}>{updatedDate}</time>
+              </span>
+            ) : null}
             {post.author ? (
               <span className="font-mono text-eyebrow text-steel">
                 Yazar:{" "}
@@ -93,7 +138,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <li key={tag.id}>
                     <Link
                       href={`/blog/etiket/${tag.id}`}
-                      className="rounded-sm bg-accent/10 px-2 py-1 font-mono text-eyebrow text-accent hover:bg-accent/20"
+                      className="tag-pill bg-accent/10 font-mono text-eyebrow text-ink hover:bg-accent/20"
                     >
                       {tag.label}
                     </Link>

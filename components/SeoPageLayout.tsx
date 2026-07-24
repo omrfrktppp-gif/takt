@@ -7,7 +7,7 @@ type SeoPageLayoutProps = {
 
 export function SeoPageLayout({ children }: SeoPageLayoutProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto scroll-inner scrollbar-none pb-20 lg:pb-0">
+    <div className="flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto scroll-inner scrollbar-none">
       {children}
       <Footer />
     </div>
@@ -22,22 +22,54 @@ type PanelCardProps = {
 
 export function PanelCard({ href, title, excerpt }: PanelCardProps) {
   return (
-    <article className="rounded border border-line bg-white p-6 transition-colors hover:border-signal/30">
+    <article className="interactive-card group relative flex flex-col">
       <h2 className="font-display text-h3 text-ink">
         <Link
           href={href}
-          className="underline-offset-4 hover:text-signal hover:underline"
+          className="rounded-sm underline-offset-4 transition-colors after:absolute after:inset-0 group-hover:text-signal group-hover:underline focus-visible:text-signal focus-visible:underline"
         >
           {title}
         </Link>
       </h2>
-      <p className="mt-3 text-body text-steel">{excerpt}</p>
-      <Link
-        href={href}
-        className="mt-4 inline-block font-mono text-small text-signal underline-offset-4 hover:underline"
+      <p className="mt-3 flex-1 text-body text-steel">{excerpt}</p>
+      <span
+        aria-hidden="true"
+        className="mt-5 inline-flex min-h-11 items-center font-mono text-small text-signal transition-transform duration-200 ease-takt motion-safe:group-hover:translate-x-0.5"
       >
         Detay →
-      </Link>
+      </span>
     </article>
+  );
+}
+
+type ContentCardProps = {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+};
+
+export function ContentCard({
+  title,
+  children,
+  className = "",
+}: ContentCardProps) {
+  return (
+    <article className={`interactive-card flex flex-col ${className}`}>
+      <h2 className="font-display text-h3 text-ink">{title}</h2>
+      <div className="mt-3 flex-1">{children}</div>
+    </article>
+  );
+}
+
+type ListingGridProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+export function ListingGrid({ children, className = "" }: ListingGridProps) {
+  return (
+    <div className={`grid gap-5 sm:gap-6 md:grid-cols-2 ${className}`}>
+      {children}
+    </div>
   );
 }

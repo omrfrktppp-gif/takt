@@ -27,22 +27,28 @@ export default function GorusmePlanlaPage() {
         eyebrow="RANDEVU"
         title="Görüşme planla"
         description="İhtiyacınıza uygun randevu türünü seçin. Takvim Türkiye saati ve Türkçe olarak gösterilir."
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Görüşme planla" },
+        ]}
       >
         <Section>
-          <AppointmentBooking />
+          <div className="interactive-card overflow-hidden">
+            <AppointmentBooking />
+          </div>
 
-          <p className="mt-8 text-body text-steel">
+          <p className="mt-8 max-w-2xl text-body text-steel">
             Randevu öncesi kısa bir özet paylaşmak isterseniz{" "}
             <Link
               href="/iletisim"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               iletişim formu
             </Link>{" "}
             veya{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               {siteConfig.email}
             </a>{" "}

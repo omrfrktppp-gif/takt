@@ -278,12 +278,13 @@ export function IhtiyacAnaliziWizard() {
   const canGoBack = screenHistory.length > 1 || isSummary;
 
   return (
-    <div id="ihtiyac-analizi-form" className="scroll-mt-24">
+    <div id="ihtiyac-analizi-form" className="scroll-mt-[var(--sticky-offset)]">
       <FormProgress percent={progress} />
 
       <form
         onSubmit={handleManualSubmit}
-        className="rounded border border-line bg-white p-4 md:p-6"
+        className="interactive-card"
+        aria-busy={submitting}
       >
         <h2 className="font-display text-h2 text-ink">{screen.title}</h2>
         {screen.description ? (
@@ -321,17 +322,17 @@ export function IhtiyacAnaliziWizard() {
 
         {isSummary ? (
           <div className="mt-6 space-y-4">
-            <label className="flex items-start gap-3 text-body text-steel">
+            <label className="form-checkbox-row text-body text-steel">
               <input
                 type="checkbox"
                 checked={kvkkAccepted}
                 onChange={(event) => setKvkkAccepted(event.target.checked)}
-                className="mt-1 h-4 w-4 rounded border-line text-signal"
+                aria-required="true"
               />
               <span>
                 <Link
                   href="/kvkk-aydinlatma-metni"
-                  className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                  className="text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
                   target="_blank"
                 >
                   KVKK aydınlatma metnini
@@ -392,7 +393,7 @@ export function IhtiyacAnaliziWizard() {
         ) : null}
 
         {error ? (
-          <p className="mt-4 text-body text-accent" role="alert">
+          <p className="form-error mt-4" role="alert">
             {error}
             {isSummary && (error.includes("e-posta") || error.includes("telefon")) ? (
               <>

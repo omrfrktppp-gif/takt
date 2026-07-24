@@ -8,19 +8,28 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:content": "playwright test tests/blog-content.spec.ts",
+    "test:e2e": "playwright test tests/site-quality.spec.ts",
+    "audit:blog-links": "node scripts/audit-blog-links.mjs",
     "test:resend": "node --env-file=.env.local scripts/test-resend.mjs",
     "audit:indexing": "node scripts/audit-indexing.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.21.0",
+    "motion": "^12.42.2",
     "next": "^16.2.11",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "resend": "^6.17.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

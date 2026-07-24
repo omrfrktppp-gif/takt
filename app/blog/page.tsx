@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BlogPostCard } from "@/components/BlogPost";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
-import { SeoPageLayout } from "@/components/SeoPageLayout";
+import { ListingGrid, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import { blogTags, getPublishedPosts } from "@/lib/blog";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -21,7 +21,7 @@ export default function BlogIndexPage() {
     <SeoPageLayout>
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Hakkımızda", path: "/hakkimizda" },
+          { name: "Ana Sayfa", path: "/" },
           { name: "Blog", path: blogSeo.path },
         ])}
       />
@@ -30,6 +30,10 @@ export default function BlogIndexPage() {
         eyebrow="BLOG"
         title="Teknik yazılar"
         description={blogSeo.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Blog" },
+        ]}
       >
         <Section>
           {tags.length > 0 ? (
@@ -40,7 +44,7 @@ export default function BlogIndexPage() {
                   <li key={tag.id}>
                     <Link
                       href={`/blog/etiket/${tag.id}`}
-                      className="rounded-sm border border-line bg-white px-3 py-1.5 text-small text-ink hover:border-signal hover:text-signal"
+                      className="tag-pill border border-line bg-white text-ink hover:border-signal hover:text-signal"
                     >
                       {tag.label}
                     </Link>
@@ -51,13 +55,13 @@ export default function BlogIndexPage() {
           ) : null}
 
           {posts.length > 0 ? (
-            <div className="grid gap-6">
+            <ListingGrid className="md:grid-cols-1">
               {posts.map((post) => (
                 <BlogPostCard key={post.slug} post={post} />
               ))}
-            </div>
+            </ListingGrid>
           ) : (
-            <div className="rounded border border-dashed border-line bg-white p-8 text-center">
+            <div className="interactive-card border-dashed text-center">
               <p className="font-display text-h3 text-ink">Yakında</p>
               <p className="mt-3 text-body text-steel">
                 Blog yazıları hazırlanıyor. Teknik içerikler burada yayınlanacak.

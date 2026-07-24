@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
+import {
+  ContentCard,
+  ListingGrid,
+  SeoPageLayout,
+} from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
-import { SeoPageLayout } from "@/components/SeoPageLayout";
 import {
   caseStudies,
   caseStudySchema,
@@ -61,9 +65,13 @@ export default function ReferanslarPage() {
             ? "Çalıştığımız proje tipleri ve seçilmiş vaka çalışmaları."
             : "Makina, ürün geliştirme ve üretim projelerinde üstlendiğimiz teknik çalışma alanları."
         }
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Referanslar" },
+        ]}
       >
         <Section>
-          <div className="max-w-3xl space-y-6 text-body text-steel">
+          <div className="max-w-3xl space-y-6 text-body leading-relaxed text-steel">
             <p>
               Müşteri gizliliğine saygı duyuyoruz. Aşağıda sık çalıştığımız proje
               tiplerini ve teknik alanları özetliyoruz.
@@ -77,14 +85,14 @@ export default function ReferanslarPage() {
           </div>
 
           {hasCaseStudies && (
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <ListingGrid className="mt-12">
               {caseStudies.map((study) => (
                 <article
                   key={study.id}
                   id={study.id}
-                  className="rounded border border-line bg-white p-6"
+                  className="interactive-card"
                 >
-                  <p className="text-caption uppercase tracking-wide text-steel">
+                  <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
                     {study.sector}
                   </p>
                   <h2 className="mt-2 font-display text-h3 text-ink">
@@ -102,46 +110,42 @@ export default function ReferanslarPage() {
                   {(study.relatedPath ?? study.href) && (
                     <Link
                       href={study.relatedPath ?? study.href!}
-                      className="mt-4 inline-block text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                      className="touch-target-inline mt-2 text-body text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
                     >
                       İlgili hizmet →
                     </Link>
                   )}
                 </article>
               ))}
-            </div>
+            </ListingGrid>
           )}
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <ListingGrid className="mt-12">
             {workAreas.map((area) => (
-              <article
-                key={area.title}
-                className="rounded border border-line bg-white p-6"
-              >
-                <h2 className="font-display text-h3 text-ink">{area.title}</h2>
-                <p className="mt-3 text-body text-steel">{area.body}</p>
+              <ContentCard key={area.title} title={area.title}>
+                <p className="text-body text-steel">{area.body}</p>
                 <Link
                   href={area.href}
-                  className="mt-4 inline-block text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                  className="touch-target-inline mt-2 text-body text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
                 >
                   İlgili hizmet →
                 </Link>
-              </article>
+              </ContentCard>
             ))}
-          </div>
+          </ListingGrid>
 
           <p className="mt-12 text-body text-steel">
             Projenizi konuşmak için{" "}
             <Link
               href={appointmentCta.href}
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               görüşme planlayabilir
             </Link>{" "}
             veya{" "}
             <Link
               href="/iletisim"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               iletişime
             </Link>{" "}

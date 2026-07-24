@@ -87,10 +87,10 @@ export default function RootLayout({
           ]}
         />
         <Nav />
-        <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
+        <CookieConsentBanner />
+        <main className="relative flex min-h-0 flex-1 flex-col">{children}</main>
         <MobileCtaBar />
         <WhatsAppButton />
-        <CookieConsentBanner />
         <ConsentAnalytics />
       </body>
     </html>

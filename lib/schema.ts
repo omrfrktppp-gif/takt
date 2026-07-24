@@ -248,7 +248,7 @@ function articleAuthor(post: BlogPost) {
       "@type": "Person" as const,
       "@id": personIdForMember(member),
       name: member.name,
-      url: siteConfig.url,
+      url: `${siteConfig.url}/hakkimizda#${member.id}`,
       worksFor: { "@id": orgId },
     };
   }
@@ -260,9 +260,15 @@ function articleAuthor(post: BlogPost) {
 }
 
 export function articleSchema(post: BlogPost) {
+  const schemaTypes =
+    post.schemaType === "BlogPosting"
+      ? "BlogPosting"
+      : ["BlogPosting", post.schemaType];
+
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": schemaTypes,
+    "@id": `${post.canonicalUrl}#article`,
     headline: post.title,
     description: post.description,
     datePublished: post.publishedAt,
@@ -273,11 +279,18 @@ export function articleSchema(post: BlogPost) {
       name: siteConfig.name,
       url: siteConfig.url,
       "@id": orgId,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}${siteConfig.logo.src}`,
+        width: siteConfig.logo.width,
+        height: siteConfig.logo.height,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteConfig.url}/blog/${post.slug}`,
+      "@id": post.canonicalUrl,
     },
+    url: post.canonicalUrl,
     inLanguage: "tr-TR",
   };
 }

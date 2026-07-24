@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
+import { ContentCard, ListingGrid, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
-import { SeoPageLayout } from "@/components/SeoPageLayout";
 import { getChapter, getChapterPanels } from "@/lib/pages";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata, chapterSeo } from "@/lib/seo";
@@ -29,18 +29,24 @@ export default function YaklasimPage() {
         eyebrow={chapter.eyebrow}
         title={chapter.label}
         description={seo.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: chapter.label },
+        ]}
       >
         <Section>
-          <div className="grid gap-8 md:grid-cols-2">
+          <ListingGrid>
             {panels.map((panel) => (
-              <div key={panel.id} className="max-w-xl">
-                <h2 className="font-display text-h3 text-ink">
-                  {panel.title ?? chapter.label}
-                </h2>
-                <p className="mt-3 text-body text-steel">{panel.body}</p>
-              </div>
+              <ContentCard
+                key={panel.id}
+                title={panel.title ?? chapter.label}
+              >
+                <p className="text-body leading-relaxed text-steel">
+                  {panel.body}
+                </p>
+              </ContentCard>
             ))}
-          </div>
+          </ListingGrid>
         </Section>
       </PageShell>
     </SeoPageLayout>
