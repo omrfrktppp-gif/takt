@@ -1,11 +1,12 @@
 ---
 title: "Metal Yerine Mühendislik Plastikleri: Metali Değil, Doğru Yükteki Metali Değiştirmek"
-description: "POM, PA, PEEK gibi mühendislik plastikleri metalin yerini ne zaman alabilir? Dayanım, sürtünme ve korozyon avantajlarını ve sınırlarını veriyle, kaynaklarla anlatıyoruz."
+description: "POM, PA, PEEK gibi mühendislik plastikleri metalin yerini ne zaman alabilir? Dayanım, sıcaklık ve sürünme sınırları; üretici verileriyle karşılaştırma."
 slug: "metal-yerine-muhendislik-plastik"
-date: 2026-06-26
-updated: 2026-06-26
+date: 2026-06-09
+updated: 2026-07-25
 status: review
-author: "Ömer Faruk"
+kind: article
+author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"
 tags: ["muhendislik-plastikleri", "pom", "peek", "poliamid", "malzeme-secimi"]
 keywords:
@@ -19,52 +20,67 @@ og:
   type: "article"
   image: "images/cover.jpg"
 schema: "TechArticle"
-reading_time: 6
+reading_time: 7
 ---
 
 ## Metal Yerine Mühendislik Plastikleri: Metali Değil, Doğru Yükteki Metali Değiştirmek
 
-Mühendislik plastikleri uzun süre "ucuz ve zayıf" olarak görüldü. Bu algı bazı uygulamalarda doğru, çoğunda yanıltıcıdır. POM, poliamid (PA) ve PEEK gibi mühendislik plastikleri, doğru uygulamada metalin sağlayamadığı avantajlar sunar: hafiflik, korozyon dayanımı, kendi kendini yağlama ve sessiz çalışma. Ama bu, plastiğin her metali her yerde ikame edebileceği anlamına gelmez. Mesele metali plastikle değiştirmek değil, hangi yükteki metalin plastikle değiştirilebileceğini doğru görmektir.
+Mühendislik plastikleri — POM (asetal), poliamid (PA), PEEK ve benzerleri — doğru uygulamada metalin sağlayamadığı avantajlar sunar: hafiflik, korozyon bağışıklığı, kendi kendini yağlama ve sessiz çalışma. Ama bu, plastiğin her metali her yerde ikame edebileceği anlamına gelmez; dayanım, sıcaklık ve sürünme (creep) sınırları nettir. Mesele metali plastikle değiştirmek değil, hangi yükteki metalin plastikle değiştirilebileceğini doğru görmektir.
 
-Bu yazıda mühendislik plastiklerinin metalin yerini hangi koşullarda alabildiğini, hangi koşullarda alamadığını; dayanım, sürtünme, korozyon ve maliyet ekseninde, gerçek veriyle ve kaynaklara dayanarak ele alıyoruz.
+"Plastik ucuz ve zayıftır" algısı bazı uygulamalarda doğru, çoğunda yanıltıcıdır. Bu yazıda kararın iki tarafını da üretici verileriyle ele alıyoruz.
 
-### Mühendislik Plastiklerinin Avantajları
+## Mühendislik Plastikleri Nerede Üstün?
 
-Bilimsel literatür, mühendislik plastiklerinin metal yerine kullanıldığında sağladığı avantajları net biçimde sıralar: korozyon dayanımı, hafiflik ve belirli durumlarda rijitliği tokluğla birleştirme (ScienceDirect). Özellikle hareketli parçalarda, plastiklerin iki özelliği öne çıkar (Hony Plastic):
+Hareketli ve korozyona açık parçalarda plastiklerin dört özelliği öne çıkar:
 
-- **Kendi kendini yağlama:** POM ve PA gibi plastikler düşük sürtünme katsayısına sahiptir; yağlamasız çalışabilir, bu da bakımı azaltır.
-- **Sessiz ve aşınmaya dayanıklı çalışma:** Plastik dişliler metal dişlilere göre daha sessiz çalışır ve iyi aşınma direnci gösterir.
-- **Korozyon bağışıklığı:** Plastikler paslanmaz; nemli, kimyasal veya dış ortam uygulamalarında metalin korozyon sorununu ortadan kaldırır.
-- **Hafiflik:** Metalin çok altında yoğunluk, hareketli ve taşınan parçalarda enerji ve ağırlık avantajı sağlar.
+- **Kendi kendini yağlama:** [Ensinger'in POM (asetal) malzeme sayfasının](https://www.ensingerplastics.com/en/thermoplastic-materials/pom-acetal) belirttiği gibi POM; çok iyi kayma özellikleri, yüksek aşınma direnci ve düşük nem emme gösterir. Yağlamasız çalışabilmesi bakımı azaltır.
+- **Sessiz çalışma:** Plastik dişli ve yataklar, metal muadillerine göre daha sessizdir.
+- **Korozyon bağışıklığı:** Plastikler paslanmaz; nemli, kimyasal veya dış ortamda metalin korozyon sorununu ortadan kaldırır.
+- **Hafiflik:** Metalin çok altında yoğunluk, hareketli parçalarda atalet ve enerji avantajı sağlar.
 
-Bu nedenle dişli, kam, yatak, kılavuz ve mahfaza gibi birçok parça, doğru koşulda plastikten üretildiğinde hem daha sessiz hem daha bakımsız hem daha hafif olur.
+Bu nedenle dişli, kam, yatak, kılavuz ve mahfaza gibi parçalar, doğru koşulda plastikten üretildiğinde daha sessiz, bakımsız ve hafif olur.
 
-### Sınır: Dayanım ve Sıcaklık
+## Sınır Nerede: Dayanım ve Sıcaklık
 
-Avantajların yanında net bir sınır vardır ve bu sınır dürüstçe konuşulmalıdır. Çoğu mühendislik plastiği, mukavemet ve sıcaklık dayanımında metalin gerisindedir. Somut bir karşılaştırma: katkısız PEEK'in çekme dayanımı yaklaşık 90–100 MPa iken, alüminyum 6061-T6 alaşımının çekme dayanımı 240–310 MPa seviyesindedir (Total Plastics). Yani yüksek mühendislik plastiklerinden biri olan PEEK bile, katkısız haliyle yaygın bir alüminyum alaşımının dayanımının altında kalır.
+Sınırlar dürüstçe konuşulmalıdır. Somut bir karşılaştırma, üretici veri sayfalarıyla:
 
-Ancak aynı kaynak önemli bir nüansı da ekler: karbon fiber takviyeli PEEK, alüminyumun dayanımını aşabilir (Total Plastics). Bu, plastiklerin takviyelerle (cam veya karbon fiber) çok daha geniş bir dayanım aralığına çıkabildiğini gösterir. Dolayısıyla "plastik zayıftır" genellemesi yanlıştır; doğru ifade, plastiğin dayanımının türüne ve takviyesine göre çok geniş bir aralıkta değiştiğidir.
+| Malzeme | Çekme dayanımı (tipik, 23 °C) | Kaynak |
+| --- | --- | --- |
+| PEEK (katkısız, Victrex 450G) | ~98 MPa | [Victrex 450G veri sayfası](https://www.victrex.com/-/media/downloads/datasheets/victrex_tds_450g.pdf) |
+| Alüminyum 6061-T6 | ~310 MPa | [Kaiser Aluminum 6061 veri sayfası](https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1025/Kaiser_Aluminum_6061_Rod_and_Bar.pdf) |
+| PEEK %40 karbon fiber takviyeli (Victrex 90HMF40) | ~330 MPa | [Victrex 90HMF40 veri sayfası](https://www.victrex.com/en/downloads/datasheets/victrex-peek-90hmf40) |
 
-Sıcaklık da belirleyici bir sınırdır. Birçok plastik, metalin rahatça çalıştığı sıcaklıklarda yumuşar veya sürünme (creep) gösterir. Yüksek sıcaklık uygulamalarında plastik seçimi dikkatli yapılmalı, sürekli yük altında zamanla deformasyon (sürünme) hesaba katılmalıdır.
+Tablo iki şeyi birden gösterir: en yüksek performanslı mühendislik plastiklerinden biri olan katkısız PEEK bile yaygın bir yapısal alüminyum alaşımının dayanımının belirgin altındadır; ama karbon fiber takviyeli PEEK, oda sıcaklığında bu alaşımın çekme dayanımına ulaşıp geçebilir. "Plastik zayıftır" genellemesi yanlıştır; doğru ifade, dayanımın türe ve takviyeye göre çok geniş bir aralıkta değiştiğidir. Dikkat: takviyeli plastiklerde bile sıcaklık yükseldikçe dayanım hızla düşer — aynı Victrex veri sayfası 90HMF40 için 120 °C'de 220 MPa, 180 °C'de 145 MPa verir.
 
-### Doğru Karar: Yükü ve Ortamı Tanımlamak
+Sıcaklık ve zaman da belirleyicidir. [Ensinger'in PEEK sayfasına](https://www.ensingerplastics.com/en/thermoplastic-materials/peek-plastic) göre PEEK 250–260 °C'ye kadar sürekli kullanılabilir; ancak birçok mühendislik plastiği bunun çok altında yumuşar. [Ensinger'in metal-plastik geçiş rehberi](https://www.ensingerplastics.com/en/engineering), metalden plastiğe geçişte tasarımın gözden geçirilmesi gerektiğini vurgular: sürekli yük altında zamanla deformasyon (sürünme), daha yüksek ısıl genleşme ve sıcaklıkla değişen özellikler hesaba katılmalıdır.
 
-Metal-plastik kararı, daha önceki malzeme seçimi yazımızdaki ilkeyle aynıdır: önce işlevsel gereksinimi tanımlamak. Parça düşük-orta yük altında, korozyon riski olan, hareketli ve sessizlik istenen bir uygulamadaysa, mühendislik plastiği çoğu zaman metalden üstündür. Parça yüksek ve sürekli yük taşıyorsa, yüksek sıcaklıkta çalışıyorsa ya da çok dar tolerans gerektiriyorsa, metal hâlâ doğru tercih olabilir. Anahtar, parçanın gerçekte ne kadar yük taşıdığını ve hangi ortamda çalıştığını net belirlemektir.
+## Karar Nasıl Verilir?
 
-### Sonuç
+Karar, [malzeme seçimi yazımızdaki](https://takt.tr/blog/hafif-malzeme-secimi) ilkeyle aynıdır: önce işlevsel gereksinimi tanımlamak.
 
-Mühendislik plastikleri, doğru uygulamada metalin sağlayamadığı hafiflik, korozyon dayanımı, sessizlik ve bakımsız çalışma sunar; ama dayanım ve sıcaklıkta belirgin sınırları vardır. "Plastik zayıftır" da "plastik her şeyi çözer" de yanlıştır. Doğru karar, metali toptan plastikle değiştirmek değil; parçanın yükünü ve ortamını analiz edip, plastiğin gerçekten üstün olduğu yerde geçişi yapmaktır.
+| Koşul | Plastik aday mı? |
+| --- | --- |
+| Düşük-orta yük, hareketli parça, sessizlik/yağsız çalışma isteniyor | Güçlü aday (POM, PA) |
+| Korozyon, kimyasal veya gıda teması var | Güçlü aday |
+| Yüksek ve sürekli statik yük | Dikkat: sürünme analizi şart; takviyeli tür veya metal |
+| Sürekli çalışma sıcaklığı yüksek (>100–150 °C) | Yalnızca yüksek performans plastikler (PEEK vb.); maliyeti tartın |
+| Çok dar tolerans ve boyut kararlılığı kritik | Dikkat: nem emme ve ısıl genleşme metalden yüksek |
 
-### Bu Yaklaşım Nerede Geçerli?
+Değerlendirme için bize genellikle şu bilgiler gerekir: parçanın gerçek yükü ve yük süresi (sürekli mi, darbeli mi), çalışma sıcaklığı aralığı, temas ettiği kimyasallar, hedef adet ve mevcut metal parçanın sorun geçmişi (aşınma, korozyon, gürültü).
 
-Korozyon, ağırlık, gürültü veya yağlama bakımı sorun olan; düşük-orta yüklü hareketli parçalar metalden plastiğe geçiş için en güçlü adaylardır. "Bu parça gerçekten metal dayanımı mı gerektiriyor, yoksa alışkanlıktan mı metal?" sorusu, değerlendirmenin başlangıcıdır.
+## Sonuç
+
+Mühendislik plastikleri, doğru uygulamada hafiflik, korozyon dayanımı, sessizlik ve bakımsız çalışma sunar; dayanım, sıcaklık ve sürünmede ise net sınırları vardır. "Plastik zayıftır" da "plastik her şeyi çözer" de yanlıştır. Doğru karar, metali toptan değiştirmek değil; parçanın yükünü ve ortamını analiz edip plastiğin gerçekten üstün olduğu yerde geçişi yapmaktır.
 
 ---
 
-**Korozyon, ağırlık ya da yağlama bakımı sizi zorlayan metal parçalarınız mı var?** takt.tr olarak parçalarınızın yükünü ve çalışma ortamını analiz ediyor; mühendislik plastiğinin gerçekten üstün olduğu yerlerde metal-plastik geçişini tasarlıyoruz. [İletişime geçin / Malzeme dönüşümü danışmanlığı talep edin.](https://takt.tr/iletisim)
+**Korozyon, ağırlık ya da yağlama bakımı sizi zorlayan metal parçalarınız mı var?** Takt olarak parçanızın yükünü ve çalışma ortamını analiz ediyor; metal-plastik geçişini yalnızca gerçekten kazandırdığı yerde tasarlıyoruz. [Tasarım ve geliştirme hizmetimize](https://takt.tr/hizmetler/tasarim-gelistirme) göz atın veya [iletişime geçin](https://takt.tr/iletisim).
 
 ## Kaynaklar
-- Engineering Plastics vs. Metal (PEEK ~90–100 MPa vs. alüminyum 6061-T6 240–310 MPa; CF-PEEK) — Total Plastics. https://totalplastics.com/blog/engineering-plastics-vs-metal/
-- Which Plastics Are Best for Replacing Metal Parts? (PA, POM, PC, PPS, PEEK) — RJC Mold. https://rjcmold.com/which-plastics-are-best-for-replacing-metal-parts/
-- PP, PE, PA, POM, PC, PEEK, PPS Gears and Their Properties (kendi kendini yağlama, sessizlik) — Hony Plastic. https://www.honyplastic.com/news/pp-pe-pa-pom-pc-peek-pps-gears-of-different-materials-and-their-properties-212562.html
-- Engineering Plastic — an overview (metal yerine kullanım avantajları) — ScienceDirect Topics. https://www.sciencedirect.com/topics/materials-science/engineering-plastic
+
+- [VICTREX PEEK 450G veri sayfası — Victrex](https://www.victrex.com/-/media/downloads/datasheets/victrex_tds_450g.pdf) (katkısız PEEK çekme dayanımı)
+- [VICTREX PEEK 90HMF40 veri sayfası — Victrex](https://www.victrex.com/en/downloads/datasheets/victrex-peek-90hmf40) (%40 karbon fiber takviyeli PEEK, 23–275 °C dayanım değerleri)
+- [Kaiser Aluminum 6061 Rod & Bar teknik verileri](https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1025/Kaiser_Aluminum_6061_Rod_and_Bar.pdf) (6061-T6 tipik çekme dayanımı 310 MPa)
+- [POM (asetal) malzeme — Ensinger](https://www.ensingerplastics.com/en/thermoplastic-materials/pom-acetal) (kayma özellikleri, aşınma direnci)
+- [PEEK malzeme — Ensinger](https://www.ensingerplastics.com/en/thermoplastic-materials/peek-plastic) (250–260 °C sürekli kullanım sıcaklığı)
+- [Metal yerine plastik: makine mühendisliği çözümleri — Ensinger](https://www.ensingerplastics.com/en/engineering) (geçişte sürünme, ısıl genleşme ve tasarım revizyonu uyarısı)

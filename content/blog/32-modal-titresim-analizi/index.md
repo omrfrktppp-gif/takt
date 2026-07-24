@@ -1,19 +1,20 @@
 ---
-title: "Modal ve Titreşim Analizi: Statik Dayanım Değil, Rezonanstan Kaçmak"
-description: "Modal analiz ve doğal frekans nedir? Statik olarak sağlam bir parçanın neden rezonansta bozulduğunu ve tasarımla rezonanstan kaçınmayı kaynaklarla anlatıyoruz."
+title: "Modal Analiz: Titreşimi Susturmak Değil, Rezonanstan Kaçınmak"
+description: "Modal analiz nedir, rezonans neden tehlikeli? Doğal frekans, tahrik frekansı ayrımı ve titreşim problemlerinin tasarımda önlenmesi — pratik bir rehber."
 slug: "modal-titresim-analizi"
-date: 2026-06-26
-updated: 2026-06-26
+date: 2026-06-27
+updated: 2026-07-25
 status: review
-author: "Ömer Faruk"
+kind: article
+author: "Ömer Faruk Top"
 category: "Saha & Analiz"
-tags: ["modal-analiz", "titresim", "rezonans", "dogal-frekans", "yapisal-analiz"]
+tags: ["modal-analiz", "titresim", "rezonans", "dogal-frekans", "fea"]
 keywords:
-  primary: "modal analiz (titreşim ve rezonans)"
-  secondary: ["modal analiz nedir", "doğal frekans", "rezonans", "titreşim analizi"]
+  primary: "modal analiz (doğal frekans)"
+  secondary: ["modal analiz nedir", "rezonans nedir", "doğal frekans hesabı", "titreşim analizi"]
 cover:
   src: "images/cover.jpg"
-  alt: "Bir yapının doğal frekanslarını ve mod şekillerini gösteren modal analiz sonucu"
+  alt: "Bir makine şasisinin mod şekillerini gösteren modal analiz sonucu"
 canonical: "https://takt.tr/blog/modal-titresim-analizi"
 og:
   type: "article"
@@ -22,51 +23,50 @@ schema: "TechArticle"
 reading_time: 6
 ---
 
-## Modal ve Titreşim Analizi: Statik Dayanım Değil, Rezonanstan Kaçmak
+## Modal Analiz: Titreşimi Susturmak Değil, Rezonanstan Kaçınmak
 
-Bir parça statik yük altında fazlasıyla sağlam olabilir; aynı parça çalışma sırasında, taşıdığı yükün çok altındaki bir kuvvetle titreşip kırılabilir. Bu çelişki gibi görünen durumun nedeni rezonanstır. Statik dayanım, parçanın sabit bir yükü taşıyıp taşıyamayacağını söyler; ama dönen, titreşen ya da değişken kuvvete maruz kalan sistemlerde asıl tehlike yükün büyüklüğü değil, frekansıdır. İyi bir dinamik tasarım, parçayı yalnızca güçlü yapmaz; onu rezonanstan uzak tutar.
+Modal analiz, bir yapının doğal frekanslarını ve bu frekanslarda aldığı şekilleri (mod şekillerini) belirleyen analizdir; amacı titreşimi bastırmak değil, yapının doğal frekanslarıyla çalışma sırasındaki tahrik frekanslarının çakışmasını — yani rezonansı — tasarım aşamasında önlemektir. Her yapının, üzerine hiçbir kuvvet uygulanmasa da "tercih ettiği" salınım frekansları vardır; sorun, dışarıdan gelen periyodik bir kuvvetin bu frekanslardan birine denk gelmesiyle başlar.
 
-Bu yazıda modal analizin ne olduğunu, doğal frekans ve rezonans kavramlarını ve statik olarak sağlam bir parçanın neden titreşimle bozulabildiğini kaynaklara dayanarak ele alıyoruz.
+Titreşim problemi çoğu zaman sahada, makine çalışmaya başladıktan sonra fark edilir: gürültü, gevşeyen bağlantılar, çatlayan kaynaklar. O aşamada çözüm pahalıdır. Modal analiz bu problemi tasarım masasında, üretimden önce görünür kılar.
 
-### Doğal Frekans ve Rezonans
+## Rezonans Neden Bu Kadar Tehlikeli?
 
-Her yapının, serbest bırakıldığında titreşmeyi "tercih ettiği" belirli frekansları vardır; bunlara doğal frekanslar denir. Rezonans, bir bileşenin doğal frekansı, ona etki eden dış titreşimin veya zorlayıcı kuvvetin frekansıyla çakıştığında oluşur (Vibration Research; Crystal Instruments). Bu çakışma gerçekleştiğinde, küçük bir kuvvet bile salınım genliğini hızla büyütür; sistem giderek daha çok titreşir ve görece düşük bir uyarımla bile hasara, gürültüye veya erken yorulmaya yol açabilir.
+Rezonansta yapıya giren enerji her çevrimde birikir; küçük ve masum görünen bir tahrik kuvveti, doğal frekansla çakıştığında büyüyen genliklere ulaşır. Sonuç, kuvvetin büyüklüğüyle değil, frekansıyla ilgilidir — bu yüzden sahada "bu kadar küçük motor bu şasiyi nasıl sallıyor?" şaşkınlığı yaşanır. Genliğin sınırını yalnızca yapıdaki sönüm belirler ve çelik konstrüksiyonlarda yapısal sönüm genellikle düşüktür.
 
-Klasik örnek bir motor ya da fan içeren makinedir: motorun devri, bağlı olduğu şasinin bir doğal frekansına denk geldiğinde, statik olarak fazlasıyla güçlü olan şasi bile şiddetle titreşmeye başlar. Sorun şasinin zayıflığı değil, frekansların çakışmasıdır.
+Mühendislik tarihinin en bilinen örneklerinden biri, 1940'ta rüzgâr kaynaklı titreşimle çöken Tacoma Narrows Köprüsü'dür; olayın mekanizması ve dersleri [Washington Eyaleti Ulaştırma Bakanlığı'nın resmî tarihçesinde](https://wsdot.wa.gov/tacoma-narrows-bridge-history) belgelenmiştir. Köprü ölçeğinde yaşanan bu ders, makine şasisi ölçeğinde her gün geçerlidir: yapı, tahrik frekansına "hazırlıksız" yakalanmamalıdır.
 
-### Modal Analiz Ne Yapar?
+## Modal Analiz Ne Söyler?
 
-Modal analiz, bir yapının dinamik davranışını — doğal frekanslarını ve bu frekanslarda nasıl şekil değiştirdiğini (mod şekillerini) — belirleyen yöntemdir (Autodesk; Crystal Instruments). Yani modal analiz iki soruyu yanıtlar: Bu parça hangi frekanslarda titreşmeye yatkın? Ve her frekansta nasıl bir biçimde salınır?
+Modal analiz iki temel çıktı üretir:
 
-Bu bilgi tasarım için kritiktir, çünkü tehlikeyi önceden gösterir. Bir makinenin çalışma frekansları (motor devri, geçiş kuvvetleri, darbe frekansları) biliniyorsa, modal analiz parçanın doğal frekanslarının bu çalışma frekanslarına yakın olup olmadığını ortaya koyar. Yakınsa, rezonans riski vardır ve tasarım değiştirilmelidir.
+- **Doğal frekanslar:** Yapının hangi frekanslarda rezonansa girebileceği listesi.
+- **Mod şekilleri:** Her doğal frekansta yapının nasıl şekil değiştirdiği — hangi bölgenin en çok hareket ettiği.
 
-### Rezonanstan Nasıl Kaçınılır?
+Bu iki bilgi, tasarım kararına şöyle dönüşür: makinedeki tahrik kaynakları (motor devri, dişli geçiş frekansı, pompa kanat frekansı, dengesizlik) listelenir ve doğal frekanslarla karşılaştırılır. Çakışma ya da yakınlık varsa tasarım değiştirilir: rijitlik artırılır (frekans yükselir), kütle dağılımı değiştirilir, ya da tahrik frekansı kaydırılır. Mod şekli, müdahalenin nereye yapılacağını gösterir — en çok hareket eden bölgeye eklenen bir destek, frekansı en verimli şekilde kaydırır.
 
-Rezonanstan kaçınmanın temel ilkesi, parçanın doğal frekansını çalışma frekansından yeterince uzak tutmaktır. Yaygın bir tasarım kuralı, doğal frekans ile zorlayıcı frekans arasında en az iki kat fark bırakmaktır (Factor of 2 kuralı) (Vibration Research). Bunu sağlamak için tasarımcının elinde birkaç araç vardır:
+## Statik Analiz Yeterli Değil mi?
 
-- **Rijitliği değiştirmek:** Bir bölgenin kesitini, kalınlığını veya destek noktalarını değiştirmek doğal frekansı kaydırır. Genellikle rijitliği artırmak doğal frekansı yükseltir.
-- **Kütleyi değiştirmek:** Kütle eklemek veya azaltmak da doğal frekansı kaydırır; kütle arttıkça doğal frekans genellikle düşer.
-- **Sönümleme eklemek:** Sönümleyici elemanlar, rezonans anındaki genlik büyümesini sınırlar.
+Değildir. [FEA yazımızda](https://takt.tr/blog/sonlu-elemanlar-analizi-fea) ele aldığımız statik analiz, "bu yapı bu yükü taşır mı?" sorusuna cevap verir; modal analiz ise "bu yapı bu devirde titrer mi?" sorusuna. Statik olarak fazlasıyla güvenli bir şasi, ilk doğal frekansı motor devrine denk geldiğinde sahada problem üretir. Dönen ekipman taşıyan her şaside, statik doğrulamanın yanına modal doğrulama konmalıdır.
 
-Önemli olan, bu değişikliklerin rastgele değil, modal analizin gösterdiği frekanslara göre yapılmasıdır. Amaç parçayı sertleştirmek değil, doğal frekansını tehlikeli bölgeden çıkarmaktır.
+Modal analizin de sınırları vardır: sonucun doğruluğu sınır koşullarının (yapının nasıl mesnetlendiğinin) gerçeğe uygunluğuna güçlü biçimde bağlıdır ve cıvatalı bağlantıların rijitliği modeli etkiler. Kritik yapılarda hesaplanan frekanslar, sahada deneysel modal test (çekiç testi veya çalışır durumda ölçüm) ile doğrulanmalıdır — [FEA yazımızdaki](https://takt.tr/blog/sonlu-elemanlar-analizi-fea) "öngör, deneyle doğrula" ilkesi burada da geçerlidir.
 
-### Statik Analiz Yeterli Değil
+## Hangi Durumda Modal Analiz İstemelisiniz?
 
-Modal analiz, daha önceki FEA yazımızda ele aldığımız statik yapısal analizi tamamlar ama onun yerini tutmaz. Statik analiz "bu yükü taşır mı?" sorusunu yanıtlar; modal analiz "bu sistem hangi frekanslarda titremeye yatkın?" sorusunu. Dönen, titreşen veya değişken kuvvete maruz kalan her sistemde ikisi birlikte gereklidir. Yalnızca statik dayanıma bakıp dinamik davranışı göz ardı etmek, statik olarak sağlam ama sahada titreyip bozulan bir parça üretmenin en yaygın yoludur.
+| Durum | Modal analiz gerekli mi? |
+| --- | --- |
+| Şasi/platform üzerinde dönen ekipman (motor, fan, pompa) var | Evet — tahrik frekansları doğal frekanslarla karşılaştırılmalı |
+| Sahada gürültü, gevşeyen cıvata, çatlayan kaynak şikâyeti | Evet — mevcut problem büyük olasılıkla rezonans kaynaklı |
+| Değişken devirli sürücü (VSD) ile geniş devir aralığı taranıyor | Evet — aralık içindeki her frekans potansiyel çakışma |
+| Yalnızca statik yük taşıyan, tahrik içermeyen yapı | Genellikle hayır — statik analiz yeterli olabilir |
 
-### Sonuç
+## Sonuç
 
-Modal ve titreşim analizi, bir parçanın yalnızca ne kadar güçlü olduğunu değil, hangi frekanslarda titremeye yatkın olduğunu gösterir. Dinamik sistemlerde asıl risk, yükün büyüklüğünden çok frekansların çakışmasıdır; rezonans, küçük bir kuvveti yıkıcı bir titreşime çevirebilir. İyi tasarım, parçayı güçlü yapmanın yanında doğal frekansını çalışma frekansından uzak tutar. Statik dayanım gerekli ama yeterli değildir.
-
-### Bu Yaklaşım Nerede Geçerli?
-
-Motor, fan, pompa, kompresör içeren ya da değişken/darbe yüklerine maruz kalan tüm makineler ve yapılar modal analizden faydalanır. "Parça statik olarak sağlam ama çalışırken titriyor, gürültü yapıyor veya erken çatlıyor" durumu, neredeyse her zaman bir rezonans probleminin işaretidir.
+Modal analiz, yapının doğal frekanslarını ve mod şekillerini üretimden önce görünür kılarak rezonans problemini tasarım aşamasında önler. Titreşim problemi sahada çözülmesi en pahalı problemlerden biridir; masada önlenmesi ise çoğu zaman bir destek sacı veya rijitlik artışı kadar basittir. Dönen ekipman taşıyan hiçbir yapı, modal doğrulama olmadan "bitmiş" sayılmamalıdır.
 
 ---
 
-**Statik olarak sağlam bir parçanız çalışırken titriyor, gürültü yapıyor ya da erken mi çatlıyor?** takt.tr olarak makinelerinizin modal ve titreşim analizini yapıyor; doğal frekansları belirleyip tasarımı rezonanstan uzaklaştırarak titreşim kaynaklı arızaları önlüyoruz. [İletişime geçin / Titreşim ve modal analiz desteği talep edin.](https://takt.tr/iletisim)
+**Makinenizde gürültü, gevşeyen bağlantılar ya da açıklayamadığınız titreşim mi var?** Takt olarak yapılarınızın doğal frekanslarını hesaplıyor, tahrik kaynaklarınızla karşılaştırıp rezonans riskini tasarım aşamasında çözüyoruz. [Analiz ve hesaplama hizmetimize](https://takt.tr/hizmetler/analiz-hesaplama) göz atın veya [iletişime geçin](https://takt.tr/iletisim).
 
 ## Kaynaklar
-- Resonance and the Factor of 2 Rule (rezonans, doğal frekans, tasarım kuralı) — Vibration Research. https://vibrationresearch.com/resources/resonance-factor-of-2-rule/
-- Modal Analysis: An In-Depth Look (doğal frekans, mod şekilleri) — Autodesk. https://www.autodesk.com/blogs/design-and-manufacturing/modal-analysis-an-in-depth-look/
-- Basics of Modal Testing and Analysis — Crystal Instruments. https://www.crystalinstruments.com/basics-of-modal-testing-and-analysis
+
+- [Tacoma Narrows Bridge History — Washington State Department of Transportation](https://wsdot.wa.gov/tacoma-narrows-bridge-history) (1940 çöküşünün resmî tarihçesi ve mühendislik dersleri)

@@ -1,11 +1,12 @@
 ---
 title: "Kaynak Çarpılması Yönetimi: Çarpılmayı Düzeltmek Değil, Oluşmasını Engellemek"
-description: "Kaynak çarpılması neden olur, nasıl önlenir? Isı girdisi, kaynak sırası ve fikstürleme ile çarpılmayı tasarımda kontrol etmenin yöntemlerini kaynaklarla anlatıyoruz."
+description: "Kaynak çarpılması neden olur, nasıl önlenir? Isı girdisi, kaynak sırası, fikstürleme ve tasarım kararlarıyla çarpılma kontrolü — TWI kaynaklarıyla."
 slug: "kaynak-carpilmasi-kontrolu"
-date: 2026-06-26
-updated: 2026-06-26
+date: 2026-06-15
+updated: 2026-07-25
 status: review
-author: "Ömer Faruk"
+kind: article
+author: "Ömer Faruk Top"
 category: "Saha & Analiz"
 tags: ["kaynak-carpilmasi", "kaynakli-imalat", "isil-girdi", "fikstur", "celik-konstruksiyon"]
 keywords:
@@ -19,59 +20,55 @@ og:
   type: "article"
   image: "images/cover.jpg"
 schema: "TechArticle"
-reading_time: 6
+reading_time: 7
 ---
 
 ## Kaynak Çarpılması Yönetimi: Çarpılmayı Düzeltmek Değil, Oluşmasını Engellemek
 
-Kaynaklı bir konstrüksiyon, kaynak bittikten sonra çarpıldığında çoğu zaman geç kalınmıştır. Çarpılmış bir parçayı zorlayarak, ısıtarak veya pres altında düzeltmek hem işçilik hem de malzemenin içine giren kalıcı gerilme demektir. Oysa çarpılma, kaynağın kaçınılmaz bir yan etkisi değil, büyük ölçüde yönetilebilir bir olgudur. Doğru yaklaşım, oluşan çarpılmayı düzeltmek değil, oluşmasını baştan engellemektir.
+Kaynak çarpılması, kaynak bölgesindeki lokal ısınma-soğuma çevriminin malzemede dengesiz genleşme ve büzüşme yaratmasından kaynaklanır; büyük ölçüde tasarım ve süreç kararlarıyla yönetilebilir. Çarpılmış bir parçayı zorlayarak, ısıtarak veya pres altında düzeltmek hem işçilik hem de malzemeye giren kalıcı gerilme demektir. Doğru yaklaşım, oluşan çarpılmayı düzeltmek değil, oluşmasını baştan sınırlamaktır.
 
-Bu yazıda kaynak çarpılmasının neden oluştuğunu ve ısı girdisi, kaynak sırası ve fikstürleme ile nasıl kontrol edileceğini kaynaklara dayanarak ele alıyoruz. Konu, daha önceki termal genleşme yazımızla aynı fiziğe dayanır: ısının malzemeyi genleştirip büzüştürmesi.
+Konu, [termal genleşme yazımızla](https://takt.tr/blog/termal-genlesme-yonetimi) aynı fiziğe dayanır: ısı, malzemede ölçülebilir boyut değişimi yaratır. Kaynakta bu değişim lokal ve dengesiz olduğu için sonuç çarpılma ve artık gerilmedir.
 
-### Çarpılma Neden Olur?
+## Çarpılma Neden Olur?
 
-Lincoln Electric'in net tanımıyla, "kaynaktaki çarpılma, kaynak metalinin ve komşu ana metalin ısınma ve soğuma çevriminde genleşmesi ve büzüşmesinden kaynaklanır" (Lincoln Electric). Mekanizma şudur: kaynak bölgesi yoğun biçimde ısınır ve genleşmek ister; ancak çevresindeki soğuk metal bu genleşmeyi engeller. Soğuma sırasında ise kaynak metali büzüşür ve çevresindeki malzemeyi kendine doğru çeker. Bu büzüşme dengesiz olduğunda parça çarpılır.
+[TWI'nin (The Welding Institute) teknik kaynağına](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-types-and-causes-033) göre mekanizma şudur: kaynak, birleşim kenarlarını çok lokal ısıttığı için ısınan bölge genleşmek ister ama çevresindeki soğuk metal buna izin vermez; soğuma sırasında kaynak metali ve ısı tesiri altındaki bölge büzüşürken soğuk ana metal buna direnir ve malzemenin akma sınırını aşan gerilmeler kalıcı şekil değişimi bırakır. Aynı kaynak, çarpılmanın altı temel biçimde görüldüğünü belirtir: boyuna büzülme, enine büzülme, açısal çarpılma, eğilme (bowing), çukurlaşma (dishing) ve burulma.
 
-Bu, daha önceki termal genleşme yazımızdaki ilkenin bir başka görünümüdür: ısı, malzemede ölçülebilir boyut değişimi yaratır. Kaynakta bu değişim lokal ve dengesiz olduğu için, sonucu çarpılma ve artık gerilmedir.
+## Çarpılma Hangi Araçlarla Kontrol Edilir?
 
-### Çarpılmayı Kontrol Etmenin Üç Aracı
+Kontrol araçları üç başlıkta toplanır; ilk ikisi [TWI'nin tasarım](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-prevention-by-design-034) ve [imalat teknikleri](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-control-prevention-by-fabrication-techniques-036) rehberlerinde ayrıntılı işlenir:
 
-Çarpılma kontrolü, sektör kaynaklarında tutarlı biçimde üç temel araç etrafında toplanır:
+| Araç | Ne yapılır? | Neden işe yarar? |
+| --- | --- | --- |
+| Kaynak metalini azaltmak | Dikişi işlevin gerektirdiği boyutta tutmak; aşırı kaynaktan kaçınmak | Daha az ergimiş metal = daha az büzüşme; köşe dikişinde bacak boyunu büyütmek dayanım katmadan çarpılmayı artırır |
+| Yerleşim ve denge | Dikişleri nötr eksene yakın ve simetrik yerleştirmek; iki tarafı dönüşümlü kaynatmak | Büzüşme kuvvetleri birbirini dengeler, kaldıraç etkisi azalır |
+| Sıra ve teknik | Geri adım (back-step) / atlamalı (skip) kaynak; uzun dikişi tek yönde bitirmemek | Büzüşme birikmeden dağıtılır |
+| Fikstür ve ön ayar | Kaynak sırasında bağlama; gerekirse ön eğme/ön ayar (pre-set) | Hareket kısıtlanır ya da beklenen büzüşme önceden telafi edilir |
 
-- **Isı girdisini kontrol etmek:** Çarpılmanın temel sürücüsü ısıdır. Dikiş boyutunu gereğinden büyük tutmamak ve ilerleme hızını doğru ayarlamak, parçaya giren toplam ısıyı sınırlar (Xiris; Welding Tables & Fixtures). Gereğinden fazla ısı, gereğinden fazla çarpılma demektir.
-- **Kaynak sırası ve tekniği:** Dikişlerin hangi sırayla ve hangi yönde atıldığı, büzüşmenin dengeli dağılmasını belirler. Geri adım (back-step) tekniği ve simetrik kaynak sırası, büzüşme kuvvetlerinin birbirini dengelemesini sağlar (Kicking Horse Welders).
-- **Fikstürleme ve bağlama:** Parçayı kaynak sırasında sabitleyen fikstürler ve kelepçeler, çarpılmayı fiziksel olarak kısıtlar ve yapıyı stabilize eder. Doğru fikstür, çarpılmanın oluşmadan engellenmesini sağlar.
+## Tasarımcı Çarpılmayı Nasıl Azaltır?
 
-Bu üç araç birlikte kullanıldığında çarpılma, düzeltilmesi gereken bir hata olmaktan çıkıp, tasarım ve süreçle yönetilen bir parametreye dönüşür.
+Çarpılma yalnızca kaynakçının değil, tasarımcının da sorumluluğudur. [TWI'nin tasarım rehberindeki](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-prevention-by-design-034) ilkeler tasarım masasında uygulanır:
 
-### Tasarım Çarpılmayı Nasıl Azaltır?
+- **Kaynağı ortadan kaldır:** Büküm ya da standart profil kullanarak dikişi tamamen kaldırmak çoğu zaman mümkündür — bu aynı zamanda [DFM yazımızdaki](https://takt.tr/blog/uretime-yonelik-tasarim-dfm) operasyon azaltma ilkesidir.
+- **Minimum kaynak metali:** Ağız açısını ve kök boşluğunu yeterli nüfuziyet için gereken en küçük değerde tutmak; sürekli yerine aralıklı (intermittent) dikiş düşünmek.
+- **Nötr eksene yakın, simetrik dikişler:** Büzüşme kuvvetlerinin kaldıraç etkisini azaltır.
 
-Çarpılma yalnızca kaynakçının değil, tasarımcının da sorumluluğudur. Tasarım kararları, çarpılma eğilimini daha kaynak başlamadan belirler:
+Bu yaklaşım, [Poka-Yoke yazımızdaki](https://takt.tr/blog/poka-yoke-hata-onleyici-tasarim) ilkeyle örtüşür: problemi sahada çözmek yerine tasarımda önlemek.
 
-- **Kaynak miktarını azaltmak:** Gereğinden büyük veya gereğinden çok dikiş, daha çok ısı ve daha çok çarpılma demektir. İşlevin gerektirdiği minimum kaynağı tasarlamak çarpılmayı doğrudan azaltır.
-- **Simetri:** Kaynakları nötr eksene göre simetrik yerleştirmek, büzüşme kuvvetlerinin birbirini dengelemesini sağlar.
-- **Kaynak yerini seçmek:** Birleşimleri parçanın rijit bölgelerine yakın konumlandırmak, çarpılmaya direnci artırır.
+## Aşırı Kısıtlamanın Riski Ne?
 
-Bu yaklaşım, daha önceki DFA ve Poka-Yoke yazılarımızdaki ilkeyle örtüşür: problemi sahada çözmek yerine tasarımda önlemek. Çarpılmayı azaltan bir tasarım, kaynakçının işini de kolaylaştırır.
+Çarpılma sıfıra indirilemez; amaç onu kabul edilebilir sınırda tutmaktır. Fikstürle aşırı kısıtlama çarpılmayı azaltırken parçada yüksek artık gerilme bırakabilir; [TWI'nin ön ayar ve kısıtlama rehberi](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-prevention-by-pre-setting-pre-bending-or-use-of-restraint-035), kısıtlamayla çalışırken çatlama riskinin ve kilitli gerilmelerin dikkate alınması gerektiğini belirtir. Bazen büzüşmeyi tamamen engellemek yerine, onu tanımlı ve zararsız bir yöne kanalize etmek daha doğrudur — [termal genleşme yazımızdaki](https://takt.tr/blog/termal-genlesme-yonetimi) "bastırma, yönlendir" ilkesi.
 
-### Eleştirel Bakış
+## Sonuç
 
-Çarpılma sıfıra indirilemez; amaç onu kabul edilebilir sınırlar içinde tutmaktır. Aşırı fikstürleme veya aşırı kısıtlama, çarpılmayı azaltırken parçanın içinde yüksek artık gerilme bırakabilir; bu gerilme sonradan, yük altında veya işleme sırasında ortaya çıkabilir. Bu yüzden çarpılma kontrolü, daha önceki termal genleşme yazımızdaki "bastırmak değil yönlendirmek" ilkesiyle dengelenmelidir: bazen büzüşmeyi tamamen engellemek yerine, onu tanımlı ve zararsız bir yöne kanalize etmek daha doğrudur.
-
-### Sonuç
-
-Kaynak çarpılması, kaynağın kaçınılmaz bir kaderi değil, ısı girdisi, kaynak sırası ve fikstürleme ile yönetilebilen bir olgudur. Üstelik kontrol, kaynakçıdan önce tasarımda başlar: kaynak miktarını, simetriyi ve birleşim yerini doğru seçen bir tasarım, çarpılmayı oluşmadan azaltır. Çarpılmış parçayı düzeltmek pahalı ve risklidir; onu engellemek ise tasarım ve süreç kararlarıyla mümkündür.
-
-### Bu Yaklaşım Nerede Geçerli?
-
-Çelik konstrüksiyon, şasi, çerçeve ve kaynaklı tüm imalatlar çarpılma riskine açıktır. "Kaynaktan sonra parça çarpılıyor, düzeltmeye işçilik harcıyoruz" cümlesi, ısı girdisi, kaynak sırası veya tasarımda bir iyileştirme fırsatına işaret eder.
+Kaynak çarpılması kaçınılmaz bir kader değil; ısı girdisi, dikiş yerleşimi, kaynak sırası ve fikstürleme ile yönetilebilen bir olgudur. Kontrol, kaynakçıdan önce tasarımda başlar: kaynak miktarını, simetriyi ve birleşim yerini doğru seçen tasarım, çarpılmayı oluşmadan azaltır. Çarpılmış parçayı düzeltmek pahalı ve risklidir; onu sınırlamak tasarım ve süreç kararlarıyla mümkündür.
 
 ---
 
-**Kaynaklı imalatınızda çarpılma, ölçü sapması ve düzeltme işçiliği mi yaşıyorsunuz?** takt.tr olarak kaynaklı konstrüksiyonlarınızı çarpılma gözüyle inceliyor; kaynak miktarını, simetriyi, sırayı ve fikstürlemeyi tasarımda ele alarak çarpılmayı oluşmadan azaltıyoruz. [İletişime geçin / Kaynaklı imalat ve çarpılma desteği talep edin.](https://takt.tr/iletisim)
+**Kaynaklı imalatınızda çarpılma, ölçü sapması ve düzeltme işçiliği mi yaşıyorsunuz?** Takt olarak kaynaklı konstrüksiyonlarınızı çarpılma gözüyle inceliyor; kaynak miktarını, simetriyi, sırayı ve fikstürlemeyi tasarımda ele alıyoruz. [Tasarım ve geliştirme hizmetimize](https://takt.tr/hizmetler/tasarim-gelistirme) göz atın veya [iletişime geçin](https://takt.tr/iletisim).
 
 ## Kaynaklar
-- Weld Distortion (çarpılmanın nedeni: genleşme/büzüşme) — Lincoln Electric. https://www.lincolnelectric.com/en/welding-and-cutting-resource-center/welding-how-tos/weld-distortion
-- Welding Distortion: Causes, Prevention, and Repair (ısı girdisi kontrolü) — Xiris. https://blog.xiris.com/blog/welding-distortion
-- Welding Distortion Control: Prevention and Correction Techniques (geri adım, fikstürleme) — Kicking Horse Welders. https://kickinghorsewelders.ca/welding-distortion-control-prevention-and-correction-techniques-ezp-43
-- Heat Control in Welding: How to Prevent Warping and Distortion (amperaj, ilerleme hızı) — Welding Tables & Fixtures. https://weldingtablesandfixtures.com/blogs/the-welders-blog/heat-control-in-welding-how-to-prevent-warping-and-distortion
+
+- [Distortion — Types and Causes — TWI](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-types-and-causes-033) (çarpılma mekanizması ve altı temel biçimi)
+- [Distortion — Prevention by Design — TWI](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-prevention-by-design-034) (kaynak metalini azaltma, nötr eksen, dengeli kaynak)
+- [Distortion Control — Prevention by Fabrication Techniques — TWI](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-control-prevention-by-fabrication-techniques-036) (geri adım/atlamalı kaynak, punta ve sıra)
+- [Distortion — Prevention by Pre-setting, Pre-bending or Use of Restraint — TWI](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-prevention-by-pre-setting-pre-bending-or-use-of-restraint-035) (kısıtlama, ön eğme ve artık gerilme uyarısı)

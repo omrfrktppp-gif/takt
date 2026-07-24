@@ -1,11 +1,12 @@
 ---
 title: "Endüstri 5.0: Makineyi İnsanın Yerine Değil, Yanına Koymak"
-description: "Endüstri 5.0 nedir? Endüstri 4.0'dan farkı, insan-merkezli, dayanıklı ve sürdürülebilir üretim vizyonu ve KOBİ için anlamını kaynaklarla anlatıyoruz."
+description: "Endüstri 5.0 nedir, Endüstri 4.0'dan farkı ne? Avrupa Komisyonu'nun insan-merkezli, dayanıklı ve sürdürülebilir üretim çerçevesi ve KOBİ için pratik anlamı."
 slug: "endustri-5-0"
-date: 2026-06-26
-updated: 2026-06-26
+date: 2026-05-22
+updated: 2026-07-25
 status: review
-author: "Ömer Faruk"
+kind: article
+author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"
 tags: ["endustri-5-0", "industry-5-0", "insan-merkezli-uretim", "surdurulebilirlik", "kobot"]
 keywords:
@@ -24,51 +25,55 @@ reading_time: 6
 
 ## Endüstri 5.0: Makineyi İnsanın Yerine Değil, Yanına Koymak
 
-Endüstri 4.0 üretimi otomasyon, veri ve bağlanabilirlik etrafında tanımladı; hedefi büyük ölçüde verimlilik ve üretkenlikti. Bu dönüşüm değerliydi ama bir soruyu açıkta bıraktı: üretim daha verimli olurken insan ve çevre nereye düşüyor? Endüstri 5.0 bu soruya cevap olarak doğdu. Otomasyonu reddetmez; üzerine insanı, dayanıklılığı ve sürdürülebilirliği ekler. Vurgu, makineyi insanın yerine koymaktan, insanın yanına koymaya kayar.
+Endüstri 5.0, Avrupa Komisyonu'nun 2021'de yayımladığı politika çerçevesiyle tanımlanan ve sanayiyi üç ilke etrafında yeniden konumlandıran bir vizyondur: insan-merkezlilik (human-centric), dayanıklılık (resilience) ve sürdürülebilirlik (sustainability). Çerçevenin resmî tanımı ve gerekçesi, [Avrupa Komisyonu'nun Industry 5.0 sayfasında](https://research-and-innovation.ec.europa.eu/research-area/industrial-research-and-innovation/industry-50_en) ve [2021 tarihli politika raporunda](https://op.europa.eu/en/publication-detail/-/publication/468a892a-5097-11eb-b59f-01aa75ed71a1) yer alır. Endüstri 4.0'ı reddetmez; otomasyon ve veri kazanımlarının üzerine insanı, krize dayanıklılığı ve çevresel sorumluluğu ekler.
 
-Endüstri 5.0 kavramı, Avrupa Komisyonu tarafından 2021'de resmî olarak tanıtıldı ve üç ilke etrafında tanımlandı: insan-merkezlilik (human-centric), dayanıklılık (resilience) ve sürdürülebilirlik (sustainability) (Avrupa Komisyonu; ScienceDirect, 2025). Bu yazıda Endüstri 5.0'ın ne olduğunu, Endüstri 4.0'dan farkını ve özellikle bir KOBİ için pratikte ne anlama geldiğini kaynaklara dayanarak ele alıyoruz.
+Endüstri 4.0 üretimi otomasyon, veri ve bağlanabilirlik etrafında tanımladı; hedefi büyük ölçüde verimlilikti. Bu dönüşüm değerliydi ama bir soruyu açıkta bıraktı: üretim daha verimli olurken insan ve çevre nereye düşüyor? Endüstri 5.0 bu soruya cevap olarak doğdu.
 
-### Endüstri 4.0'dan Farkı Ne?
+## Endüstri 4.0'dan Farkı Ne?
 
-Endüstri 4.0 ve 5.0 birbirinin alternatifi değil, ardışık ve tamamlayıcı aşamalardır. Fark, odak noktasındadır:
+İki kavram birbirinin alternatifi değil, ardışık ve tamamlayıcı aşamalardır. Fark odak noktasındadır:
 
-- **Endüstri 4.0:** Akıllı fabrika, otomasyon, nesnelerin interneti (IoT), veri ve süreç optimizasyonu. Temel soru: "Daha verimli nasıl üretiriz?"
-- **Endüstri 5.0:** Aynı teknolojiler üzerine kurulu; ama insanın değeri, çevresel sürdürülebilirlik ve krizlere karşı dayanıklılık ön planda. Temel soru: "Bu teknolojiyi insan ve toplum için nasıl kullanırız?"
+| | Endüstri 4.0 | Endüstri 5.0 |
+| --- | --- | --- |
+| Temel soru | "Daha verimli nasıl üretiriz?" | "Bu teknolojiyi insan ve toplum için nasıl kullanırız?" |
+| Araçlar | IoT, otomasyon, veri, akıllı fabrika | Aynı teknolojiler + kobot, ergonomi, esnek tedarik |
+| Başarı ölçüsü | Verimlilik, üretkenlik | Verimlilik + çalışan refahı, dayanıklılık, çevresel etki |
 
-Avrupa Komisyonu'nun çerçevesi, sanayinin "istihdam ve büyümenin ötesinde toplumsal hedeflere ulaşma" gücünü vurgular (Eurocid). Yani Endüstri 5.0, verimliliği bir amaç değil, insan refahı ve sürdürülebilirlik için bir araç olarak konumlandırır.
+[Avrupa Komisyonu'nun çerçevesi](https://research-and-innovation.ec.europa.eu/research-area/industrial-research-and-innovation/industry-50_en), sanayinin "istihdam ve büyümenin ötesinde toplumsal hedeflere" hizmet etmesini vurgular. Yani Endüstri 5.0, verimliliği bir amaç değil, insan refahı ve sürdürülebilirlik için bir araç olarak konumlandırır.
 
-### İnsan-Merkezlilik Pratikte Ne Demek?
+## İnsan-Merkezlilik Pratikte Ne Demek?
 
-İnsan-merkezli üretim, soyut bir slogan değil, somut tasarım kararlarıdır. Kobotlar bunun en görünür örneğidir: önceki yazımızda ele aldığımız gibi, işbirlikçi robotlar tekrarlı ve yorucu işleri devralırken nitelikli insanın yargı, ayar ve kalite gibi işlere odaklanmasını sağlar. Benzer şekilde ergonomik iş istasyonları, artırılmış gerçeklik destekli montaj kılavuzları ve operatörün karar almasını kolaylaştıran arayüzler, insanı sürecin dışına itmek yerine merkezine alır.
+İnsan-merkezli üretim, soyut bir slogan değil, somut tasarım kararlarıdır. [Kobotlar](https://takt.tr/blog/kobot-robotik-makine-besleme) bunun en görünür örneğidir: işbirlikçi robotlar tekrarlı ve yorucu işleri devralırken nitelikli insan yargı, ayar ve kalite işlerine odaklanır. Benzer şekilde ergonomik iş istasyonları, montaj kılavuzları ve operatörün karar almasını kolaylaştıran arayüzler, insanı sürecin dışına itmek yerine merkezine alır.
 
-Bu yaklaşım, daha önce ele aldığımız Poka-Yoke ve DFA ilkeleriyle de örtüşür: amaç, işi insandan bağımsız hale getirmek değil, insanın işini kolaylaştırıp hatayı azaltmaktır.
+Bu yaklaşım, [Poka-Yoke](https://takt.tr/blog/poka-yoke-hata-onleyici-tasarim) ve [DFA](https://takt.tr/blog/montaja-yonelik-tasarim-dfa) ilkeleriyle de örtüşür: amaç işi insandan bağımsız hale getirmek değil, insanın işini kolaylaştırıp hatayı azaltmaktır.
 
-### Dayanıklılık ve Sürdürülebilirlik
+## Dayanıklılık ve Sürdürülebilirlik Neden Eklendi?
 
-Endüstri 5.0'ın diğer iki ilkesi, son yılların tedarik zinciri ve enerji krizlerinden doğdu. Dayanıklılık, üretimin tek bir tedarikçiye, tek bir bölgeye ya da tek bir sürece bağımlı kalmadan krizlere uyum sağlayabilmesidir. Sürdürülebilirlik ise üretimin kaynak ve enerji verimliliğini, döngüselliği ve çevresel etkiyi tasarım kararının parçası yapmasıdır. Daha önceki hafifletme ve malzeme verimliliği yazılarımızda gördüğümüz gibi, bu çoğu zaman ek bir maliyet değil, iyi mühendisliğin doğal sonucudur.
+Endüstri 5.0'ın diğer iki ilkesi, son yılların tedarik zinciri ve enerji krizlerinden doğdu. Dayanıklılık, üretimin tek bir tedarikçiye, bölgeye ya da sürece bağımlı kalmadan krizlere uyum sağlayabilmesidir; bu yönüyle [yerlileştirme yazımızdaki](https://takt.tr/blog/yerlilestirme-reshoring) tedarik riski tartışmasıyla doğrudan bağlıdır. Sürdürülebilirlik ise kaynak ve enerji verimliliğini tasarım kararının parçası yapmaktır. [Hafifletme yazımızda](https://takt.tr/blog/surdurulebilir-uretim-hafifletme) gösterdiğimiz gibi, bu çoğu zaman ek maliyet değil, iyi mühendisliğin doğal sonucudur.
 
-### KOBİ İçin Anlamı
+## KOBİ İçin Ne Anlama Geliyor?
 
-Endüstri 5.0 büyük bütçeli bir dönüşüm projesi gibi sunulabilir; ama özünde bir bakış açısıdır. Bir KOBİ için pratik anlamı şudur: teknolojiye yatırım yaparken yalnızca "daha hızlı üretir mi?" değil, "çalışanın işini kolaylaştırıyor mu, beni krizlere karşı dayanıklı kılıyor mu, kaynak verimliliğini artırıyor mu?" sorularını da sormak. Bu çerçeve, yatırımları daha bütüncül ve uzun vadeli değerlendirmeyi sağlar. Endüstri 5.0'a geçiş, sıfırdan başlamak değil; mevcut dijitalleşme adımlarına insan ve sürdürülebilirlik boyutunu eklemektir.
+Endüstri 5.0 büyük bütçeli bir dönüşüm projesi gibi sunulabilir; ama özünde bir bakış açısıdır. Bir KOBİ için pratik karşılığı, yatırım kararlarında üç soruyu birden sormaktır:
 
-### Eleştirel Bakış
+- Bu yatırım yalnızca daha hızlı mı üretir, yoksa **çalışanın işini de kolaylaştırır mı**?
+- Beni tek tedarikçiye/sürece bağımlılıktan çıkarıp **krizlere karşı dayanıklı kılıyor mu**?
+- **Kaynak ve enerji verimliliğini** artırıyor mu?
 
-Endüstri 5.0 henüz büyük ölçüde bir vizyon ve politika çerçevesidir; bazı yönleriyle pazarlama dili de taşır. Bir KOBİ için tehlike, kavramı bir slogan olarak benimseyip somut karşılığını kurmamaktır. Değer, "Endüstri 5.0 yapıyoruz" demekte değil; insanı kolaylaştıran, dayanıklılığı artıran ve kaynak tüketimini düşüren gerçek kararlar almaktadır. Çerçeve faydalıdır; ama yalnızca somut uygulamaya dönüştüğünde.
+Endüstri 5.0'a geçiş sıfırdan başlamak değil; mevcut dijitalleşme adımlarına insan ve sürdürülebilirlik boyutunu eklemektir.
 
-### Sonuç
+## Eleştirel Bakış: Vizyonla Uygulama Arasındaki Fark
 
-Endüstri 5.0, Endüstri 4.0'ın otomasyon ve veri kazanımlarını reddetmeden üzerine insan-merkezlilik, dayanıklılık ve sürdürülebilirlik ekler. Teknolojiyi amaç değil, insan ve toplum için bir araç olarak konumlandırır. Bir KOBİ için değeri, yeni bir etiket benimsemekte değil; yatırım kararlarını verimliliğin yanında insan, dayanıklılık ve sürdürülebilirlik ekseninde de değerlendirmektedir.
+Endüstri 5.0 henüz büyük ölçüde bir vizyon ve politika çerçevesidir; bazı yönleriyle pazarlama dili de taşır. Bir KOBİ için tehlike, kavramı slogan olarak benimseyip somut karşılığını kurmamaktır. Değer, "Endüstri 5.0 yapıyoruz" demekte değil; insanı kolaylaştıran, dayanıklılığı artıran ve kaynak tüketimini düşüren gerçek kararlar almaktadır. Çerçeve faydalıdır; ama yalnızca somut uygulamaya dönüştüğünde.
 
-### Bu Yaklaşım Nerede Geçerli?
+## Sonuç
 
-Dijitalleşme adımları atmış ve bir sonraki yatırımını planlayan her üretici için Endüstri 5.0 çerçevesi yön verir. "Bu yatırım yalnızca daha hızlı mı üretir, yoksa ekibimi ve dayanıklılığımı da güçlendirir mi?" sorusu, doğru başlangıçtır.
+Endüstri 5.0, Endüstri 4.0'ın otomasyon ve veri kazanımlarını reddetmeden üzerine insan-merkezlilik, dayanıklılık ve sürdürülebilirlik ekler. Bir KOBİ için değeri, yeni bir etiket benimsemekte değil; yatırım kararlarını verimliliğin yanında insan, dayanıklılık ve sürdürülebilirlik ekseninde de değerlendirmektedir.
 
 ---
 
-**Dijitalleşme yatırımlarınızı yalnızca hız değil, insan, dayanıklılık ve sürdürülebilirlik ekseninde de değerlendirmek mi istiyorsunuz?** takt.tr olarak üretim dönüşümü yol haritanızı bütüncül biçimde planlıyor; teknolojiyi sürecinize ve ekibinize gerçekten değer katacak şekilde konumlandırıyoruz. [İletişime geçin / Üretim dönüşümü danışmanlığı talep edin.](https://takt.tr/iletisim)
+**Dijitalleşme yatırımlarınızı yalnızca hız değil; insan, dayanıklılık ve sürdürülebilirlik ekseninde de değerlendirmek mi istiyorsunuz?** Takt olarak üretim dönüşümü yol haritanızı bütüncül biçimde planlıyoruz. [Proje danışmanlığı hizmetimize](https://takt.tr/hizmetler/proje-danismanligi) göz atın veya [iletişime geçin](https://takt.tr/iletisim).
 
 ## Kaynaklar
-- Industry 5.0 — Avrupa Komisyonu vizyon belgesi (Eurocid arşivi). https://eurocid.mne.gov.pt/sites/default/files/repository/paragraph/documents/17991/brochura-industry-50_0.pdf
-- Assessing human-centric, resilient, sustainable and smart manufacturing (Industry 5.0) — ScienceDirect, 2025. https://www.sciencedirect.com/science/article/pii/S2199853125002203
-- Industry 5.0: more human-centric, sustainable, and resilient — Mecalux. https://www.mecalux.com/blog/industry-5-0
-- Industry 5.0 and the Human-Centric Factory (Avrupa Komisyonu 2021 tanıtımı) — LinkedIn / R. Varenas. https://www.linkedin.com/pulse/industry-50-human-centric-factory-competitive-edge-varenas-mba-o3wxf
+
+- [Industry 5.0 — European Commission, Research and Innovation](https://research-and-innovation.ec.europa.eu/research-area/industrial-research-and-innovation/industry-50_en) (resmî tanım: insan-merkezli, dayanıklı, sürdürülebilir sanayi)
+- [Industry 5.0: Towards a sustainable, human-centric and resilient European industry — European Commission, 2021 politika raporu](https://op.europa.eu/en/publication-detail/-/publication/468a892a-5097-11eb-b59f-01aa75ed71a1)
