@@ -29,21 +29,25 @@ export default function SssPage() {
         eyebrow="SSS"
         title="Sık sorulan sorular"
         description={seo.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "SSS" },
+        ]}
       >
-        <Section>
-          <p className="mb-8 max-w-2xl text-body text-steel">
+        <Section narrow>
+          <p className="mb-8 text-body leading-relaxed text-steel">
             Mühendislik danışmanlığı, hizmet kapsamı ve çalışma modelimiz hakkında
             kısa yanıtlar. Daha fazla bilgi için{" "}
             <Link
               href="/hakkimizda"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               hakkımızda
             </Link>{" "}
             sayfasına bakabilir veya{" "}
             <Link
               href="/iletisim"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               iletişime
             </Link>{" "}

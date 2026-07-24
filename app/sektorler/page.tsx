@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
-import { PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
+import { ListingGrid, PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import { sectors } from "@/lib/sectors";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -31,9 +31,17 @@ export default function SektorlerPage() {
         eyebrow="SEKTÖRLER"
         title="Sektörler"
         description="Farklı sanayi dikeylerinde tasarım, analiz, üretim koordinasyonu ve proje danışmanlığı."
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Sektörler" },
+        ]}
       >
         <Section>
-          <div className="grid gap-6 md:grid-cols-2">
+          <p className="mb-8 max-w-2xl text-body text-steel">
+            {sectors.length} sektör — projenize uygun dikeyi seçin veya doğrudan
+            iletişime geçin.
+          </p>
+          <ListingGrid>
             {sectors.map((sector) => (
               <PanelCard
                 key={sector.id}
@@ -42,13 +50,13 @@ export default function SektorlerPage() {
                 excerpt={sector.description}
               />
             ))}
-          </div>
+          </ListingGrid>
 
           <p className="mt-10 text-body text-steel">
             Sektörünüz listede yoksa{" "}
             <Link
               href="/iletisim"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               iletişime geçin
             </Link>

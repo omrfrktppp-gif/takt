@@ -19,7 +19,7 @@ export function ContactDetails({
 
   return (
     <aside className={className}>
-      <ul className="flex flex-col gap-6">
+      <ul className="flex flex-col gap-5 sm:gap-6">
         <li className="flex gap-4">
           <Mail
             className="mt-1 shrink-0 text-signal"
@@ -32,7 +32,7 @@ export function ContactDetails({
             <ContactChannelLink
               href={`mailto:${siteConfig.email}`}
               channel="email"
-              className={`${valueClass} underline decoration-signal underline-offset-4 hover:text-signal`}
+              className={`touch-target-inline ${valueClass} underline decoration-signal underline-offset-4 transition-colors hover:text-signal`}
             >
               {siteConfig.email}
             </ContactChannelLink>
@@ -50,7 +50,7 @@ export function ContactDetails({
             <ContactChannelLink
               href={siteConfig.phoneHref}
               channel="phone"
-              className={`${valueClass} underline decoration-signal underline-offset-4 hover:text-signal`}
+              className={`touch-target-inline ${valueClass} underline decoration-signal underline-offset-4 transition-colors hover:text-signal`}
             >
               {siteConfig.phone}
             </ContactChannelLink>
@@ -74,7 +74,7 @@ export function ContactDetails({
             </p>
             <a
               href={siteConfig.mapsUrl}
-              className="mt-1 inline-block text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-small text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
               rel="noopener noreferrer"
               target="_blank"
             >

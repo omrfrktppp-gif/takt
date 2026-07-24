@@ -10,7 +10,7 @@ export function ThankYouPanel({ mode }: ThankYouPanelProps) {
   if (mode !== "iletisim") return null;
 
   return (
-    <div className="rounded border border-line bg-white p-8 text-center">
+    <div className="interactive-card p-8 text-center md:p-10">
       <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal">
         Talep alındı
       </p>
@@ -24,7 +24,7 @@ export function ThankYouPanel({ mode }: ThankYouPanelProps) {
         </Button>
         <Link
           href="/"
-          className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+          className="touch-target-inline text-body text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
         >
           Ana sayfa
         </Link>

@@ -30,15 +30,19 @@ export default function HakkimizdaPage() {
         eyebrow={chapter.eyebrow}
         title={chapter.label}
         description={seo.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: chapter.label },
+        ]}
       >
         <Section>
-          <div className="max-w-3xl space-y-6 text-body text-steel">
+          <div className="max-w-3xl space-y-6 text-body leading-relaxed text-steel">
             {panels.map((panel) => (
               <p key={panel.id}>{panel.body}</p>
             ))}
           </div>
 
-          <div className="mt-12 max-w-3xl border-l-2 border-signal bg-white p-6 md:p-8">
+          <div className="interactive-card mt-12 max-w-3xl border-l-2 border-signal">
             <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal">
               Sorumlu kişi
             </p>
@@ -48,7 +52,9 @@ export default function HakkimizdaPage() {
                 <p className="mt-1 font-mono text-small text-steel">
                   {member.role}
                 </p>
-                <p className="mt-4 text-body text-steel">{member.bio}</p>
+                <p className="mt-4 text-body leading-relaxed text-steel">
+                  {member.bio}
+                </p>
               </div>
             ))}
           </div>

@@ -3,6 +3,7 @@ type SectionProps = {
   className?: string;
   id?: string;
   variant?: "paper" | "white" | "ink";
+  narrow?: boolean;
 };
 
 export function Section({
@@ -10,6 +11,7 @@ export function Section({
   className = "",
   id,
   variant = "paper",
+  narrow = false,
 }: SectionProps) {
   const bg =
     variant === "white"
@@ -19,8 +21,15 @@ export function Section({
         : "bg-paper";
 
   return (
-    <section id={id} className={`px-6 py-16 md:py-24 lg:py-32 ${bg} ${className}`}>
-      <div className="mx-auto max-w-content">{children}</div>
+    <section
+      id={id}
+      className={`overflow-x-hidden px-5 py-12 sm:px-6 md:py-20 lg:py-28 ${bg} ${className}`}
+    >
+      <div
+        className={`mx-auto w-full ${narrow ? "max-w-3xl" : "max-w-content"}`}
+      >
+        {children}
+      </div>
     </section>
   );
 }

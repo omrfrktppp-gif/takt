@@ -23,7 +23,6 @@ export function ContactForm({
   redirectPath?: string;
 }) {
   const gap = dense ? "gap-3" : compact ? "gap-4" : "gap-5";
-  const fieldPad = dense ? "px-3 py-2 text-sm" : "px-4 py-3";
   const spaceY = dense ? "space-y-3" : "space-y-5";
   const limits = contactFieldLimits;
   const kvkkId = useId();
@@ -32,9 +31,13 @@ export function ContactForm({
     status: "idle",
   });
 
+  const isPending = submitState.status === "pending";
+  const isError = submitState.status === "error";
+  const isSuccess = submitState.status === "success";
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (submitState.status === "pending") return;
+    if (isPending) return;
 
     const formElement = event.currentTarget;
     const formData = new FormData(formElement);
@@ -96,6 +99,8 @@ export function ContactForm({
       onSubmit={handleSubmit}
       className={spaceY}
       aria-describedby={statusId}
+      aria-busy={isPending}
+      noValidate
     >
       <input
         type="checkbox"
@@ -106,75 +111,97 @@ export function ContactForm({
         autoComplete="off"
       />
 
-      <div className={compact || dense ? `grid ${gap}` : `grid ${gap} md:grid-cols-2`}>
+      <div
+        className={
+          compact || dense ? `grid ${gap}` : `grid ${gap} md:grid-cols-2`
+        }
+      >
         <label className="block">
-          <span className="mb-1.5 block text-small text-steel">Ad Soyad</span>
+          <span className="form-label form-label-required">Ad Soyad</span>
           <input
             required
             name="name"
             type="text"
             autoComplete="name"
             maxLength={limits.name}
-            className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
+            disabled={isPending}
+            aria-required="true"
+            className="form-input"
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-small text-steel">Firma</span>
+          <span className="form-label form-label-required">Firma</span>
           <input
             required
             name="company"
             type="text"
             autoComplete="organization"
             maxLength={limits.company}
-            className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
+            disabled={isPending}
+            aria-required="true"
+            className="form-input"
           />
         </label>
       </div>
 
-      <div className={compact || dense ? `grid ${gap}` : `grid ${gap} md:grid-cols-2`}>
+      <div
+        className={
+          compact || dense ? `grid ${gap}` : `grid ${gap} md:grid-cols-2`
+        }
+      >
         <label className="block">
-          <span className="mb-1.5 block text-small text-steel">E-posta</span>
+          <span className="form-label form-label-required">E-posta</span>
           <input
             required
             name="email"
             type="email"
             autoComplete="email"
+            inputMode="email"
             maxLength={limits.email}
-            className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
+            disabled={isPending}
+            aria-required="true"
+            className="form-input"
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-small text-steel">
-            Telefon (opsiyonel)
-          </span>
+          <span className="form-label">Telefon</span>
           <input
             name="phone"
             type="tel"
             autoComplete="tel"
+            inputMode="tel"
             maxLength={limits.phone}
-            className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
+            disabled={isPending}
+            className="form-input"
+            aria-describedby={`${statusId}-phone-hint`}
           />
+          <span id={`${statusId}-phone-hint`} className="sr-only">
+            Opsiyonel alan
+          </span>
         </label>
       </div>
 
       <label className="block">
-        <span className="mb-1.5 block text-small text-steel">İhtiyaç / konu</span>
+        <span className="form-label form-label-required">İhtiyaç / konu</span>
         <textarea
           required
           name="message"
           rows={dense ? 2 : compact ? 3 : 5}
           maxLength={limits.message}
-          className={`w-full rounded-sm border border-line bg-white text-ink outline-none focus:border-signal ${fieldPad}`}
+          disabled={isPending}
+          aria-required="true"
+          className="form-input form-textarea"
         />
       </label>
 
-      <div className="flex items-start gap-2">
+      <div className="form-checkbox-row">
         <input
           type="checkbox"
           id={kvkkId}
           name="kvkk-onay"
           required
-          className="mt-0.5 h-4 w-4 shrink-0 rounded-sm border-line accent-signal"
+          disabled={isPending}
+          aria-required="true"
         />
         <label htmlFor={kvkkId} className="text-small leading-snug text-steel">
           Formu kullanarak kişisel verilerinizin işlenmesine ilişkin{" "}
@@ -192,32 +219,30 @@ export function ContactForm({
 
       <button
         type="submit"
-        disabled={submitState.status === "pending"}
-        className={`inline-flex items-center justify-center rounded bg-ink font-medium text-white transition-colors hover:bg-signal ${
-          dense ? "px-4 py-2 text-sm" : "px-[22px] py-[14px] text-sm"
-        } disabled:cursor-wait disabled:opacity-60`}
+        disabled={isPending}
+        className="inline-flex min-h-11 items-center justify-center rounded bg-ink px-[22px] py-3 text-sm font-medium text-white transition-colors hover:bg-signal disabled:cursor-wait disabled:opacity-60"
       >
-        {submitState.status === "pending" ? "Gönderiliyor…" : "Talebi gönder"}
+        {isPending ? "Gönderiliyor…" : "Talebi gönder"}
       </button>
 
       <p
         id={statusId}
-        role="status"
+        role={isError ? "alert" : "status"}
         aria-live="polite"
-        className={`text-small ${
-          submitState.status === "error" ? "text-red-700" : "text-steel"
-        }`}
+        className={
+          isError ? "form-error" : isSuccess ? "form-success" : "form-hint"
+        }
       >
-        {submitState.status === "success" || submitState.status === "error"
+        {isSuccess || isError
           ? submitState.message
           : "Bilgileriniz yalnızca talebinize dönüş yapmak için kullanılır."}
       </p>
 
-      <p className="text-small text-steel">
+      <p className="form-hint">
         Sorun olursa doğrudan{" "}
         <a
           href={`mailto:${siteConfig.email}`}
-          className="text-ink underline decoration-signal underline-offset-4"
+          className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
         >
           {siteConfig.email}
         </a>

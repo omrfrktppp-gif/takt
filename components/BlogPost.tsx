@@ -16,26 +16,33 @@ type BlogPostBodyProps = {
 export function BlogPostBody({ post }: BlogPostBodyProps) {
   const relatedPath = resolveRelatedServicePath(post);
   const pillar = getPillarForBlogSlug(post.slug);
+  const hasToc = post.headings.length > 1;
 
   return (
-    <article className="max-w-3xl space-y-10">
-      {post.headings.length > 1 ? (
+    <div
+      className={
+        hasToc
+          ? "lg:grid lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] xl:gap-12"
+          : undefined
+      }
+    >
+      {hasToc ? (
         <nav
           aria-label="İçindekiler"
-          className="rounded border border-line bg-white p-6"
+          className="interactive-card sticky-below-nav mb-8 max-h-[calc(100vh-var(--nav-h)-2rem)] overflow-y-auto lg:mb-0"
         >
           <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
             İçindekiler
           </p>
-          <ol className="mt-4 space-y-2 text-small text-steel">
+          <ol className="mt-4 space-y-1.5 text-small text-steel">
             {post.headings.map((heading) => (
               <li
                 key={heading.id}
-                className={heading.depth === 3 ? "pl-4" : undefined}
+                className={heading.depth === 3 ? "pl-3" : undefined}
               >
                 <a
                   href={`#${heading.id}`}
-                  className="underline-offset-4 hover:text-signal hover:underline"
+                  className="touch-target-inline w-full rounded-sm underline-offset-4 transition-colors hover:text-signal hover:underline"
                 >
                   {heading.text}
                 </a>
@@ -45,45 +52,47 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
         </nav>
       ) : null}
 
-      <MarkdownContent markdown={post.markdown} headings={post.headings} />
+      <div className="blog-reading-column min-w-0 space-y-10">
+        <MarkdownContent markdown={post.markdown} headings={post.headings} />
 
-      {pillar ? (
-        <aside className="rounded border border-line bg-accent/5 p-6">
-          <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
-            Rehber kümesi
-          </p>
-          <p className="mt-3 text-body text-steel">
-            Bu rehberin parçası:{" "}
+        {pillar ? (
+          <aside className="interactive-card border-signal/20 bg-signal/10">
+            <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+              Rehber kümesi
+            </p>
+            <p className="mt-3 text-body text-steel">
+              Bu rehberin parçası:{" "}
+              <Link
+                href={`/rehber/${pillar.slug}`}
+                className="touch-target-inline font-medium text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              >
+                {pillar.title}
+              </Link>
+            </p>
+          </aside>
+        ) : null}
+
+        {relatedPath ? (
+          <aside className="interactive-card">
+            <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+              İlgili hizmet
+            </p>
+            <p className="mt-3 text-body text-steel">
+              Bu yazıdaki konularla ilgili teknik destek ve danışmanlık için
+              hizmet sayfamıza göz atın.
+            </p>
             <Link
-              href={`/rehber/${pillar.slug}`}
-              className="font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              href={relatedPath}
+              className="touch-target-inline mt-2 font-medium text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
-              {pillar.title}
+              {relatedServiceLabel(relatedPath)} →
             </Link>
-          </p>
-        </aside>
-      ) : null}
+          </aside>
+        ) : null}
 
-      {relatedPath ? (
-        <aside className="rounded border border-line bg-white p-6">
-          <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
-            İlgili hizmet
-          </p>
-          <p className="mt-3 text-body text-steel">
-            Bu yazıdaki konularla ilgili teknik destek ve danışmanlık için
-            hizmet sayfamıza göz atın.
-          </p>
-          <Link
-            href={relatedPath}
-            className="mt-4 inline-block font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-          >
-            {relatedServiceLabel(relatedPath)} →
-          </Link>
-        </aside>
-      ) : null}
-
-      <LeadMagnetPromo />
-    </article>
+        <LeadMagnetPromo />
+      </div>
+    </div>
   );
 }
 
@@ -101,7 +110,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
   const tags = resolvePostTags(post);
 
   return (
-    <article className="rounded border border-line bg-white p-6 transition-colors hover:border-signal/30">
+    <article className="interactive-card group relative flex flex-col">
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <time
           dateTime={post.publishedAt}
@@ -118,19 +127,19 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       <h2 className="font-display text-h3 text-ink">
         <Link
           href={href}
-          className="underline-offset-4 hover:text-signal hover:underline"
+          className="rounded-sm underline-offset-4 transition-colors after:absolute after:inset-0 group-hover:text-signal group-hover:underline focus-visible:text-signal focus-visible:underline"
         >
           {post.title}
         </Link>
       </h2>
-      <p className="mt-3 text-body text-steel">{post.description}</p>
+      <p className="mt-3 flex-1 text-body text-steel">{post.description}</p>
       {tags.length > 0 ? (
-        <ul className="mt-4 flex flex-wrap gap-2">
+        <ul className="relative z-10 mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <li key={tag.id}>
               <Link
                 href={`/blog/etiket/${tag.id}`}
-                className="rounded-sm bg-accent/10 px-2 py-1 font-mono text-eyebrow text-accent hover:bg-accent/20"
+                className="tag-pill rounded-sm bg-accent/10 font-mono text-eyebrow text-accent hover:bg-accent/20"
               >
                 {tag.label}
               </Link>
@@ -138,12 +147,12 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           ))}
         </ul>
       ) : null}
-      <Link
-        href={href}
-        className="mt-4 inline-block font-mono text-small text-signal underline-offset-4 hover:underline"
+      <span
+        aria-hidden="true"
+        className="mt-5 inline-flex min-h-11 items-center font-mono text-small text-signal transition-transform duration-200 ease-takt motion-safe:group-hover:translate-x-0.5"
       >
         Oku →
-      </Link>
+      </span>
     </article>
   );
 }

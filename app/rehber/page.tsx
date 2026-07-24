@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
-import { PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
+import { ListingGrid, PanelCard, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import { pillars } from "@/lib/pillars";
 import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
@@ -27,9 +27,17 @@ export default function RehberHubPage() {
         eyebrow="REHBERLER"
         title="Teknik rehberler"
         description="Tersine mühendislik, mühendislik analizi, yalın üretim ve destek programları üzerine kapsamlı rehberler — ilgili blog yazıları ve hizmetlerle bağlantılı."
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: rehberSeo.title },
+        ]}
       >
         <Section>
-          <div className="grid gap-6 md:grid-cols-2">
+          <p className="mb-8 max-w-2xl text-body text-steel">
+            {pillars.length} rehber kümesi — konuya göre derinlemesine içerik ve
+            ilgili hizmet bağlantıları.
+          </p>
+          <ListingGrid>
             {pillars.map((pillar) => (
               <PanelCard
                 key={pillar.id}
@@ -38,13 +46,13 @@ export default function RehberHubPage() {
                 excerpt={pillar.summary}
               />
             ))}
-          </div>
+          </ListingGrid>
 
           <p className="mt-10 text-body text-steel">
             Konu başlıklarını blog yazılarında da{" "}
             <Link
               href="/blog"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
             >
               ayrıntılı inceliyoruz
             </Link>

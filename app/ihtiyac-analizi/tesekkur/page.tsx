@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { ThankYouPanel } from "@/components/ihtiyac-analizi/ThankYouPanel";
-import { SeoPageLayout } from "@/components/SeoPageLayout";
+import { PageShell } from "@/components/PageShell";
 import { Section } from "@/components/Section";
+import { SeoPageLayout } from "@/components/SeoPageLayout";
 
 export const metadata: Metadata = {
   title: "Talebiniz alındı — Takt",
@@ -11,11 +12,19 @@ export const metadata: Metadata = {
 export default function IhtiyacAnaliziTesekkurPage() {
   return (
     <SeoPageLayout>
-      <Section>
-        <div className="mx-auto max-w-2xl py-12">
+      <PageShell
+        eyebrow="İHTİYAÇ ANALİZİ"
+        title="Talebiniz alındı"
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "İhtiyaç analizi", href: "/ihtiyac-analizi" },
+          { label: "Teşekkürler" },
+        ]}
+      >
+        <Section narrow className="!py-10 md:!py-14">
           <ThankYouPanel mode="iletisim" />
-        </div>
-      </Section>
+        </Section>
+      </PageShell>
     </SeoPageLayout>
   );
 }
