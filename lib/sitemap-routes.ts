@@ -3,6 +3,7 @@
  * Yeni statik sayfa veya bölüm: ilgili döngüye ekle veya `chapterSeo`/`blogPosts` güncelle.
  * Detay: docs/09-seo-geo-aeo-altyapi.md
  */
+import { createBlogSitemapEntries } from "@/components/blog/content-formats";
 import { getPublishedPosts, getAllTagIds } from "@/lib/blog";
 import {
   detailChapters,
@@ -23,6 +24,13 @@ export type SitemapEntry = {
 };
 
 export function getStaticSitemapEntries(): SitemapEntry[] {
+  const publicPosts = getPublishedPosts();
+  const latestBlogDate =
+    publicPosts
+      .map((post) => post.updatedAt ?? post.publishedAt)
+      .sort()
+      .at(-1) ?? STATIC_CONTENT_REVISED;
+
   const entries: SitemapEntry[] = [
     {
       path: "/",
@@ -34,7 +42,7 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
       path: "/blog",
       priority: 0.7,
       changeFrequency: "weekly",
-      lastModified: STATIC_CONTENT_REVISED,
+      lastModified: latestBlogDate,
     },
     {
       path: "/kvkk-aydinlatma-metni",
@@ -82,25 +90,21 @@ export function getStaticSitemapEntries(): SitemapEntry[] {
     }
   }
 
-  for (const post of getPublishedPosts()) {
-    entries.push({
-      path: `/blog/${post.slug}`,
-      priority: 0.65,
-      changeFrequency: "monthly",
-      lastModified: post.updatedAt ?? post.publishedAt,
-    });
-  }
+  entries.push(...createBlogSitemapEntries(publicPosts));
 
   for (const tagId of getAllTagIds()) {
-    const hasPosts = getPublishedPosts().some((post) =>
+    const taggedPosts = publicPosts.filter((post) =>
       post.tags.includes(tagId),
     );
-    if (hasPosts) {
+    if (taggedPosts.length >= 2) {
       entries.push({
         path: `/blog/etiket/${tagId}`,
         priority: 0.5,
         changeFrequency: "weekly",
-        lastModified: STATIC_CONTENT_REVISED,
+        lastModified: taggedPosts
+          .map((post) => post.updatedAt ?? post.publishedAt)
+          .sort()
+          .at(-1) as string,
       });
     }
   }

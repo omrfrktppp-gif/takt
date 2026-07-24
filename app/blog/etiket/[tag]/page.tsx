@@ -24,13 +24,29 @@ export async function generateMetadata({
   const tagMeta = getTagById(tag);
   if (!tagMeta) return {};
 
-  return buildMetadata({
+  const posts = getPostsByTag(tag);
+  const metadata = buildMetadata({
     title: `${tagMeta.label} yazıları`,
     description:
       tagMeta.description ??
       `Takt blog — ${tagMeta.label} etiketli mühendislik ve danışmanlık yazıları.`,
     path: `/blog/etiket/${tag}`,
   });
+  const index = posts.length >= 2;
+
+  return {
+    ...metadata,
+    robots: {
+      index,
+      follow: true,
+      googleBot: {
+        index,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+  };
 }
 
 export default async function BlogTagPage({ params }: PageProps) {

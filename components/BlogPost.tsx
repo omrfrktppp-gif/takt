@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
+import { MarkdownContent } from "@/components/blog/MarkdownContent";
 import type { BlogPost } from "@/lib/blog-types";
 import {
   relatedServiceLabel,
@@ -18,39 +19,33 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
 
   return (
     <article className="max-w-3xl space-y-10">
-      {post.sections.map((section, index) => (
-        <section key={index}>
-          {section.heading ? (
-            <h2 className="font-display text-h3 text-ink">{section.heading}</h2>
-          ) : null}
-          <div className={section.heading ? "mt-4 space-y-4" : "space-y-4"}>
-            {section.paragraphs.map((paragraph, pIndex) => (
-              <p key={pIndex} className="text-body text-steel">
-                {paragraph}
-              </p>
-            ))}
-            {section.list && section.list.length > 0 ? (
-              <ul className="list-disc space-y-2 pl-5 text-body text-steel">
-                {section.list.map((item, itemIndex) => (
-                  <li key={itemIndex}>{item}</li>
-                ))}
-              </ul>
-            ) : null}
-            {section.callToAction ? (
-              <p className="rounded border border-line bg-white p-5 text-body text-steel">
-                {section.callToAction.lead}{" "}
-                <Link
-                  href={section.callToAction.href}
-                  className="font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+      {post.headings.length > 1 ? (
+        <nav
+          aria-label="İçindekiler"
+          className="rounded border border-line bg-white p-6"
+        >
+          <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
+            İçindekiler
+          </p>
+          <ol className="mt-4 space-y-2 text-small text-steel">
+            {post.headings.map((heading) => (
+              <li
+                key={heading.id}
+                className={heading.depth === 3 ? "pl-4" : undefined}
+              >
+                <a
+                  href={`#${heading.id}`}
+                  className="underline-offset-4 hover:text-signal hover:underline"
                 >
-                  {section.callToAction.label}
-                </Link>
-                .
-              </p>
-            ) : null}
-          </div>
-        </section>
-      ))}
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      ) : null}
+
+      <MarkdownContent markdown={post.markdown} headings={post.headings} />
 
       {pillar ? (
         <aside className="rounded border border-line bg-accent/5 p-6">

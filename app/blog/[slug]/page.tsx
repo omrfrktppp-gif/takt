@@ -30,11 +30,34 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
 
-  return buildMetadata({
+  const metadata = buildMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
   });
+  const openGraph: NonNullable<Metadata["openGraph"]> = {
+    ...metadata.openGraph,
+  };
+  const twitter: NonNullable<Metadata["twitter"]> = {
+    ...metadata.twitter,
+  };
+  delete openGraph.images;
+  delete twitter.images;
+
+  return {
+    ...metadata,
+    authors: post.author ? [{ name: post.author }] : undefined,
+    alternates: { canonical: post.canonicalUrl },
+    openGraph: {
+      ...openGraph,
+      type: "article",
+      url: post.canonicalUrl,
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
+      authors: post.author ? [post.author] : undefined,
+    },
+    twitter,
+  };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -49,6 +72,14 @@ export default async function BlogPostPage({ params }: PageProps) {
     month: "long",
     day: "numeric",
   });
+  const updatedDate =
+    post.updatedAt && post.updatedAt !== post.publishedAt
+      ? new Date(post.updatedAt).toLocaleDateString("tr-TR", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      : undefined;
 
   return (
     <SeoPageLayout>
@@ -72,6 +103,12 @@ export default async function BlogPostPage({ params }: PageProps) {
             >
               {date}
             </time>
+            {updatedDate ? (
+              <span className="font-mono text-eyebrow text-steel">
+                Güncellendi:{" "}
+                <time dateTime={post.updatedAt}>{updatedDate}</time>
+              </span>
+            ) : null}
             {post.author ? (
               <span className="font-mono text-eyebrow text-steel">
                 Yazar:{" "}
