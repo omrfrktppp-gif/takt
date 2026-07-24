@@ -2,9 +2,10 @@
 title: "Six Sigma ve Süreç Yeteneği: Tek Parçayı Değil, Süreci Ölçmek"
 description: "Süreç yeteneği (Cp/Cpk) nedir? Bir parçanın 'geçer' olması ile sürecin tekrarlanabilir olması arasındaki farkı örnek hesapla anlatıyoruz."
 slug: "six-sigma-surec-yetenegi"
-date: 2026-06-26
-updated: 2026-06-26
+date: 2026-04-22
+updated: 2026-07-25
 status: review
+kind: article
 author: "Ömer Faruk"
 category: "Kalite İlkeleri"
 tags: ["six-sigma", "cp-cpk", "surec-yetenegi", "kalite", "varyasyon"]
@@ -19,20 +20,18 @@ og:
   type: "article"
   image: "images/cover.jpg"
 schema: "TechArticle"
-reading_time: 5
+reading_time: 6
 ---
 
 ## Six Sigma ve Süreç Yeteneği: Tek Parçayı Değil, Süreci Ölçmek
 
-Bir parçayı ölçtünüz, tolerans içinde, "geçer" dediniz. Ama bu, bir sonraki parçanın da geçeceği anlamına gelmez. Tek bir parçanın doğru olması bir olaydır; her parçanın doğru olması bir yetenektir. Kalite, tek parçada değil, sürecin tekrarlanabilirliğinde saklıdır.
+Süreç yeteneği, [kontrol altındaki bir sürecin çıktısının tolerans sınırlarına ne kadar rahat sığdığını, Cp ve Cpk gibi yetenek indeksleriyle ölçen istatistiksel yaklaşımdır](https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm). Tek cümlelik cevap: bir parçanın ölçüde "geçer" çıkması bir olaydır; her parçanın geçmesi ise sürecin saçılmasıyla toleransın oranına bağlı bir yetenektir — ve bu oran hesaplanabilir.
 
-Six Sigma'nın temelinde bu ayrım yatar ve süreç yeteneği indeksleriyle (Cp, Cpk) ölçülür. Bu yazıda süreç yeteneğinin ne olduğunu, bir parçanın "geçmesi" ile sürecin "yetenekli olması" arasındaki farkı ve bunun neden maliyet ve güvenilirlik demek olduğunu ele alıyoruz.
+Bir parçayı ölçtünüz, tolerans içinde, "geçer" dediniz. Ama bu, bir sonraki parçanın da geçeceği anlamına gelmez. Kalite, tek parçada değil, sürecin tekrarlanabilirliğinde saklıdır. Six Sigma'nın temelinde bu ayrım yatar.
 
-### Süreç Yeteneği Nedir?
+### Cp ve Cpk Nasıl Hesaplanır?
 
-Süreç yeteneği, bir üretim sürecinin çıktısının tolerans sınırlarına ne kadar rahat sığdığını gösterir. İki şeye bakar: sürecin saçılması (değişkenliği, σ) ve tolerans genişliği (USL − LSL, üst ve alt sınır arası).
-
-İki indeks kullanılır:
+Süreç yeteneği iki şeye bakar: sürecin saçılması (standart sapma, σ) ve tolerans genişliği (USL − LSL, üst ve alt sınır arası). [NIST/SEMATECH e-El Kitabı'nın tanımladığı](https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm) iki temel indeks:
 
 `Cp = (USL − LSL) / (6σ)`
 
@@ -48,20 +47,36 @@ Tolerans 10,0 ± 0,3 mm olsun (USL = 10,3; LSL = 9,7). Süreç ortalaması μ = 
 
 `Cpk = min[ (10,3 − 10,0)/0,3 , (10,0 − 9,7)/0,3 ] = 1,0`
 
-Cpk = 1,0, sürecin tam sınırda olduğunu gösterir: ortalama her parça geçse bile, küçük bir kayma ya da saçılma artışı anında ıskarta üretmeye başlar. Endüstride genellikle Cpk ≥ 1,33 hedeflenir; bu, tolerans ile süreç arasında güvenli bir tampon demektir. Aynı parçalar tek tek "geçer" olabilir; ama süreç yetenekli olmadığında bu, şans eseri geçmektir.
+Cpk = 1,0, sürecin tam sınırda olduğunu gösterir: [normal dağılım varsayımıyla bu, yaklaşık %0,27 (binde 2,7) ıskarta demektir ve küçük bir kayma anında bu oranı büyütür](https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm). Endüstride bu yüzden genellikle daha yüksek hedefler (örneğin Cpk ≥ 1,33; toleransın 8σ'ya oranı) kullanılır — tolerans ile süreç arasında güvenli bir tampon. Aynı parçalar tek tek "geçer" olabilir; ama süreç yetenekli olmadığında bu, şans eseri geçmektir.
+
+| Cp (süreç ortalanmışsa) | Tolerans / saçılma | Beklenen ıskarta |
+| --- | --- | --- |
+| 1,00 | 6σ | %0,27 |
+| 1,33 | 8σ | 64 ppm |
+| 1,66 | 10σ | 0,6 ppm |
+| 2,00 | 12σ | 2 ppb |
+
+(Kaynak: [NIST/SEMATECH e-Handbook, "What is Process Capability?"](https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm))
 
 ### Neden Tek Parça Yanıltır?
 
-Tek parça ölçümü sürecin o anki bir fotoğrafıdır; saçılmayı, kaymayı ve eğilimi göstermez. Süreç yeteneği ise dağılımın tamamına bakar. Bir süreç "bugün geçti" diye yarın da geçmez; yetenek, zaman içinde tutarlı kalabilme kapasitesidir. Bu yüzden Six Sigma tek ölçüme değil, sürecin istatistiksel davranışına güvenir.
+Tek parça ölçümü sürecin o anki bir fotoğrafıdır; saçılmayı, kaymayı ve eğilimi göstermez. Süreç yeteneği ise dağılımın tamamına bakar. Bir süreç "bugün geçti" diye yarın da geçmez; yetenek, zaman içinde tutarlı kalabilme kapasitesidir.
 
-### Sonuç
+### Sınırları ve Ön Koşulları
 
-Six Sigma ve süreç yeteneği, kaliteyi tek parçadan sürece taşır. "Bu parça geçer mi?" doğru ama yetersiz bir sorudur; asıl soru "bu süreç her parçayı geçirir mi?"dir. Cpk, bu sorunun sayısal cevabıdır ve düşük olduğunda ıskarta, yeniden işleme ve belirsizlik kaçınılmazdır.
+Cp/Cpk hesabı iki varsayıma dayanır ve ikisi de sahada sık ihlal edilir. Birincisi, [süreç istatistiksel kontrol altında olmalı ve veri yaklaşık normal dağılmalıdır; ayrıca güvenilir bir tahmin için yeterli örneklem (pratikte onlarca bağımsız ölçüm) gerekir](https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm). Kontrol altında olmayan (eğilimli, sıçramalı) bir süreçte hesaplanan Cpk anlık ve yanıltıcıdır. İkincisi, indeks ölçüm sisteminin kendisinden etkilenir: ölçüm belirsizliği süreç saçılmasına karışır. Önce ölçüm sistemi, sonra kontrol, en son yetenek analizi gelir.
 
-### Bu Yaklaşım Nerede Geçerli?
+Toleransın kendisinin doğru tanımlanması ise ayrı bir konudur: yanlış referanstan verilmiş dar bir toleransın Cpk'sı yüksek olsa bile parça işlevsiz kalabilir. Bu bağlantıyı [GD&T yazımızda](https://takt.tr/blog/geometrik-toleranslama-gdt) ele alıyoruz; saçılmayı tasarım aşamasında küçültmenin yolu için [Taguchi robust tasarım yazımıza](https://takt.tr/blog/taguchi-robust-tasarim) bakabilirsiniz.
 
-Seri üretim yapan, ıskarta oranı dalgalanan ya da müşteri kalite tutarlılığı isteyen her süreç yetenek analizine açıktır. "Bazen tutuyor bazen tutmuyor" cümlesi, neredeyse her zaman düşük süreç yeteneğinin işaretidir.
+### Ne Zaman Yapılmalı?
+
+Seri üretim yapan, ıskarta oranı dalgalanan ya da müşterisi kalite tutarlılığı isteyen her süreç yetenek analizine açıktır. "Bazen tutuyor bazen tutmuyor" cümlesi, neredeyse her zaman düşük süreç yeteneğinin işaretidir.
 
 ---
 
 **Üretiminiz bazen tutup bazen ıskarta mı veriyor?** takt.tr olarak süreçlerinizi Six Sigma ve süreç yeteneği (Cp/Cpk) analiziyle inceliyor; saçılmanın kaynağını bulup süreci tek parça şansından çıkarıp güvenilir hale getiriyoruz. [İletişime geçin / Süreç yeteneği analizi talep edin.](https://takt.tr/iletisim)
+
+## Kaynaklar
+
+- [What is Process Capability? — NIST/SEMATECH e-Handbook of Statistical Methods](https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc16.htm)
+- [Process Capability — American Society for Quality (ASQ)](https://asq.org/quality-resources/process-capability)

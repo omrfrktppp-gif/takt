@@ -2,9 +2,10 @@
 title: "Geometrik Toleranslama (GD&T): Ölçüyü Değil İşlevi Toleranslamak"
 description: "GD&T ve tolerans yığılması: her ölçüye dar tolerans vermek neden yanlış? İşlevsel toleranslama ile montajı kilitlemeden maliyeti nasıl düşürürsünüz?"
 slug: "geometrik-toleranslama-gdt"
-date: 2026-06-26
-updated: 2026-06-26
+date: 2026-04-01
+updated: 2026-07-25
 status: review
+kind: article
 author: "Ömer Faruk"
 category: "DFM/DFA"
 tags: ["gdt", "tolerans-yigilmasi", "toleranslama", "dfm", "montaj-optimizasyonu"]
@@ -19,59 +20,71 @@ og:
   type: "article"
   image: "images/cover.jpg"
 schema: "TechArticle"
-reading_time: 5
+reading_time: 6
 ---
 
 ## Geometrik Toleranslama (GD&T): Ölçüyü Değil İşlevi Toleranslamak
 
-Bir parça tek tek ölçüldüğünde her ölçü sınırların içindedir; ama parçalar birleştiğinde montaj oturmaz. Bu, atölyede en çok kafa karıştıran durumlardan biridir. Sorun çoğu zaman üretimde değil, toleransların nasıl tanımlandığındadır. Her ölçüye dar tolerans yazmak parçayı doğru yapmaz; sadece pahalı yapar.
+Geometrik boyutlandırma ve toleranslama (GD&T), toleransı tek tek ölçülere değil, parçanın işlevine bağlayan tanımlama dilidir: referanslar (datum) üzerinden konum, diklik, paralellik ve profil gibi geometrik ilişkiler tanımlanır; kritik ölçüler sıkı, işlevi etkilemeyen ölçüler bilinçli olarak gevşek bırakılır. Bu dil iki temel standartla tarif edilir: Amerikan tarafında [ASME Y14.5](https://www.asme.org/codes-standards/find-codes-standards/y14-5-dimensioning-tolerancing), uluslararası GPS sisteminde ise [ISO 1101](https://www.iso.org/standard/66777.html).
 
-Geometrik boyutlandırma ve toleranslama (Geometric Dimensioning and Tolerancing — GD&T), toleransı tek tek ölçülere değil, parçanın işlevine bağlamanın yöntemidir. Bu yazıda GD&T'nin ne olduğunu, tolerans yığılmasının montajı nasıl kilitlediğini ve "her yere ±0,01" yaklaşımının neden hem riskli hem pahalı olduğunu ele alıyoruz.
+Neden gerekli? Çünkü atölyede en çok kafa karıştıran durumlardan biri şudur: parçalar tek tek ölçüldüğünde her ölçü sınırların içindedir; ama parçalar birleştiğinde montaj oturmaz. Sorun çoğu zaman üretimde değil, toleransların nasıl tanımlandığındadır. Her ölçüye dar tolerans yazmak parçayı doğru yapmaz; sadece pahalı yapar.
 
-### GD&T Nedir?
+### GD&T Klasik ± Toleranslamadan Nasıl Ayrılır?
 
-GD&T, bir ölçünün ne kadar sapabileceğini değil, bir özelliğin işlevini yerine getirmek için nasıl konumlanması gerektiğini tanımlar. Klasik ± toleranslamada her ölçü bağımsız bir kutudur. GD&T'de ise referanslar (datum), konum, diklik, paralellik ve profil gibi geometrik ilişkiler tanımlanır; tolerans, parçanın gerçekte nasıl çalıştığına bağlanır.
+Klasik ± toleranslamada her ölçü bağımsız bir kutudur; parçanın kâğıt üzerinde doğru görünmesini sağlar. GD&T ise özelliğin işlevini yerine getirmek için nasıl konumlanması gerektiğini tanımlar; parçanın sahada doğru çalışmasını sağlar.
 
-Fark şudur: ± toleranslama parçanın kâğıt üzerinde doğru görünmesini sağlar. GD&T parçanın sahada doğru çalışmasını sağlar.
+| Özellik | Klasik ± tolerans | GD&T |
+| --- | --- | --- |
+| Referans | Ölçünün kendisi | Tanımlı datum sistemi |
+| Kontrol edilen | Uzunluk/çap değerleri | Konum, yön, form, profil ilişkileri |
+| İşlev bağlantısı | Dolaylı | Doğrudan (işlevsel yüzeyden türetilir) |
+| Ölçüm belirsizliği | Referans keyfî olabilir | Ölçüm, tanımlı referanstan yapılır |
 
-### Tolerans Yığılması: Sessiz Hata Kaynağı
+### Tolerans Yığılması Montajı Nasıl Kilitler?
 
 Bir montaj zinciri düşünün: birbirine eklenen dört parça, her biri ±0,2 mm toleransla üretiliyor. En kötü durumda toplam sapma basitçe toplanır:
 
 `T_toplam = 0,2 + 0,2 + 0,2 + 0,2 = 0,8 mm`
 
-İstatistiksel (RSS) yaklaşımla, sapmaların aynı anda en kötü değerde olması olası olmadığından:
+İstatistiksel (RSS — kareler toplamının karekökü) yaklaşımla, sapmaların aynı anda en kötü değerde olması olası olmadığından:
 
 `T_toplam = √(0,2² + 0,2² + 0,2² + 0,2²) ≈ 0,4 mm`
 
-İki sonuç da aynı gerçeği gösterir: bağımsız toleranslar zincirde birikir. Tek bir parça "geçer" olsa bile, zincirin sonunda işlevi bozacak bir sapma oluşabilir. Tolerans yığılması (stack-up), tek tek doğru ama birlikte yanlış parçaların kaynağıdır.
+İki sonuç da aynı gerçeği gösterir: bağımsız toleranslar zincirde birikir. Tek bir parça "geçer" olsa bile, zincirin sonunda işlevi bozacak bir sapma oluşabilir. Tolerans yığılması (stack-up), tek tek doğru ama birlikte yanlış parçaların kaynağıdır. Bu problemi geometriyle azaltmanın saha örneğini [DFA vaka çalışmamızda](https://takt.tr/blog/montaja-yonelik-tasarim-dfa) anlatmıştık.
 
 ### "Her Yere Dar Tolerans" Neden Yanlış?
 
 Tasarımcı emin olmak istediğinde bütün ölçülere dar tolerans yazma eğilimindedir. Bu, riski azaltıyormuş gibi görünür ama üç yeni sorun üretir:
 
 - **Maliyet artar:** Dar tolerans daha hassas tezgâh, daha çok ölçüm ve daha çok ıskarta demektir.
-- **Asıl kritik ölçü gizlenir:** Her şey kritikse, hiçbir şey kritik değildir. Üretim, gerçekten önemli olan ölçüyü ayırt edemez.
+- **Asıl kritik ölçü gizlenir:** Her şey kritikse, hiçbir şey kritik değildir; üretim gerçekten önemli olan ölçüyü ayırt edemez.
 - **İşlev yine garanti değildir:** Dar tolerans, yanlış referanstan ölçülüyorsa parçayı yine de işlevsiz bırakabilir.
 
-GD&T bunun tersini yapar: kritik işlevsel ölçüler net referanslarla sıkı tanımlanır, işlevi etkilemeyen ölçüler ise bilinçli olarak gevşek bırakılır. Tolerans, ihtiyaca göre dağıtılır.
+GD&T bunun tersini yapar: kritik işlevsel ölçüler net referanslarla sıkı tanımlanır, geri kalanlar gevşetilir. Tolerans, ihtiyaca göre dağıtılır. Toleransın süreç tarafındaki karşılığını — sürecin bu toleransı gerçekten tutup tutamayacağını — [süreç yeteneği (Cp/Cpk) yazımızda](https://takt.tr/blog/six-sigma-surec-yetenegi) ele alıyoruz.
 
-### Doğru Yaklaşım: İşlevden Geriye Toleranslama
+### İşlevden Geriye Toleranslama Nasıl Yapılır?
 
-İşlevsel toleranslamanın mantığı tersine çalışır: önce parçanın hangi yüzeyinin neye temas ettiği, neyi konumladığı belirlenir. Bu yüzeyler datum (referans) olur. Tolerans, bu referanslardan ve işlevsel gereksinimden türetilir. Böylece:
+İşlevsel toleranslamanın mantığı tersine çalışır:
 
-- Montajı belirleyen ölçüler sıkı ve referanslı tanımlanır.
-- Geri kalan ölçüler gevşetilerek üretim maliyeti düşer.
-- Tolerans bütçesi, zincir boyunca işlevi koruyacak şekilde dağıtılır.
+1. Parçanın hangi yüzeyinin neye temas ettiği, neyi konumladığı belirlenir.
+2. Bu yüzeyler datum (referans) olarak tanımlanır.
+3. Tolerans, bu referanslardan ve işlevsel gereksinimden türetilir.
 
-### Sonuç
+Böylece montajı belirleyen ölçüler sıkı ve referanslı tanımlanır, geri kalan ölçüler gevşetilerek üretim maliyeti düşer ve tolerans bütçesi zincir boyunca işlevi koruyacak şekilde dağıtılır.
 
-GD&T, çizimi süslemek için değil, parçanın sahada çalışacağından emin olmak için kullanılır. İyi bir toleranslama her ölçüyü daraltmaz; tolerans bütçesini işlevin gerektirdiği yere taşır. Doğru yapıldığında hem montaj güvenceye alınır hem üretim ucuzlar — çünkü hassasiyet, gerçekten gerekli olan yerde harcanır.
+### Sınırlar ve Pratik Uyarılar
 
-### Bu Yaklaşım Nerede Geçerli?
+GD&T bedava değildir: çizimi hazırlayanın da okuyanın da dili bilmesi gerekir ve ölçüm tarafı (CMM, uygun mastarlar) referans sistemine göre kurulmalıdır. Tedarikçileriniz GD&T okuyamıyorsa, çizime eklenen semboller güvence değil kafa karışıklığı üretir. Bu durumda geçiş kademeli yapılmalı; önce montajı belirleyen birkaç kritik özellik referanslı tanımlanmalıdır.
+
+### Hangi Ürünlerde Öncelikli?
 
 Çok parçalı montajlar, kaynaklı konstrüksiyonlar ve hassas oturma gerektiren mekanizmalar tolerans yığılmasına en açık yapılardır. "Parçalar tek tek doğru ama montaj tutmuyor" cümlesi duyuluyorsa, sorun neredeyse her zaman tolerans tanımındadır.
 
 ---
 
 **Parçalarınız tek tek ölçüde geçtiği halde montajda mı sorun çıkıyor?** takt.tr olarak ürünlerinizi GD&T ve tolerans zinciri analiziyle inceliyor; toleransları işleve göre yeniden dağıtarak hem montajı güvenceye alıyor hem üretim maliyetini düşürüyoruz. [İletişime geçin / Tolerans analizi talep edin.](https://takt.tr/iletisim)
+
+## Kaynaklar
+
+- [ASME Y14.5 — Dimensioning and Tolerancing (standart sayfası)](https://www.asme.org/codes-standards/find-codes-standards/y14-5-dimensioning-tolerancing)
+- [ISO 1101:2017 — Geometrical product specifications (GPS): Geometrical tolerancing](https://www.iso.org/standard/66777.html)
