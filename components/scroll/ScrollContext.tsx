@@ -53,7 +53,9 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
   const chapterId = chapter.id;
   const panelCount = panelCountFor(chapter, isDesktop);
 
-  chapterIndexRef.current = chapterIndex;
+  useEffect(() => {
+    chapterIndexRef.current = chapterIndex;
+  }, [chapterIndex]);
 
   const scrollToChapter = useCallback((id: string, panel = 0) => {
     if (!visibleChapters.some((chapter) => chapter.id === id)) {

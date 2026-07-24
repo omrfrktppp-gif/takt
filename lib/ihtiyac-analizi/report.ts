@@ -1,7 +1,7 @@
 import { getSectorById } from "@/lib/sectors";
 import { getServiceById } from "@/lib/ihtiyac-analizi/branches";
 import { COMPANY_SIZE_OPTIONS, FORM_SCREENS } from "@/lib/ihtiyac-analizi/definition";
-import { resolvePrimaryService, resolveScreenPath } from "@/lib/ihtiyac-analizi/flow-engine";
+import { resolveScreenPath } from "@/lib/ihtiyac-analizi/flow-engine";
 import { urgencyLabel } from "@/lib/ihtiyac-analizi/validation";
 import type { FormSubmissionPayload } from "@/lib/ihtiyac-analizi/types";
 

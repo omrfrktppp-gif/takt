@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import { ConsentAnalytics } from "@/components/ConsentAnalytics";
 import { GoogleTagManager } from "@/components/GoogleTagManager";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { Nav } from "@/components/Nav";
@@ -9,7 +8,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { JsonLd } from "@/components/JsonLd";
 import { fontVariables } from "@/lib/fonts";
 import {
-  howToSchema,
+  founderPersonSchema,
   organizationSchema,
   websiteSchema,
 } from "@/lib/schema";
@@ -81,15 +80,18 @@ export default function RootLayout({
       <body className="flex min-h-dvh flex-col overflow-x-hidden bg-paper font-body text-ink">
         <GoogleTagManager />
         <JsonLd
-          data={[organizationSchema(), websiteSchema(), howToSchema()]}
+          data={[
+            organizationSchema(),
+            websiteSchema(),
+            founderPersonSchema(),
+          ]}
         />
         <Nav />
         <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
         <MobileCtaBar />
         <WhatsAppButton />
         <CookieConsentBanner />
-        <Analytics />
-        <SpeedInsights />
+        <ConsentAnalytics />
       </body>
     </html>
   );

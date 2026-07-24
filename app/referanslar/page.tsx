@@ -54,12 +54,12 @@ export default function ReferanslarPage() {
       />
 
       <PageShell
-        eyebrow="REFERANSLAR"
-        title="Referanslar"
+        eyebrow="ÇALIŞMA ALANLARI"
+        title="Hangi teknik problemlerde çalışıyoruz?"
         description={
           hasCaseStudies
             ? "Çalıştığımız proje tipleri ve seçilmiş vaka çalışmaları."
-            : "Çalıştığımız proje tipleri ve çalışma alanları. İsimlendirilmiş vaka çalışmaları yakında."
+            : "Makina, ürün geliştirme ve üretim projelerinde üstlendiğimiz teknik çalışma alanları."
         }
       >
         <Section>
@@ -68,12 +68,12 @@ export default function ReferanslarPage() {
               Müşteri gizliliğine saygı duyuyoruz. Aşağıda sık çalıştığımız proje
               tiplerini ve teknik alanları özetliyoruz.
             </p>
-            {!hasCaseStudies && (
+            {!hasCaseStudies ? (
               <p>
-                İsimlendirilmiş vaka çalışmaları ve proje özetleri yakında bu sayfada
-                yer alacak.
+                Müşteri adı veya doğrulanmamış sonuç paylaşmadan, hangi problemlerde
+                nasıl bir teknik rol üstlendiğimizi anlatıyoruz.
               </p>
-            )}
+            ) : null}
           </div>
 
           {hasCaseStudies && (

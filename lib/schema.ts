@@ -71,7 +71,9 @@ export function organizationSchema() {
     name: siteConfig.name,
     alternateName: "Takt Danışmanlık",
     founder: { "@id": founderId },
-    employee: teamMembers.map((member) => ({ "@id": personIdForMember(member) })),
+    employee: teamMembers.map((member) => ({
+      "@id": member.id === "omer-faruk-top" ? founderId : personIdForMember(member),
+    })),
     description:
       "Makina imalatı ve sanayide firmalara mühendislik danışmanlığı; tasarım, analiz, proje yönetimi ve üretim koordinasyonu.",
     url: siteConfig.url,

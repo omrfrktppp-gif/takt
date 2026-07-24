@@ -1,10 +1,15 @@
+"use client";
+
+import { useId, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import { contactFieldLimits } from "@/lib/contact-validation";
 import { siteConfig } from "@/lib/site";
-import {
-  WEB3FORMS_SUBMIT_URL,
-  Web3FormsHiddenFields,
-  web3formsRedirect,
-} from "@/lib/web3forms";
+
+type SubmitState =
+  | { status: "idle" }
+  | { status: "pending" }
+  | { status: "success"; message: string }
+  | { status: "error"; message: string };
 
 export function ContactForm({
   compact = false,
@@ -21,27 +26,77 @@ export function ContactForm({
   const fieldPad = dense ? "px-3 py-2 text-sm" : "px-4 py-3";
   const spaceY = dense ? "space-y-3" : "space-y-5";
   const limits = contactFieldLimits;
+  const kvkkId = useId();
+  const statusId = useId();
+  const [submitState, setSubmitState] = useState<SubmitState>({
+    status: "idle",
+  });
 
-  const subject =
-    source === "contact_form"
-      ? "İletişim talebi — takt.tr"
-      : `Form talebi — ${source}`;
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitState.status === "pending") return;
 
-  const redirect =
-    redirectPath ?? web3formsRedirect("/iletisim?gonderildi=1");
+    const formElement = event.currentTarget;
+    const formData = new FormData(formElement);
+    const payload = {
+      name: String(formData.get("name") ?? ""),
+      company: String(formData.get("company") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      message: String(formData.get("message") ?? ""),
+      botcheck: String(formData.get("botcheck") ?? ""),
+      kvkkAccepted: formData.get("kvkk-onay") === "on",
+      source,
+    };
+
+    setSubmitState({ status: "pending" });
+    trackEvent("contact_form_submit_start", { source });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message ?? "Talebiniz gönderilemedi. Lütfen tekrar deneyin.",
+        );
+      }
+
+      formElement.reset();
+      setSubmitState({
+        status: "success",
+        message:
+          result.message ??
+          "Talebiniz alındı. Görüşme için verdiğiniz iletişim bilgilerini kullanacağız.",
+      });
+      trackEvent("contact_form_submit_success", { source });
+
+      if (redirectPath) {
+        window.location.assign(redirectPath);
+      }
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Bağlantı hatası. Lütfen tekrar deneyin.";
+      setSubmitState({ status: "error", message });
+      trackEvent("contact_form_submit_error", { source });
+    }
+  }
 
   return (
     <form
-      action={WEB3FORMS_SUBMIT_URL}
-      method="POST"
+      onSubmit={handleSubmit}
       className={spaceY}
+      aria-describedby={statusId}
     >
-      <Web3FormsHiddenFields
-        redirect={redirect}
-        subject={subject}
-        kaynak={source}
-      />
-
       <input
         type="checkbox"
         name="botcheck"
@@ -116,12 +171,12 @@ export function ContactForm({
       <div className="flex items-start gap-2">
         <input
           type="checkbox"
-          id="kvkk-onay"
+          id={kvkkId}
           name="kvkk-onay"
           required
           className="mt-0.5 h-4 w-4 shrink-0 rounded-sm border-line accent-signal"
         />
-        <label htmlFor="kvkk-onay" className="text-small leading-snug text-steel">
+        <label htmlFor={kvkkId} className="text-small leading-snug text-steel">
           Formu kullanarak kişisel verilerinizin işlenmesine ilişkin{" "}
           <a
             href="/kvkk-aydinlatma-metni"
@@ -137,12 +192,26 @@ export function ContactForm({
 
       <button
         type="submit"
+        disabled={submitState.status === "pending"}
         className={`inline-flex items-center justify-center rounded bg-ink font-medium text-white transition-colors hover:bg-signal ${
           dense ? "px-4 py-2 text-sm" : "px-[22px] py-[14px] text-sm"
+        } disabled:cursor-wait disabled:opacity-60`}
+      >
+        {submitState.status === "pending" ? "Gönderiliyor…" : "Talebi gönder"}
+      </button>
+
+      <p
+        id={statusId}
+        role="status"
+        aria-live="polite"
+        className={`text-small ${
+          submitState.status === "error" ? "text-red-700" : "text-steel"
         }`}
       >
-        Gönder
-      </button>
+        {submitState.status === "success" || submitState.status === "error"
+          ? submitState.message
+          : "Bilgileriniz yalnızca talebinize dönüş yapmak için kullanılır."}
+      </p>
 
       <p className="text-small text-steel">
         Sorun olursa doğrudan{" "}
