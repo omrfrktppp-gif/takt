@@ -1,0 +1,246 @@
+.scene {
+  position: relative;
+  overflow: clip;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.inner {
+  width: min(100%, var(--maxw));
+  margin-inline: auto;
+  padding: 4rem 1rem;
+}
+
+.copy {
+  max-width: 42rem;
+}
+
+.layout {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.visual {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--line) 30%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--ink) 88%, var(--paper));
+  aspect-ratio: 16 / 11;
+  isolation: isolate;
+}
+
+.visual::after {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border: 1px solid color-mix(in srgb, var(--white) 7%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax {
+  transform: translate3d(
+    calc(var(--parallax-x, 0) * 1px),
+    calc(var(--parallax-y, 0) * 1px),
+    0
+  );
+}
+
+.blueprint {
+  opacity: var(--blueprint-opacity, 0);
+}
+
+.exploded {
+  opacity: var(--exploded-opacity, 0);
+}
+
+.assembled {
+  opacity: var(--assembled-opacity, 1);
+}
+
+.outputs {
+  opacity: var(--outputs-opacity, 1);
+  transform: translateX(calc(var(--outputs-x, 0) * 1px));
+}
+
+.base {
+  transform: translateY(calc(var(--base-y, 0) * 1px));
+}
+
+.leftPost {
+  transform: translateX(calc(var(--left-post-x, 0) * 1px));
+}
+
+.rightPost {
+  transform: translateX(calc(var(--right-post-x, 0) * 1px));
+}
+
+.head {
+  transform: translateY(calc(var(--head-y, 0) * 1px));
+}
+
+.motor {
+  transform: translateX(calc(var(--motor-x, 0) * 1px));
+}
+
+.tool {
+  transform: translateY(calc(var(--tool-y, 0) * 1px));
+}
+
+.steps {
+  display: grid;
+  gap: 0;
+  align-self: center;
+  border-top: 1px solid color-mix(in srgb, var(--line) 26%, transparent);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 0.75rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 26%, transparent);
+}
+
+.step:nth-child(1) {
+  opacity: var(--step-one-opacity, 1);
+}
+
+.step:nth-child(2) {
+  opacity: var(--step-two-opacity, 1);
+}
+
+.step:nth-child(3) {
+  opacity: var(--step-three-opacity, 1);
+}
+
+.step:nth-child(4) {
+  opacity: var(--step-four-opacity, 1);
+}
+
+.stepNumber {
+  padding-top: 0.2rem;
+  color: color-mix(in srgb, var(--white) 46%, transparent);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+.stepTitle {
+  color: var(--white);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.stepText {
+  max-width: 31rem;
+  margin-top: 0.35rem;
+  color: color-mix(in srgb, var(--white) 65%, transparent);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.status {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 5.5rem 1.5rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 0.65fr);
+    align-items: center;
+    gap: 3.5rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .scene {
+    min-height: 310vh;
+    overflow: visible;
+  }
+
+  .inner {
+    position: sticky;
+    top: var(--nav-h);
+    display: grid;
+    min-height: calc(100vh - var(--nav-h));
+    align-content: center;
+    padding-block: 3rem;
+  }
+
+  .copy {
+    display: grid;
+    grid-template-columns: 0.55fr 1.45fr;
+    align-items: end;
+    max-width: none;
+    column-gap: 2rem;
+  }
+
+  .layout {
+    margin-top: 2rem;
+  }
+
+  .step {
+    min-height: 6.75rem;
+  }
+
+  .status {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 6;
+    color: color-mix(in srgb, var(--white) 50%, transparent);
+    font-family: var(--font-mono), monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .parallax,
+  .blueprint,
+  .exploded,
+  .assembled,
+  .outputs,
+  .base,
+  .leftPost,
+  .rightPost,
+  .head,
+  .motor,
+  .tool,
+  .step {
+    will-change: transform, opacity;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene {
+    min-height: auto;
+    overflow: clip;
+  }
+
+  .inner {
+    position: static;
+    min-height: auto;
+    padding-block: 4rem;
+  }
+
+  .status {
+    display: none;
+  }
+}

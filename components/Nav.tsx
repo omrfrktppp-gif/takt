@@ -72,7 +72,7 @@ export function Nav() {
   );
 
   function linkClass(active: boolean) {
-    return `text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
+    return `inline-flex min-h-11 items-center text-sm underline-offset-4 transition-colors hover:text-signal hover:underline ${
       active ? "font-medium text-signal" : "text-ink"
     }`;
   }
@@ -84,12 +84,12 @@ export function Nav() {
   return (
     <header
       ref={headerRef}
-      className="z-50 shrink-0 border-b border-line bg-paper backdrop-blur-sm"
+      className="sticky top-0 z-[70] shrink-0 border-b border-line bg-paper/95 backdrop-blur-sm"
     >
       <div className="mx-auto flex h-14 max-w-content items-center justify-between gap-3 px-4 md:h-16 md:gap-6 md:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2.5 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
+          className="flex min-h-11 items-center gap-2.5 font-display text-base font-semibold tracking-tight text-ink md:text-lg md:gap-3"
           aria-label="Takt ana sayfa"
         >
           <BrandLogo size={40} className="h-9 w-9 md:h-10 md:w-10" priority />
@@ -105,6 +105,7 @@ export function Nav() {
               key={link.href}
               href={link.href}
               className={linkClass(isActive(link.href))}
+              aria-current={isActive(link.href) ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -114,6 +115,7 @@ export function Nav() {
               key={link.href}
               href={link.href}
               className={linkClass(isActive(link.href))}
+              aria-current={isActive(link.href) ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -121,7 +123,7 @@ export function Nav() {
           <Button
             variant="signal"
             href={appointmentCta.href}
-            className="shrink-0 !px-4 !py-2.5 text-xs xl:!px-[22px] xl:!py-[14px] xl:text-sm"
+            className="min-h-11 shrink-0 !px-4 !py-2.5 text-xs xl:!px-[22px] xl:text-sm"
             onClick={() => trackEvent("booking_click", { type: "nav" })}
           >
             {appointmentCta.label}
@@ -131,7 +133,7 @@ export function Nav() {
         <button
           ref={menuButtonRef}
           type="button"
-          className="inline-flex items-center justify-center rounded-sm border border-line p-2.5 text-ink lg:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-sm border border-line p-2.5 text-ink lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
@@ -149,7 +151,7 @@ export function Nav() {
         <nav
           ref={mobileNavRef}
           id="mobile-nav"
-          className="scroll-inner scrollbar-none max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-paper px-4 py-3 lg:hidden"
+          className="scroll-inner scrollbar-none absolute inset-x-0 top-full max-h-[calc(100dvh-var(--nav-h))] overflow-y-auto border-b border-line bg-paper px-4 py-3 shadow-lg lg:hidden"
           aria-label="Mobil navigasyon"
         >
           <ul className="flex flex-col gap-1">
@@ -159,11 +161,12 @@ export function Nav() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`block rounded-sm px-2 py-3 text-base ${
+                    className={`flex min-h-11 items-center rounded-sm px-2 py-2 text-base ${
                       isActive(link.href)
                         ? "bg-accent/10 font-medium text-accent"
                         : "text-ink"
                     }`}
+                    aria-current={isActive(link.href) ? "page" : undefined}
                     onClick={() => setOpen(false)}
                   >
                     {link.label}

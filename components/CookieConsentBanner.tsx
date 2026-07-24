@@ -12,33 +12,36 @@ export function CookieConsentBanner() {
     <div
       role="dialog"
       aria-labelledby="cookie-consent-title"
-      className="fixed bottom-0 left-0 right-0 z-[60] border-t border-line bg-white p-4 shadow-lg lg:bottom-auto lg:left-auto lg:right-4 lg:top-[calc(var(--nav-h)+1rem)] lg:max-w-md lg:rounded lg:border"
+      aria-describedby="cookie-consent-description"
+      className="fixed inset-x-3 top-[calc(var(--nav-h)+0.75rem)] z-[60] mx-auto max-w-sm rounded border border-line bg-white p-3 shadow-lg sm:p-4 lg:bottom-auto lg:left-auto lg:right-4 lg:top-[calc(var(--nav-h)+1rem)] lg:mx-0 lg:max-w-md"
     >
-      <p id="cookie-consent-title" className="font-display text-h3 text-ink">
+      <p
+        id="cookie-consent-title"
+        className="font-mono text-eyebrow uppercase tracking-[0.08em] text-ink"
+      >
         Çerez tercihleri
       </p>
-      <p className="mt-2 text-small text-steel">
-        Zorunlu çerezler site işlevi için gereklidir. Analitik çerezler yalnızca
-        onay verirseniz yüklenir.{" "}
+      <p id="cookie-consent-description" className="mt-1.5 text-small leading-5 text-steel">
+        Analitik çerezler yalnızca onayınızla yüklenir.{" "}
         <Link
           href="/kvkk-aydinlatma-metni"
-          className="text-ink underline decoration-signal underline-offset-4"
+          className="inline-flex min-h-11 items-center text-ink underline decoration-signal underline-offset-4 sm:min-h-0"
         >
           Aydınlatma metni
         </Link>
       </p>
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+      <div className="mt-2.5 grid grid-cols-2 gap-2 sm:mt-4">
         <button
           type="button"
           onClick={acceptAll}
-          className="rounded bg-ink px-4 py-2.5 text-sm font-medium text-white hover:bg-signal"
+          className="min-h-11 rounded bg-ink px-3 py-2 text-sm font-medium text-white hover:bg-signal"
         >
           Kabul et
         </button>
         <button
           type="button"
           onClick={rejectOptional}
-          className="rounded border border-line px-4 py-2.5 text-sm font-medium text-ink hover:border-signal"
+          className="min-h-11 rounded border border-line px-3 py-2 text-sm font-medium text-ink hover:border-signal"
         >
           Yalnızca zorunlu
         </button>

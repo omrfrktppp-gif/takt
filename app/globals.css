@@ -9,7 +9,7 @@
   --white: #ffffff;
   --signal: #1f4fe0;
   --signal-tint: rgba(31, 79, 224, 0.08);
-  --accent: #e85d04;
+  --accent: var(--signal);
   --ink-80: #12161ccc;
 
   --radius: 4px;
@@ -51,6 +51,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
 }
 
 html,
@@ -139,12 +140,19 @@ body {
 body {
   margin: 0;
   min-height: 100vh;
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom));
   background-color: var(--paper);
   color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding-bottom: 0;
+  }
 }
 
 :focus-visible {
