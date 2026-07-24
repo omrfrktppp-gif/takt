@@ -107,7 +107,7 @@ export const navLinks = [
 
 export const appointmentCta = {
   href: "/gorusme-planla",
-  label: "Görüşme planla",
+  label: "Projenizi değerlendirelim",
 } as const;
 
 export const servicePillars = [

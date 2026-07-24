@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { Cadence } from "@/components/Cadence";
 import { Button } from "@/components/Button";
 import { trackEvent } from "@/lib/analytics";
-import { appointmentCta, leadMagnet, siteConfig } from "@/lib/site";
+import { appointmentCta, siteConfig } from "@/lib/site";
 import { useScroll } from "@/components/scroll/ScrollContext";
 
 export function HomeHeroPanel() {
@@ -28,15 +27,6 @@ export function HomeHeroPanel() {
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <Button
             variant="signal"
-            href={leadMagnet.href}
-            onClick={() =>
-              trackEvent("contact_click", { channel: "hero_ihtiyac_analizi" })
-            }
-          >
-            {leadMagnet.label}
-          </Button>
-          <Button
-            variant="secondary"
             onClick={() => {
               trackEvent("booking_click", { type: "hero_home" });
               scrollToChapter("gorusme-planla");
@@ -51,17 +41,7 @@ export function HomeHeroPanel() {
           >
             WhatsApp
           </Button>
-          <Link
-            href="/iletisim"
-            className="text-center text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal sm:text-left"
-            onClick={() => trackEvent("contact_click", { channel: "hero_contact" })}
-          >
-            İletişim →
-          </Link>
         </div>
-        <p className="text-small text-steel">
-          {leadMagnet.description}
-        </p>
       </div>
     </article>
   );

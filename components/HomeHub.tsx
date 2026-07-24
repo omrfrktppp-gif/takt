@@ -4,173 +4,220 @@ import { Button } from "@/components/Button";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
 import {
   appointmentCta,
-  leadMagnet,
+  processSteps,
+  servicePillars,
   siteConfig,
 } from "@/lib/site";
 
-const primaryLinks = [
+const pillarHrefs: Record<(typeof servicePillars)[number]["id"], string> = {
+  "muhendislik-danismanligi": "/hizmetler/proje-danismanligi",
+  "tasarim-gelistirme": "/hizmetler/tasarim-gelistirme",
+  "analiz-hesaplama": "/hizmetler/analiz-hesaplama",
+  "uretim-optimizasyon": "/hizmetler/uretim-danismanligi",
+  "arge-proje": "/hizmetler/arge-urge",
+};
+
+const deliverables = [
   {
-    href: "/hakkimizda",
-    label: "Hakkımızda",
-    description: "Ekibimiz, odağımız ve çalışma alanlarımız.",
+    title: "Yazılı kapsam ve takvim",
+    description:
+      "Ne yapacağımızı, ne zaman ve hangi çıktıyla yapacağımızı işin başında yazarız.",
   },
   {
-    href: "/hizmetler",
-    label: "Hizmetlerimiz",
-    description: "Danışmanlık, tasarım, analiz, üretim ve Ar-Ge desteği.",
+    title: "İmalata hazır dokümantasyon",
+    description:
+      "Teknik resim, model ve imalat dosyalarını kullanılabilir formatta teslim ederiz.",
   },
   {
-    href: "/kapasitemiz",
-    label: "Kapasitemiz",
-    description: "3D, CNC, lazer, fason üretim ve tek noktadan koordinasyon.",
+    title: "Teknik rapor ve karar desteği",
+    description:
+      "Analiz, hesap ve risk notlarıyla kararlarınızı sayıyla destekleriz.",
   },
   {
-    href: "/yaklasim",
-    label: "Yaklaşım",
-    description: "Net kapsam, gerçekçi mühendislik, ölçülebilir tempo.",
-  },
-  {
-    href: "/sektorler",
-    label: "Sektörler",
-    description: "Savunma, Ar-Ge, otomotiv, tıbbi cihaz ve özel makina.",
-  },
-  {
-    href: "/referanslar",
-    label: "Referanslar",
-    description: "Çalıştığımız proje tipleri ve alanlar.",
+    title: "Tek muhatap koordinasyon",
+    description:
+      "Tasarımdan imalata kadar süreci tek elden yönetir, ekibinizle uyumlu çalışırız.",
   },
 ] as const;
 
-const resourceLinks = [
-  {
-    href: "/rehber",
-    label: "Teknik rehberler",
-    description: "Tersine mühendislik, FEA, yalın üretim, destek programları.",
-  },
-  {
-    href: leadMagnet.href,
-    label: leadMagnet.label,
-    description: leadMagnet.description,
-  },
-  { href: "/blog", label: "Blog", description: "Teknik yazılar ve mühendislik notları." },
-  { href: "/sss", label: "SSS", description: "Sık sorulan sorular ve kısa yanıtlar." },
-] as const;
+const sectionPad = "mx-auto w-full max-w-content px-4 py-16 md:px-6 md:py-24";
 
-const contactLinks = [
-  {
-    href: "/iletisim",
-    label: "İletişim",
-    description: "Adres, telefon, e-posta ve mesaj formu.",
-  },
-  {
-    href: appointmentCta.href,
-    label: appointmentCta.label,
-    description: "Danışmanlık veya ön görüşme randevusu.",
-  },
-] as const;
-
-function HubLinkGrid({
-  links,
-}: {
-  links: readonly { href: string; label: string; description: string }[];
-}) {
+function CtaPair({ onDark = false }: { onDark?: boolean }) {
   return (
-    <ul className="grid gap-3 sm:grid-cols-2">
-      {links.map((link) => (
-        <li key={link.href}>
-          <Link
-            href={link.href}
-            className="group block rounded border border-line bg-white p-5 transition-colors hover:border-signal/40 hover:bg-accent/5"
-          >
-            <span className="font-display text-h3 text-ink group-hover:text-signal">
-              {link.label}
-            </span>
-            <span className="mt-2 block text-small text-steel">{link.description}</span>
-            <span className="mt-3 inline-block font-mono text-small text-signal">
-              Sayfaya git →
-            </span>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <Button variant={onDark ? "light" : "signal"} href={appointmentCta.href}>
+        {appointmentCta.label}
+      </Button>
+      <Button
+        variant="secondary"
+        href={siteConfig.whatsapp.href}
+        className={
+          onDark
+            ? "border-white/35 text-white hover:border-white hover:bg-white hover:text-ink"
+            : undefined
+        }
+      >
+        WhatsApp
+      </Button>
+    </div>
   );
 }
 
 export function HomeHub() {
   return (
     <SeoPageLayout>
-      <div className="mx-auto w-full max-w-content px-4 py-12 md:px-6 md:py-16 lg:py-20">
-        <div className="max-w-3xl">
-          <Cadence variant="hero" tickCount={9} activeIndex={4} className="max-w-xs" />
-          <p className="mt-8 font-mono text-eyebrow uppercase tracking-[0.12em] text-signal">
-            Mühendislik danışmanlığı · Ankara
-          </p>
-          <h1 className="mt-4 font-display text-h1 text-ink">{siteConfig.tagline}</h1>
-          <p className="mt-4 text-body-lg text-steel">{siteConfig.description}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <Button variant="signal" href={leadMagnet.href}>
-              {leadMagnet.label}
-            </Button>
-            <Button variant="secondary" href={appointmentCta.href}>
-              {appointmentCta.label}
-            </Button>
-            <Button variant="secondary" href={siteConfig.whatsapp.href}>
-              WhatsApp
-            </Button>
-            <Button variant="secondary" href="/iletisim">
-              İletişim
-            </Button>
+      <section className="border-b border-line bg-paper">
+        <div className={`${sectionPad} lg:py-28`}>
+          <div className="max-w-3xl">
+            <Cadence
+              variant="hero"
+              tickCount={9}
+              activeIndex={4}
+              className="max-w-xs"
+            />
+            <p className="mt-10 font-mono text-eyebrow uppercase tracking-[0.12em] text-signal">
+              Mühendislik danışmanlığı · Ankara
+            </p>
+            <h1 className="mt-5 font-display text-h1 text-ink">
+              {siteConfig.tagline}
+            </h1>
+            <p className="mt-5 max-w-2xl text-body-lg text-steel">
+              {siteConfig.description}
+            </p>
+            <CtaPair />
           </div>
         </div>
+      </section>
 
-        <section className="mt-16" aria-labelledby="hub-kurumsal">
-          <h2
-            id="hub-kurumsal"
-            className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel"
-          >
-            Keşfedin
-          </h2>
-          <div className="mt-6">
-            <HubLinkGrid links={primaryLinks} />
+      <section
+        className="border-b border-line bg-white"
+        aria-labelledby="home-hizmetler"
+      >
+        <div className={sectionPad}>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+            <div className="max-w-2xl">
+              <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+                Hizmetler
+              </p>
+              <h2
+                id="home-hizmetler"
+                className="mt-3 font-display text-h2 text-ink"
+              >
+                Teknik ekibinize dışarıdan güç
+              </h2>
+              <p className="mt-3 text-body text-steel">
+                Danışmanlık, tasarım, analiz, üretim ve Ar-Ge desteği.
+              </p>
+            </div>
+            <Link
+              href="/hizmetler"
+              className="shrink-0 pb-0.5 font-mono text-small text-signal underline-offset-4 hover:underline"
+            >
+              Tüm hizmetler →
+            </Link>
           </div>
-        </section>
 
-        <section className="mt-12" aria-labelledby="hub-kaynaklar">
-          <h2
-            id="hub-kaynaklar"
-            className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel"
-          >
-            Kaynaklar
-          </h2>
-          <div className="mt-6">
-            <HubLinkGrid links={resourceLinks} />
+          <ul className="mt-12 divide-y divide-line border-y border-line">
+            {servicePillars.map((pillar) => (
+              <li key={pillar.id}>
+                <Link
+                  href={pillarHrefs[pillar.id]}
+                  className="group flex flex-col gap-1.5 py-6 transition-colors duration-200 sm:flex-row sm:items-baseline sm:gap-8 md:py-7"
+                >
+                  <span className="w-8 shrink-0 font-mono text-small text-signal">
+                    {pillar.number}
+                  </span>
+                  <span className="min-w-0 font-display text-h3 text-ink group-hover:text-signal">
+                    {pillar.title}
+                  </span>
+                  <span className="text-body text-steel sm:ml-auto sm:max-w-sm sm:text-right">
+                    {pillar.short}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        className="border-b border-line bg-paper"
+        aria-labelledby="home-surec"
+      >
+        <div className={sectionPad}>
+          <div className="max-w-2xl">
+            <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Süreç
+            </p>
+            <h2 id="home-surec" className="mt-3 font-display text-h2 text-ink">
+              Çalışma süreci
+            </h2>
+            <p className="mt-3 text-body text-steel">
+              Net kapsam, ölçülebilir tempo, raporlanabilir teslim.
+            </p>
           </div>
-        </section>
 
-        <section className="mt-12" aria-labelledby="hub-iletisim">
-          <h2
-            id="hub-iletisim"
-            className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel"
-          >
-            İletişim
-          </h2>
-          <div className="mt-6">
-            <HubLinkGrid links={contactLinks} />
+          <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {processSteps.map((step, index) => (
+              <li key={step.title}>
+                <p className="font-mono text-eyebrow text-signal">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-4 font-display text-h3 text-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-body text-steel">{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section
+        className="border-b border-line bg-white"
+        aria-labelledby="home-teslim"
+      >
+        <div className={sectionPad}>
+          <div className="max-w-2xl">
+            <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Teslimat
+            </p>
+            <h2 id="home-teslim" className="mt-3 font-display text-h2 text-ink">
+              Ne teslim ederiz?
+            </h2>
+            <p className="mt-3 text-body text-steel">
+              Abartısız, devredilebilir ve takip edilebilir çıktılar.
+            </p>
           </div>
-        </section>
 
-        <p className="mt-12 max-w-2xl text-small text-steel">
-          {siteConfig.phone} · {siteConfig.email} ·{" "}
-          <a
-            href={siteConfig.mapsUrl}
-            className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Google Haritalar
-          </a>
-        </p>
-      </div>
+          <ul className="mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2">
+            {deliverables.map((item) => (
+              <li key={item.title} className="border-l-2 border-signal pl-5 md:pl-6">
+                <h3 className="font-display text-h3 text-ink">{item.title}</h3>
+                <p className="mt-2 text-body text-steel">{item.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-ink text-white" aria-labelledby="home-cta">
+        <div className={sectionPad}>
+          <div className="max-w-2xl">
+            <h2 id="home-cta" className="font-display text-h2 text-white">
+              Projenizdeki eksik halkayı birlikte netleştirelim.
+            </h2>
+            <p className="mt-4 text-body text-white/75">
+              İlk görüşmede kapsamı, takvimi ve çıktıları yazılı koyarız.
+              Bağlayıcı değildir.
+            </p>
+            <CtaPair onDark />
+            <p className="mt-10 text-small text-white/55">
+              {siteConfig.phone} · {siteConfig.email}
+            </p>
+          </div>
+        </div>
+      </section>
     </SeoPageLayout>
   );
 }
