@@ -354,14 +354,15 @@ export function loadBlogPostsFromContent(): BlogPost[] {
       const post = loadPostFromFile(indexPath, entry.name);
       if (!post) continue;
       if (postsBySlug.has(post.slug) || duplicateSlugs.has(post.slug)) {
-        postsBySlug.delete(post.slug);
-        duplicateSlugs.add(post.slug);
-        console.warn(`Blog yazısı atlandı; yinelenen slug: ${post.slug}`);
-        continue;
+        throw new Error(`yinelenen slug: ${post.slug}`);
       }
       postsBySlug.set(post.slug, post);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
+      const status = matter(fs.readFileSync(indexPath, "utf8")).data.status;
+      if (status === "published") {
+        throw new Error(`Yayınlanmış blog geçersiz (${entry.name}): ${message}`);
+      }
       console.warn(`Blog yazısı atlandı (${entry.name}): ${message}`);
     }
   }

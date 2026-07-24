@@ -2,7 +2,6 @@
 
 import {
   LazyMotion,
-  domAnimation,
   m,
   useMotionValue,
   useReducedMotion,
@@ -46,6 +45,7 @@ export function EngineeringMachineScene({
   children: ReactNode;
 }) {
   const sceneRef = useRef<HTMLElement>(null);
+  const visualBoundsRef = useRef<DOMRect | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const finePointer = useSyncExternalStore(
     subscribeToFinePointer,
@@ -128,27 +128,48 @@ export function EngineeringMachineScene({
 
   function handlePointerMove(event: ReactPointerEvent<HTMLElement>) {
     if (!interactive) return;
+    const bounds = visualBoundsRef.current;
+    if (!bounds) return;
+    if (
+      event.clientX < bounds.left ||
+      event.clientX > bounds.right ||
+      event.clientY < bounds.top ||
+      event.clientY > bounds.bottom
+    ) {
+      resetPointer();
+      return;
+    }
+    const clamp = (value: number) => Math.max(-4, Math.min(4, value));
+    pointerX.set(clamp(((event.clientX - bounds.left) / bounds.width - 0.5) * 8));
+    pointerY.set(clamp(((event.clientY - bounds.top) / bounds.height - 0.5) * 8));
+  }
+
+  function cacheVisualBounds(event: ReactPointerEvent<HTMLElement>) {
+    if (!interactive) return;
     const visual = event.currentTarget.querySelector<HTMLElement>(
       `.${styles.visual}`,
     );
-    if (!visual) return;
-    const bounds = visual.getBoundingClientRect();
-    pointerX.set(((event.clientX - bounds.left) / bounds.width - 0.5) * 8);
-    pointerY.set(((event.clientY - bounds.top) / bounds.height - 0.5) * 8);
+    visualBoundsRef.current = visual?.getBoundingClientRect() ?? null;
   }
 
   function resetPointer() {
+    visualBoundsRef.current = null;
     pointerX.set(0);
     pointerY.set(0);
   }
 
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion
+      features={() =>
+        import("./motion-features").then((module) => module.default)
+      }
+    >
       <m.section
         ref={sceneRef}
         className={styles.scene}
         style={motionStyle}
         aria-labelledby="engineering-scene-title"
+        onPointerEnter={cacheVisualBounds}
         onPointerMove={handlePointerMove}
         onPointerLeave={resetPointer}
       >

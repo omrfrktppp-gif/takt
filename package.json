@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "test:content": "playwright test tests/blog-content.spec.ts",
     "test:resend": "node --env-file=.env.local scripts/test-resend.mjs",
     "audit:indexing": "node scripts/audit-indexing.mjs"
   },

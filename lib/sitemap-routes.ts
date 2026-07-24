@@ -3,7 +3,7 @@
  * Yeni statik sayfa veya bölüm: ilgili döngüye ekle veya `chapterSeo`/`blogPosts` güncelle.
  * Detay: docs/09-seo-geo-aeo-altyapi.md
  */
-import { createBlogSitemapEntries } from "@/components/blog/content-formats";
+import { createBlogSitemapEntries } from "@/lib/blog-content-formats";
 import { getPublishedPosts, getAllTagIds } from "@/lib/blog";
 import {
   detailChapters,

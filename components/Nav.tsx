@@ -50,9 +50,40 @@ export function Nav() {
     window.addEventListener("keydown", onKeyDown);
 
     if (open) {
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
       requestAnimationFrame(() => {
         mobileNavRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
       });
+
+      const trapFocus = (event: KeyboardEvent) => {
+        if (event.key !== "Tab") return;
+        const focusable = [
+          menuButtonRef.current,
+          ...(mobileNavRef.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled])',
+          ) ?? []),
+        ].filter((element): element is HTMLElement => Boolean(element));
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      };
+      window.addEventListener("keydown", trapFocus);
+
+      return () => {
+        document.body.style.overflow = previousOverflow;
+        window.removeEventListener("keydown", trapFocus);
+        observer.disconnect();
+        window.removeEventListener("resize", onViewportChange);
+        window.removeEventListener("keydown", onKeyDown);
+      };
     }
 
     return () => {
@@ -148,12 +179,18 @@ export function Nav() {
       </div>
 
       {open ? (
-        <nav
-          ref={mobileNavRef}
-          id="mobile-nav"
-          className="scroll-inner scrollbar-none absolute inset-x-0 top-full max-h-[calc(100dvh-var(--nav-h))] overflow-y-auto border-b border-line bg-paper px-4 py-3 shadow-lg lg:hidden"
-          aria-label="Mobil navigasyon"
-        >
+        <>
+          <div
+            className="fixed inset-x-0 bottom-0 top-[var(--nav-h)] -z-10 bg-ink/25 lg:hidden"
+            aria-hidden="true"
+            onPointerDown={() => setOpen(false)}
+          />
+          <nav
+            ref={mobileNavRef}
+            id="mobile-nav"
+            className="scroll-inner scrollbar-none absolute inset-x-0 top-full max-h-[calc(100dvh-var(--nav-h))] overflow-y-auto border-b border-line bg-paper px-4 py-3 shadow-lg lg:hidden"
+            aria-label="Mobil navigasyon"
+          >
           <ul className="flex flex-col gap-1">
             {navLinks
               .filter((link) => link.id !== "lead-magnet")
@@ -187,7 +224,8 @@ export function Nav() {
               </Button>
             </li>
           </ul>
-        </nav>
+          </nav>
+        </>
       ) : null}
     </header>
   );

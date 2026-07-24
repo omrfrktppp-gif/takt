@@ -22,6 +22,22 @@ export function Footer() {
             <p className="mt-4 max-w-sm text-small text-steel">
               {siteConfig.description}
             </p>
+            <div className="mt-4 text-small">
+              <ContactChannelLink
+                href={`mailto:${siteConfig.email}`}
+                channel="email"
+                className="flex min-h-11 items-center text-ink hover:text-signal"
+              >
+                {siteConfig.email}
+              </ContactChannelLink>
+              <ContactChannelLink
+                href={siteConfig.phoneHref}
+                channel="phone"
+                className="flex min-h-11 items-center text-ink hover:text-signal"
+              >
+                {siteConfig.phone}
+              </ContactChannelLink>
+            </div>
           </div>
 
           <div>
@@ -36,6 +52,26 @@ export function Footer() {
                     className="flex min-h-11 items-center text-small text-ink hover:text-signal"
                   >
                     {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Hızlı yollar
+            </p>
+            <ul className="mt-1 grid grid-cols-2 gap-x-4 text-small sm:grid-cols-4 lg:grid-cols-2">
+              {[
+                ["Tasarım", "/hizmetler/tasarim-gelistirme"],
+                ["Analiz", "/hizmetler/analiz-hesaplama"],
+                ["Üretim", "/hizmetler/uretim-danismanligi"],
+                ["3B tarama", "/kapasitemiz/3d-tarama"],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="flex min-h-11 items-center text-ink hover:text-signal"
+                  >
+                    {label}
                   </Link>
                 </li>
               ))}

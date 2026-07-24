@@ -42,7 +42,6 @@ export async function generateMetadata({
     ...metadata.twitter,
   };
   delete openGraph.images;
-  delete twitter.images;
 
   return {
     ...metadata,

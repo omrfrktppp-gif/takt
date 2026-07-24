@@ -18,12 +18,33 @@ const pillarHrefs: Record<(typeof servicePillars)[number]["id"], string> = {
   "arge-proje": "/hizmetler/arge-urge",
 };
 
+const problemPaths = [
+  {
+    title: "Teknik ekip yetişmiyor",
+    href: "/hizmetler/tasarim-gelistirme",
+    label: "Tasarım ve analiz yükü",
+  },
+  {
+    title: "Üretime geçiş dağınık",
+    href: "/hizmetler/uretim-danismanligi",
+    label: "İmalat ve tedarik",
+  },
+  {
+    title: "Kapsam ilerledikçe bulanıklaşıyor",
+    href: "/hizmetler/proje-danismanligi",
+    label: "Proje ve Ar-Ge",
+  },
+] as const;
+
 const sectionPad = "mx-auto w-full max-w-content px-4 py-16 md:px-6 md:py-24";
 
 export function HomeHub() {
   return (
     <SeoPageLayout>
-      <section className="relative overflow-hidden border-b border-line bg-paper">
+      <section
+        id="home-hero"
+        className="relative overflow-hidden border-b border-line bg-paper"
+      >
         <div
           className="pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] border-l border-line bg-[linear-gradient(135deg,transparent_0_49.5%,var(--signal-tint)_50%,transparent_50.5%)] bg-[length:38px_38px] lg:block"
           aria-hidden="true"
@@ -65,6 +86,39 @@ export function HomeHub() {
         </div>
       </section>
 
+      <section
+        className="border-b border-line bg-white"
+        aria-labelledby="home-problem"
+      >
+        <div className="mx-auto grid w-full max-w-content gap-8 px-4 py-12 md:px-6 lg:grid-cols-[0.65fr_1.35fr] lg:items-center">
+          <div>
+            <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Başlangıç noktası
+            </p>
+            <h2 id="home-problem" className="mt-3 font-display text-h3 text-ink">
+              İş nerede sıkışıyor?
+            </h2>
+          </div>
+          <ul className="divide-y divide-line border-y border-line lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            {problemPaths.map((path) => (
+              <li key={path.title}>
+                <Link
+                  href={path.href}
+                  className="group flex min-h-24 flex-col justify-center px-4 py-4 md:px-5"
+                >
+                  <span className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+                    {path.label}
+                  </span>
+                  <span className="mt-2 font-display text-base text-ink group-hover:text-signal">
+                    {path.title} →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <ConversionStory />
 
       <section
@@ -89,7 +143,7 @@ export function HomeHub() {
             </div>
             <Link
               href="/hizmetler"
-              className="shrink-0 pb-0.5 font-mono text-small text-signal underline-offset-4 hover:underline"
+              className="inline-flex min-h-11 shrink-0 items-center font-mono text-small text-signal underline-offset-4 hover:underline"
             >
               Tüm hizmetler →
             </Link>

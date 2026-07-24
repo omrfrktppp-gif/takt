@@ -4,7 +4,7 @@ import {
   markdownText,
   renderBlogLlmsLinks,
   renderFullBlogEntries,
-} from "@/components/blog/content-formats";
+} from "@/lib/blog-content-formats";
 import { getPublishedPosts } from "@/lib/blog";
 import { getChapterPanels } from "@/lib/pages";
 import { pillars } from "@/lib/pillars";

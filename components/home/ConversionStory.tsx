@@ -1,28 +1,12 @@
 import { EngineeringMachineScene } from "@/components/home/EngineeringMachineScene";
+import { processSteps } from "@/lib/site";
 import styles from "./EngineeringMachineScene.module.css";
 
-const steps = [
-  {
-    number: "01",
-    title: "Darboğazı görünür kılarız.",
-    text: "İhtiyacı, bağımlılıkları ve eksik teknik girdileri aynı çerçevede toplarız.",
-  },
-  {
-    number: "02",
-    title: "Parçaları doğru eksene alırız.",
-    text: "Tasarım, analiz ve üretim kararlarını birbiriyle çalışacak biçimde düzenleriz.",
-  },
-  {
-    number: "03",
-    title: "Sistemi birlikte doğrularız.",
-    text: "Kontrol noktalarını netleştirir, işi ekibinizin çalışma ritmine bağlarız.",
-  },
-  {
-    number: "04",
-    title: "Kullanılabilir çıktıyla kapatırız.",
-    text: "Model, teknik resim, analiz notu ve imalat paketi sizde devam edebilir.",
-  },
-] as const;
+const steps = processSteps.map((step, index) => ({
+  number: String(index + 1).padStart(2, "0"),
+  title: step.title,
+  text: step.description,
+}));
 
 const outputs = [
   ["3B MODEL", 88],
@@ -369,7 +353,7 @@ export function ConversionStory() {
                         y="52"
                         fill="var(--paper)"
                         fontFamily="var(--font-mono), monospace"
-                        fontSize="9"
+                        fontSize="12"
                         letterSpacing="0.7"
                       >
                         {label}

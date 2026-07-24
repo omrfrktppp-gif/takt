@@ -11,7 +11,7 @@ import {
   renderBlogLlmsLinks,
   renderFullBlogEntries,
   type PublicBlogDocument,
-} from "../components/blog/content-formats";
+} from "../lib/blog-content-formats";
 
 const root = process.cwd();
 const contentDirectory = path.join(root, "content", "blog");
