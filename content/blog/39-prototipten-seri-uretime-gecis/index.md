@@ -4,7 +4,7 @@ description: "Çalışan bir prototipten seri üretime nasıl geçilir? DFM, tol
 slug: "prototipten-seri-uretime-gecis"
 date: 2026-07-18
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Satın Alma Rehberi"

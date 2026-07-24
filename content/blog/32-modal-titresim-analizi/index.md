@@ -4,7 +4,7 @@ description: "Modal analiz nedir, rezonans neden tehlikeli? Doğal frekans, tahr
 slug: "modal-titresim-analizi"
 date: 2026-06-27
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Saha & Analiz"
@@ -33,7 +33,7 @@ Titreşim problemi çoğu zaman sahada, makine çalışmaya başladıktan sonra 
 
 Rezonansta yapıya giren enerji her çevrimde birikir; küçük ve masum görünen bir tahrik kuvveti, doğal frekansla çakıştığında büyüyen genliklere ulaşır. Sonuç, kuvvetin büyüklüğüyle değil, frekansıyla ilgilidir — bu yüzden sahada "bu kadar küçük motor bu şasiyi nasıl sallıyor?" şaşkınlığı yaşanır. Genliğin sınırını yalnızca yapıdaki sönüm belirler ve çelik konstrüksiyonlarda yapısal sönüm genellikle düşüktür.
 
-Mühendislik tarihinin en bilinen örneklerinden biri, 1940'ta rüzgâr kaynaklı titreşimle çöken Tacoma Narrows Köprüsü'dür; olayın mekanizması ve dersleri [Washington Eyaleti Ulaştırma Bakanlığı'nın resmî tarihçesinde](https://wsdot.wa.gov/tacoma-narrows-bridge-history) belgelenmiştir. Köprü ölçeğinde yaşanan bu ders, makine şasisi ölçeğinde her gün geçerlidir: yapı, tahrik frekansına "hazırlıksız" yakalanmamalıdır.
+Mühendislik tarihinin en bilinen örneklerinden biri, 1940'ta rüzgâr kaynaklı titreşimle çöken Tacoma Narrows Köprüsü'dür; olayın mekanizması ve dersleri [Washington Eyaleti Ulaştırma Bakanlığı'nın resmî tarihçesinde](https://www.wsdot.wa.gov/TNBhistory/) belgelenmiştir. Köprü ölçeğinde yaşanan bu ders, makine şasisi ölçeğinde her gün geçerlidir: yapı, tahrik frekansına "hazırlıksız" yakalanmamalıdır.
 
 ## Modal Analiz Ne Söyler?
 
@@ -69,4 +69,4 @@ Modal analiz, yapının doğal frekanslarını ve mod şekillerini üretimden ö
 
 ## Kaynaklar
 
-- [Tacoma Narrows Bridge History — Washington State Department of Transportation](https://wsdot.wa.gov/tacoma-narrows-bridge-history) (1940 çöküşünün resmî tarihçesi ve mühendislik dersleri)
+- [Tacoma Narrows Bridge History — Washington State Department of Transportation](https://www.wsdot.wa.gov/TNBhistory/) (1940 çöküşünün resmî tarihçesi ve mühendislik dersleri)

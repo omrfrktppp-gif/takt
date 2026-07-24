@@ -4,7 +4,7 @@ description: "Dijital ikiz (digital twin) nedir, bir KOBİ için ne zaman gerçe
 slug: "dijital-ikiz"
 date: 2026-04-25
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"

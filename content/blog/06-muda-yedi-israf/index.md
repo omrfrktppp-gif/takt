@@ -4,7 +4,7 @@ description: "Yalın üretimin 7 israfı (muda) nedir? Taşıma, stok, bekleme, 
 slug: "muda-yedi-israf"
 date: 2026-04-10
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Japon Mühendislik İlkeleri"

@@ -4,7 +4,7 @@ description: "Yüksek sıcaklık sistemlerinde termal genleşme nasıl hesaplan�
 slug: "termal-genlesme-yonetimi"
 date: 2026-05-07
 updated: 2026-07-25
-status: review
+status: published
 kind: case-study
 author: "Ömer Faruk"
 category: "Saha & Analiz"

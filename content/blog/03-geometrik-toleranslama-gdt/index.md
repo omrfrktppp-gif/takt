@@ -4,7 +4,7 @@ description: "GD&T ve tolerans yığılması: her ölçüye dar tolerans vermek 
 slug: "geometrik-toleranslama-gdt"
 date: 2026-04-01
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "DFM/DFA"

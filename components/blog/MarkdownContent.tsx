@@ -168,7 +168,11 @@ export function MarkdownContent({
     ),
     hr: () => <hr className="my-8 border-line" />,
     pre: ({ children }) => (
-      <pre className="mt-5 overflow-x-auto rounded border border-line bg-ink p-4 font-mono text-small leading-relaxed text-paper">
+      <pre
+        className="mt-5 overflow-x-auto rounded border border-line bg-ink p-4 font-mono text-small leading-relaxed text-paper"
+        tabIndex={0}
+        aria-label="Yatay kaydırılabilir kod örneği"
+      >
         {children}
       </pre>
     ),
@@ -187,7 +191,12 @@ export function MarkdownContent({
       );
     },
     table: ({ children }) => (
-      <div className="mt-6 overflow-x-auto rounded border border-line">
+      <div
+        className="mt-6 overflow-x-auto rounded border border-line"
+        tabIndex={0}
+        role="region"
+        aria-label="Yatay kaydırılabilir teknik tablo"
+      >
         <table className="w-full border-collapse text-left text-small text-steel">
           {children}
         </table>

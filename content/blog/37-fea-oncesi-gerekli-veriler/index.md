@@ -4,7 +4,7 @@ description: "Bir FEA çalışması istemeden önce hangi veriler hazır olmalı
 slug: "fea-oncesi-gerekli-veriler"
 date: 2026-07-12
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Satın Alma Rehberi"

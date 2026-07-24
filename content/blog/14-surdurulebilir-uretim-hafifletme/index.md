@@ -4,7 +4,7 @@ description: "Hafifletme (lightweighting) ve malzeme verimliliği nedir? Aynı t
 slug: "surdurulebilir-uretim-hafifletme"
 date: 2026-05-04
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"

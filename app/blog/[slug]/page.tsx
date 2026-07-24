@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <li key={tag.id}>
                     <Link
                       href={`/blog/etiket/${tag.id}`}
-                      className="tag-pill bg-accent/10 font-mono text-eyebrow text-accent hover:bg-accent/20"
+                      className="tag-pill bg-accent/10 font-mono text-eyebrow text-ink hover:bg-accent/20"
                     >
                       {tag.label}
                     </Link>

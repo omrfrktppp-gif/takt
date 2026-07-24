@@ -4,7 +4,7 @@ description: "Genchi genbutsu (git ve gör) ilkesi nedir? Tasarımcının sahaya
 slug: "gemba-genchi-genbutsu"
 date: 2026-04-13
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Japon Mühendislik İlkeleri"

@@ -4,7 +4,7 @@ description: "Taguchi robust (gürbüz) tasarım nedir? Ürünü laboratuvar ko�
 slug: "taguchi-robust-tasarim"
 date: 2026-04-19
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Kalite İlkeleri"

@@ -4,7 +4,7 @@ description: "Endüstri 5.0 nedir, Endüstri 4.0'dan farkı ne? Avrupa Komisyonu
 slug: "endustri-5-0"
 date: 2026-05-22
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

@@ -4,7 +4,7 @@ description: "Dijital iplik (digital thread) nedir, dijital ikizden farkı ne? T
 slug: "dijital-iplik-digital-thread"
 date: 2026-06-03
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

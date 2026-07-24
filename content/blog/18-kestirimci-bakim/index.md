@@ -4,7 +4,7 @@ description: "Kestirimci bakım (predictive maintenance) nedir, plansız duruşu
 slug: "kestirimci-bakim"
 date: 2026-05-16
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"

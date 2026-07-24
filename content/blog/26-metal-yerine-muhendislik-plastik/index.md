@@ -4,7 +4,7 @@ description: "POM, PA, PEEK gibi mühendislik plastikleri metalin yerini ne zama
 slug: "metal-yerine-muhendislik-plastik"
 date: 2026-06-09
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

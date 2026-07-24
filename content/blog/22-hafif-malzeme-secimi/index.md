@@ -4,7 +4,7 @@ description: "Hafifletmede malzeme seçimi nasıl yapılır? AHSS, alüminyum, m
 slug: "hafif-malzeme-secimi"
 date: 2026-05-28
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

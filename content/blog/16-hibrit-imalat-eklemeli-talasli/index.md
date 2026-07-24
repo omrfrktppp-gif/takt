@@ -4,7 +4,7 @@ description: "Hibrit imalat nedir? Eklemeli ve talaşlı imalatı tek tezgâhta 
 slug: "hibrit-imalat-eklemeli-talasli"
 date: 2026-05-10
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"

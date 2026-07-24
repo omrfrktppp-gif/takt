@@ -4,7 +4,7 @@ description: "Poka-Yoke (hata önleyici tasarım) ile montaj hatalarını kontro
 slug: "poka-yoke-hata-onleyici-tasarim"
 date: 2026-04-04
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "DFM/DFA"

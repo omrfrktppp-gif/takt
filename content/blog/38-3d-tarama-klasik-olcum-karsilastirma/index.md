@@ -4,7 +4,7 @@ description: "3D tarama ile CMM ve klasik ölçüm arasındaki fark ne? Doğrulu
 slug: "3d-tarama-klasik-olcum-karsilastirma"
 date: 2026-07-15
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Satın Alma Rehberi"

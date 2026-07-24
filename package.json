@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "test:content": "playwright test tests/blog-content.spec.ts",
+    "test:e2e": "playwright test tests/site-quality.spec.ts",
+    "audit:blog-links": "node scripts/audit-blog-links.mjs",
     "test:resend": "node --env-file=.env.local scripts/test-resend.mjs",
     "audit:indexing": "node scripts/audit-indexing.mjs"
   },
@@ -26,6 +28,7 @@
     "resend": "^6.17.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
     "@playwright/test": "^1.61.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

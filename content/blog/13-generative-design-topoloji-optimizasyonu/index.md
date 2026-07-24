@@ -4,7 +4,7 @@ description: "Generative design ve topoloji optimizasyonu nedir? Algoritmanın �
 slug: "generative-design-topoloji-optimizasyonu"
 date: 2026-05-01
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"

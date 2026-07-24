@@ -113,19 +113,19 @@
 }
 
 .step:nth-child(1) {
-  opacity: var(--step-one-opacity, 1);
+  transform: translateX(calc((1 - var(--step-one-opacity, 1)) * 0.4rem));
 }
 
 .step:nth-child(2) {
-  opacity: var(--step-two-opacity, 1);
+  transform: translateX(calc((1 - var(--step-two-opacity, 1)) * 0.4rem));
 }
 
 .step:nth-child(3) {
-  opacity: var(--step-three-opacity, 1);
+  transform: translateX(calc((1 - var(--step-three-opacity, 1)) * 0.4rem));
 }
 
 .step:nth-child(4) {
-  opacity: var(--step-four-opacity, 1);
+  transform: translateX(calc((1 - var(--step-four-opacity, 1)) * 0.4rem));
 }
 
 .stepNumber {

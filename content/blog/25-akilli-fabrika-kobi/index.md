@@ -4,7 +4,7 @@ description: "KOBİ için akıllı fabrikaya nasıl başlanır? Büyük yatırı
 slug: "akilli-fabrika-kobi"
 date: 2026-06-06
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

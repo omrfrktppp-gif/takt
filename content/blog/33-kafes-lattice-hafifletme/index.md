@@ -4,7 +4,7 @@ description: "Kafes (lattice) yapı nedir, hafifletmede ne zaman mantıklı? Ekl
 slug: "kafes-lattice-hafifletme"
 date: 2026-06-30
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

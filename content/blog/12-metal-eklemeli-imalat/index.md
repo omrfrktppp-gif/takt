@@ -4,7 +4,7 @@ description: "Metal eklemeli imalat (3D baskı) ne zaman gerçekten mantıklı? 
 slug: "metal-eklemeli-imalat"
 date: 2026-04-28
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"

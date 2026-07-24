@@ -4,7 +4,7 @@ description: "Süreç yeteneği (Cp/Cpk) nedir? Bir parçanın 'geçer' olması 
 slug: "six-sigma-surec-yetenegi"
 date: 2026-04-22
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Kalite İlkeleri"

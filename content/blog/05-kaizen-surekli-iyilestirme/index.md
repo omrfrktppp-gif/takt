@@ -4,7 +4,7 @@ description: "Kaizen (sürekli iyileştirme) nedir? Küçük iyileştirmelerin b
 slug: "kaizen-surekli-iyilestirme"
 date: 2026-04-07
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Japon Mühendislik İlkeleri"

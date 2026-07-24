@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = loadBlogPostsFromContent();
 
 export function getPublishedPosts(): BlogPost[] {
   return blogPosts
-    .filter((post) => !post.draft)
+    .filter((post) => post.status === "published")
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
@@ -95,7 +95,9 @@ export function getPublishedPosts(): BlogPost[] {
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.slug === slug && !post.draft);
+  return blogPosts.find(
+    (post) => post.slug === slug && post.status === "published",
+  );
 }
 
 export function getAllPostSlugs(): string[] {

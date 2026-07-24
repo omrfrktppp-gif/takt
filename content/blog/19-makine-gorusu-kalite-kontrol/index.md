@@ -4,7 +4,7 @@ description: "Makine görüşü ile kalite kontrol nedir, ne kadar doğrudur? Ö
 slug: "makine-gorusu-kalite-kontrol"
 date: 2026-05-19
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

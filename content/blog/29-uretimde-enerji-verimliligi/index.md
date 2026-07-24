@@ -4,7 +4,7 @@ description: "Üretimde enerji verimliliği nereden başlar? Basınçlı hava ka
 slug: "uretimde-enerji-verimliligi"
 date: 2026-06-18
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

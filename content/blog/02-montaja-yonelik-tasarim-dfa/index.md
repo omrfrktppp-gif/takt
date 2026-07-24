@@ -4,7 +4,7 @@ description: "Montaja yönelik tasarım (DFA) ile montaj süresini ve hata payı
 slug: "montaja-yonelik-tasarim-dfa"
 date: 2026-03-29
 updated: 2026-07-25
-status: review
+status: published
 kind: case-study
 author: "Ömer Faruk"
 category: "DFM/DFA"

@@ -4,7 +4,7 @@ description: "Kısıtlar Teorisi (TOC) nedir, darboğaz nasıl bulunur? Bir hatt
 slug: "darbogaz-kisitlar-teorisi"
 date: 2026-07-03
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

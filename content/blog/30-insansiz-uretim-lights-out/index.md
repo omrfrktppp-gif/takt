@@ -4,7 +4,7 @@ description: "İnsansız üretim (lights-out machining) nedir, hangi koşullarda
 slug: "insansiz-uretim-lights-out"
 date: 2026-06-21
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

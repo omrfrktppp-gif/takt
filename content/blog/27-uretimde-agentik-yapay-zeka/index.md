@@ -4,7 +4,7 @@ description: "Agentik yapay zeka üretim ve mühendislikte ne yapıyor? Gerçek 
 slug: "uretimde-agentik-yapay-zeka"
 date: 2026-06-12
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

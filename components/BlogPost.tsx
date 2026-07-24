@@ -139,7 +139,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
             <li key={tag.id}>
               <Link
                 href={`/blog/etiket/${tag.id}`}
-                className="tag-pill rounded-sm bg-accent/10 font-mono text-eyebrow text-accent hover:bg-accent/20"
+                className="tag-pill rounded-sm bg-accent/10 font-mono text-eyebrow text-ink hover:bg-accent/20"
               >
                 {tag.label}
               </Link>

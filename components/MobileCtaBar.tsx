@@ -11,13 +11,12 @@ export function MobileCtaBar() {
   const [pageCtaVisible, setPageCtaVisible] = useState(pathname === "/");
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const targets = ["home-hero", "home-cta"]
       .map((id) => document.getElementById(id))
       .filter((element): element is HTMLElement => Boolean(element));
-    if (targets.length === 0) {
-      setPageCtaVisible(false);
-      return;
-    }
+    if (targets.length === 0) return;
 
     const visibility = new Map<Element, boolean>();
     const observer = new IntersectionObserver(
@@ -31,7 +30,7 @@ export function MobileCtaBar() {
     return () => observer.disconnect();
   }, [pathname]);
 
-  if (pageCtaVisible) return null;
+  if (pathname === "/" && pageCtaVisible) return null;
 
   return (
     <>

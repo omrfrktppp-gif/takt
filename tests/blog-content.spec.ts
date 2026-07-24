@@ -51,9 +51,7 @@ function readContentDocuments(): ContentDocument[] {
         markdown: parsed.content.trim(),
       };
     })
-    .filter(
-      (post) => post.status === "published" || post.status === "review",
-    )
+    .filter((post) => post.status === "published")
     .sort(
       (a, b) =>
         b.publishedAt.localeCompare(a.publishedAt) ||
@@ -63,12 +61,11 @@ function readContentDocuments(): ContentDocument[] {
 
 const documents = readContentDocuments();
 
-test("published and review content forms the complete public set", () => {
-  expect(documents).toHaveLength(35);
+test("all reviewed content forms the complete published set", () => {
+  expect(documents).toHaveLength(41);
   expect(documents.filter((post) => post.status === "published")).toHaveLength(
-    1,
+    41,
   );
-  expect(documents.filter((post) => post.status === "review")).toHaveLength(34);
 
   for (const post of documents) {
     expect(post.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);

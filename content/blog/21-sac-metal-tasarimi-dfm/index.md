@@ -4,7 +4,7 @@ description: "Sac metal tasarımında büküm payı, K-faktörü ve minimum bük
 slug: "sac-metal-tasarimi-dfm"
 date: 2026-05-25
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "DFM/DFA"

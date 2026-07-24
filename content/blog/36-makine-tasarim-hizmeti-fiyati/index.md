@@ -4,7 +4,7 @@ description: "Makine tasarım hizmeti fiyatı nasıl belirlenir? Kapsam, risk de
 slug: "makine-tasarim-hizmeti-fiyati"
 date: 2026-07-09
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Satın Alma Rehberi"

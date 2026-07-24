@@ -4,7 +4,7 @@ description: "Kadrolu mühendis istihdamı ile proje bazlı mühendislik danış
 slug: "kadrolu-muhendis-proje-bazli-danismanlik"
 date: 2026-07-24
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Satın Alma Rehberi"

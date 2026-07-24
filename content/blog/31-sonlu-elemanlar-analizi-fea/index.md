@@ -4,7 +4,7 @@ description: "Sonlu elemanlar analizi (FEA) nedir, ne zaman güvenilir? Ağ yak�
 slug: "sonlu-elemanlar-analizi-fea"
 date: 2026-06-24
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Saha & Analiz"

@@ -4,7 +4,7 @@ description: "Kaynak çarpılması neden olur, nasıl önlenir? Isı girdisi, ka
 slug: "kaynak-carpilmasi-kontrolu"
 date: 2026-06-15
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Saha & Analiz"

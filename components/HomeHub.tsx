@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Cadence } from "@/components/Cadence";
 import { Button } from "@/components/Button";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
-import { ConversionStory } from "@/components/home/ConversionStory";
+import { LazyConversionStory } from "@/components/home/LazyConversionStory";
 import {
   appointmentCta,
   leadMagnet,
@@ -119,7 +119,7 @@ export function HomeHub() {
         </div>
       </section>
 
-      <ConversionStory />
+      <LazyConversionStory />
 
       <section
         className="border-b border-line bg-white"

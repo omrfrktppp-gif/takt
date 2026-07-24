@@ -4,7 +4,7 @@ description: "Yerlileştirme (reshoring) nedir, neden hızlanıyor? Tedarik zinc
 slug: "yerlilestirme-reshoring"
 date: 2026-05-31
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk Top"
 category: "Mühendislik Trendleri"

@@ -4,7 +4,7 @@ description: "FMEA (hata türü ve etki analizi) nedir? RPN ile riski sayısalla
 slug: "fmea-hata-turu-etki-analizi"
 date: 2026-04-16
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Kalite İlkeleri"

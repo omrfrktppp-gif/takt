@@ -4,7 +4,7 @@ description: "Kobot (collaborative robot) nedir, robotik makine beslemede ne zam
 slug: "kobot-robotik-makine-besleme"
 date: 2026-05-13
 updated: 2026-07-25
-status: review
+status: published
 kind: article
 author: "Ömer Faruk"
 category: "Mühendislik Trendleri"
