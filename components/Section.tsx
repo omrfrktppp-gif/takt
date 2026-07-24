@@ -23,7 +23,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`overflow-x-hidden px-5 py-12 sm:px-6 md:py-20 lg:py-28 ${bg} ${className}`}
+      className={`px-5 py-12 sm:px-6 md:py-20 lg:py-28 ${bg} ${className}`}
     >
       <div
         className={`mx-auto w-full ${narrow ? "max-w-3xl" : "max-w-content"}`}

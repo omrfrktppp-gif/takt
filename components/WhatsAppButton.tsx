@@ -2,13 +2,11 @@
 
 import { MessageCircle } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import { useCookieConsent } from "@/lib/consent";
 import { siteConfig } from "@/lib/site";
 
 export function WhatsAppButton() {
-  const { hasAnswered } = useCookieConsent();
   const { whatsapp } = siteConfig;
-  if (!whatsapp.enabled || !hasAnswered) return null;
+  if (!whatsapp.enabled) return null;
 
   return (
     <a

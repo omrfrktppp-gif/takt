@@ -29,7 +29,7 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
       {hasToc ? (
         <nav
           aria-label="İçindekiler"
-          className="interactive-card sticky-below-nav mb-8 max-h-[calc(100vh-var(--nav-h)-2rem)] overflow-y-auto lg:mb-0"
+          className="interactive-card mb-8 lg:sticky lg:top-[var(--sticky-offset)] lg:mb-0 lg:max-h-[calc(100vh-var(--nav-h)-2rem)] lg:overflow-y-auto"
         >
           <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
             İçindekiler

@@ -21,7 +21,7 @@ export default function BlogIndexPage() {
     <SeoPageLayout>
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Hakkımızda", path: "/hakkimizda" },
+          { name: "Ana Sayfa", path: "/" },
           { name: "Blog", path: blogSeo.path },
         ])}
       />

@@ -100,7 +100,6 @@ export function ContactForm({
       className={spaceY}
       aria-describedby={statusId}
       aria-busy={isPending}
-      noValidate
     >
       <input
         type="checkbox"
@@ -109,6 +108,7 @@ export function ContactForm({
         style={{ display: "none" }}
         tabIndex={-1}
         autoComplete="off"
+        aria-hidden="true"
       />
 
       <div

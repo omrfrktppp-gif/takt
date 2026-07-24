@@ -1,20 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/Button";
 import { trackEvent } from "@/lib/analytics";
-import { useCookieConsent } from "@/lib/consent";
 import { appointmentCta } from "@/lib/site";
 
 export function MobileCtaBar() {
-  const { hasAnswered } = useCookieConsent();
-  const [pageCtaVisible, setPageCtaVisible] = useState(false);
+  const pathname = usePathname();
+  const [pageCtaVisible, setPageCtaVisible] = useState(pathname === "/");
 
   useEffect(() => {
     const targets = ["home-hero", "home-cta"]
       .map((id) => document.getElementById(id))
       .filter((element): element is HTMLElement => Boolean(element));
-    if (targets.length === 0) return;
+    if (targets.length === 0) {
+      setPageCtaVisible(false);
+      return;
+    }
 
     const visibility = new Map<Element, boolean>();
     const observer = new IntersectionObserver(
@@ -26,9 +29,9 @@ export function MobileCtaBar() {
     );
     targets.forEach((target) => observer.observe(target));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
-  if (!hasAnswered || pageCtaVisible) return null;
+  if (pageCtaVisible) return null;
 
   return (
     <>

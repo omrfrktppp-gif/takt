@@ -172,10 +172,14 @@ export function HomeHub() {
         </div>
       </section>
 
-      <section className="bg-ink text-white" aria-labelledby="home-cta">
+      <section
+        id="home-cta"
+        className="bg-ink text-white"
+        aria-labelledby="home-cta-title"
+      >
         <div className={sectionPad}>
           <div className="max-w-2xl">
-            <h2 id="home-cta" className="font-display text-h2 text-white">
+            <h2 id="home-cta-title" className="font-display text-h2 text-white">
               Projenizdeki eksik halkayı birlikte netleştirelim.
             </h2>
             <p className="mt-4 text-body text-white/75">

@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <JsonLd
         data={[
           breadcrumbSchema([
-            { name: "Hakkımızda", path: "/hakkimizda" },
+            { name: "Ana Sayfa", path: "/" },
             { name: "Blog", path: "/blog" },
             { name: post.title, path: `/blog/${post.slug}` },
           ]),
@@ -93,7 +93,16 @@ export default async function BlogPostPage({ params }: PageProps) {
         ]}
       />
 
-      <PageShell eyebrow="BLOG" title={post.title} description={post.description}>
+      <PageShell
+        eyebrow="BLOG"
+        title={post.title}
+        description={post.description}
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: post.title },
+        ]}
+      >
         <Section>
           <div className="mb-8 flex flex-wrap items-center gap-4">
             <time
@@ -129,7 +138,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <li key={tag.id}>
                     <Link
                       href={`/blog/etiket/${tag.id}`}
-                      className="rounded-sm bg-accent/10 px-2 py-1 font-mono text-eyebrow text-accent hover:bg-accent/20"
+                      className="tag-pill bg-accent/10 font-mono text-eyebrow text-accent hover:bg-accent/20"
                     >
                       {tag.label}
                     </Link>

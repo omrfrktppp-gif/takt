@@ -61,7 +61,7 @@ export default async function BlogTagPage({ params }: PageProps) {
     <SeoPageLayout>
       <JsonLd
         data={breadcrumbSchema([
-          { name: "Hakkımızda", path: "/hakkimizda" },
+          { name: "Ana Sayfa", path: "/" },
           { name: "Blog", path: "/blog" },
           { name: tagMeta.label, path: `/blog/etiket/${tag}` },
         ])}
@@ -74,6 +74,11 @@ export default async function BlogTagPage({ params }: PageProps) {
           tagMeta.description ??
           `${tagMeta.label} etiketli yazılar.`
         }
+        breadcrumbs={[
+          { label: "Ana Sayfa", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: tagMeta.label },
+        ]}
       >
         <Section>
           <div className="grid gap-6">

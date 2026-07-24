@@ -18,18 +18,11 @@
   --maxw: 1200px;
   --nav-h: 3.5rem;
   --sticky-offset: calc(var(--nav-h) + 0.75rem);
-  --mobile-cta-h: calc(3.75rem + env(safe-area-inset-bottom, 0px));
 }
 
 @media (min-width: 768px) {
   :root {
     --nav-h: 4rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  :root {
-    --mobile-cta-h: 0px;
   }
 }
 
