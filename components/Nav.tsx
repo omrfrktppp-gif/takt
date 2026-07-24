@@ -11,18 +11,12 @@ import { appointmentCta, navLinks } from "@/lib/site";
 
 const primaryExtraLinks = navLinks.filter((link) => link.id === "sektorler");
 
-const secondaryExtraLinks = navLinks.filter(
-  (link) =>
-    link.id === "referanslar" ||
-    link.id === "rehber" ||
-    link.id === "blog" ||
-    link.id === "sss",
-);
-
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const el = headerRef.current;
@@ -46,9 +40,25 @@ export function Nav() {
     };
 
     window.addEventListener("resize", onViewportChange);
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || !open) return;
+      setOpen(false);
+      menuButtonRef.current?.focus();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    if (open) {
+      requestAnimationFrame(() => {
+        mobileNavRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+      });
+    }
+
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", onViewportChange);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [open]);
 
@@ -108,15 +118,6 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          {secondaryExtraLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`hidden ${linkClass(isActive(link.href))} xl:inline`}
-            >
-              {link.label}
-            </Link>
-          ))}
           <Button
             variant="signal"
             href={appointmentCta.href}
@@ -128,6 +129,7 @@ export function Nav() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="inline-flex items-center justify-center rounded-sm border border-line p-2.5 text-ink lg:hidden"
           aria-expanded={open}
@@ -145,6 +147,7 @@ export function Nav() {
 
       {open ? (
         <nav
+          ref={mobileNavRef}
           id="mobile-nav"
           className="scroll-inner scrollbar-none max-h-[min(70dvh,420px)] overflow-y-auto border-t border-line bg-paper px-4 py-3 lg:hidden"
           aria-label="Mobil navigasyon"

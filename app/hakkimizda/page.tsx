@@ -6,6 +6,7 @@ import { SeoPageLayout } from "@/components/SeoPageLayout";
 import { getChapter, getChapterPanels } from "@/lib/pages";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata, chapterSeo } from "@/lib/seo";
+import { teamMembers } from "@/lib/team";
 
 const seo = chapterSeo.hakkimizda;
 
@@ -34,6 +35,21 @@ export default function HakkimizdaPage() {
           <div className="max-w-3xl space-y-6 text-body text-steel">
             {panels.map((panel) => (
               <p key={panel.id}>{panel.body}</p>
+            ))}
+          </div>
+
+          <div className="mt-12 max-w-3xl border-l-2 border-signal bg-white p-6 md:p-8">
+            <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal">
+              Sorumlu kişi
+            </p>
+            {teamMembers.map((member) => (
+              <div key={member.id} className="mt-4">
+                <h2 className="font-display text-h3 text-ink">{member.name}</h2>
+                <p className="mt-1 font-mono text-small text-steel">
+                  {member.role}
+                </p>
+                <p className="mt-4 text-body text-steel">{member.bio}</p>
+              </div>
             ))}
           </div>
         </Section>

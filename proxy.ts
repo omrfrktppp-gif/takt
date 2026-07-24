@@ -11,7 +11,7 @@ import {
 /** Kalıcı yönlendirme — GSC "geçici redirect" ve redirect hatalarını önler */
 const PERMANENT_REDIRECT = 308;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const chapterId = request.nextUrl.searchParams.get("b");
   if (!chapterId) return NextResponse.next();
 

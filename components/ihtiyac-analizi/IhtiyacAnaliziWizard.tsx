@@ -54,19 +54,19 @@ export function IhtiyacAnaliziWizard() {
       const restoredScreen = path.includes(lastScreen) ? lastScreen : FIRST_SCREEN_ID;
       const restoredHistory = rebuildScreenHistory(saved.answers, restoredScreen);
 
-      setAnswers(saved.answers);
-      setScreenHistory(restoredHistory);
-      setCurrentScreenId(restoredScreen);
-      setStarted(true);
+      let cancelled = false;
+      queueMicrotask(() => {
+        if (cancelled) return;
+        setAnswers(saved.answers);
+        setScreenHistory(restoredHistory);
+        setCurrentScreenId(restoredScreen);
+        setStarted(true);
+      });
+      return () => {
+        cancelled = true;
+      };
     }
   }, []);
-
-  useEffect(() => {
-    if (!started && answers["s1-main"]) {
-      setStarted(true);
-      trackEvent("ihtiyac_analizi_start");
-    }
-  }, [answers, started]);
 
   useEffect(() => {
     const primary = resolvePrimaryService(answers);
@@ -162,6 +162,10 @@ export function IhtiyacAnaliziWizard() {
 
   const handleChange = useCallback(
     (questionId: string, value: string | string[]) => {
+      if (questionId === "s1-main" && !started) {
+        setStarted(true);
+        trackEvent("ihtiyac_analizi_start");
+      }
       setAnswers((prev) => {
         const next = { ...prev, [questionId]: value };
         const currentScreen = getScreenById(currentScreenId);
@@ -172,7 +176,7 @@ export function IhtiyacAnaliziWizard() {
       });
       setError(null);
     },
-    [currentScreenId, goNext],
+    [currentScreenId, goNext, started],
   );
 
   const submit = useCallback(

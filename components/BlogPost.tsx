@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
 import type { BlogPost } from "@/lib/blog-types";
 import {
   relatedServiceLabel,
@@ -85,6 +86,8 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
           </Link>
         </aside>
       ) : null}
+
+      <LeadMagnetPromo />
     </article>
   );
 }

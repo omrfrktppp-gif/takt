@@ -1,4 +1,5 @@
 import { FaqList } from "@/components/FaqList";
+import { Button } from "@/components/Button";
 import { LeadMagnetPromo } from "@/components/LeadMagnetPromo";
 import type { PanelSeoContent } from "@/lib/seo-content";
 
@@ -41,6 +42,13 @@ export function ServiceDetailBody({ content, intro }: ServiceDetailBodyProps) {
           ) : null}
         </div>
       ) : null}
+
+      <div className="flex flex-col gap-3 border-y border-line py-6 sm:flex-row sm:flex-wrap">
+        <Button href="/ihtiyac-analizi">İhtiyacınızı netleştirin</Button>
+        <Button variant="secondary" href="/gorusme-planla">
+          Bu kapsamı değerlendirelim
+        </Button>
+      </div>
 
       <p className="text-body-lg text-ink">{content.summary}</p>
       {intro ? <p className="text-body text-steel">{intro}</p> : null}

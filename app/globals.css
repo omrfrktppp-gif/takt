@@ -39,6 +39,8 @@
   --font-mono: var(--font-mono);
 
   --animate-cadence-in: cadence-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  --animate-cadence-pulse: cadence-pulse 0.45s
+    cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 *,
@@ -126,6 +128,12 @@ body {
   html {
     scroll-behavior: auto;
   }
+
+  .scroll-vertical,
+  .scroll-horizontal {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
 }
 
 body {
@@ -162,5 +170,15 @@ body {
   to {
     opacity: 1;
     transform: scaleY(1);
+  }
+}
+
+@keyframes cadence-pulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.12);
   }
 }

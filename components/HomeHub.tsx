@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Cadence } from "@/components/Cadence";
 import { Button } from "@/components/Button";
 import { SeoPageLayout } from "@/components/SeoPageLayout";
+import { ConversionStory } from "@/components/home/ConversionStory";
 import {
   appointmentCta,
+  leadMagnet,
   processSteps,
   servicePillars,
   siteConfig,
@@ -40,25 +42,68 @@ const deliverables = [
   },
 ] as const;
 
+const problemPaths = [
+  {
+    label: "Tasarım ve analiz yükü",
+    title: "Teknik ekip yetişemiyor",
+    description:
+      "Tasarım, hesaplama veya teknik dokümantasyon birikiyor; proje kararları gecikiyor.",
+    href: "/hizmetler/tasarim-gelistirme",
+    linkLabel: "Tasarım desteğini inceleyin",
+  },
+  {
+    label: "İmalat ve tedarik",
+    title: "Üretime geçiş dağınık",
+    description:
+      "Prototip, tedarikçi ve imalat adımları arasında tek bir teknik koordinasyon noktası eksik.",
+    href: "/hizmetler/uretim-danismanligi",
+    linkLabel: "Üretim desteğini inceleyin",
+  },
+  {
+    label: "Proje ve Ar-Ge",
+    title: "Kapsam ilerledikçe bulanıklaşıyor",
+    description:
+      "Sorumluluklar, takvim ve teknik çıktılar aynı ritimde yönetilemediği için ekip odağını kaybediyor.",
+    href: "/hizmetler/proje-danismanligi",
+    linkLabel: "Proje desteğini inceleyin",
+  },
+] as const;
+
 const sectionPad = "mx-auto w-full max-w-content px-4 py-16 md:px-6 md:py-24";
 
-function CtaPair({ onDark = false }: { onDark?: boolean }) {
+function CtaPair({
+  onDark = false,
+  includeWhatsApp = false,
+}: {
+  onDark?: boolean;
+  includeWhatsApp?: boolean;
+}) {
   return (
-    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-      <Button variant={onDark ? "light" : "signal"} href={appointmentCta.href}>
-        {appointmentCta.label}
+    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+      <Button variant={onDark ? "light" : "signal"} href={leadMagnet.href}>
+        2 dakikada ihtiyacınızı netleştirin
       </Button>
       <Button
         variant="secondary"
-        href={siteConfig.whatsapp.href}
+        href={appointmentCta.href}
         className={
           onDark
             ? "border-white/35 text-white hover:border-white hover:bg-white hover:text-ink"
             : undefined
         }
       >
-        WhatsApp
+        Görüşme planlayın
       </Button>
+      {includeWhatsApp ? (
+        <a
+          href={siteConfig.whatsapp.href}
+          className={`px-1 py-2 text-small underline decoration-signal underline-offset-4 ${
+            onDark ? "text-white/70 hover:text-white" : "text-steel hover:text-ink"
+          }`}
+        >
+          WhatsApp&apos;tan yazın
+        </a>
+      ) : null}
     </div>
   );
 }
@@ -66,9 +111,13 @@ function CtaPair({ onDark = false }: { onDark?: boolean }) {
 export function HomeHub() {
   return (
     <SeoPageLayout>
-      <section className="border-b border-line bg-paper">
-        <div className={`${sectionPad} lg:py-28`}>
-          <div className="max-w-3xl">
+      <section className="relative overflow-hidden border-b border-line bg-paper">
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] border-l border-line bg-[linear-gradient(135deg,transparent_0_49.5%,rgba(31,79,224,0.12)_50%,transparent_50.5%)] bg-[length:38px_38px] lg:block"
+          aria-hidden="true"
+        />
+        <div className={`${sectionPad} relative grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:py-32`}>
+          <div className="max-w-4xl">
             <Cadence
               variant="hero"
               tickCount={9}
@@ -79,15 +128,84 @@ export function HomeHub() {
               Mühendislik danışmanlığı · Ankara
             </p>
             <h1 className="mt-5 font-display text-h1 text-ink">
-              {siteConfig.tagline}
+              Teknik ekibinizin eksik halkası.
             </h1>
             <p className="mt-5 max-w-2xl text-body-lg text-steel">
-              {siteConfig.description}
+              Tasarım, analiz, proje yönetimi veya üretim koordinasyonunda
+              sıkışan işi; kapsamı, ritmi ve teslimi belli bir teknik sürece
+              dönüştürüyoruz.
             </p>
-            <CtaPair />
+            <CtaPair includeWhatsApp />
+            <p className="mt-5 font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Bağlayıcı değil · İlk görüşmede kapsam netleşir
+            </p>
+          </div>
+          <div className="border-l-2 border-signal bg-white/75 p-6 backdrop-blur-sm lg:mb-2 lg:p-8">
+            <p className="font-mono text-eyebrow uppercase tracking-[0.1em] text-signal">
+              Nereden başlayacağınızı bilmiyor musunuz?
+            </p>
+            <p className="mt-4 font-display text-h3 text-ink">
+              İhtiyacı tarif edin; doğru hizmet yolunu birlikte çıkaralım.
+            </p>
+            <Link
+              href={leadMagnet.href}
+              className="mt-6 inline-block font-mono text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+            >
+              İhtiyaç analizini başlatın →
+            </Link>
           </div>
         </div>
       </section>
+
+      <section
+        className="border-b border-line bg-white"
+        aria-labelledby="home-problem"
+      >
+        <div className={sectionPad}>
+          <div className="max-w-2xl">
+            <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-steel">
+              Başlangıç noktası
+            </p>
+            <h2 id="home-problem" className="mt-3 font-display text-h2 text-ink">
+              Şu anda iş nerede sıkışıyor?
+            </h2>
+            <p className="mt-3 text-body text-steel">
+              Hizmet adı seçmek zorunda değilsiniz. Size en yakın problemi
+              seçmeniz yeterli.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-px overflow-hidden border border-line bg-line lg:grid-cols-3">
+            {problemPaths.map((path, index) => (
+              <article
+                key={path.title}
+                className="group flex min-h-72 flex-col bg-white p-6 transition-colors hover:bg-paper md:p-8"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal">
+                    {path.label}
+                  </p>
+                  <span className="font-mono text-eyebrow text-steel">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="mt-8 font-display text-h3 text-ink">
+                  {path.title}
+                </h3>
+                <p className="mt-3 text-body text-steel">{path.description}</p>
+                <Link
+                  href={path.href}
+                  className="mt-auto pt-8 font-mono text-small text-ink underline decoration-signal underline-offset-4 group-hover:text-signal"
+                >
+                  {path.linkLabel} →
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ConversionStory />
 
       <section
         className="border-b border-line bg-white"
@@ -211,7 +329,7 @@ export function HomeHub() {
               İlk görüşmede kapsamı, takvimi ve çıktıları yazılı koyarız.
               Bağlayıcı değildir.
             </p>
-            <CtaPair onDark />
+            <CtaPair onDark includeWhatsApp />
             <p className="mt-10 text-small text-white/55">
               {siteConfig.phone} · {siteConfig.email}
             </p>

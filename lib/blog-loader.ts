@@ -270,7 +270,7 @@ function loadPostFromFile(filePath: string): BlogPost | null {
     return null;
   }
 
-  if (data.status !== "published" && data.status !== "review") {
+  if (data.status !== "published") {
     return null;
   }
 

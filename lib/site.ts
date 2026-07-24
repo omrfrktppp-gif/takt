@@ -39,9 +39,9 @@ export const siteConfig = {
       "Merhaba, Takt web sitesinden yazıyorum. Hizmetleriniz hakkında bilgi almak istiyorum.",
     href: "https://wa.me/905519814728?text=Merhaba%2C%20Takt%20web%20sitesinden%20yaz%C4%B1yorum.%20Hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.",
   },
-  tagline: "Teknik sürecinizin eksik halkası.",
+  tagline: "Teknik ekibinizin eksik halkası.",
   description:
-    "Makina imalatı, Ar-Ge ve savunma sanayisindeki firmaların teknik süreçlerine dışarıdan güç katan mühendislik danışmanlığı. Tasarım, analiz, proje yönetimi ve üretim koordinasyonunda teknik ekibinize dışarıdan güç katıyoruz.",
+    "Makina imalatı, Ar-Ge ve savunma sanayisindeki firmalara tasarım, analiz, proje yönetimi ve üretim koordinasyonunda dışarıdan mühendislik gücü.",
   linkedin: "https://www.linkedin.com/company/takt-danismanlik/",
   instagram: "https://instagram.com/takt.eng",
   address: siteAddress,

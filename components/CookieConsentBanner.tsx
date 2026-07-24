@@ -12,7 +12,7 @@ export function CookieConsentBanner() {
     <div
       role="dialog"
       aria-labelledby="cookie-consent-title"
-      className="fixed bottom-0 left-0 right-0 z-[60] border-t border-line bg-white p-4 shadow-lg lg:bottom-4 lg:left-4 lg:right-auto lg:max-w-md lg:rounded lg:border"
+      className="fixed bottom-0 left-0 right-0 z-[60] border-t border-line bg-white p-4 shadow-lg lg:bottom-auto lg:left-auto lg:right-4 lg:top-[calc(var(--nav-h)+1rem)] lg:max-w-md lg:rounded lg:border"
     >
       <p id="cookie-consent-title" className="font-display text-h3 text-ink">
         Çerez tercihleri
