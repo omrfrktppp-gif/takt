@@ -6,12 +6,13 @@ import { SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import { breadcrumbSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
+import { rssAlternateTypes } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
   description:
     "Takt iletişim formu kişisel verilerin işlenmesine ilişkin aydınlatma metni.",
-  alternates: { canonical: "/kvkk-aydinlatma-metni" },
+  alternates: { canonical: "/kvkk-aydinlatma-metni", types: rssAlternateTypes },
   robots: { index: true, follow: true },
 };
 

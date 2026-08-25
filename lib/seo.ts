@@ -13,6 +13,15 @@ export type PageSeo = {
   path: string;
 };
 
+/**
+ * Blog RSS akışı — her sayfanın <head> bölümüne eklenir. `alternates` alanı
+ * sayfa metadata'sıyla tamamen değiştirildiği için hem burada hem
+ * `app/layout.tsx` içinde aynı tanım kullanılır.
+ */
+export const rssAlternateTypes = {
+  "application/rss+xml": `${siteConfig.url}/feed.xml`,
+};
+
 export const chapterSeo: Record<string, PageSeo> = {
   hakkimizda: {
     title: "Hakkımızda",
@@ -52,7 +61,8 @@ export const chapterSeo: Record<string, PageSeo> = {
   },
   referanslar: {
     title: "Referanslar",
-    description: "Çalıştığımız proje tipleri ve çalışma alanları.",
+    description:
+      "Makina imalatı, Ar-Ge ve ürün geliştirme, tersine mühendislik ve proje danışmanlığında üstlendiğimiz teknik rolleri müşteri adı paylaşmadan özetliyoruz.",
     path: "/referanslar",
   },
   sss: {
@@ -113,7 +123,7 @@ export function buildMetadata({
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: { canonical, types: rssAlternateTypes },
     openGraph: {
       type: "website",
       locale: "tr_TR",

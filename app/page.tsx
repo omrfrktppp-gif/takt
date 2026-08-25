@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HomeHub } from "@/components/HomeHub";
 import { JsonLd } from "@/components/JsonLd";
 import { howToSchema } from "@/lib/schema";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, rssAlternateTypes } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     path: "/",
   }),
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", types: rssAlternateTypes },
   robots: {
     index: true,
     follow: true,

@@ -12,6 +12,7 @@ import {
   organizationSchema,
   websiteSchema,
 } from "@/lib/schema";
+import { rssAlternateTypes } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { buildSearchVerificationMetadata } from "@/lib/indexing";
 import "./globals.css";
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
   publisher: siteConfig.name,
   category: "engineering",
   manifest: "/site.webmanifest",
+  alternates: { types: rssAlternateTypes },
   openGraph: {
     type: "website",
     locale: "tr_TR",

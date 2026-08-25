@@ -69,16 +69,18 @@ export function ServiceDetailBody({ content, intro }: ServiceDetailBodyProps) {
       {content.faq.length > 0 ? (
         <section>
           <h2 className="font-display text-h3 text-ink">Sık sorulan sorular</h2>
-          <dl className="mt-6 divide-y divide-line rounded border border-line bg-white">
+          {/* Sorular h3 olarak render edilir — bölüm başlığı h2, yanıt
+              motorları alıntılanabilir pasajı hiyerarşiden çıkarıyor. */}
+          <div className="mt-6 divide-y divide-line rounded border border-line bg-white">
             {content.faq.map((item) => (
               <div key={item.question} className="p-6">
-                <dt className="font-display text-body font-medium text-ink">
+                <h3 className="font-display text-body font-medium text-ink">
                   {item.question}
-                </dt>
-                <dd className="mt-2 text-body text-steel">{item.answer}</dd>
+                </h3>
+                <p className="mt-2 text-body text-steel">{item.answer}</p>
               </div>
             ))}
-          </dl>
+          </div>
         </section>
       ) : null}
 

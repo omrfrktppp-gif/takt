@@ -12,7 +12,7 @@ import {
   resolvePostTags,
 } from "@/lib/blog";
 import { articleSchema, breadcrumbSchema } from "@/lib/schema";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, rssAlternateTypes } from "@/lib/seo";
 import { getTeamMemberByName } from "@/lib/team";
 
 type PageProps = {
@@ -46,7 +46,7 @@ export async function generateMetadata({
   return {
     ...metadata,
     authors: post.author ? [{ name: post.author }] : undefined,
-    alternates: { canonical: post.canonicalUrl },
+    alternates: { canonical: post.canonicalUrl, types: rssAlternateTypes },
     openGraph: {
       ...openGraph,
       type: "article",
