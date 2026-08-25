@@ -1,0 +1,2 @@
+SearchFit SEO (skills/, agents/searchfit-*, commands/) — MIT
+Kaynak: https://github.com/searchfit/searchfit-seo
