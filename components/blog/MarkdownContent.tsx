@@ -47,7 +47,7 @@ function MarkdownLink({
   if (!target) return <span>{children}</span>;
 
   const className =
-    "font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal";
+    "font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal-text";
 
   if (!target.external) {
     return (
@@ -86,7 +86,7 @@ function HeadingAnchor({
       {children}
       <span
         aria-hidden="true"
-        className="ml-2 text-signal opacity-0 transition-opacity group-hover:opacity-100"
+        className="ml-2 text-signal-text opacity-0 transition-opacity group-hover:opacity-100"
       >
         #
       </span>
@@ -169,7 +169,7 @@ export function MarkdownContent({
     hr: () => <hr className="my-8 border-line" />,
     pre: ({ children }) => (
       <pre
-        className="mt-5 overflow-x-auto rounded border border-line bg-ink p-4 font-mono text-small leading-relaxed text-paper"
+        className="mt-5 overflow-x-auto rounded border border-line bg-deep p-4 font-mono text-small leading-relaxed text-ink"
         tabIndex={0}
         aria-label="Yatay kaydırılabilir kod örneği"
       >

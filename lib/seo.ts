@@ -17,13 +17,13 @@ export const chapterSeo: Record<string, PageSeo> = {
   hakkimizda: {
     title: "Hakkımızda",
     description:
-      "Takt, makina imalatı ve savunma sanayisindeki firmaların teknik ekibine dışarıdan mühendislik gücü katan Ankara merkezli danışmanlık ekibidir.",
+      "Takt, proje ihtiyacına göre farklı sektörlerden teknik uzmanları bir araya getirir; Ömer Faruk Top sürecin ana teknik muhatabı olarak koordinasyonu yürütür.",
     path: "/hakkimizda",
   },
   hizmetler: {
     title: "Hizmetler",
     description:
-      "Proje danışmanlığı, tasarım, analiz, üretim danışmanlığı, Ar-Ge ve TÜBİTAK/KOSGEB/patent destekleri tek elden.",
+      "Proje danışmanlığı, tasarım, analiz, üretim koordinasyonu, Ar-Ge ve Ür-Ge hizmetleri tek elden.",
     path: "/hizmetler",
   },
   kapasitemiz: {
@@ -52,7 +52,8 @@ export const chapterSeo: Record<string, PageSeo> = {
   },
   referanslar: {
     title: "Referanslar",
-    description: "Çalıştığımız proje tipleri ve çalışma alanları.",
+    description:
+      "Takt'ın müşteri referansları, tamamlanan ve aktif proje deneyimi ile yayımlanmış teknik vaka kayıtları.",
     path: "/referanslar",
   },
   sss: {
@@ -73,7 +74,7 @@ export const blogSeo: PageSeo = {
 export const rehberSeo: PageSeo = {
   title: "Teknik rehberler",
   description:
-    "Tersine mühendislik, FEA analizi, yalın üretim ve TÜBİTAK/KOSGEB destek programları üzerine kapsamlı rehberler.",
+    "Tersine mühendislik, mühendislik analizi, yalın üretim ve üretilebilir tasarım üzerine kapsamlı teknik rehberler.",
   path: "/rehber",
 };
 
@@ -123,11 +124,11 @@ export function buildMetadata({
       description,
       images: [
         {
-          url: "/opengraph-image.png",
+          url: "/opengraph-image.webp",
           width: 1200,
           height: 630,
           alt: siteConfig.name,
-          type: "image/png",
+          type: "image/webp",
         },
       ],
     },
@@ -135,7 +136,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title: `${title} — ${siteConfig.name}`,
       description,
-      images: ["/opengraph-image.png"],
+      images: ["/opengraph-image.webp"],
     },
     robots: {
       index: true,

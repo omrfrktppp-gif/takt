@@ -2,15 +2,23 @@
 @config "../tailwind.config.ts";
 
 :root {
-  --ink: #12161c;
-  --steel: #4a5563;
-  --line: #d7dce2;
-  --paper: #f4f6f4;
-  --white: #ffffff;
+  color-scheme: dark;
+
+  --ink: #f4f6f4;
+  --steel: #aeb7c2;
+  --line: #343b44;
+  --paper: #15181c;
+  --white: #1c2127;
+  --deep: #101317;
+  --surface-raised: #242a31;
   --signal: #1f4fe0;
-  --signal-tint: rgba(31, 79, 224, 0.08);
-  --accent: #e85d04;
-  --ink-80: #12161ccc;
+  --signal-strong: #315ff0;
+  --signal-text: #5b8cff;
+  --signal-ink: #f4f6f4;
+  --signal-tint: rgba(31, 79, 224, 0.14);
+  --accent: #1f4fe0;
+  --danger: #ff6b57;
+  --ink-80: #f4f6f4cc;
 
   --radius: 4px;
   --radius-sm: 2px;
@@ -33,7 +41,12 @@
   --color-paper: var(--paper);
   --color-white: var(--white);
   --color-signal: var(--signal);
+  --color-signal-text: var(--signal-text);
   --color-accent: var(--accent);
+  --color-deep: var(--deep);
+  --color-surface-raised: var(--surface-raised);
+  --color-danger: var(--danger);
+  --color-signal-ink: var(--signal-ink);
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -150,8 +163,13 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid var(--signal-text);
   outline-offset: 2px;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--signal-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -196,16 +214,25 @@ body {
 .interactive-card {
   border-radius: var(--radius);
   border: 1px solid var(--line);
-  background-color: var(--white);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--surface-raised) 55%, transparent),
+      transparent 34%
+    ),
+    var(--white);
   padding: 1.5rem;
   transition:
     border-color 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+    box-shadow 0.2s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 @media (hover: hover) {
   .interactive-card:hover {
     border-color: color-mix(in srgb, var(--signal) 30%, var(--line));
+    box-shadow: 0 16px 38px rgb(0 0 0 / 0.2);
+    transform: translateY(-2px);
   }
 }
 
@@ -224,7 +251,7 @@ body {
 
 .form-label-required::after {
   content: " *";
-  color: var(--signal);
+  color: var(--signal-text);
 }
 
 .form-input {
@@ -251,7 +278,7 @@ body {
 }
 
 .form-input[aria-invalid="true"] {
-  border-color: var(--accent);
+  border-color: var(--danger);
 }
 
 .form-textarea {
@@ -268,7 +295,7 @@ body {
 .form-error {
   font-size: 0.875rem;
   line-height: 1.5;
-  color: var(--accent);
+  color: var(--danger);
 }
 
 .form-success {
@@ -352,4 +379,30 @@ textarea:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px var(--white) inset;
   -webkit-text-fill-color: var(--ink);
   transition: background-color 5000s ease-in-out 0s;
+}
+
+.interactive-card.motion-static:hover {
+  transform: none;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-up {
+  animation: reveal-up 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.technical-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
 }

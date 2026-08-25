@@ -337,68 +337,9 @@ export const hizmetSeoContent: Record<string, PanelSeoContent> = {
     },
     faq: [
       {
-        question: "TÜBİTAK veya KOSGEB destekleriyle birlikte çalışıyor musunuz?",
-        answer:
-          "Evet. Ar-Ge içeriği ile destek programı başvurularını birlikte kurgulayabiliriz; detay için TÜBİTAK/KOSGEB hizmet sayfamıza bakın.",
-      },
-      {
         question: "Sadece danışmanlık mı, uygulama da var mı?",
         answer:
           "İkisi de. Süreç tasarımı ve teknik uygulama (tasarım, analiz, koordinasyon) kapsamda birlikte belirlenir.",
-      },
-    ],
-  },
-  "tubitak-kosgeb": {
-    summary:
-      "TÜBİTAK, KOSGEB ve Türk Patent proje desteği; destek programlarına uygun projeleri hazırlamak, teknik doküman ve raporları oluşturmak ve süreci başvurudan raporlamaya kadar yönetmektir. Ankara merkezli üretici ve teknoloji firmalarının TÜBİTAK ve KOSGEB başvurularında teknik içerik desteği veriyoruz.",
-    sections: [
-      {
-        heading: "Bu hizmet ne çözer?",
-        paragraphs: [
-          "Destek programları teknik içerik, bütçe ve raporlama disiplini gerektirir. Proje fikrini programa uygun hale getirir, başvuru dokümanlarını hazırlar ve yürütme döneminde teknik raporlamayı destekleriz.",
-          "Patent ve marka tescil başvurularınızın hazırlanması ve sürecin takibi de bu kapsamdadır.",
-        ],
-      },
-      {
-        heading: "Kimler için?",
-        paragraphs: [
-          "TÜBİTAK veya KOSGEB desteği düşünen üretici ve teknoloji firmaları.",
-          "Üniversite-sanayi iş birliği projesi hazırlayan ekipler.",
-          "Fikri mülkiyet koruması planlayan Ar-Ge yapan firmalar.",
-        ],
-      },
-      {
-        heading: "Nasıl çalışıyoruz?",
-        paragraphs: [
-          "Proje fikrini ve uygun çağrı/programı birlikte değerlendiririz.",
-          "Teknik özet, iş planı ve bütçe bileşenlerini hazırlarız.",
-          "Yürütme ve raporlama döneminde teknik içerik desteği sağlarız.",
-        ],
-      },
-      {
-        heading: "Örnek senaryolar",
-        paragraphs: [
-          "Yeni makina geliştirme projesi için TÜBİTAK başvuru dosyasının hazırlanması.",
-          "KOSGEB Ar-Ge veya inovasyon desteği kapsamında teknik raporlama.",
-          "Ürün için patent başvuru dokümantasyonunun hazırlanması ve süreç takibi.",
-        ],
-      },
-    ],
-    meta: {
-      typicalDuration: "4–12 hafta (program ve proje kapsamına göre)",
-      pricingNote: "Projeye göre; ilk görüşme ücretsiz.",
-      proofPoint: "Başvuru dosyası ve yürütme dönemi teknik rapor desteği.",
-    },
-    faq: [
-      {
-        question: "Başvuru garantisi veriyor musunuz?",
-        answer:
-          "Hayır. Teknik hazırlık ve dokümantasyon desteği sunarız; değerlendirme kurumun yetkisindedir.",
-      },
-      {
-        question: "Üniversite iş birliği projelerinde destek veriyor musunuz?",
-        answer:
-          "Evet. Sanayi tarafı teknik içerik ve proje yönetimi desteği sağlayabiliriz.",
       },
     ],
   },

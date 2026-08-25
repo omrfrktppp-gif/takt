@@ -9,14 +9,16 @@ export function CookieConsentBanner() {
   if (hasAnswered) return null;
 
   return (
-    <div
+    <aside
       role="region"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
-      className="border-b border-line bg-white px-4 py-3 shadow-sm md:px-6"
+      aria-live="polite"
+      aria-atomic="true"
+      className="fixed inset-x-3 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] z-[80] rounded border border-line bg-white/95 shadow-lg backdrop-blur-sm lg:bottom-5 lg:left-5 lg:right-auto lg:max-w-2xl"
     >
-      <div className="mx-auto grid max-w-content gap-2 md:grid-cols-[1fr_auto] md:items-center md:gap-6">
-        <div>
+      <div className="grid gap-3 p-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-5">
+        <div className="min-w-0">
           <p
             id="cookie-consent-title"
             className="font-mono text-eyebrow uppercase tracking-[0.08em] text-ink"
@@ -27,29 +29,33 @@ export function CookieConsentBanner() {
             Analitik çerezler yalnızca onayınızla yüklenir.{" "}
             <Link
               href="/kvkk-aydinlatma-metni"
-              className="inline-flex min-h-11 items-center text-ink underline decoration-signal underline-offset-4"
+              className="touch-target-inline rounded-sm text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               Aydınlatma metni
             </Link>
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-2 md:min-w-[18rem]">
-        <button
-          type="button"
-          onClick={acceptAll}
-          className="min-h-11 rounded bg-ink px-3 py-2 text-sm font-medium text-white hover:bg-signal"
+        <div
+          role="group"
+          className="grid grid-cols-2 gap-2 sm:min-w-[18rem]"
+          aria-label="Çerez tercihleri"
         >
-          Kabul et
-        </button>
-        <button
-          type="button"
-          onClick={rejectOptional}
-          className="min-h-11 rounded border border-line px-3 py-2 text-sm font-medium text-ink hover:border-signal"
-        >
-          Yalnızca zorunlu
-        </button>
+          <button
+            type="button"
+            onClick={acceptAll}
+            className="min-h-11 rounded bg-deep px-3 py-2 text-sm font-medium text-ink transition-colors hover:bg-signal hover:text-signal-ink"
+          >
+            Kabul et
+          </button>
+          <button
+            type="button"
+            onClick={rejectOptional}
+            className="min-h-11 rounded border border-line bg-white px-3 py-2 text-sm font-medium text-ink transition-colors hover:border-signal hover:text-signal-text"
+          >
+            Yalnızca zorunlu
+          </button>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }

@@ -22,12 +22,13 @@ export default function IhtiyacAnaliziPage() {
       <PageShell
         eyebrow="İHTİYAÇ ANALİZİ"
         title="Projenizi 2 dakikada tanımlayın"
+        description="Soruları yanıtlayın; verdiğiniz bilgiler eş zamanlı olarak düzenli bir proje özetine dönüşsün."
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: "İhtiyaç analizi" },
         ]}
       >
-        <Section className="!py-6 md:!py-8">
+        <Section className="!py-8 md:!py-12">
           <IhtiyacAnaliziWizard />
         </Section>
       </PageShell>

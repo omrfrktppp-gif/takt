@@ -12,6 +12,15 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  openGraph: {
+    title: "Sayfa bulunamadı — Takt",
+    description: "Aradığınız sayfa bulunamadı.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Sayfa bulunamadı — Takt",
+    description: "Aradığınız sayfa bulunamadı.",
+  },
 };
 
 export default function NotFound() {
@@ -36,14 +45,14 @@ export default function NotFound() {
             Yardıma mı ihtiyacınız var?{" "}
             <Link
               href="/sss"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               Sık sorulan sorular
             </Link>{" "}
             bölümüne göz atabilir veya{" "}
             <Link
               href="/gorusme-planla"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               görüşme planlayabilirsiniz
             </Link>

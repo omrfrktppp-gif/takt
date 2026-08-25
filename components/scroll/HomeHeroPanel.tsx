@@ -14,7 +14,7 @@ export function HomeHeroPanel() {
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 md:gap-8">
         <Cadence variant="hero" tickCount={9} activeIndex={4} className="max-w-xs" />
         <div>
-          <p className="font-mono text-eyebrow uppercase tracking-[0.12em] text-signal">
+          <p className="font-mono text-eyebrow uppercase tracking-[0.12em] text-signal-text">
             Mühendislik danışmanlığı · Ankara
           </p>
           <h2 className="mt-4 font-display text-[1.75rem] leading-tight text-ink md:text-[2.25rem]">

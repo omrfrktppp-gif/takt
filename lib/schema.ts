@@ -8,19 +8,19 @@ import type { Pillar } from "@/lib/pillars";
 import type { PageSeo } from "@/lib/seo";
 import { caseStudySchema } from "@/lib/case-studies";
 import type { SeoFaqItem } from "@/lib/seo-content";
-import { getTeamMemberByName, personIdForMember, teamMembers } from "@/lib/team";
+import {
+  getTeamMemberByName,
+  personIdForMember,
+  type TeamMember,
+  teamMembers,
+} from "@/lib/team";
 import { faqItems, processSteps, siteConfig } from "@/lib/site";
 
 const orgId = `${siteConfig.url}/#org`;
 const websiteId = `${siteConfig.url}/#website`;
 const founderId = `${siteConfig.url}/#founder`;
 
-export function personSchema(member: {
-  id: string;
-  name: string;
-  role: string;
-  bio: string;
-}) {
+export function personSchema(member: TeamMember) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -28,6 +28,9 @@ export function personSchema(member: {
     name: member.name,
     jobTitle: member.role,
     description: member.bio,
+    ...(member.image ? { image: `${siteConfig.url}${member.image}` } : {}),
+    ...(member.linkedin ? { sameAs: [member.linkedin] } : {}),
+    ...(member.sectors?.length ? { knowsAbout: member.sectors } : {}),
     worksFor: { "@id": orgId },
     url: siteConfig.url,
   };
@@ -126,9 +129,6 @@ export function organizationSchema() {
       "Seri üretim",
       "Ar-Ge",
       "Ür-Ge",
-      "TÜBİTAK proje",
-      "KOSGEB",
-      "Patent ve marka tescili",
     ],
     sameAs: [siteConfig.linkedin, siteConfig.instagram, siteConfig.mapsUrl],
   };
@@ -260,6 +260,7 @@ function articleAuthor(post: BlogPost) {
 }
 
 export function articleSchema(post: BlogPost) {
+  const isEnglish = new URL(post.canonicalUrl).pathname.startsWith("/en/");
   const schemaTypes =
     post.schemaType === "BlogPosting"
       ? "BlogPosting"
@@ -291,18 +292,32 @@ export function articleSchema(post: BlogPost) {
       "@id": post.canonicalUrl,
     },
     url: post.canonicalUrl,
-    inLanguage: "tr-TR",
+    inLanguage: isEnglish ? "en-GB" : "tr-TR",
+    ...(post.cover
+      ? {
+          image: {
+            "@type": "ImageObject",
+            url: post.cover.src.startsWith("http")
+              ? post.cover.src
+              : `${siteConfig.url}${post.cover.src}`,
+            caption: post.cover.alt,
+          },
+        }
+      : {}),
   };
 }
 
-export function collectionPageSchema(page: PageSeo) {
+export function collectionPageSchema(
+  page: PageSeo,
+  inLanguage: "tr-TR" | "en-GB" = "tr-TR",
+) {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: page.title,
     description: page.description,
     url: `${siteConfig.url}${page.path}`,
-    inLanguage: "tr-TR",
+    inLanguage,
     isPartOf: { "@id": websiteId },
     publisher: { "@id": orgId },
   };

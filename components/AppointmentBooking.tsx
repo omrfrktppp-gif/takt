@@ -53,7 +53,7 @@ function AppointmentBookingInner() {
       ) : null}
       <div className="flex items-start gap-3">
         <Calendar
-          className="mt-1 shrink-0 text-signal"
+          className="mt-1 shrink-0 text-signal-text"
           size={22}
           strokeWidth={1.5}
           aria-hidden="true"
@@ -94,7 +94,7 @@ function AppointmentBookingInner() {
                     className="flex w-full flex-col items-start gap-3 rounded border border-line bg-paper p-5 text-left transition-colors duration-200 hover:border-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                   >
                     <Icon
-                      className="shrink-0 text-signal"
+                      className="shrink-0 text-signal-text"
                       size={22}
                       strokeWidth={1.5}
                       aria-hidden="true"
@@ -113,14 +113,14 @@ function AppointmentBookingInner() {
                 <div className="flex items-start gap-2">
                   {selected.id === "on-gorusme" ? (
                     <Video
-                      className="mt-0.5 shrink-0 text-signal"
+                      className="mt-0.5 shrink-0 text-signal-text"
                       size={18}
                       strokeWidth={1.5}
                       aria-hidden="true"
                     />
                   ) : (
                     <Calendar
-                      className="mt-0.5 shrink-0 text-signal"
+                      className="mt-0.5 shrink-0 text-signal-text"
                       size={18}
                       strokeWidth={1.5}
                       aria-hidden="true"
@@ -138,7 +138,7 @@ function AppointmentBookingInner() {
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                   <button
                     type="button"
-                    className="text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                    className="text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                     onClick={() => setSelectedId(null)}
                   >
                     Seçimi değiştir
@@ -147,7 +147,7 @@ function AppointmentBookingInner() {
                     href={selected.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
+                    className="inline-flex items-center gap-1.5 text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal"
                     onClick={() =>
                       trackEvent("booking_click", {
                         type: selected.id,

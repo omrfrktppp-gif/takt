@@ -1,0 +1,17 @@
+{
+  "route": "/sektorler/prototipten-seri-uretime",
+  "title": "From prototype to mass production",
+  "copy": {
+    "SEKTÖRLER": "SECTORS",
+    "Prototip aşamasındaki bir ürünün seri üretime taşınması; tolerans, malzeme, montaj ve tedarik zinciri kararlarını birlikte gerektirir. Bu geçişte tasarımı üretilebilir hale getirir ve imalat adımlarını koordine ederiz.": "Moving a product from prototype stage to mass production; It requires a combination of tolerance, material, assembly and supply chain decisions. In this transition, we make the design manufacturable and coordinate the manufacturing steps.",
+    "Prototip geometrisini imalat dostu tasarıma dönüştürür; malzeme ve proses seçimini üretim gerçekleriyle hizalarız.": "Transforms prototype geometry into manufacturing-friendly design; We align material and process selection with production realities.",
+    "Pilot üretim, kalite kontrol noktaları ve tedarikçi değerlendirmesiyle seri üretime hazırlık yaparız.": "We prepare for mass production with pilot production, quality control points and supplier evaluation.",
+    "Fason üretim, CNC işleme ve yüzey işlemi dahil çözüm ortağı ağımızla imalat takibini tek elden yürütürüz.": "We carry out manufacturing monitoring from a single source with our solution partner network, including contract manufacturing, CNC machining and surface treatment.",
+    "İlgili hizmetler": "Related services",
+    "Prototip & seri üretim →": "Prototype & mass production →",
+    "Üretim danışmanlığı →": "Production consultancy →",
+    "Tasarım & geliştirme →": "Design & development →",
+    "Görüşme planla veya iletişime geçin.": "Schedule a meeting or get in touch.",
+    "Prototipten seri üretime": "From prototype to mass production"
+  }
+}

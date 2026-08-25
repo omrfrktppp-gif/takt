@@ -6,6 +6,7 @@ import {
   renderFullBlogEntries,
 } from "@/lib/blog-content-formats";
 import { getPublishedPosts } from "@/lib/blog";
+import { getEnglishPublishedPosts } from "@/lib/blog-en";
 import { getChapterPanels } from "@/lib/pages";
 import { pillars } from "@/lib/pillars";
 import { sectors } from "@/lib/sectors";
@@ -23,6 +24,7 @@ export function buildLlmsTxt(): string {
   const hizmetPanels = getChapterPanels("hizmetler");
   const kapasitePanels = getChapterPanels("kapasitemiz");
   const blogPosts = getPublishedPosts();
+  const englishBlogPosts = getEnglishPublishedPosts();
 
   const lines: string[] = [
     "# Takt",
@@ -33,6 +35,13 @@ export function buildLlmsTxt(): string {
       `${base}/llms-full.txt`,
       "Site özeti ve teknik blog yazılarının tam metinleri.",
     ),
+    "",
+    "## Kurumsal kimlik",
+    "- Resmî marka adı: Takt",
+    "- Faaliyet: Mühendislik danışmanlığı, makina ve endüstriyel ürün geliştirme, analiz, proje yönetimi ve üretim koordinasyonu.",
+    `- Merkez: ${markdownText(formatSiteAddressOneLine())}`,
+    "- Ana teknik muhatap: Ömer Faruk Top",
+    `- Resmî web sitesi: ${base}`,
     "",
     "## Hizmetlerimiz",
     ...hizmetPanels.map((panel) =>
@@ -93,6 +102,14 @@ export function buildLlmsTxt(): string {
     "## Blog yazıları",
     ...renderBlogLlmsLinks(blogPosts),
     "",
+    "## English technical articles",
+    markdownLink(
+      "Technical Articles",
+      `${base}/en/blog`,
+      "English engineering articles on design, analysis, manufacturing and product development.",
+    ),
+    ...renderBlogLlmsLinks(englishBlogPosts),
+    "",
     "## Sık sorulan sorular",
     ...faqItems.map(
       (item) =>
@@ -114,6 +131,7 @@ export function buildLlmsTxt(): string {
 export function buildLlmsFullTxt(): string {
   const base = siteConfig.url;
   const posts = getPublishedPosts();
+  const englishPosts = getEnglishPublishedPosts();
   const lines = [
     buildLlmsTxt(),
     "---",
@@ -121,6 +139,9 @@ export function buildLlmsFullTxt(): string {
     "## Teknik blog yazılarının tam metinleri",
     "",
     ...renderFullBlogEntries(posts),
+    "## Full text of English technical articles",
+    "",
+    ...renderFullBlogEntries(englishPosts, "en"),
     markdownLink("Takt ana sayfası", base),
     "",
   ];

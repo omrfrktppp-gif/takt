@@ -1,12 +1,28 @@
 import { EngineeringMachineScene } from "@/components/home/EngineeringMachineScene";
-import { processSteps } from "@/lib/site";
 import styles from "./EngineeringMachineScene.module.css";
 
-const steps = processSteps.map((step, index) => ({
-  number: String(index + 1).padStart(2, "0"),
-  title: step.title,
-  text: step.description,
-}));
+const steps = [
+  {
+    number: "01",
+    title: "Darboğazı tanımla",
+    text: "İhtiyacı, girdiyi ve teknik kısıtları aynı resimde toplarız.",
+  },
+  {
+    number: "02",
+    title: "Sistemi ayrıştır",
+    text: "Parçaları, arayüzleri ve karar noktalarını görünür hale getiririz.",
+  },
+  {
+    number: "03",
+    title: "Eksenleri hizala",
+    text: "Tasarım, analiz ve üretim kararlarını tek teknik akışta birleştiririz.",
+  },
+  {
+    number: "04",
+    title: "Devredilebilir teslim",
+    text: "Ekibinizin kullanabileceği model, resim, not ve imalat paketi üretiriz.",
+  },
+] as const;
 
 const outputs = [
   ["3B MODEL", 88],
@@ -15,29 +31,161 @@ const outputs = [
   ["İMALAT PAKETİ", 358],
 ] as const;
 
+function MobileStageDiagram({ stage }: { stage: number }) {
+  return (
+    <svg
+      className={styles.mobileStageSvg}
+      viewBox="0 0 280 150"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        d="M18 126H262M140 14V136"
+        fill="none"
+        stroke="var(--line)"
+        strokeDasharray="3 5"
+        strokeOpacity="0.42"
+      />
+      {stage === 0 ? (
+        <>
+          <g fill="none" stroke="var(--line)">
+            <rect x="74" y="76" width="132" height="42" />
+            <rect x="106" y="44" width="68" height="32" />
+          </g>
+          <path
+            d="M20 32H86L110 56H178"
+            fill="none"
+            stroke="var(--signal)"
+            strokeWidth="2"
+          />
+          <circle cx="110" cy="56" r="4" fill="var(--signal)" />
+        </>
+      ) : null}
+      {stage === 1 ? (
+        <>
+          <rect
+            x="28"
+            y="86"
+            width="70"
+            height="26"
+            fill="var(--steel)"
+            stroke="var(--paper)"
+          />
+          <rect
+            x="108"
+            y="48"
+            width="64"
+            height="42"
+            fill="var(--paper)"
+            stroke="var(--line)"
+          />
+          <rect
+            x="184"
+            y="72"
+            width="66"
+            height="30"
+            fill="var(--ink)"
+            stroke="var(--paper)"
+          />
+          <path
+            d="M98 99H122M172 68H190"
+            stroke="var(--signal)"
+            strokeDasharray="3 4"
+          />
+        </>
+      ) : null}
+      {stage === 2 ? (
+        <>
+          <g fill="var(--steel)" stroke="var(--paper)">
+            <rect x="54" y="100" width="172" height="22" />
+            <rect x="82" y="48" width="24" height="52" />
+            <rect x="174" y="48" width="24" height="52" />
+          </g>
+          <rect
+            x="106"
+            y="40"
+            width="68"
+            height="34"
+            fill="var(--paper)"
+            stroke="var(--line)"
+          />
+          <path
+            d="M42 61H78M238 61H202M140 18V36"
+            stroke="var(--signal)"
+            strokeWidth="2"
+          />
+        </>
+      ) : null}
+      {stage === 3 ? (
+        <>
+          <g fill="var(--steel)" stroke="var(--paper)">
+            <rect x="34" y="102" width="152" height="22" />
+            <rect x="58" y="52" width="22" height="50" />
+            <rect x="142" y="52" width="22" height="50" />
+          </g>
+          <rect
+            x="80"
+            y="42"
+            width="62"
+            height="34"
+            fill="var(--paper)"
+            stroke="var(--line)"
+          />
+          <circle cx="111" cy="78" r="9" fill="var(--signal)" />
+          {[38, 70, 102].map((y) => (
+            <g key={y} transform={`translate(204 ${y})`}>
+              <path
+                d="M0 0H42L52 10V28H0Z"
+                fill="var(--ink)"
+                stroke="var(--line)"
+              />
+              <path d="M42 0V10H52" fill="none" stroke="var(--signal)" />
+            </g>
+          ))}
+        </>
+      ) : null}
+    </svg>
+  );
+}
+
 export function ConversionStory() {
   return (
     <EngineeringMachineScene>
       <div className={styles.inner}>
         <div className={styles.copy}>
-          <p className="font-mono text-eyebrow uppercase tracking-[0.12em] text-white/55">
+          <p className="font-mono text-eyebrow uppercase tracking-[0.12em] text-ink/55">
             Mühendislik akışı
           </p>
           <div>
             <h2
               id="engineering-scene-title"
-              className="mt-3 max-w-3xl font-display text-h2 text-white lg:mt-0"
+              className="mt-3 max-w-3xl font-display text-h2 text-ink lg:mt-0"
             >
               Sıkışan işi, çalışan bir teknik sisteme dönüştürüyoruz.
             </h2>
-            <p className="mt-4 max-w-2xl text-body text-white/65">
+            <p className="mt-4 max-w-2xl text-body text-ink/65">
               Önce resmi netleştirir, sonra parçaları aynı eksende buluştururuz.
               Sonuç; ekibinizin kullanabileceği, devredilebilir teknik çıktıdır.
             </p>
           </div>
         </div>
 
-        <div className={styles.layout}>
+        <div className={styles.mobileSequence}>
+          {steps.map((step, index) => (
+            <article key={step.number} className={styles.mobileStage}>
+              <div className={styles.mobileStageVisual}>
+                <MobileStageDiagram stage={index} />
+              </div>
+              <div>
+                <span className={styles.stepNumber}>{step.number}</span>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepText}>{step.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className={`${styles.layout} ${styles.desktopLayout}`}>
           <div className={styles.visual}>
             <div className={styles.parallax}>
               <svg
@@ -132,6 +280,7 @@ export function ConversionStory() {
                     <text x="116" y="395">258</text>
                   </g>
                   <path
+                    className={styles.trace}
                     d="M98 112H276L316 152H456"
                     fill="none"
                     stroke="var(--signal)"
@@ -363,9 +512,6 @@ export function ConversionStory() {
                 </g>
               </svg>
             </div>
-            <span className={styles.status} aria-hidden="true">
-              Kaydırarak sistemi birleştirin
-            </span>
           </div>
 
           <ol className={styles.steps}>

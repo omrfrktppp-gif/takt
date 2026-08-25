@@ -1,0 +1,17 @@
+{
+  "route": "/sektorler/savunma-sanayi",
+  "title": "defense industry",
+  "copy": {
+    "SEKTÖRLER": "SECTORS",
+    "Savunma sanayi tedarik zincirinde hassas tolerans, dokümantasyon disiplini ve izlenebilir teslim kritiktir. Takt, özel makina ve alt sistem projelerinde teknik ekibinize dışarıdan mühendislik gücü ekler.": "Precise tolerance, documentation discipline and traceable delivery are critical in the defense industry supply chain. Takt adds external engineering power to your technical team in special machine and subsystem projects.",
+    "Teknik resmi eksik veya revizyon gerektiren parçalar için tersine mühendislik ve 3D tarama desteği sunuyoruz.": "We offer reverse engineering and 3D scanning support for parts whose engineering drawings are missing or require revision.",
+    "Yapısal analiz, yorulma değerlendirmesi ve imalata hazır tasarım çıktıları ile kararları sayıyla destekleriz.": "We support decisions in numbers with structural analysis, fatigue evaluation and manufacturing-ready design outputs.",
+    "Fason üretim ve montaj adımlarını çözüm ortağı ağımızla koordine eder; tek muhatap olarak süreci yönetiriz.": "Coordinates contract manufacturing and assembly steps with our solution partner network; We manage the process as the sole interlocutor.",
+    "İlgili hizmetler": "Related services",
+    "Tasarım & geliştirme →": "Design & development →",
+    "Analiz & hesaplama →": "Analysis & calculation →",
+    "3D tarama →": "3D scanning →",
+    "Görüşme planla veya iletişime geçin.": "Schedule a meeting or get in touch.",
+    "Savunma sanayi": "defense industry"
+  }
+}

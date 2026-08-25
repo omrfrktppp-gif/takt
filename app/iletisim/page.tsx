@@ -53,7 +53,7 @@ export default async function IletisimPage({
               <div>
                 <Link
                   href={appointmentCta.href}
-                  className="inline-flex min-h-11 items-center rounded-sm bg-ink px-5 py-3 text-body text-paper transition-colors hover:bg-signal"
+                  className="inline-flex min-h-11 items-center rounded-sm bg-deep px-5 py-3 text-body text-ink transition-colors hover:bg-signal hover:text-signal-ink"
                 >
                   {appointmentCta.label} →
                 </Link>
@@ -70,17 +70,68 @@ export default async function IletisimPage({
           </div>
 
           <div className="interactive-card mt-12 md:mt-14">
-            <h2 className="font-display text-h3 text-ink">Mesaj gönderin</h2>
-            <p className="mt-2 text-body text-steel">
-              Formu doldurun; en kısa sürede dönüş yapalım.
-            </p>
-            {successMessage ? (
-              <div className="mt-6">
-                <FormSuccessBanner message={successMessage} />
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:gap-10">
+              <div>
+                <h2 className="font-display text-h3 text-ink">Mesaj gönderin</h2>
+                <p className="mt-2 text-body text-steel">
+                  Konuyu birkaç cümleyle tarif edin; ilk görüşmeye daha hazırlıklı
+                  başlayalım.
+                </p>
+                {successMessage ? (
+                  <div className="mt-6">
+                    <FormSuccessBanner message={successMessage} />
+                  </div>
+                ) : null}
+                <div className={successMessage ? "mt-4" : "mt-6"}>
+                  <ContactForm compact />
+                </div>
               </div>
-            ) : null}
-            <div className={successMessage ? "mt-4" : "mt-6"}>
-              <ContactForm compact />
+
+              <aside
+                aria-labelledby="useful-inputs-title"
+                className="border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0"
+              >
+                <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal-text">
+                  İlk değerlendirme
+                </p>
+                <h3
+                  id="useful-inputs-title"
+                  className="mt-2 font-display text-h3 text-ink"
+                >
+                  Elinizde ne varsa belirtin
+                </h3>
+                <p className="mt-3 text-body text-steel">
+                  Hepsinin hazır olması gerekmez. İlk mesajda mevcut olanları
+                  belirtmeniz, konuyu daha hızlı çerçevelememize yardımcı olur.
+                </p>
+                <ul className="mt-5 divide-y divide-line border-y border-line">
+                  {[
+                    ["01", "Teknik çizim", "Ölçüler, CAD bilgisi veya eskiz"],
+                    ["02", "Şartname", "Kritik gereksinimler ve kısıtlar"],
+                    ["03", "Fotoğraflar", "Mevcut parça, makina veya saha"],
+                    ["04", "Mevcut hesaplar", "Test verisi, rapor veya hesap föyü"],
+                  ].map(([index, title, description]) => (
+                    <li key={index} className="grid grid-cols-[2rem_1fr] gap-3 py-3">
+                      <span
+                        aria-hidden="true"
+                        className="font-mono text-small text-signal-text"
+                      >
+                        {index}
+                      </span>
+                      <span>
+                        <strong className="block font-medium text-ink">{title}</strong>
+                        <span className="mt-0.5 block text-small text-steel">
+                          {description}
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 font-mono text-small text-steel">
+                  Dosyaları bu formda yüklemeniz gerekmez; mevcut olduklarını
+                  belirtmeniz yeterlidir.
+                </p>
+              </aside>
             </div>
           </div>
 

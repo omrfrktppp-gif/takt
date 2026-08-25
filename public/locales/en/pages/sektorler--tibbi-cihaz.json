@@ -1,0 +1,16 @@
+{
+  "route": "/sektorler/tibbi-cihaz",
+  "title": "medical device",
+  "copy": {
+    "Tasarım, prototip ve test kararlarının izlenebilir teknik dokümantasyonu.": "Traceable technical documentation for design, prototyping and testing decisions.",
+    "SEKTÖRLER": "SECTORS",
+    "Tıbbi cihaz projelerinde güvenilirlik, malzeme seçimi ve dokümantasyon disiplini önemlidir. Ar-Ge aşamasından prototipe kadar teknik yol haritası ve uygulama desteği sunuyoruz.": "Reliability, material selection and documentation discipline are important in medical device projects. We offer technical roadmap and application support from R&D stage to prototype.",
+    "Konsept ve detay tasarım; üretilebilirlik ve montaj düşüncesiyle modelleme.": "Concept and detail design; Modeling with manufacturability and assembly in mind.",
+    "Prototip üretimi ve test döngülerinin planlanması.": "Planning prototype production and testing cycles.",
+    "İlgili hizmetler": "Related services",
+    "Ar-Ge & Ür-Ge →": "R&D & P&D →",
+    "Tasarım & geliştirme →": "Design & development →",
+    "Görüşme planla veya iletişime geçin.": "Schedule a meeting or get in touch.",
+    "Tıbbi cihaz": "medical device"
+  }
+}

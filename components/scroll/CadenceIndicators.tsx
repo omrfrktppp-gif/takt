@@ -67,7 +67,7 @@ const CadenceRuler = memo(function CadenceRuler({
             <span
               className={`block rounded-full transition-all duration-300 ease-takt ${
                 active
-                  ? "bg-accent shadow-[0_0_10px_rgba(232,93,4,0.35)]"
+                  ? "bg-accent shadow-[0_0_10px_rgba(31,79,224,0.42)]"
                   : "bg-line active:bg-steel"
               }`}
               style={

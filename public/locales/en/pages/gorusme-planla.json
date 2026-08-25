@@ -1,0 +1,28 @@
+{
+  "route": "/gorusme-planla",
+  "title": "Schedule a meeting",
+  "copy": {
+    "İhtiyacınıza uygun randevu türünü seçin. Takvim Türkiye saati ve Türkçe olarak gösterilir.": "Choose the appointment type that suits your needs. The calendar is displayed in Türkiye time and Turkish.",
+    "İhtiyacınıza uygun randevu türünü seçin. Takvim": "Choose the appointment type that suits your needs. The calendar uses",
+    "Türkiye saati": "Türkiye time",
+    "Türkçe": "Turkish",
+    "olarak gösterilir.": "language settings.",
+    "Randevu öncesi kısa bir özet paylaşmak isterseniz iletişim formu veya info@takt.tr üzerinden de yazabilirsiniz.": "If you would like to share a short brief before the meeting, use the contact form or email info@takt.tr.",
+    "Randevu öncesi kısa bir özet paylaşmak isterseniz": "If you would like to share a short brief before the meeting, use the",
+    "iletişim formu": "contact form",
+    "veya": "or",
+    "üzerinden de yazabilirsiniz.": "to reach us.",
+    "Ana Sayfa": "Home Page",
+    "RANDEVU": "MEETING",
+    "İhtiyacınıza uygun randevu türünü seçin. Takvim Türkiye saati ve Türkçe olarak gösterilir.": "Choose the appointment type that suits your needs. The calendar is displayed in Türkiye time and Turkish.",
+    "Görüşme randevusu": "meeting appointment",
+    "Randevu türü henüz seçilmedi.": "Appointment type has not been selected yet.",
+    "Randevu türü seçimi": "Appointment type selection",
+    "Ön görüşme (online)": "Preliminary meeting (online)",
+    "İhtiyacınızı ilk kez netleştirmek istiyorsanız.": "If you want to clarify your need at the first time.",
+    "Danışmanlık hizmetleri": "Consulting services",
+    "Kapsamı belirli bir teknik işiniz varsa.": "If you have a technical job with a specific scope.",
+    "Randevu öncesi kısa bir özet paylaşmak isterseniz iletişim formu veya info@takt.tr üzerinden de yazabilirsiniz.": "If you would like to share a brief summary before the appointment, you can write via the contact form or info@takt.tr.",
+    "Görüşme planla": "Schedule a meeting"
+  }
+}

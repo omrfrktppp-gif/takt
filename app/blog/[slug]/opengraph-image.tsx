@@ -44,8 +44,8 @@ export default async function OpenGraphImage({
           display: "flex",
           position: "relative",
           overflow: "hidden",
-          backgroundColor: "#f4f6f4",
-          color: "#12161c",
+          backgroundColor: "#15181c",
+          color: "#f4f6f4",
           padding: "68px 76px",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -60,7 +60,7 @@ export default async function OpenGraphImage({
               top: 0,
               width: 1,
               height: 630,
-              backgroundColor: "#d7dce2",
+              backgroundColor: "#343b44",
               opacity: 0.65,
             }}
           />
@@ -74,7 +74,7 @@ export default async function OpenGraphImage({
               top: index * 90,
               width: 1200,
               height: 1,
-              backgroundColor: "#d7dce2",
+              backgroundColor: "#343b44",
               opacity: 0.65,
             }}
           />
@@ -88,8 +88,8 @@ export default async function OpenGraphImage({
               top: node.top,
               width: index % 2 === 0 ? 12 : 8,
               height: index % 2 === 0 ? 12 : 8,
-              border: "2px solid #1f4fe0",
-              backgroundColor: "#f4f6f4",
+              border: "2px solid #5b8cff",
+              backgroundColor: "#1c2127",
             }}
           />
         ))}
@@ -102,10 +102,10 @@ export default async function OpenGraphImage({
             fontSize: 22,
             letterSpacing: 5,
             textTransform: "uppercase",
-            color: "#4a5563",
+            color: "#aeb7c2",
           }}
         >
-          <span style={{ color: "#1f4fe0", marginRight: 16 }}>■</span>
+          <span style={{ color: "#5b8cff", marginRight: 16 }}>■</span>
           TAKT · TEKNİK BLOG
         </div>
 
@@ -115,8 +115,8 @@ export default async function OpenGraphImage({
             position: "relative",
             width: 1000,
             padding: "28px 32px",
-            borderLeft: "8px solid #1f4fe0",
-            backgroundColor: "rgba(244, 246, 244, 0.94)",
+            borderLeft: "8px solid #5b8cff",
+            backgroundColor: "rgba(28, 33, 39, 0.96)",
             fontSize: titleSize,
             lineHeight: 1.12,
             fontWeight: 700,
@@ -133,11 +133,11 @@ export default async function OpenGraphImage({
             justifyContent: "space-between",
             alignItems: "center",
             fontSize: 20,
-            color: "#4a5563",
+            color: "#aeb7c2",
           }}
         >
           <span>{post.category ?? "Mühendislik"}</span>
-          <span style={{ color: "#1f4fe0" }}>takt.tr/blog/{post.slug}</span>
+          <span style={{ color: "#5b8cff" }}>takt.tr/blog/{post.slug}</span>
         </div>
       </div>
     ),

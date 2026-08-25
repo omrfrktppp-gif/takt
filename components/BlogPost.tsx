@@ -8,12 +8,14 @@ import {
   resolveRelatedServicePath,
 } from "@/lib/blog";
 import { getPillarForBlogSlug } from "@/lib/pillars";
+import { resolveEnglishPostTags } from "@/lib/blog-en";
 
 type BlogPostBodyProps = {
   post: BlogPost;
+  locale?: "tr" | "en";
 };
 
-export function BlogPostBody({ post }: BlogPostBodyProps) {
+export function BlogPostBody({ post, locale = "tr" }: BlogPostBodyProps) {
   const relatedPath = resolveRelatedServicePath(post);
   const pillar = getPillarForBlogSlug(post.slug);
   const hasToc = post.headings.length > 1;
@@ -28,11 +30,11 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
     >
       {hasToc ? (
         <nav
-          aria-label="İçindekiler"
+          aria-label={locale === "en" ? "Contents" : "İçindekiler"}
           className="interactive-card mb-8 lg:sticky lg:top-[var(--sticky-offset)] lg:mb-0 lg:max-h-[calc(100vh-var(--nav-h)-2rem)] lg:overflow-y-auto"
         >
           <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
-            İçindekiler
+            {locale === "en" ? "Contents" : "İçindekiler"}
           </p>
           <ol className="mt-4 space-y-1.5 text-small text-steel">
             {post.headings.map((heading) => (
@@ -42,7 +44,7 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
               >
                 <a
                   href={`#${heading.id}`}
-                  className="touch-target-inline w-full rounded-sm underline-offset-4 transition-colors hover:text-signal hover:underline"
+                  className="touch-target-inline w-full rounded-sm underline-offset-4 transition-colors hover:text-signal-text hover:underline"
                 >
                   {heading.text}
                 </a>
@@ -58,15 +60,21 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
         {pillar ? (
           <aside className="interactive-card border-signal/20 bg-signal/10">
             <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
-              Rehber kümesi
+              {locale === "en" ? "Guide collection" : "Rehber kümesi"}
             </p>
             <p className="mt-3 text-body text-steel">
-              Bu rehberin parçası:{" "}
+              {locale === "en" ? "Part of this guide:" : "Bu rehberin parçası:"}{" "}
               <Link
-                href={`/rehber/${pillar.slug}`}
-                className="touch-target-inline font-medium text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              href={`${locale === "en" ? "/en" : ""}/rehber/${pillar.slug}`}
+                className="touch-target-inline font-medium text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
               >
-                {pillar.title}
+              {locale === "en"
+                ? ({
+                    "tersine-muhendislik-rehberi": "Reverse Engineering Guide",
+                    "fea-muhendislik-analizi-rehberi": "FEA / Engineering Analysis Guide",
+                    "yalin-uretim-dfm-rehberi": "Lean Manufacturing & DFM Guide",
+                  } as Record<string, string>)[pillar.slug] ?? pillar.title
+                : pillar.title}
               </Link>
             </p>
           </aside>
@@ -75,22 +83,23 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
         {relatedPath ? (
           <aside className="interactive-card">
             <p className="font-mono text-eyebrow uppercase tracking-wide text-steel">
-              İlgili hizmet
+              {locale === "en" ? "Related service" : "İlgili hizmet"}
             </p>
             <p className="mt-3 text-body text-steel">
-              Bu yazıdaki konularla ilgili teknik destek ve danışmanlık için
-              hizmet sayfamıza göz atın.
+              {locale === "en"
+                ? "Explore the related service for technical support and consulting on the topics covered in this article."
+                : "Bu yazıdaki konularla ilgili teknik destek ve danışmanlık için hizmet sayfamıza göz atın."}
             </p>
             <Link
-              href={relatedPath}
-              className="touch-target-inline mt-2 font-medium text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              href={`${locale === "en" ? "/en" : ""}${relatedPath}`}
+              className="touch-target-inline mt-2 font-medium text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
-              {relatedServiceLabel(relatedPath)} →
+              {locale === "en" ? "View related service" : relatedServiceLabel(relatedPath)} →
             </Link>
           </aside>
         ) : null}
 
-        <LeadMagnetPromo />
+        <LeadMagnetPromo locale={locale} />
       </div>
     </div>
   );
@@ -98,16 +107,20 @@ export function BlogPostBody({ post }: BlogPostBodyProps) {
 
 type BlogPostCardProps = {
   post: BlogPost;
+  locale?: "tr" | "en";
 };
 
-export function BlogPostCard({ post }: BlogPostCardProps) {
-  const href = `/blog/${post.slug}`;
-  const date = new Date(post.publishedAt).toLocaleDateString("tr-TR", {
+export function BlogPostCard({ post, locale = "tr" }: BlogPostCardProps) {
+  const href = `${locale === "en" ? "/en" : ""}/blog/${post.slug}`;
+  const date = new Date(post.publishedAt).toLocaleDateString(
+    locale === "en" ? "en-GB" : "tr-TR",
+    {
     year: "numeric",
     month: "long",
     day: "numeric",
-  });
-  const tags = resolvePostTags(post);
+    },
+  );
+  const tags = locale === "en" ? resolveEnglishPostTags(post) : resolvePostTags(post);
 
   return (
     <article className="interactive-card group relative flex flex-col">
@@ -120,14 +133,14 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         </time>
         {post.readingTimeMinutes ? (
           <span className="font-mono text-eyebrow text-steel">
-            {post.readingTimeMinutes} dk okuma
+            {post.readingTimeMinutes} {locale === "en" ? "min read" : "dk okuma"}
           </span>
         ) : null}
       </div>
       <h2 className="font-display text-h3 text-ink">
         <Link
           href={href}
-          className="rounded-sm underline-offset-4 transition-colors after:absolute after:inset-0 group-hover:text-signal group-hover:underline focus-visible:text-signal focus-visible:underline"
+          className="rounded-sm underline-offset-4 transition-colors after:absolute after:inset-0 group-hover:text-signal-text group-hover:underline focus-visible:text-signal-text focus-visible:underline"
         >
           {post.title}
         </Link>
@@ -138,7 +151,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
           {tags.map((tag) => (
             <li key={tag.id}>
               <Link
-                href={`/blog/etiket/${tag.id}`}
+                href={`${locale === "en" ? "/en" : ""}/blog/etiket/${tag.id}`}
                 className="tag-pill rounded-sm bg-accent/10 font-mono text-eyebrow text-ink hover:bg-accent/20"
               >
                 {tag.label}
@@ -149,9 +162,9 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       ) : null}
       <span
         aria-hidden="true"
-        className="mt-5 inline-flex min-h-11 items-center font-mono text-small text-signal transition-transform duration-200 ease-takt motion-safe:group-hover:translate-x-0.5"
+        className="mt-5 inline-flex min-h-11 items-center font-mono text-small text-signal-text transition-transform duration-200 ease-takt motion-safe:group-hover:translate-x-0.5"
       >
-        Oku →
+        {locale === "en" ? "Read →" : "Oku →"}
       </span>
     </article>
   );

@@ -8,21 +8,25 @@ type BrandLogoProps = {
   size?: number;
   className?: string;
   priority?: boolean;
+  variant?: "light" | "signal";
 };
 
 export function BrandLogo({
   size = 36,
   className = "",
   priority = false,
+  variant = "light",
 }: BrandLogoProps) {
+  const src =
+    variant === "signal" ? siteConfig.logo.signalSrc : siteConfig.logo.src;
+
   return (
     <Image
-      src={LOGO_SRC}
+      src={src}
       alt={siteConfig.logo.alt}
       width={size}
       height={size}
       sizes={`${size}px`}
-      quality={85}
       className={`shrink-0 ${className}`}
       priority={priority}
     />
@@ -31,5 +35,6 @@ export function BrandLogo({
 
 export const brandLogo = {
   src: LOGO_SRC,
+  signalSrc: siteConfig.logo.signalSrc,
   alt: siteConfig.logo.alt,
 } as const;

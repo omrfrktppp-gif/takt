@@ -62,7 +62,7 @@ export function PillarPageBody({ pillar }: PillarPageBodyProps) {
               <li key={post.slug}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                  className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
                 >
                   {post.title} →
                 </Link>
@@ -82,7 +82,7 @@ export function PillarPageBody({ pillar }: PillarPageBodyProps) {
         </p>
         <Link
           href={pillar.servicePath}
-          className="mt-4 inline-block font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+          className="mt-4 inline-block font-medium text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
         >
           {relatedServiceLabel(pillar.servicePath)} →
         </Link>

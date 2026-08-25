@@ -15,6 +15,7 @@ blog/
 │
 ├── 01-uretime-yonelik-tasarim-dfm/
 │   ├── index.md              ← YAML front matter (meta) + gövde (tek kaynak)
+│   ├── index.en.md           ← aynı yazının İngilizce meta ve gövdesi
 │   ├── NOTES.md              ← dahili notlar (yayınlanmaz: ilke kontrolü, yapılacaklar)
 │   └── images/               ← bu yazıya ait tüm görseller
 │       ├── README.md         ← görsel listesi + alt text manifesti
@@ -65,6 +66,10 @@ reading_time: 4              # dakika (opsiyonel, üretici hesaplayabilir)
 ```
 
 Gövde, front matter'dan sonra standart Markdown ile yazılır (H2/H3 hiyerarşisi, rehber §9.3).
+
+## İngilizce sürüm
+
+Her yayımlanmış yazının İngilizce karşılığı aynı klasörde `index.en.md` adıyla tutulur. Türkçe rota `/blog/<slug>`, İngilizce rota `/en/blog/<slug>` biçimindedir. Görseller iki dilde ortaktır; İngilizce dosyanın `cover.alt`, başlık, açıklama, anahtar kelime ve gövde alanları İngilizce olmalıdır. Yeni bir Türkçe yazı yayıma alınmadan önce aynı klasöre İngilizce dosyası da eklenir.
 
 ## images/ klasörü
 

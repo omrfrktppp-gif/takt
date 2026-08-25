@@ -56,7 +56,7 @@ export default function SektorlerPage() {
             Sektörünüz listede yoksa{" "}
             <Link
               href="/iletisim"
-              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               iletişime geçin
             </Link>

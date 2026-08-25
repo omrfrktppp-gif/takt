@@ -4,6 +4,7 @@ import {
   LazyMotion,
   m,
   useMotionValue,
+  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useSpring,
@@ -13,6 +14,7 @@ import {
 } from "motion/react";
 import {
   useRef,
+  useState,
   useSyncExternalStore,
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
@@ -21,6 +23,8 @@ import styles from "./EngineeringMachineScene.module.css";
 
 const finePointerQuery =
   "(hover: hover) and (pointer: fine) and (min-width: 1024px)";
+const desktopMotionQuery =
+  "(min-width: 1024px) and (prefers-reduced-motion: no-preference)";
 
 function subscribeToFinePointer(onStoreChange: () => void) {
   const query = window.matchMedia(finePointerQuery);
@@ -34,6 +38,27 @@ function getFinePointerSnapshot() {
 
 function getFinePointerServerSnapshot() {
   return false;
+}
+
+function subscribeToDesktopMotion(onStoreChange: () => void) {
+  const query = window.matchMedia(desktopMotionQuery);
+  query.addEventListener("change", onStoreChange);
+  return () => query.removeEventListener("change", onStoreChange);
+}
+
+function getDesktopMotionSnapshot() {
+  return window.matchMedia(desktopMotionQuery).matches;
+}
+
+function getDesktopMotionServerSnapshot() {
+  return false;
+}
+
+function getSceneStep(progress: number) {
+  if (progress < 0.24) return 0;
+  if (progress < 0.49) return 1;
+  if (progress < 0.74) return 2;
+  return 3;
 }
 
 type SceneMotionStyle = MotionStyle &
@@ -52,6 +77,12 @@ export function EngineeringMachineScene({
     getFinePointerSnapshot,
     getFinePointerServerSnapshot,
   );
+  const desktopMotion = useSyncExternalStore(
+    subscribeToDesktopMotion,
+    getDesktopMotionSnapshot,
+    getDesktopMotionServerSnapshot,
+  );
+  const [activeStep, setActiveStep] = useState(3);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
   const parallaxX = useSpring(pointerX, { stiffness: 120, damping: 24 });
@@ -61,73 +92,81 @@ export function EngineeringMachineScene({
     offset: ["start start", "end end"],
   });
 
+  const traceOffset = useTransform(scrollYProgress, [0, 0.2], [210, 0]);
   const blueprintOpacity = useTransform(
     scrollYProgress,
-    [0, 0.18, 0.3],
+    [0, 0.14, 0.24],
     [1, 1, 0],
   );
   const explodedOpacity = useTransform(
     scrollYProgress,
-    [0.14, 0.25, 0.61, 0.73],
+    [0.12, 0.22, 0.54, 0.64],
     [0, 1, 1, 0],
   );
   const assembledOpacity = useTransform(
     scrollYProgress,
-    [0.56, 0.72],
+    [0.5, 0.68],
     [0, 1],
   );
   const outputsOpacity = useTransform(
     scrollYProgress,
-    [0.7, 0.84],
+    [0.69, 0.84],
     [0, 1],
   );
-  const outputsX = useTransform(scrollYProgress, [0.7, 0.86], [34, 0]);
-  const baseY = useTransform(scrollYProgress, [0.26, 0.58], [52, 0]);
-  const leftPostX = useTransform(scrollYProgress, [0.26, 0.58], [-56, 0]);
-  const rightPostX = useTransform(scrollYProgress, [0.26, 0.58], [56, 0]);
-  const headY = useTransform(scrollYProgress, [0.3, 0.62], [-58, 0]);
-  const motorX = useTransform(scrollYProgress, [0.32, 0.65], [76, 0]);
-  const toolY = useTransform(scrollYProgress, [0.34, 0.67], [-82, 0]);
-  const stepOne = useTransform(scrollYProgress, [0, 0.2, 0.32], [1, 1, 0.35]);
+  const outputsX = useTransform(scrollYProgress, [0.69, 0.85], [34, 0]);
+  const baseY = useTransform(scrollYProgress, [0.22, 0.56], [52, 0]);
+  const leftPostX = useTransform(scrollYProgress, [0.22, 0.56], [-56, 0]);
+  const rightPostX = useTransform(scrollYProgress, [0.22, 0.56], [56, 0]);
+  const headY = useTransform(scrollYProgress, [0.26, 0.6], [-58, 0]);
+  const motorX = useTransform(scrollYProgress, [0.28, 0.62], [76, 0]);
+  const toolY = useTransform(scrollYProgress, [0.3, 0.64], [-82, 0]);
+  const stepOne = useTransform(scrollYProgress, [0, 0.17, 0.3], [1, 1, 0.35]);
   const stepTwo = useTransform(
     scrollYProgress,
-    [0.16, 0.31, 0.49],
+    [0.14, 0.34, 0.51],
     [0.35, 1, 0.35],
   );
   const stepThree = useTransform(
     scrollYProgress,
-    [0.4, 0.57, 0.72],
+    [0.39, 0.59, 0.76],
     [0.35, 1, 0.35],
   );
   const stepFour = useTransform(
     scrollYProgress,
-    [0.64, 0.8, 1],
+    [0.64, 0.82, 1],
     [0.35, 1, 1],
   );
 
-  const interactive = finePointer && shouldReduceMotion === false;
+  const scrollActive = desktopMotion && shouldReduceMotion === false;
+  const parallaxActive = scrollActive && finePointer;
+
+  useMotionValueEvent(scrollYProgress, "change", (progress) => {
+    setActiveStep(scrollActive ? getSceneStep(progress) : 3);
+  });
+
   const motionStyle: SceneMotionStyle = {
-    "--blueprint-opacity": interactive ? blueprintOpacity : 0,
-    "--exploded-opacity": interactive ? explodedOpacity : 0,
-    "--assembled-opacity": interactive ? assembledOpacity : 1,
-    "--outputs-opacity": interactive ? outputsOpacity : 1,
-    "--outputs-x": interactive ? outputsX : 0,
-    "--base-y": interactive ? baseY : 0,
-    "--left-post-x": interactive ? leftPostX : 0,
-    "--right-post-x": interactive ? rightPostX : 0,
-    "--head-y": interactive ? headY : 0,
-    "--motor-x": interactive ? motorX : 0,
-    "--tool-y": interactive ? toolY : 0,
-    "--step-one-opacity": interactive ? stepOne : 1,
-    "--step-two-opacity": interactive ? stepTwo : 1,
-    "--step-three-opacity": interactive ? stepThree : 1,
-    "--step-four-opacity": interactive ? stepFour : 1,
-    "--parallax-x": interactive ? parallaxX : 0,
-    "--parallax-y": interactive ? parallaxY : 0,
+    "--trace-offset": scrollActive ? traceOffset : 0,
+    "--blueprint-opacity": scrollActive ? blueprintOpacity : 0,
+    "--exploded-opacity": scrollActive ? explodedOpacity : 0,
+    "--assembled-opacity": scrollActive ? assembledOpacity : 1,
+    "--outputs-opacity": scrollActive ? outputsOpacity : 1,
+    "--outputs-x": scrollActive ? outputsX : 0,
+    "--base-y": scrollActive ? baseY : 0,
+    "--left-post-x": scrollActive ? leftPostX : 0,
+    "--right-post-x": scrollActive ? rightPostX : 0,
+    "--head-y": scrollActive ? headY : 0,
+    "--motor-x": scrollActive ? motorX : 0,
+    "--tool-y": scrollActive ? toolY : 0,
+    "--step-one-opacity": scrollActive ? stepOne : 1,
+    "--step-two-opacity": scrollActive ? stepTwo : 1,
+    "--step-three-opacity": scrollActive ? stepThree : 1,
+    "--step-four-opacity": scrollActive ? stepFour : 1,
+    "--parallax-x": parallaxActive ? parallaxX : 0,
+    "--parallax-y": parallaxActive ? parallaxY : 0,
   };
 
   function handlePointerMove(event: ReactPointerEvent<HTMLElement>) {
-    if (!interactive) return;
+    if (!parallaxActive) return;
     const bounds = visualBoundsRef.current;
     if (!bounds) return;
     if (
@@ -139,13 +178,13 @@ export function EngineeringMachineScene({
       resetPointer();
       return;
     }
-    const clamp = (value: number) => Math.max(-4, Math.min(4, value));
-    pointerX.set(clamp(((event.clientX - bounds.left) / bounds.width - 0.5) * 8));
-    pointerY.set(clamp(((event.clientY - bounds.top) / bounds.height - 0.5) * 8));
+    const clamp = (value: number) => Math.max(-6, Math.min(6, value));
+    pointerX.set(clamp(((event.clientX - bounds.left) / bounds.width - 0.5) * 12));
+    pointerY.set(clamp(((event.clientY - bounds.top) / bounds.height - 0.5) * 12));
   }
 
   function cacheVisualBounds(event: ReactPointerEvent<HTMLElement>) {
-    if (!interactive) return;
+    if (!parallaxActive) return;
     const visual = event.currentTarget.querySelector<HTMLElement>(
       `.${styles.visual}`,
     );
@@ -169,6 +208,7 @@ export function EngineeringMachineScene({
         className={styles.scene}
         style={motionStyle}
         aria-labelledby="engineering-scene-title"
+        data-scene-step={activeStep}
         onPointerEnter={cacheVisualBounds}
         onPointerMove={handlePointerMove}
         onPointerLeave={resetPointer}

@@ -16,7 +16,7 @@ import {
 import { buildMetadata, chapterSeo, panelSeo } from "@/lib/seo";
 import { getHizmetSeoContent, getKapasiteSeoContent } from "@/lib/seo-content";
 import { breadcrumbSchema, faqPageSchema, serviceSchema } from "@/lib/schema";
-import { appointmentCta } from "@/lib/site";
+import { leadMagnet } from "@/lib/site";
 import type { DetailChapterId } from "@/lib/pages";
 
 type ChapterListingPageProps = {
@@ -148,8 +148,8 @@ export function ChapterDetailPage({
           <DetailPageNav
             backHref={chapterPath(chapterId)}
             backLabel={chapter.label}
-            ctaHref={appointmentCta.href}
-            ctaLabel={appointmentCta.label}
+            ctaHref={leadMagnet.href}
+            ctaLabel="İhtiyaç analizini başlat"
           />
         </Section>
       </PageShell>

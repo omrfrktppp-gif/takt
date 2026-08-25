@@ -50,9 +50,10 @@ export const siteConfig = {
   mapsEmbedUrl: `https://www.google.com/maps?q=${siteMapsCoordinates.lat},${siteMapsCoordinates.lng}&hl=tr&z=17&output=embed`,
   mapsCoordinates: siteMapsCoordinates,
   logo: {
-    src: "/logo.webp",
-    width: 700,
-    height: 700,
+    src: "/brand/takt-mark-light.webp",
+    signalSrc: "/brand/takt-mark-blue.webp",
+    width: 512,
+    height: 512,
     alt: "Takt logosu",
   },
 } as const;
@@ -167,19 +168,6 @@ export const servicePillars = [
       "Maliyet ve geliştirme optimizasyonu",
     ],
   },
-  {
-    id: "arge-proje",
-    number: "05",
-    title: "Ar-Ge & Proje Destekleri",
-    short: "TÜBİTAK/KOSGEB projeleri ve üniversite-sanayi iş birliği.",
-    description:
-      "Doğru projeyi doğru çağrıya hazırlarız; araştırma ile sanayiyi buluştururuz.",
-    items: [
-      "TÜBİTAK proje hazırlama ve yürütme",
-      "KOSGEB başvuru ve raporlama",
-      "Üniversite-sanayi iş birliği ve ürün projeleri",
-    ],
-  },
 ] as const;
 
 export const processSteps = [
@@ -269,7 +257,7 @@ export const faqItems = [
   {
     question: "Hangi hizmetleri sunuyorsunuz?",
     answer:
-      "Proje danışmanlığı; teknik ekip & süreç yönetimi; tasarım & geliştirme; analiz, hesaplama & raporlama; üretim danışmanlığı; Ar-Ge & Ür-Ge; TÜBİTAK/KOSGEB/Türk Patent destekleri.",
+      "Proje danışmanlığı; teknik ekip ve süreç yönetimi; tasarım ve geliştirme; analiz, hesaplama ve raporlama; üretim danışmanlığı ile Ar-Ge ve Ür-Ge hizmetleri sunuyoruz.",
   },
   {
     question: "Üretimi kendiniz mi yapıyorsunuz?",
@@ -285,16 +273,6 @@ export const faqItems = [
     question: "Prototip ürettiriyor musunuz?",
     answer:
       "Evet. Prototipleme ve prototipten seri üretime geçiş danışmanlığı veriyoruz.",
-  },
-  {
-    question: "TÜBİTAK/KOSGEB projesinde nasıl destek veriyorsunuz?",
-    answer:
-      "Uygun projeyi belirler, teknik dokümanları ve raporları hazırlar, başvurudan yürütmeye kadar süreci yönetiriz.",
-  },
-  {
-    question: "Patent veya marka tescilinde yardımcı oluyor musunuz?",
-    answer:
-      "Evet; patent ve marka başvurularını hazırlayıp süreci yürütüyoruz.",
   },
   {
     question: "Tek bir hizmet alabilir miyim?",

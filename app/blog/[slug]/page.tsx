@@ -46,7 +46,14 @@ export async function generateMetadata({
   return {
     ...metadata,
     authors: post.author ? [{ name: post.author }] : undefined,
-    alternates: { canonical: post.canonicalUrl },
+    alternates: {
+      canonical: post.canonicalUrl,
+      languages: {
+        tr: post.canonicalUrl,
+        en: `https://takt.tr/en/blog/${post.slug}`,
+        "x-default": post.canonicalUrl,
+      },
+    },
     openGraph: {
       ...openGraph,
       type: "article",
@@ -123,7 +130,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {authorMember ? (
                   <Link
                     href="/hakkimizda#omer-faruk-top"
-                    className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                    className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
                   >
                     {authorMember.name}
                   </Link>
@@ -153,7 +160,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <p className="mt-12">
             <Link
               href="/blog"
-              className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               ← Tüm yazılar
             </Link>

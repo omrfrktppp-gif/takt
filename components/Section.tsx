@@ -17,7 +17,7 @@ export function Section({
     variant === "white"
       ? "bg-white"
       : variant === "ink"
-        ? "bg-ink text-white"
+        ? "bg-deep text-ink"
         : "bg-paper";
 
   return (

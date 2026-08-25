@@ -8,13 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#12161C",
-        steel: "#4A5563",
-        line: "#D7DCE2",
-        paper: "#F4F6F4",
-        white: "#FFFFFF",
-        signal: "#1F4FE0",
-        accent: "#E85D04",
+        ink: "var(--ink)",
+        steel: "var(--steel)",
+        line: "var(--line)",
+        paper: "var(--paper)",
+        white: "var(--white)",
+        deep: "var(--deep)",
+        "surface-raised": "var(--surface-raised)",
+        signal: "var(--signal)",
+        "signal-text": "var(--signal-text)",
+        "signal-ink": "var(--signal-ink)",
+        accent: "var(--accent)",
+        danger: "var(--danger)",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],

@@ -37,7 +37,7 @@ function ContactMapBlock() {
       </p>
       <a
         href={siteConfig.mapsUrl}
-        className="mt-1 inline-block text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+        className="mt-1 inline-block text-small text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
         rel="noopener noreferrer"
         target="_blank"
       >
@@ -54,7 +54,7 @@ function ContactMapBlock() {
         © {new Date().getFullYear()} Takt ·{" "}
         <Link
           href="/kvkk-aydinlatma-metni"
-          className="underline decoration-line hover:text-signal"
+          className="underline decoration-line hover:text-signal-text"
         >
           KVKK
         </Link>
@@ -125,7 +125,7 @@ function ContactDesktopPanel() {
             </p>
             <a
               href={siteConfig.mapsUrl}
-              className="mt-1 inline-block text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="mt-1 inline-block text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -135,7 +135,7 @@ function ContactDesktopPanel() {
               © {new Date().getFullYear()} Takt ·{" "}
               <Link
                 href="/kvkk-aydinlatma-metni"
-                className="underline decoration-line hover:text-signal"
+                className="underline decoration-line hover:text-signal-text"
               >
                 KVKK
               </Link>

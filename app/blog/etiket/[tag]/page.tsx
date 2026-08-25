@@ -36,6 +36,14 @@ export async function generateMetadata({
 
   return {
     ...metadata,
+    alternates: {
+      canonical: `https://takt.tr/blog/etiket/${tag}`,
+      languages: {
+        tr: `https://takt.tr/blog/etiket/${tag}`,
+        en: `https://takt.tr/en/blog/etiket/${tag}`,
+        "x-default": `https://takt.tr/blog/etiket/${tag}`,
+      },
+    },
     robots: {
       index,
       follow: true,

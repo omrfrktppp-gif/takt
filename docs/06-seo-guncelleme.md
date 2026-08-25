@@ -60,7 +60,7 @@ Sayfalar: `/sss` (FAQPage schema), `/hakkimizda#sss` (liste, schema yok — tekr
 | BreadcrumbList | Tüm SEO sayfaları |
 | FAQPage | `/sss` |
 | Service | `/hizmetler/[slug]`, `/kapasitemiz/[slug]` |
-| Article | `/blog/[slug]` |
+| Article / BlogPosting | `/blog/[slug]` (kapak görseli varsa schema `image`) |
 
 ---
 

@@ -41,14 +41,14 @@ export default function GorusmePlanlaPage() {
             Randevu öncesi kısa bir özet paylaşmak isterseniz{" "}
             <Link
               href="/iletisim"
-              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               iletişim formu
             </Link>{" "}
             veya{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               {siteConfig.email}
             </a>{" "}

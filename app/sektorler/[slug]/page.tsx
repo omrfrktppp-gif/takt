@@ -73,7 +73,7 @@ export default async function SektorPage({ params }: PageProps) {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                    className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
                   >
                     {relatedServiceLabel(href)} →
                   </Link>
@@ -85,14 +85,14 @@ export default async function SektorPage({ params }: PageProps) {
           <p className="mt-10 text-body text-steel">
             <Link
               href={appointmentCta.href}
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               Görüşme planla
             </Link>{" "}
             veya{" "}
             <Link
               href="/iletisim"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               iletişime geçin
             </Link>

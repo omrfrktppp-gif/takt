@@ -207,60 +207,6 @@ export const pillars: Pillar[] = [
       },
     ],
   },
-  {
-    id: "tubitak-kosgeb-rehberi",
-    slug: "tubitak-kosgeb-rehberi",
-    title: "TÜBİTAK / KOSGEB proje rehberi",
-    description:
-      "Ar-Ge ve Ür-Ge destek programlarına hazırlık: proje kapsamı, teknik dokümantasyon ve başvuru sürecinde danışmanlık rolü.",
-    summary:
-      "TÜBİTAK, KOSGEB ve patent süreçlerinde teknik doküman hazırlığı ve proje yönetimi desteğimizi özetler; ticari blog kümesi henüz genişletilmektedir.",
-    servicePath: "/hizmetler/tubitak-kosgeb",
-    relatedBlogSlugs: [],
-    updatedAt: "2026-06-26",
-    sections: [
-      {
-        heading: "Destek programları kimler için uygundur?",
-        paragraphs: [
-          "TÜBİTAK ve KOSGEB destekleri, Ar-Ge veya Ür-Ge niteliği taşıyan, ölçülebilir teknik hedefleri olan projeler için tasarlanmıştır. Makina imalatı, otomasyon, malzeme veya süreç geliştirme gibi alanlarda faaliyet gösteren KOBİ ve sanayi firmaları bu programları değerlendirebilir. Her çağrının koşulları, destek oranı ve uygunluk kriterleri dönemsel olarak güncellenir; güncel şartlar resmi duyurulardan takip edilmelidir.",
-          "Destek başvurusu, yalnızca form doldurmaktan ibaret değildir; teknik içerik, bütçe gerekçesi, proje takvimi ve çıktı tanımları birbirini desteklemelidir. Eksik veya tutarsız teknik bölüm, başvurunun değerlendirme aşamasında zayıf kalmasına neden olabilir.",
-        ],
-      },
-      {
-        heading: "Teknik dokümantasyonda nelere dikkat edilir?",
-        paragraphs: [
-          "Proje önerisinde problem tanımı, mevcut durum, hedeflenen yenilik veya iyileştirme, yöntem, iş paketleri ve beklenen çıktılar net biçimde yazılmalıdır. Mühendislik projelerinde CAD, analiz, prototip ve test adımları somut teslimatlarla eşleştirilir. Patent ve fikri mülkiyet boyutu varsa erken aşamada değerlendirilir.",
-          "Biz destek sürecinde teknik rapor, proje dosyası, ilerleme dokümantasyonu ve gerektiğinde sunum içeriği hazırlığında yanınızda oluruz. Hukuki veya mali danışmanlık yerine geçmeyiz; resmi başvuru ve sözleşme adımları firma ve yetkili kurumlar arasında yürütülür.",
-        ],
-        list: [
-          "Proje kapsamı ve yenilikçilik tanımı",
-          "İş paketleri ve takvim",
-          "Teknik yöntem ve çıktılar",
-          "Bütçe kalemlerinin teknik gerekçesi",
-        ],
-      },
-      {
-        heading: "Süreç ne kadar sürer?",
-        paragraphs: [
-          "Hazırlık süresi projenin karmaşıklığına ve mevcut veri olgunluğuna bağlıdır. Teknik altyapısı hazır, hedefleri net bir projede dokümantasyon aşaması daha kısadır; sıfırdan kavram geliştirme gerektiren projelerde ön çalışma uzar. Resmi değerlendirme ve onay süreleri programa göre değişir; bu takvim TÜBİTAK ve KOSGEB tarafından ilan edilir.",
-          "İlk görüşmede mevcut fikir, ekip kapasitesi ve hedeflenen programı dinler; uygunluk ve eksikler hakkında dürüst geri bildirim veririz. Uygun olmayan projede destek başvurusu yerine alternatif finansman veya Ar-Ge yol haritası önerebiliriz.",
-        ],
-      },
-      {
-        heading: "Patent ve marka tescili",
-        paragraphs: [
-          "Patent ve marka başvuruları, proje çıktılarının korunması açısından ayrı bir hattır. Teknik tarifname hazırlığı mühendislik geçmişi gerektirir; süreç Türk Patent ve Marka Kurumu prosedürlerine tabidir. Destek programı kapsamında veya bağımsız olarak yürütülebilir.",
-        ],
-      },
-      {
-        heading: "İlgili hizmet ve sonraki adım",
-        paragraphs: [
-          "TÜBİTAK, KOSGEB ve patent desteği hizmet sayfamızda kapsam, tipik teslimatlar ve iletişim kanalları yer alır. Blog tarafında bu konuya özel ticari-niyetli yazı kümemizi genişletmeyi planlıyoruz; güncel teknik makaleler için blog sayfamızı takip edebilirsiniz.",
-          "Projenizi konuşmak için görüşme planlayabilir veya başlangıç kontrol listemizi talep edebilirsiniz.",
-        ],
-      },
-    ],
-  },
 ];
 
 export function getAllPillarSlugs(): string[] {

@@ -26,7 +26,7 @@ export default function RehberHubPage() {
       <PageShell
         eyebrow="REHBERLER"
         title="Teknik rehberler"
-        description="Tersine mühendislik, mühendislik analizi, yalın üretim ve destek programları üzerine kapsamlı rehberler — ilgili blog yazıları ve hizmetlerle bağlantılı."
+        description="Tersine mühendislik, mühendislik analizi, yalın üretim ve üretilebilir tasarım üzerine kapsamlı rehberler — ilgili blog yazıları ve hizmetlerle bağlantılı."
         breadcrumbs={[
           { label: "Ana Sayfa", href: "/" },
           { label: rehberSeo.title },
@@ -52,7 +52,7 @@ export default function RehberHubPage() {
             Konu başlıklarını blog yazılarında da{" "}
             <Link
               href="/blog"
-              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               ayrıntılı inceliyoruz
             </Link>

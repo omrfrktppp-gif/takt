@@ -33,19 +33,36 @@ export function renderBlogLlmsLinks(posts: PublicBlogDocument[]): string[] {
   );
 }
 
-export function renderFullBlogEntries(posts: PublicBlogDocument[]): string[] {
+export function renderFullBlogEntries(
+  posts: PublicBlogDocument[],
+  locale: "tr" | "en" = "tr",
+): string[] {
+  const labels =
+    locale === "en"
+      ? {
+          published: "Published",
+          updated: "Last updated",
+          author: "Author",
+          canonical: "Canonical article page",
+        }
+      : {
+          published: "Yayın tarihi",
+          updated: "Güncelleme tarihi",
+          author: "Yazar",
+          canonical: "Yazının kanonik sayfası",
+        };
   return posts.flatMap((post) => [
     `### [${markdownText(post.title)}](${post.canonicalUrl})`,
     "",
     `> ${markdownText(post.description)}`,
     "",
-    `Yayın tarihi: ${post.publishedAt}  `,
-    `Güncelleme tarihi: ${post.updatedAt ?? post.publishedAt}  `,
-    post.author ? `Yazar: ${markdownText(post.author)}` : "",
+    `${labels.published}: ${post.publishedAt}  `,
+    `${labels.updated}: ${post.updatedAt ?? post.publishedAt}  `,
+    post.author ? `${labels.author}: ${markdownText(post.author)}` : "",
     "",
     post.markdown,
     "",
-    `[Yazının kanonik sayfası](${post.canonicalUrl})`,
+    `[${labels.canonical}](${post.canonicalUrl})`,
     "",
     "---",
     "",

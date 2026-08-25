@@ -6,10 +6,20 @@ import { PageShell } from "@/components/PageShell";
 import { ListingGrid, SeoPageLayout } from "@/components/SeoPageLayout";
 import { Section } from "@/components/Section";
 import { blogTags, getPublishedPosts } from "@/lib/blog";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, collectionPageSchema } from "@/lib/schema";
 import { blogSeo, buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildMetadata(blogSeo);
+export const metadata: Metadata = {
+  ...buildMetadata(blogSeo),
+  alternates: {
+    canonical: "https://takt.tr/blog",
+    languages: {
+      tr: "https://takt.tr/blog",
+      en: "https://takt.tr/en/blog",
+      "x-default": "https://takt.tr/blog",
+    },
+  },
+};
 
 export default function BlogIndexPage() {
   const posts = getPublishedPosts();
@@ -20,10 +30,13 @@ export default function BlogIndexPage() {
   return (
     <SeoPageLayout>
       <JsonLd
-        data={breadcrumbSchema([
-          { name: "Ana Sayfa", path: "/" },
-          { name: "Blog", path: blogSeo.path },
-        ])}
+        data={[
+          breadcrumbSchema([
+            { name: "Ana Sayfa", path: "/" },
+            { name: "Blog", path: blogSeo.path },
+          ]),
+          collectionPageSchema(blogSeo),
+        ]}
       />
 
       <PageShell
@@ -44,7 +57,7 @@ export default function BlogIndexPage() {
                   <li key={tag.id}>
                     <Link
                       href={`/blog/etiket/${tag.id}`}
-                      className="tag-pill border border-line bg-white text-ink hover:border-signal hover:text-signal"
+                      className="tag-pill border border-line bg-white text-ink hover:border-signal hover:text-signal-text"
                     >
                       {tag.label}
                     </Link>

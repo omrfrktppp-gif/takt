@@ -1,0 +1,17 @@
+{
+  "route": "/sektorler/ozel-makina-imalati",
+  "title": "Custom machinery manufacturing",
+  "copy": {
+    "SEKTÖRLER": "SECTORS",
+    "Özel makina projelerinde tasarım, yapısal analiz ve üretim koordinasyonu bir arada yürütülmelidir. Konseptten montaja kadar teknik ekibinize dışarıdan mühendislik desteği sağlıyoruz.": "In special machine projects, design, structural analysis and production coordination should be carried out together. We provide external engineering support to your technical team from concept to assembly.",
+    "Mekanik tasarım, 3D modelleme ve imalata hazır teknik resim çıktıları üretiriz.": "We produce mechanical design, 3D modeling and manufacturing-ready engineering drawing outputs.",
+    "Yapısal analiz ve hareket simülasyonu ile kritik bileşenlerde kararları sayıyla destekleriz.": "We support decisions in critical components with structural analysis and motion simulation.",
+    "CNC, kaynak, lazer kesim ve montaj adımlarını çözüm ortağı ağımızla koordine ederiz.": "We coordinate CNC, welding, laser cutting and assembly steps with our solution partner network.",
+    "İlgili hizmetler": "Related services",
+    "Tasarım & geliştirme →": "Design & development →",
+    "Analiz & hesaplama →": "Analysis & calculation →",
+    "CNC işleme →": "CNC machining →",
+    "Görüşme planla veya iletişime geçin.": "Schedule a meeting or get in touch.",
+    "Özel makina imalatı": "Custom machinery manufacturing"
+  }
+}

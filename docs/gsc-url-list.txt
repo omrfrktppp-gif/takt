@@ -1,6 +1,6 @@
 # Takt — Google Search Console toplu dizin URL listesi
 # Kaynak: lib/sitemap-routes.ts getStaticSitemapEntries()
-# Toplam: 83 URL
+# Toplam: 139 URL
 # Kullanım: Search Console → URL Denetimi veya toplu gönderim
 
 https://takt.tr/
@@ -26,14 +26,12 @@ https://takt.tr/rehber
 https://takt.tr/rehber/tersine-muhendislik
 https://takt.tr/rehber/muhendislik-analizi
 https://takt.tr/rehber/yalin-uretim-dfm
-https://takt.tr/rehber/tubitak-kosgeb-rehberi
 https://takt.tr/hizmetler/proje-danismanligi
 https://takt.tr/hizmetler/teknik-ekip
 https://takt.tr/hizmetler/tasarim-gelistirme
 https://takt.tr/hizmetler/analiz-hesaplama
 https://takt.tr/hizmetler/uretim-danismanligi
 https://takt.tr/hizmetler/arge-urge
-https://takt.tr/hizmetler/tubitak-kosgeb
 https://takt.tr/kapasitemiz/intro
 https://takt.tr/kapasitemiz/3d-tarama
 https://takt.tr/kapasitemiz/lazer
@@ -77,6 +75,12 @@ https://takt.tr/blog/modal-titresim-analizi
 https://takt.tr/blog/kafes-lattice-hafifletme
 https://takt.tr/blog/darbogaz-kisitlar-teorisi
 https://takt.tr/blog/surec-ikizi-process-twin
+https://takt.tr/blog/makine-tasarim-hizmeti-fiyati
+https://takt.tr/blog/fea-oncesi-gerekli-veriler
+https://takt.tr/blog/3d-tarama-klasik-olcum-karsilastirma
+https://takt.tr/blog/prototipten-seri-uretime-gecis
+https://takt.tr/blog/fason-uretici-teklif-karsilastirma
+https://takt.tr/blog/kadrolu-muhendis-proje-bazli-danismanlik
 https://takt.tr/blog/etiket/proje-danismanligi
 https://takt.tr/blog/etiket/tasarim-gelistirme
 https://takt.tr/blog/etiket/analiz-hesaplama
@@ -86,3 +90,55 @@ https://takt.tr/blog/etiket/dfm-dfa
 https://takt.tr/blog/etiket/japon-muhendislik
 https://takt.tr/blog/etiket/kalite-ilkeleri
 https://takt.tr/blog/etiket/muhendislik-trendleri
+https://takt.tr/en/blog
+https://takt.tr/en/blog/uretime-yonelik-tasarim-dfm
+https://takt.tr/en/blog/montaja-yonelik-tasarim-dfa
+https://takt.tr/en/blog/geometrik-toleranslama-gdt
+https://takt.tr/en/blog/poka-yoke-hata-onleyici-tasarim
+https://takt.tr/en/blog/kaizen-surekli-iyilestirme
+https://takt.tr/en/blog/muda-yedi-israf
+https://takt.tr/en/blog/gemba-genchi-genbutsu
+https://takt.tr/en/blog/fmea-hata-turu-etki-analizi
+https://takt.tr/en/blog/taguchi-robust-tasarim
+https://takt.tr/en/blog/six-sigma-surec-yetenegi
+https://takt.tr/en/blog/dijital-ikiz
+https://takt.tr/en/blog/metal-eklemeli-imalat
+https://takt.tr/en/blog/generative-design-topoloji-optimizasyonu
+https://takt.tr/en/blog/surdurulebilir-uretim-hafifletme
+https://takt.tr/en/blog/termal-genlesme-yonetimi
+https://takt.tr/en/blog/hibrit-imalat-eklemeli-talasli
+https://takt.tr/en/blog/kobot-robotik-makine-besleme
+https://takt.tr/en/blog/kestirimci-bakim
+https://takt.tr/en/blog/makine-gorusu-kalite-kontrol
+https://takt.tr/en/blog/endustri-5-0
+https://takt.tr/en/blog/sac-metal-tasarimi-dfm
+https://takt.tr/en/blog/hafif-malzeme-secimi
+https://takt.tr/en/blog/yerlilestirme-reshoring
+https://takt.tr/en/blog/dijital-iplik-digital-thread
+https://takt.tr/en/blog/akilli-fabrika-kobi
+https://takt.tr/en/blog/metal-yerine-muhendislik-plastik
+https://takt.tr/en/blog/uretimde-agentik-yapay-zeka
+https://takt.tr/en/blog/kaynak-carpilmasi-kontrolu
+https://takt.tr/en/blog/uretimde-enerji-verimliligi
+https://takt.tr/en/blog/insansiz-uretim-lights-out
+https://takt.tr/en/blog/sonlu-elemanlar-analizi-fea
+https://takt.tr/en/blog/modal-titresim-analizi
+https://takt.tr/en/blog/kafes-lattice-hafifletme
+https://takt.tr/en/blog/darbogaz-kisitlar-teorisi
+https://takt.tr/en/blog/surec-ikizi-process-twin
+https://takt.tr/en/blog/makine-tasarim-hizmeti-fiyati
+https://takt.tr/en/blog/fea-oncesi-gerekli-veriler
+https://takt.tr/en/blog/3d-tarama-klasik-olcum-karsilastirma
+https://takt.tr/en/blog/prototipten-seri-uretime-gecis
+https://takt.tr/en/blog/fason-uretici-teklif-karsilastirma
+https://takt.tr/en/blog/kadrolu-muhendis-proje-bazli-danismanlik
+https://takt.tr/en/blog/etiket/muhendislik-danismanligi
+https://takt.tr/en/blog/etiket/proje-danismanligi
+https://takt.tr/en/blog/etiket/tasarim-gelistirme
+https://takt.tr/en/blog/etiket/analiz-hesaplama
+https://takt.tr/en/blog/etiket/uretim-danismanligi
+https://takt.tr/en/blog/etiket/kapasite-imalat
+https://takt.tr/en/blog/etiket/dfm-dfa
+https://takt.tr/en/blog/etiket/japon-muhendislik
+https://takt.tr/en/blog/etiket/kalite-ilkeleri
+https://takt.tr/en/blog/etiket/muhendislik-trendleri

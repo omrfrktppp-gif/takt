@@ -66,7 +66,7 @@ export default async function PillarPage({ params }: PageProps) {
           <p className="mt-12">
             <Link
               href="/rehber"
-              className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-body text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               ← Tüm rehberler
             </Link>

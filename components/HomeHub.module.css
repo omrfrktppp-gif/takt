@@ -1,0 +1,264 @@
+.heroField {
+  position: relative;
+  min-height: 22rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--paper) 92%, var(--white));
+  box-shadow: 12px 12px 0 var(--signal-tint);
+}
+
+.heroField::before,
+.heroField::after {
+  position: absolute;
+  z-index: 2;
+  width: 1rem;
+  height: 1rem;
+  border-color: var(--signal);
+  content: "";
+}
+
+.heroField::before {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+
+.heroField::after {
+  right: 0.75rem;
+  bottom: 0.75rem;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.heroSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 22rem;
+}
+
+.heroTrace {
+  stroke-dasharray: 780;
+  stroke-dashoffset: 780;
+  animation: hero-trace 7s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+.heroGeometry {
+  fill: none;
+  stroke: var(--steel);
+  stroke-width: 1.25;
+  opacity: 0.65;
+}
+
+.heroNodes circle {
+  fill: var(--signal);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-node 7s ease-in-out infinite;
+}
+
+.heroNodes circle:nth-child(2) {
+  animation-delay: 0.35s;
+}
+
+.heroNodes circle:nth-child(3) {
+  animation-delay: 0.7s;
+}
+
+.heroNodes circle:nth-child(4) {
+  animation-delay: 1.05s;
+}
+
+.heroLabels {
+  fill: var(--steel);
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.heroLegend {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.75rem;
+  left: 1rem;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  color: var(--steel);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+}
+
+.problemLink {
+  position: relative;
+  transition:
+    color 160ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 160ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.problemLink::after {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  left: 1rem;
+  height: 1px;
+  background: var(--signal);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.serviceRow {
+  position: relative;
+  transition:
+    padding 280ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background-color 160ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.serviceRow::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--signal);
+  content: "";
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.outputCard {
+  position: relative;
+  min-height: 14rem;
+  background-image:
+    linear-gradient(to right, transparent 0 95%, var(--signal-tint) 95%),
+    linear-gradient(to bottom, transparent 0 95%, var(--signal-tint) 95%);
+  background-size: 24px 24px;
+}
+
+.outputCard::after {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  content: "";
+}
+
+.caseCard {
+  min-height: 21rem;
+  background: var(--white);
+  transition: background-color 160ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.caseDiagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.caseDiagram::before,
+.caseDiagram::after {
+  width: 1.5rem;
+  height: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.caseDiagram span {
+  display: block;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(135deg, transparent 48%, var(--signal-tint) 49% 51%, transparent 52%),
+    var(--paper);
+}
+
+.caseDiagram span:last-child {
+  border-color: color-mix(in srgb, var(--signal) 38%, var(--line));
+}
+
+@media (hover: hover) {
+  .problemLink:hover,
+  .problemLink:focus-visible {
+    background: var(--signal-tint);
+  }
+
+  .problemLink:hover::after,
+  .problemLink:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .serviceRow:hover,
+  .serviceRow:focus-visible {
+    padding-inline: 1rem;
+    background: var(--signal-tint);
+  }
+
+  .serviceRow:hover::before,
+  .serviceRow:focus-visible::before {
+    transform: scaleY(1);
+  }
+
+  .caseCard:hover {
+    background: color-mix(in srgb, var(--signal-tint) 55%, var(--white));
+  }
+}
+
+@media (max-width: 1023px) {
+  .heroField {
+    min-height: 18rem;
+    box-shadow: 8px 8px 0 var(--signal-tint);
+  }
+
+  .heroSvg {
+    min-height: 18rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroTrace {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+
+  .heroNodes circle {
+    animation: none;
+  }
+}
+
+@keyframes hero-trace {
+  0%,
+  12% {
+    stroke-dashoffset: 780;
+  }
+  48%,
+  82% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -780;
+  }
+}
+
+@keyframes hero-node {
+  0%,
+  16%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.72);
+  }
+  34%,
+  76% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

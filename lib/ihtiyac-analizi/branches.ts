@@ -42,13 +42,6 @@ export const SERVICE_BRANCHES: ServiceBranch[] = [
     path: "/hizmetler/arge-urge",
   },
   {
-    id: "tubitak-kosgeb",
-    s1Value: "E",
-    label: "TÜBİTAK & KOSGEB & Türk Patent Proje Desteği",
-    shortLabel: "TÜBİTAK / KOSGEB / Patent",
-    path: "/hizmetler/tubitak-kosgeb",
-  },
-  {
     id: "teknik-ekip",
     s1Value: "F",
     label: "Teknik Ekip & Süreç Yönetimi",
@@ -84,7 +77,6 @@ export const S1_OPTIONS = [
   },
   { value: "C", label: "Parçamı / ürünümü ürettirmek istiyorum" },
   { value: "D", label: "Fikrimi ürüne dönüştürmek istiyorum (Ar-Ge / Ür-Ge)" },
-  { value: "E", label: "TÜBİTAK / KOSGEB / patent desteği arıyorum" },
   { value: "F", label: "Teknik ekibime dış güç veya süreç düzeni lazım" },
   { value: "G", label: "Projem dağınık / tıkandı, teknik yönetim lazım" },
   { value: "H", label: "Emin değilim — yönlendirin" },

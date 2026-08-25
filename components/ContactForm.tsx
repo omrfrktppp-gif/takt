@@ -190,6 +190,7 @@ export function ContactForm({
           maxLength={limits.message}
           disabled={isPending}
           aria-required="true"
+          placeholder="Çözmek istediğiniz sorunu, mevcut durumu, hedef tarihi ve elinizdeki teknik dokümanları kısaca belirtin."
           className="form-input form-textarea"
         />
       </label>
@@ -209,7 +210,7 @@ export function ContactForm({
             href="/kvkk-aydinlatma-metni"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+            className="text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
           >
             Aydınlatma Metni
           </a>
@@ -220,7 +221,7 @@ export function ContactForm({
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex min-h-11 items-center justify-center rounded bg-ink px-[22px] py-3 text-sm font-medium text-white transition-colors hover:bg-signal disabled:cursor-wait disabled:opacity-60"
+        className="inline-flex min-h-11 items-center justify-center rounded bg-deep px-[22px] py-3 text-sm font-medium text-ink transition-colors hover:bg-signal hover:text-signal-ink disabled:cursor-wait disabled:opacity-60"
       >
         {isPending ? "Gönderiliyor…" : "Talebi gönder"}
       </button>
@@ -242,7 +243,7 @@ export function ContactForm({
         Sorun olursa doğrudan{" "}
         <a
           href={`mailto:${siteConfig.email}`}
-          className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+          className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
         >
           {siteConfig.email}
         </a>

@@ -4,16 +4,20 @@
 ## Renk paleti
 | İsim | Hex |
 |---|---|
-| Ink | `#12161C` |
-| Steel | `#4A5563` |
-| Line | `#D7DCE2` |
-| Paper | `#F4F6F4` |
-| White | `#FFFFFF` |
-| Signal | `#1F4FE0` |
+| Paper / Canvas | `#15181C` |
+| Surface | `#1C2127` |
+| Raised Surface | `#242A31` |
+| Ink | `#F4F6F4` |
+| Steel | `#AEB7C2` |
+| Line | `#343B44` |
+| Signal / Takt Mavisi | `#1F4FE0` |
+| Signal Text / Erişilebilir Mavi | `#5B8CFF` |
+| Signal Ink | `#F4F6F4` |
+| Danger | `#FF6B57` |
 
 ## İmza — Kadans cetveli
 - Tick: 2px genişlik, 16–40px yükseklik, 12px aralık
-- Durağan: `--line`, aktif vuruş: `--signal`
+- Durağan: `--line`, aktif vuruş: Takt mavisi `--signal`
 - Hero'da bir kez yükleme animasyonu; `prefers-reduced-motion` → statik
 
 ## Tipografi
@@ -22,9 +26,10 @@
 - Mono: JetBrains Mono 400/500 (eyebrow, veri)
 
 ## Bileşenler
-- Primary button: ink zemin, hover signal
+- Primary button: Takt mavisi zemin, açık metin
 - Secondary: şeffaf, line border
 - Focus: 2px signal outline, offset 2px
 - Köşe: 4px (sm 2px), pill yok
+- Ana marka kullanımı beyaz; mavi logo yalnızca vurgu anlarında
 
 *Tam spesifikasyon: kullanıcı tarafından sağlanan Doküman 1.*

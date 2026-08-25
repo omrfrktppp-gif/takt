@@ -79,17 +79,6 @@ export const seoKeywordMap = {
     "fikirden ürüne",
     "ar-ge proje yönetimi",
   ],
-  "tubitak-kosgeb": [
-    "tübitak proje hazırlama",
-    "tübitak danışmanlık",
-    "kosgeb destek",
-    "kosgeb raporlama",
-    "ar-ge proje desteği",
-    "üniversite sanayi iş birliği",
-    "patent başvurusu",
-    "marka tescili",
-    "türk patent",
-  ],
   local: [
     "ankara makina imalatı danışmanlık",
     "ankara cnc fason",

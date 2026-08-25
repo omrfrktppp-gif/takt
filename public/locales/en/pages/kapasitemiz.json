@@ -1,0 +1,29 @@
+{
+  "route": "/kapasitemiz",
+  "title": "Capabilities",
+  "copy": {
+    "8 alan — detay için bir başlık seçin.": "Eight capability areas — select one for details.",
+    "Ana Sayfa": "Home Page",
+    "KAPASİTEMİZ": "OUR CAPACITY",
+    "3D tarama/baskı, CNC, lazer kesim, fason üretim, kaynak, kaplama — geniş çözüm ortağı ağıyla tek noktadan.": "3D scanning/printing, CNC, laser cutting, contract manufacturing, welding, coating — a one-stop shop with a wide solution partner network.",
+    "8 alan — detay için bir başlık seçin.": "8 fields — choose a title for the detail.",
+    "Genel bakış": "Overview",
+    "Makina ve endüstriyel projeleriniz için ihtiyaç duyduğunuz tüm üretim çözümlerini, geniş çözüm ortağı ağımız sayesinde tek noktadan sunuyoruz. Tasarımdan imalata, prototipten seri üretime kadar süreci biz koordine ediyoruz; siz tek bir muhatapla çalışıyor, doğru iş için doğru üreticiyi aramakla uğraşmıyorsunuz.": "We offer all the production solutions you need for your machinery and industrial projects from a single point, thanks to our wide solution partner network. We coordinate the process from design to manufacturing, from prototype to mass production; You work with a single contact person and do not have to worry about searching for the right manufacturer for the right job.",
+    "Detay →": "Learn more →",
+    "3D Tarama & 3D Baskı": "3D Scanning & 3D Printing",
+    "3D tarama ile mevcut parçaları dijitale ve tersine mühendisliğe taşıyor, 3D baskı ile hızlı prototip ve fonksiyonel parçalar üretiyoruz.": "We digitalize and reverse engineer existing parts with 3D scanning, and produce rapid prototypes and functional parts with 3D printing.",
+    "Lazer Kesim & Markalama": "Laser Cutting & Marking",
+    "Hassas lazer kesim ve kalıcı lazer markalama ile parçalarınızı istenen toleransta ve izlenebilirlikte hazırlıyoruz.": "We prepare your parts with the desired tolerance and traceability with precision laser cutting and permanent laser marking.",
+    "CNC İşleme & Torna": "CNC Machining & Turning",
+    "CNC torna ve işleme ile tekil parçadan adetli üretime kadar hassas talaşlı imalatı karşılıyoruz.": "We provide precision machining from single parts to mass production with CNC turning and machining.",
+    "Fason Üretim & Kaynak": "Contract Manufacturing & Welding",
+    "Çeşitli metallerde fason üretim ve kaynak işçiliğiyle projelerinizin imalat ihtiyacını uçtan uca çözüyoruz.": "We solve the manufacturing needs of your projects end-to-end with contract manufacturing and welding work in various metals.",
+    "Yüzey İşlemleri — Kaplama & Boyama": "Surface Treatments - Coating & Painting",
+    "Kaplama, boyama ve yüzey işlemleriyle parçalarınızı hem dayanıklılık hem görünüm açısından kullanıma hazır hale getiriyoruz.": "We make your parts ready for use in terms of both durability and appearance through coating, painting and surface treatments.",
+    "Prototip & Seri Üretim Danışmanlığı": "Prototype & Mass Production Consultancy",
+    "İster tek bir prototip ister seri üretim — doğru yöntemi, malzemeyi ve üreticiyi belirleyip süreci sizin adınıza yönetiyoruz.": "Whether a single prototype or mass production – we determine the right method, material and manufacturer and manage the process on your behalf.",
+    "Tek noktadan üretim": "One stop production",
+    "Makina ve endüstriyel projelerinizde ihtiyaç ne olursa olsun, doğru üretim çözümünü geniş ağımızla bir araya getiriyor, işi tek elden hayata geçiriyoruz.": "Whatever the need in your machinery and industrial projects, we bring together the right production solution with our wide network and carry out the work from a single source.",
+    "Kapasitemiz": "Capabilities"
+  }
+}

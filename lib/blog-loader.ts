@@ -27,7 +27,20 @@ const CATEGORY_TAG_MAP: Record<string, string> = {
 };
 
 const TAG_ALIAS_MAP: Record<string, string> = {
+  "muhendislik-danismanligi": "muhendislik-danismanligi",
+  "proje-danismanligi": "proje-danismanligi",
+  "teknik-ekip-yonetimi": "teknik-ekip-yonetimi",
+  "tasarim-gelistirme": "tasarim-gelistirme",
+  "analiz-hesaplama": "analiz-hesaplama",
+  "uretim-danismanligi": "uretim-danismanligi",
+  "kapasite-imalat": "kapasite-imalat",
+  "arge-urge": "arge-urge",
+  "ankara-sanayi": "ankara-sanayi",
+  "japon-muhendislik": "japon-muhendislik",
+  "kalite-ilkeleri": "kalite-ilkeleri",
+  "muhendislik-trendleri": "muhendislik-trendleri",
   dfm: "dfm-dfa",
+  "dfm-dfa": "dfm-dfa",
   dfa: "dfm-dfa",
   dfam: "dfm-dfa",
   gdt: "dfm-dfa",
@@ -184,8 +197,9 @@ function parseReadingTime(value: unknown): number | undefined {
   return value;
 }
 
-function parseCanonical(value: unknown, slug: string): string {
-  const expected = `${siteConfig.url}/blog/${slug}`;
+function parseCanonical(value: unknown, slug: string, locale: "tr" | "en"): string {
+  const routePrefix = locale === "en" ? "/en/blog" : "/blog";
+  const expected = `${siteConfig.url}${routePrefix}/${slug}`;
   if (value === undefined) return expected;
   if (typeof value !== "string") {
     throw new Error('"canonical" mutlak bir URL olmalı');
@@ -200,7 +214,7 @@ function parseCanonical(value: unknown, slug: string): string {
 
   if (
     canonical.origin !== new URL(siteConfig.url).origin ||
-    canonical.pathname.replace(/\/$/, "") !== `/blog/${slug}` ||
+    canonical.pathname.replace(/\/$/, "") !== `${routePrefix}/${slug}` ||
     canonical.search ||
     canonical.hash
   ) {
@@ -281,7 +295,11 @@ function removeRepeatedTitle(markdown: string, title: string): string {
   return lines.join("\n").trim();
 }
 
-function loadPostFromFile(filePath: string, directoryName: string): BlogPost | null {
+function loadPostFromFile(
+  filePath: string,
+  directoryName: string,
+  locale: "tr" | "en",
+): BlogPost | null {
   const raw = fs.readFileSync(filePath, "utf8");
   const parsed = matter(raw);
   const data = parsed.data as FrontMatter;
@@ -324,7 +342,7 @@ function loadPostFromFile(filePath: string, directoryName: string): BlogPost | n
     category,
     readingTimeMinutes: parseReadingTime(data.reading_time),
     tags: resolveTagIds(category, sourceTags),
-    canonicalUrl: parseCanonical(data.canonical, slug),
+    canonicalUrl: parseCanonical(data.canonical, slug, locale),
     cover: parseCover(data.cover),
     schemaType: parseSchemaType(data.schema),
     markdown,
@@ -332,7 +350,7 @@ function loadPostFromFile(filePath: string, directoryName: string): BlogPost | n
   };
 }
 
-export function loadBlogPostsFromContent(): BlogPost[] {
+export function loadBlogPostsFromContent(locale: "tr" | "en" = "tr"): BlogPost[] {
   if (!fs.existsSync(BLOG_CONTENT_DIR)) {
     return [];
   }
@@ -347,11 +365,15 @@ export function loadBlogPostsFromContent(): BlogPost[] {
   for (const entry of entries) {
     if (!entry.isDirectory() || entry.name.startsWith("_")) continue;
 
-    const indexPath = path.join(BLOG_CONTENT_DIR, entry.name, "index.md");
+    const indexPath = path.join(
+      BLOG_CONTENT_DIR,
+      entry.name,
+      locale === "en" ? "index.en.md" : "index.md",
+    );
     if (!fs.existsSync(indexPath)) continue;
 
     try {
-      const post = loadPostFromFile(indexPath, entry.name);
+      const post = loadPostFromFile(indexPath, entry.name, locale);
       if (!post) continue;
       if (postsBySlug.has(post.slug) || duplicateSlugs.has(post.slug)) {
         throw new Error(`yinelenen slug: ${post.slug}`);

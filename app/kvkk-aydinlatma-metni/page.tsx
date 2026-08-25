@@ -184,7 +184,7 @@ export default function KvkkPage() {
               yöntemlerle veya doğrudan{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+                className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
               >
                 {siteConfig.email}
               </a>{" "}
@@ -197,7 +197,7 @@ export default function KvkkPage() {
           <p>
             <Link
               href="/iletisim"
-              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal"
+              className="text-ink underline decoration-signal underline-offset-4 hover:text-signal-text"
             >
               ← İletişim sayfasına dön
             </Link>

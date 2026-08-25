@@ -40,14 +40,14 @@ export default function SssPage() {
             kısa yanıtlar. Daha fazla bilgi için{" "}
             <Link
               href="/hakkimizda"
-              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               hakkımızda
             </Link>{" "}
             sayfasına bakabilir veya{" "}
             <Link
               href="/iletisim"
-              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
             >
               iletişime
             </Link>{" "}

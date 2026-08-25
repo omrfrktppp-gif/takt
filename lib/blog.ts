@@ -52,11 +52,6 @@ export const blogTags: BlogTag[] = [
     description: "Fikirden ürüne, ürün geliştirme, Ar-Ge proje yönetimi",
   },
   {
-    id: "tubitak-kosgeb-patent",
-    label: "TÜBİTAK, KOSGEB & Patent",
-    description: "Destek programları, patent ve marka tescili",
-  },
-  {
     id: "ankara-sanayi",
     label: "Ankara & Sanayi",
     description: "Yerel mühendislik danışmanlığı, savunma sanayi tedarik",
@@ -131,7 +126,6 @@ const TAG_SERVICE_MAP: Record<string, string> = {
   "uretim-danismanligi": "/hizmetler/uretim-danismanligi",
   "kapasite-imalat": "/kapasitemiz/cnc",
   "arge-urge": "/hizmetler/arge-urge",
-  "tubitak-kosgeb-patent": "/hizmetler/tubitak-kosgeb",
   "ankara-sanayi": "/hizmetler/proje-danismanligi",
   "dfm-dfa": "/hizmetler/tasarim-gelistirme",
   "japon-muhendislik": "/hizmetler/proje-danismanligi",
@@ -146,7 +140,6 @@ const SERVICE_LABELS: Record<string, string> = {
   "/hizmetler/analiz-hesaplama": "Analiz & hesaplama",
   "/hizmetler/uretim-danismanligi": "Üretim danışmanlığı",
   "/hizmetler/arge-urge": "Ar-Ge & Ür-Ge",
-  "/hizmetler/tubitak-kosgeb": "TÜBİTAK / KOSGEB",
   "/kapasitemiz/cnc": "CNC işleme",
   "/kapasitemiz/3d-tarama": "3D tarama",
   "/kapasitemiz/prototip-seri": "Prototip & seri üretim",

@@ -11,7 +11,7 @@ export function ThankYouPanel({ mode }: ThankYouPanelProps) {
 
   return (
     <div className="interactive-card p-8 text-center md:p-10">
-      <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal">
+      <p className="font-mono text-eyebrow uppercase tracking-[0.08em] text-signal-text">
         Talep alındı
       </p>
       <h2 className="mt-4 font-display text-h2 text-ink">Teşekkürler</h2>
@@ -24,7 +24,7 @@ export function ThankYouPanel({ mode }: ThankYouPanelProps) {
         </Button>
         <Link
           href="/"
-          className="touch-target-inline text-body text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+          className="touch-target-inline text-body text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
         >
           Ana sayfa
         </Link>

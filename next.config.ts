@@ -28,6 +28,16 @@ const nextConfig: NextConfig = {
         destination: "/ihtiyac-analizi",
         permanent: true,
       },
+      {
+        source: "/hizmetler/tubitak-kosgeb",
+        destination: "/hizmetler/arge-urge",
+        permanent: true,
+      },
+      {
+        source: "/rehber/tubitak-kosgeb-rehberi",
+        destination: "/rehber",
+        permanent: true,
+      },
     ];
   },
   async headers() {

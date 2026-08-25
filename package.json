@@ -10,7 +10,10 @@
     "lint": "eslint",
     "test:content": "playwright test tests/blog-content.spec.ts",
     "test:e2e": "playwright test tests/site-quality.spec.ts",
+    "test:en": "playwright test tests/english-site.spec.ts",
+    "test:seo": "playwright test tests/seo-discovery.spec.ts --project=desktop-chromium",
     "audit:blog-links": "node scripts/audit-blog-links.mjs",
+    "audit:blog-en": "node scripts/audit-blog-en.mjs",
     "test:resend": "node --env-file=.env.local scripts/test-resend.mjs",
     "audit:indexing": "node scripts/audit-indexing.mjs"
   },

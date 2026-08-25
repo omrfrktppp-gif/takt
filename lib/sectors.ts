@@ -39,12 +39,11 @@ export const sectors: Sector[] = [
     paragraphs: [
       "Konsept tasarım, teknik gereksinim analizi ve fizibilite değerlendirmesiyle projenin ilk aşamasını yapılandırırız.",
       "Prototip döngüleri, test planları ve revizyon takibiyle ürün olgunluğunu adım adım ilerletiriz.",
-      "TÜBİTAK ve KOSGEB uygun projelerde teknik başvuru içeriği ve mühendislik dokümantasyonu hazırlığında destek veririz.",
+      "Teknik gereksinimleri, test çıktılarını ve revizyon kararlarını izlenebilir mühendislik dokümantasyonuna dönüştürürüz.",
     ],
     relatedPaths: [
       "/hizmetler/arge-urge",
       "/hizmetler/tasarim-gelistirme",
-      "/hizmetler/tubitak-kosgeb",
     ],
   },
   {
@@ -111,12 +110,11 @@ export const sectors: Sector[] = [
     paragraphs: [
       "Konsept ve detay tasarım; üretilebilirlik ve montaj düşüncesiyle modelleme.",
       "Prototip üretimi ve test döngülerinin planlanması.",
-      "TÜBİTAK/KOSGEB uygun projelerde teknik başvuru içeriği hazırlığı.",
+      "Tasarım, prototip ve test kararlarının izlenebilir teknik dokümantasyonu.",
     ],
     relatedPaths: [
       "/hizmetler/arge-urge",
       "/hizmetler/tasarim-gelistirme",
-      "/hizmetler/tubitak-kosgeb",
     ],
   },
 ];

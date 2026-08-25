@@ -42,10 +42,6 @@ function resolveHBranchScreens(answers: Answers): {
     return { screens: ["h1-triage"], serviceId: "proje-danismanligi" };
   }
 
-  if (triage === "destek") {
-    return { screens: ["h1-triage", "e1-topic", "e2-status"], serviceId: "tubitak-kosgeb" };
-  }
-
   if (triage === "fikir") {
     const screens = ["h1-triage", "h1-fikir-type"];
     const fikirType = answers["h1-fikir-type"];
@@ -104,8 +100,6 @@ function branchScreensForS1(s1: string, answers: Answers): string[] {
       return ["c1-method", "c2-quantity", "c3-supplier"];
     case "D":
       return ["d1-need", "d2-status"];
-    case "E":
-      return ["e1-topic", "e2-status"];
     case "F":
       return branchScreensForF(answers);
     case "G":

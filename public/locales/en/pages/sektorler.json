@@ -1,0 +1,30 @@
+{
+  "route": "/sektorler",
+  "title": "Sectors",
+  "copy": {
+    "6 sektör — projenize uygun dikeyi seçin veya doğrudan iletişime geçin.": "Six sectors — choose the one that fits your project or contact us directly.",
+    "Sektörünüz listede yoksa iletişime geçin; benzer proje tiplerinde de çalışıyoruz.": "If your sector is not listed, contact us; we also work on similar project types.",
+    "Sektörünüz listede yoksa": "If your sector is not listed,",
+    "iletişime geçin": "contact us",
+    "; benzer proje tiplerinde de çalışıyoruz.": "; we also work on similar project types.",
+    "Ana Sayfa": "Home Page",
+    "SEKTÖRLER": "SECTORS",
+    "Farklı sanayi dikeylerinde tasarım, analiz, üretim koordinasyonu ve proje danışmanlığı.": "Design, analysis, manufacturing coordination, and project consulting across multiple industrial sectors.",
+    "6 sektör — projenize uygun dikeyi seçin veya doğrudan iletişime geçin.": "6 verticals — choose the vertical that suits your project or contact directly.",
+    "Savunma sanayi": "defense industry",
+    "Savunma sanayi tedarikçileri için tasarım, analiz, tersine mühendislik ve üretim koordinasyonu.": "Design, analysis, reverse engineering and production coordination for defense industry suppliers.",
+    "Detay →": "Learn more →",
+    "Ar-Ge ve ürün geliştirme": "R&D and product development",
+    "Fikirden prototipe, prototipten ürüne giden Ar-Ge süreçlerinde teknik yol haritası, dokümantasyon ve olgunluk yönetimi.": "Technical road map, documentation and maturity management in R&D processes from idea to prototype and from prototype to product.",
+    "Prototipten seri üretime": "From prototype to mass production",
+    "Sanatsal veya fonksiyonel prototipten seri üretime geçişte tasarım olgunlaştırma, DFM ve imalat koordinasyonu.": "Design maturation, DFM and manufacturing coordination in the transition from artistic or functional prototype to mass production.",
+    "Özel makina imalatı": "Custom machinery manufacturing",
+    "Özel makina ve endüstriyel sistemlerde tasarım, analiz, imalat koordinasyonu ve devreye alma desteği.": "Design, analysis, manufacturing coordination and commissioning support in special machines and industrial systems.",
+    "Otomotiv yan sanayi": "Automotive suppliers",
+    "Otomotiv yan sanayi için özel aparat, fikstür ve üretim destekleyici sistem tasarımı.": "Special apparatus, fixture and production support system design for the automotive sub-industry.",
+    "Tıbbi cihaz": "medical device",
+    "Tıbbi cihaz ve laboratuvar ekipmanı geliştirmede tasarım, prototipleme ve dokümantasyon desteği.": "Design, prototyping and documentation support in medical device and laboratory equipment development.",
+    "Sektörünüz listede yoksa iletişime geçin; benzer proje tiplerinde de çalışıyoruz.": "If your industry is not listed, contact us; We also work on similar project types.",
+    "Sektörler": "Sectors"
+  }
+}

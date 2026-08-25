@@ -28,7 +28,11 @@ export const chapters: Chapter[] = [
     panels: [
       {
         id: "intro",
-        body: "Takt Danışmanlık, Ar-Ge projelerindeki teknik sorunları çözmek ve sistemleri optimize etmek için çalışan bir mühendislik ekibidir. Özel makina projelerinde sistem tasarımından tesis yönetimine kadar geniş bir alanda hizmet veriyor; geçmiş proje deneyimimizi ve tersine mühendislik birikimimizi her işe taşıyoruz. Yaklaşımımız sade: dağınık ya da tıkanmış süreçlere ölçülebilir bir ritim getirmek, firmaların teknik ekiplerindeki eksik halkayı tamamlamak ve fikri üretime, sorunu çözüme dönüştürürken doğru tempoyu korumak.",
+        body: "Takt Danışmanlık; özel makina, Ar-Ge, üretim ve teknik dönüşüm projelerinde firmaların ihtiyaç duyduğu mühendislik kapasitesini tamamlar. İhtiyacın tanımlanmasından tasarım, analiz, imalat koordinasyonu ve saha uygulamasına kadar süreçte ana muhatap bellidir; proje farklı uzmanlıklara dağılsa da iletişim ve teknik koordinasyon tek kanaldan ilerler.",
+      },
+      {
+        id: "project-team",
+        body: "Takt her projeye sabit bir ekip şemasıyla yaklaşmaz. Projenin kapsamını, iş yükünü ve ihtiyaç duyduğu uzmanlıkları değerlendirir; müşteriyi farklı sektörlerden alanında deneyimli teknik kişilerle buluşturur ve projeye uygun çalışma ekibini oluşturur. Tasarım, analiz, üretim, otomasyon, saha uygulaması veya proje yönetimi ihtiyacına göre doğru uzmanlar sürece dâhil edilir.",
       },
     ],
   },
@@ -66,11 +70,6 @@ export const chapters: Chapter[] = [
         id: "arge-urge",
         title: "Ar-Ge & Ür-Ge Danışmanlığı",
         body: "Fikirden ürüne giden yolda yanınızdayız. Araştırma-geliştirme ve ürün geliştirme süreçlerini kurguluyor; prototipten seri üretime kadar teknik olgunluğu yönetiyoruz.",
-      },
-      {
-        id: "tubitak-kosgeb",
-        title: "TÜBİTAK & KOSGEB & Türk Patent Proje Desteği",
-        body: "Destek programlarına uygun projeleri hazırlıyor, gerekli teknik doküman ve raporları oluşturuyoruz. Başvurudan yürütmeye ve raporlamaya kadar süreci sizin için yönetiyoruz.",
       },
     ],
   },

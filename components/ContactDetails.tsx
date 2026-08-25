@@ -22,7 +22,7 @@ export function ContactDetails({
       <ul className="flex flex-col gap-5 sm:gap-6">
         <li className="flex gap-4">
           <Mail
-            className="mt-1 shrink-0 text-signal"
+            className="mt-1 shrink-0 text-signal-text"
             size={iconSize}
             strokeWidth={1.5}
             aria-hidden="true"
@@ -32,7 +32,7 @@ export function ContactDetails({
             <ContactChannelLink
               href={`mailto:${siteConfig.email}`}
               channel="email"
-              className={`touch-target-inline ${valueClass} underline decoration-signal underline-offset-4 transition-colors hover:text-signal`}
+              className={`touch-target-inline ${valueClass} underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text`}
             >
               {siteConfig.email}
             </ContactChannelLink>
@@ -40,7 +40,7 @@ export function ContactDetails({
         </li>
         <li className="flex gap-4">
           <Phone
-            className="mt-1 shrink-0 text-signal"
+            className="mt-1 shrink-0 text-signal-text"
             size={iconSize}
             strokeWidth={1.5}
             aria-hidden="true"
@@ -50,7 +50,7 @@ export function ContactDetails({
             <ContactChannelLink
               href={siteConfig.phoneHref}
               channel="phone"
-              className={`touch-target-inline ${valueClass} underline decoration-signal underline-offset-4 transition-colors hover:text-signal`}
+              className={`touch-target-inline ${valueClass} underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text`}
             >
               {siteConfig.phone}
             </ContactChannelLink>
@@ -58,7 +58,7 @@ export function ContactDetails({
         </li>
         <li className="flex gap-4">
           <MapPin
-            className="mt-1 shrink-0 text-signal"
+            className="mt-1 shrink-0 text-signal-text"
             size={iconSize}
             strokeWidth={1.5}
             aria-hidden="true"
@@ -74,7 +74,7 @@ export function ContactDetails({
             </p>
             <a
               href={siteConfig.mapsUrl}
-              className="touch-target-inline text-small text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal"
+              className="touch-target-inline text-small text-ink underline decoration-signal underline-offset-4 transition-colors hover:text-signal-text"
               rel="noopener noreferrer"
               target="_blank"
             >

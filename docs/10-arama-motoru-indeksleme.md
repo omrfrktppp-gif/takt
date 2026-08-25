@@ -10,7 +10,7 @@ Bu doküman, `takt.tr` sitesinin Google ve Bing tarafından taranması ve yenide
 | Dosya / URL | Amaç |
 |-------------|------|
 | `https://takt.tr/robots.txt` | Tüm botlara izin + sitemap adresi |
-| `https://takt.tr/sitemap.xml` | ~70 indekslenebilir URL (`docs/gsc-url-list.txt`; build ~82 route) |
+| `https://takt.tr/sitemap.xml` | Kanonik TR sayfaları ile sunucuda üretilen EN blog sayfaları; karşılıklı hreflang ve gerçek lastmod |
 | `docs/gsc-url-list.txt` | Search Console toplu dizin için tam URL listesi |
 | `https://takt.tr/llms.txt` | AI/GEO bot özeti (dinamik — `app/llms.txt/route.ts`; blog listesi otomatik) |
 | `public/llms-full.txt` | Derin GEO özeti (manuel senkron gerekebilir) |
@@ -48,8 +48,8 @@ Deploy sonrası `<head>` içinde doğrulama meta etiketleri otomatik eklenir (`a
 4. **Yeniden dizine alma (deploy sonrası):**
    - URL Denetimi → `https://takt.tr/` → **Dizine eklenmesini iste**
    - Önemli sayfalar için tekrarlayın: `/hizmetler/proje-danismanligi`, `/sss`, `/blog`
-   - Veya `docs/gsc-url-list.txt` içindeki URL'leri toplu denetimle gönderin
-   - Veya sitemap gönderimi sonrası birkaç gün bekleyin (Google otomatik tarar)
+   - `docs/gsc-url-list.txt` listesini önceliklendirme referansı olarak kullanın; URL Denetimi aracı adresleri tek tek kabul eder
+   - Toplu keşif için sitemap'i gönderin ve Google'ın yeniden taramasını bekleyin
 
 > Google sitemap ping URL'si (2023'te kaldırıldı) artık kullanılmıyor; Search Console yeterli.
 
@@ -70,6 +70,8 @@ curl -X POST "https://takt.tr/api/indexnow" \
 ```
 
 Boş `{}` gövdesi tüm sitemap URL'lerini Bing/IndexNow ağına bildirir.
+
+> İngilizce kurumsal rotalar istemci tarafında çevrildiği sürece `noindex, follow` kalır. Sunucuda gerçek İngilizce HTML üreten `/en/blog` ağı sitemap'e alınır ve TR/EN `hreflang` çiftleriyle indekslenir.
 
 ---
 

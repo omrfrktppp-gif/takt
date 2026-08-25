@@ -1,0 +1,23 @@
+{
+  "route": "/rehber",
+  "title": "Technical guides",
+  "copy": {
+    "Tersine mühendislik, mühendislik analizi, yalın üretim ve üretilebilir tasarım üzerine kapsamlı rehberler — ilgili blog yazıları ve hizmetlerle bağlantılı.": "Comprehensive guides on reverse engineering, engineering analysis, lean manufacturing and design for manufacturability, connected to related articles and services.",
+    "3 rehber kümesi — konuya göre derinlemesine içerik ve ilgili hizmet bağlantıları.": "Three guide collections with in-depth content and links to related services.",
+    "Konu başlıklarını blog yazılarında da ayrıntılı inceliyoruz.": "We also examine these topics in detail in our articles.",
+    "Konu başlıklarını blog yazılarında da": "We also examine these topics",
+    "ayrıntılı inceliyoruz": "in detail in our articles",
+    "Ana Sayfa": "Home Page",
+    "REHBERLER": "GUIDES",
+    "4 rehber kümesi — konuya göre derinlemesine içerik ve ilgili hizmet bağlantıları.": "4 sets of guides — in-depth content by topic and links to related services.",
+    "Tersine mühendislik rehberi": "Reverse engineering guide",
+    "3D tarama, teknik resim ve imalata hazır model sürecini; sac metal ve toleranslama kararlarıyla birlikte ele alırız.": "We cover the complete workflow from 3D scanning to engineering drawings and manufacturing-ready models, including sheet-metal and tolerancing decisions.",
+    "Detay →": "Learn more →",
+    "FEA / mühendislik analizi rehberi": "FEA / engineering analysis guide",
+    "Tasarım kararlarını doğrulamak için FEA, titreşim, termal ve hafifletme analizlerinin rolünü ve tipik proje akışını açıklarız.": "We describe the role and typical project flow of FEA, vibration, thermal, and mitigation analyzes to validate design decisions.",
+    "Yalın üretim & DFM rehberi": "Lean manufacturing & DFM guide",
+    "DFM/DFA ilkeleri ile yalın üretim araçlarını bir arada ele alır; tasarım ve süreç iyileştirme kararlarına rehberlik eder.": "It combines DFM/DFA principles and lean production tools; guides design and process improvement decisions.",
+    "Konu başlıklarını blog yazılarında da ayrıntılı inceliyoruz.": "We also examine the topics in detail in blog posts.",
+    "Teknik rehberler": "Technical guides"
+  }
+}

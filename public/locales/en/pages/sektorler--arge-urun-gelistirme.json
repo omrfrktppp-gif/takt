@@ -1,0 +1,16 @@
+{
+  "route": "/sektorler/arge-urun-gelistirme",
+  "title": "R&D and product development",
+  "copy": {
+    "Teknik gereksinimleri, test çıktılarını ve revizyon kararlarını izlenebilir mühendislik dokümantasyonuna dönüştürürüz.": "We turn technical requirements, test outputs and revision decisions into traceable engineering documentation.",
+    "SEKTÖRLER": "SECTORS",
+    "Ar-Ge ve ürün geliştirme projelerinde kavram doğrulamadan seri üretime hazır tasarıma kadar teknik disiplin gereklidir. Takt, ekibinize dışarıdan mühendislik gücü ekleyerek kararları dokümante eder ve süreci tek muhatap olarak yönetir.": "Technical discipline is required in R&D and product development projects, from concept validation to mass production-ready design. By adding external engineering power to your team, Takt documents the decisions and manages the process as a single point of contact.",
+    "Konsept tasarım, teknik gereksinim analizi ve fizibilite değerlendirmesiyle projenin ilk aşamasını yapılandırırız.": "We structure the first phase of the project with concept design, technical requirements analysis and feasibility assessment.",
+    "Prototip döngüleri, test planları ve revizyon takibiyle ürün olgunluğunu adım adım ilerletiriz.": "We advance product maturity step by step through prototype cycles, test plans and revision tracking.",
+    "İlgili hizmetler": "Related services",
+    "Ar-Ge & Ür-Ge →": "R&D & P&D →",
+    "Tasarım & geliştirme →": "Design & development →",
+    "Görüşme planla veya iletişime geçin.": "Schedule a meeting or get in touch.",
+    "Ar-Ge ve ürün geliştirme": "R&D and product development"
+  }
+}

@@ -44,7 +44,9 @@ export function ServiceDetailBody({ content, intro }: ServiceDetailBodyProps) {
       ) : null}
 
       <div className="flex flex-col gap-3 border-y border-line py-6 sm:flex-row sm:flex-wrap">
-        <Button href="/ihtiyac-analizi">İhtiyacınızı netleştirin</Button>
+        <Button href="/ihtiyac-analizi" variant="signal">
+          İhtiyacınızı netleştirin
+        </Button>
         <Button variant="secondary" href="/gorusme-planla">
           Bu kapsamı değerlendirelim
         </Button>

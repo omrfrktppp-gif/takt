@@ -31,7 +31,6 @@ export type ServiceBranchId =
   | "analiz-hesaplama"
   | "uretim-danismanligi"
   | "arge-urge"
-  | "tubitak-kosgeb"
   | "teknik-ekip"
   | "proje-danismanligi";
 

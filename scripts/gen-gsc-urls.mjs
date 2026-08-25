@@ -37,7 +37,6 @@ const rehberPaths = [
   "/rehber/tersine-muhendislik",
   "/rehber/muhendislik-analizi",
   "/rehber/yalin-uretim-dfm",
-  "/rehber/tubitak-kosgeb-rehberi",
 ];
 
 const hizmetSlugs = [
@@ -47,7 +46,6 @@ const hizmetSlugs = [
   "analiz-hesaplama",
   "uretim-danismanligi",
   "arge-urge",
-  "tubitak-kosgeb",
 ];
 
 const kapasiteSlugs = [
@@ -70,7 +68,6 @@ const blogTagIds = [
   "uretim-danismanligi",
   "kapasite-imalat",
   "arge-urge",
-  "tubitak-kosgeb-patent",
   "ankara-sanayi",
   "dfm-dfa",
   "japon-muhendislik",
@@ -87,7 +84,20 @@ const CATEGORY_TAG_MAP = {
 };
 
 const TAG_ALIAS_MAP = {
+  "muhendislik-danismanligi": "muhendislik-danismanligi",
+  "proje-danismanligi": "proje-danismanligi",
+  "teknik-ekip-yonetimi": "teknik-ekip-yonetimi",
+  "tasarim-gelistirme": "tasarim-gelistirme",
+  "analiz-hesaplama": "analiz-hesaplama",
+  "uretim-danismanligi": "uretim-danismanligi",
+  "kapasite-imalat": "kapasite-imalat",
+  "arge-urge": "arge-urge",
+  "ankara-sanayi": "ankara-sanayi",
+  "japon-muhendislik": "japon-muhendislik",
+  "kalite-ilkeleri": "kalite-ilkeleri",
+  "muhendislik-trendleri": "muhendislik-trendleri",
   dfm: "dfm-dfa",
+  "dfm-dfa": "dfm-dfa",
   dfa: "dfm-dfa",
   dfam: "dfm-dfa",
   gdt: "dfm-dfa",
@@ -173,6 +183,7 @@ function resolveTagIds(category, tags) {
 
 const blogDir = path.join(root, "content", "blog");
 const publishedPosts = [];
+const englishPosts = [];
 
 for (const entry of fs.readdirSync(blogDir, { withFileTypes: true })) {
   if (!entry.isDirectory() || entry.name.startsWith("_")) continue;
@@ -185,10 +196,33 @@ for (const entry of fs.readdirSync(blogDir, { withFileTypes: true })) {
     slug: data.slug,
     tags: resolveTagIds(data.category, data.tags),
   });
+
+  const englishPath = path.join(blogDir, entry.name, "index.en.md");
+  if (!fs.existsSync(englishPath)) continue;
+  const englishData = parseFrontMatter(fs.readFileSync(englishPath, "utf8"));
+  if (
+    !englishData?.slug ||
+    !englishData.title ||
+    !englishData.description ||
+    !englishData.date
+  ) {
+    continue;
+  }
+  if (englishData.status !== "published" && englishData.status !== "review") {
+    continue;
+  }
+  englishPosts.push({
+    slug: englishData.slug,
+    tags: resolveTagIds(englishData.category, englishData.tags),
+  });
 }
 
 const activeTagIds = blogTagIds.filter((tagId) =>
-  publishedPosts.some((post) => post.tags.includes(tagId)),
+  publishedPosts.filter((post) => post.tags.includes(tagId)).length >= 2,
+);
+const activeEnglishTagIds = blogTagIds.filter(
+  (tagId) =>
+    englishPosts.filter((post) => post.tags.includes(tagId)).length >= 2,
 );
 
 const paths = [
@@ -202,6 +236,9 @@ const paths = [
   ...kapasiteSlugs.map((s) => `/kapasitemiz/${s}`),
   ...publishedPosts.map((p) => `/blog/${p.slug}`),
   ...activeTagIds.map((t) => `/blog/etiket/${t}`),
+  "/en/blog",
+  ...englishPosts.map((p) => `/en/blog/${p.slug}`),
+  ...activeEnglishTagIds.map((t) => `/en/blog/etiket/${t}`),
 ];
 
 const urls = paths.map((p) => `${base}${p}`);

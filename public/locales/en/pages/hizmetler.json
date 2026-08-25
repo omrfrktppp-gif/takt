@@ -1,0 +1,25 @@
+{
+  "route": "/hizmetler",
+  "title": "Services",
+  "copy": {
+    "Proje danışmanlığı, tasarım, analiz, üretim koordinasyonu, Ar-Ge ve Ür-Ge hizmetleri tek elden.": "Project consulting, design, analysis, manufacturing coordination, R&D and product development services from a single source.",
+    "6 alan — detay için bir başlık seçin.": "Six service areas — select one for details.",
+    "Ana Sayfa": "Home Page",
+    "HİZMETLERİMİZ": "OUR SERVICES",
+    "7 alan — detay için bir başlık seçin.": "7 fields — choose a title for the detail.",
+    "Proje Danışmanlığı": "Project Consultancy",
+    "Projelerinizi baştan sona teknik bir gözle yönetiyor; üretim, tesis ve süreç (proses) optimizasyonunda yol gösteriyoruz. Dağınık ya da tıkanmış işleri ölçülebilir bir plana ve doğru tempoya bağlıyoruz.": "It manages your projects from start to finish with a technical eye; We guide you in production, facility and process optimization. We connect messy or blocked tasks to a measurable plan and the right tempo.",
+    "Detay →": "Learn more →",
+    "Teknik Ekip & Süreç Yönetimi": "Technical Team & Process Management",
+    "Ekibinizin yükünü hafifletiyoruz. Teknik kadronun ve iş akışının verimli, takip edilebilir biçimde çalışmasını sağlıyor; süreçleri kuruyor ve teknik ekibinizdeki eksik halkayı dışarıdan tamamlıyoruz. İşe alım ve aday mühendis süreçlerinizde danışmanlık veriyoruz.": "We ease the burden of your team. It ensures that the technical staff and workflow work efficiently and in a traceable manner; We establish processes and fill in the missing link in your technical team externally. We provide consultancy in your recruitment and candidate engineer processes.",
+    "Tasarım & Geliştirme": "Design & Development",
+    "Özel makina, sistem ve ürünleri fikirden imalata hazır teknik çözüme dönüştürüyoruz. Mevcut tasarımları da performans ve maliyet açısından geliştiriyoruz. Tersine mühendislik çözümlerimizle üretim süreçlerinizi kısaltıyoruz.": "We transform special machines, systems and products from idea to production-ready technical solution. We also improve existing designs in terms of performance and cost. We shorten your production processes with our reverse engineering solutions.",
+    "Analiz, Hesaplama & Raporlama": "Analysis, Calculation & Reporting",
+    "Kararlarınızı sayıyla destekliyoruz: mühendislik hesapları, simülasyon ve analizlerle riski azaltıyor; sonuçları net, uygulanabilir raporlara döküyoruz.": "We support your decisions with numbers: we reduce risk with engineering calculations, simulations and analyses; We put the results into clear, actionable reports.",
+    "Üretim Danışmanlığı": "Production Consultancy",
+    "İhtiyacınızı doğru üretim çözümüne yönlendiriyoruz. Güvenilir çözüm ortaklarımızla işinizi eşleştiriyor, imalat sürecini sizin adınıza koordine ediyoruz.": "We direct your needs to the right production solution. We match your business with our reliable solution partners and coordinate the manufacturing process on your behalf.",
+    "Ar-Ge & Ür-Ge Danışmanlığı": "R&D & P&D Consultancy",
+    "Fikirden ürüne giden yolda yanınızdayız. Araştırma-geliştirme ve ürün geliştirme süreçlerini kurguluyor; prototipten seri üretime kadar teknik olgunluğu yönetiyoruz.": "We are with you on the path from idea to product. It establishes research and development and product development processes; We manage technical maturity from prototype to mass production.",
+    "Hizmetlerimiz": "Services"
+  }
+}
