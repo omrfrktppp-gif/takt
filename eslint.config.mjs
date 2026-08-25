@@ -13,6 +13,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendorlanan Claude skill/agent paketleri — projenin kaynak kodu değil.
+    ".claude/**",
   ]),
 ]);
 

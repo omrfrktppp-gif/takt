@@ -52,15 +52,10 @@ export const metadata: Metadata = {
     description: siteConfig.tagline,
     images: ["/opengraph-image.png"],
   },
-  icons: {
-    icon: [
-      { url: "/icon", sizes: "32x32", type: "image/webp" },
-      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
-    ],
-    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/webp" }],
-    shortcut: "/favicon-48.png",
-  },
+  // İkonlar Next dosya kuralıyla üretilir: app/favicon.ico, app/icon.png,
+  // app/apple-icon.png. Elle `icons` tanımı dosya kuralını bastırdığı için
+  // burada tanımlanmaz — eski tanım desteklenmeyen .webp'ye işaret ediyor,
+  // /icon ve /apple-icon her sayfada 404 veriyordu.
   ...buildSearchVerificationMetadata(),
 };
 
