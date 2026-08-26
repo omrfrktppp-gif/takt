@@ -23,6 +23,8 @@ Next.js App Router · TypeScript · Tailwind CSS · lucide-react · Vercel deplo
 | `12-kalan-adimlar.md` | Faz 2 sonrası manuel görevler |
 | `05-orkestrator-cursor-rehberi.md` | İş sırası + bitti tanımı |
 | `09-seo-geo-aeo-altyapi.md` | SEO veri dosyaları + genişletme rehberi |
+| `15-cursor-orkestrasyon.md` | Codex → Cursor işçi protokolü |
+| `18-antigravity-orkestrasyon.md` | Codex → Antigravity işçi protokolü |
 
 ## Marka guardrail'leri
 - Sadece Doküman 1 token'ları; tek aksan `--signal`; paper-first
