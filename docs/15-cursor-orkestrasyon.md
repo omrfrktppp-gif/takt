@@ -14,6 +14,9 @@ Hedefler:
 - her değişikliğin bağımsız doğrulanması,
 - Codex bağlamının tasarım, ürün, pazarlama ve kalite kararlarına ayrılması.
 
+Kardeş işçi (Google kotası): `docs/18-antigravity-orkestrasyon.md`.
+Aynı anda yalnızca bir yazar; kota yönlendirmesi o protokolde.
+
 ## Tek çalışma alanı
 
 Bütün ajanlar yalnızca şu klasörde çalışır:
@@ -38,7 +41,8 @@ uygulama çalışmaları için kullanılmaz.
 - `TODO-CODEX.md` içinden sıradaki işi seçer.
 - Görevi küçük ve doğrulanabilir pakete böler.
 - Dosya kapsamını, sınırları ve kabul kriterlerini yazar.
-- Cursor ajanına uygulama brief'i verir.
+- Cursor veya Antigravity işçisine uygulama brief'i verir; ikisine birden yazma
+  görevi vermez.
 - Sonuçtaki `git diff`i satır satır inceler.
 - Uydurma iddia, gizlilik, erişilebilirlik ve performans risklerini kontrol eder.
 - Build, lint, type-check, site audit ve tarayıcı doğrulamasını bağımsız yapar.
@@ -88,11 +92,22 @@ yapabilir.
 Dosya kapsamları kesişmeyen işler paralel verilebilir. Birleştirme öncesinde
 Codex her diff'i ayrı inceler.
 
+## Dispatch (Computer Use yok)
+
+Codex `cursor`, `cursor --help` veya interaktif `agent` çalıştırmaz.
+
+```powershell
+pwsh -File .\scripts\dispatch-cursor.ps1 -BriefPath .\docs\briefs\2026-08-26-ornek.md -Force
+```
+
+Brief dosyasında `İŞÇİ` satırı `cursor` olur. Şablon iskeleti
+`docs/18-antigravity-orkestrasyon.md` ile ortaktır.
+
 ## Standart görev akışı
 
 1. Codex mevcut `git status` ve ilgili dosyaları inceler.
 2. `TODO-CODEX.md` içinden bir görev seçer.
-3. Görevi aşağıdaki brief şablonuyla Cursor'a verir.
+3. Görevi `docs/briefs/` altına yazar; `scripts/dispatch-cursor.ps1` ile verir.
 4. Cursor uygulama ve yerel testleri tamamlar.
 5. Codex değişen dosyaları ve diff'i inceler.
 6. Codex build/lint ve gerekiyorsa tarayıcı testini tekrarlar.
@@ -103,6 +118,9 @@ Codex her diff'i ayrı inceler.
 ## Cursor brief şablonu
 
 ```text
+İŞÇİ
+cursor
+
 AMAÇ
 [Tek cümlelik sonuç]
 
@@ -127,6 +145,7 @@ KAPSAM DIŞI
 - bağımsız tasarım sistemi değişikliği
 - commit/push/deploy
 - belirtilmeyen dosyalarda geniş refactor
+- Antigravity ile aynı anda yazma
 
 KABUL KRİTERLERİ
 - [gözlemlenebilir davranış]
